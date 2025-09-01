@@ -24,19 +24,19 @@ export default function PracticeSelectionPage() {
     }
 
     // UNIT-1 modes (amber/yellow theme)
-    if (['module1', 'module2', 'module3', 'module4', 'module5', 'module6', 'module7', 'unit1', 'unit1_assignment', 'unit1_passage', 'unit1_demo'].includes(selectedMode)) {
+    if (['module1', 'module2', 'module3', 'module4', 'module5', 'module6', 'module7', 'unit1', 'unit1_assignment', 'unit1_passage', 'unit1_demo','unit1_all'].includes(selectedMode)) {
       return 'bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-600 hover:to-yellow-700 text-black shadow-lg transform hover:scale-105';
     }
 
     // UNIT-2 modes (blue theme)
-    if (['unit2', 'unit2_assignment', 'unit2_passage', 'unit2_demo', 
+    if (['unit2', 'unit2_assignment', 'unit2_passage', 'unit2_demo', 'unit2_all',
          'unit2_module1', 'unit2_module2', 'unit2_module3', 'unit2_module4', 
          'unit2_module5', 'unit2_module6', 'unit2_module7'].includes(selectedMode)) {
       return 'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg transform hover:scale-105';
     }
 
     // UNIT-3 modes (green theme)
-    if (['unit3', 'unit3_assignment', 'unit3_passage', 'unit3_demo',
+    if (['unit3', 'unit3_assignment', 'unit3_passage', 'unit3_demo','unit3_all',
          'unit3_module1', 'unit3_module2', 'unit3_module3', 'unit3_module4',
          'unit3_module5', 'unit3_module6', 'unit3_module7'].includes(selectedMode)) {
       return 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white shadow-lg transform hover:scale-105';
@@ -126,7 +126,7 @@ export default function PracticeSelectionPage() {
                   </div>
                   <h3 className="font-semibold text-xl mb-2 text-amber-300">UNIT-1</h3>
                   <p className="text-sm opacity-80 text-center">
-                    Fundamentals & Core Concepts
+                    Wireless Communications for Everybody
                   </p>
                 </div>
                 <div className="grid grid-cols-3 gap-2 mb-4">
@@ -168,7 +168,7 @@ export default function PracticeSelectionPage() {
                   </div>
                   <h3 className="font-semibold text-xl mb-2 text-blue-300">UNIT-2</h3>
                   <p className="text-sm opacity-80 text-center">
-                    Advanced Topics & Applications
+                    4G Network Fundamentals
                   </p>
                 </div>
                 <div className="grid grid-cols-3 gap-2 mb-4">
@@ -224,8 +224,8 @@ export default function PracticeSelectionPage() {
                   </div>
                   <h3 className="font-semibold text-xl mb-2 text-green-300">UNIT-3</h3>
                   <p className="text-sm opacity-80 text-center">
-                    Specialized Topics & Research
-                  </p>
+                    5G Network Architecture and Protocols 
+                                      </p>
                 </div>
                 <div className="grid grid-cols-3 gap-2 mb-4">
                   {[1, 2, 3, 4, 5, 6, 7].map((moduleNum) => {
