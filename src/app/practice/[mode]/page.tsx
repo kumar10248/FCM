@@ -29,6 +29,12 @@ export default function QuestionPracticePage() {
   const [isExplanationExpanded, setIsExplanationExpanded] = useState(true);
   const [showConfetti, setShowConfetti] = useState(false);
   const [questionDetails, setQuestionDetails] = useState<QuestionDetail[]>([]);
+  const questionDetailsRef = useRef<QuestionDetail[]>([]);
+  
+  // Update questionDetails reference when it changes
+  useEffect(() => {
+    questionDetailsRef.current = questionDetails;
+  }, [questionDetails]);
   
   // Update score reference when score changes
   useEffect(() => {
@@ -228,25 +234,23 @@ export default function QuestionPracticePage() {
         }
         
         timerRef.current = setInterval(() => {
-          setTimeRemaining((prevTime) => {
-            if (prevTime <= 1) {
-              if (timerRef.current) {
-                clearInterval(timerRef.current);
-              }
-              
-              // Store detailed results in localStorage for time-up scenario
-              const detailedResults: DetailedResults = {
-                score: scoreRef.current,
-                total: totalQuestionsRef.current,
-                mode,
-                timeRemaining: 0,
-                timeUp: true,
-                questionDetails,
-                completedAt: new Date().toISOString()
-              };
-              localStorage.setItem('detailedResults', JSON.stringify(detailedResults));
-              
-              router.push(`/results?score=${scoreRef.current}&total=${totalQuestionsRef.current}&mode=${mode}&timeUp=true`);
+            setTimeRemaining((prevTime) => {
+              if (prevTime <= 1) {
+                if (timerRef.current) {
+                  clearInterval(timerRef.current);
+                }
+                
+                // Store detailed results in localStorage for time-up scenario
+                const detailedResults: DetailedResults = {
+                  score: scoreRef.current,
+                  total: totalQuestionsRef.current,
+                  mode,
+                  timeRemaining: 0,
+                  timeUp: true,
+                  questionDetails: questionDetailsRef.current,
+                  completedAt: new Date().toISOString()
+                };
+                localStorage.setItem('detailedResults', JSON.stringify(detailedResults));              router.push(`/results?score=${scoreRef.current}&total=${totalQuestionsRef.current}&mode=${mode}&timeUp=true`);
               return 0;
             }
             return prevTime - 1;
@@ -512,7 +516,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
           mode,
           timeRemaining,
           timeUp: false,
-          questionDetails,
+          questionDetails: questionDetailsRef.current,
           completedAt: new Date().toISOString()
         };
         localStorage.setItem('detailedResults', JSON.stringify(detailedResults));
@@ -538,7 +542,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
           mode,
           timeRemaining,
           timeUp: false,
-          questionDetails,
+          questionDetails: questionDetailsRef.current,
           completedAt: new Date().toISOString()
         };
         localStorage.setItem('detailedResults', JSON.stringify(detailedResults));
@@ -564,7 +568,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
           mode,
           timeRemaining,
           timeUp: false,
-          questionDetails,
+          questionDetails: questionDetailsRef.current,
           completedAt: new Date().toISOString()
         };
         localStorage.setItem('detailedResults', JSON.stringify(detailedResults));

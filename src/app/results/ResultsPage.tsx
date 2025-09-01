@@ -5,11 +5,11 @@
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { FaArrowLeft, FaHome, FaRedo, FaTrophy, FaClock, FaShare, FaTwitter, FaFacebook, 
+import { FaArrowLeft, FaHome, FaRedo, FaClock, FaShare, FaTwitter, FaFacebook, 
   FaCheckCircle, FaTimesCircle, FaInfoCircle, FaLightbulb, FaList, FaDownload, 
   FaChartBar, FaBullseye, FaBrain, FaStar } from 'react-icons/fa';
 import { formatTime } from '@/app/lib/utils';
-import { DetailedResults, QuestionDetail } from '../types';
+import { DetailedResults } from '../types';
 
 type SharePlatform = 'twitter' | 'whatsapp' | 'linkedin' | 'facebook' | 'copy';
 
@@ -84,9 +84,6 @@ export default function ResultsPage() {
     return "📚";
   };
   
-  const totalTimeAllotted = total * 120;
-  const timeUsed = totalTimeAllotted - timeRemaining;
-
   const handleShare = (platform: SharePlatform) => {
     const shareText = `I scored ${score}/${total} (${percentage}%) on ${mode} practice! ${getEmojiForScore()}`;
     const shareUrl = window.location.href;
@@ -722,7 +719,7 @@ export default function ResultsPage() {
                             }`}>
                               {typeof detail.options[answerIndex] === 'string' 
                                 ? detail.options[answerIndex] 
-                                : (detail.options[answerIndex] as any)?.text || `Option ${answerIndex + 1}`}
+                                : (detail.options[answerIndex] as { text: string })?.text || `Option ${answerIndex + 1}`}
                             </div>
                           ))}
                         </div>
@@ -735,7 +732,7 @@ export default function ResultsPage() {
                             <div key={idx} className="p-2 rounded bg-green-800/50 text-green-300 border border-green-500/50 text-sm">
                               {typeof detail.options[answerIndex] === 'string' 
                                 ? detail.options[answerIndex] 
-                                : (detail.options[answerIndex] as any)?.text || `Option ${answerIndex + 1}`}
+                                : (detail.options[answerIndex] as { text: string })?.text || `Option ${answerIndex + 1}`}
                             </div>
                           ))}
                         </div>
