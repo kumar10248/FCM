@@ -146,8 +146,8 @@ export default function ResultsPage() {
         score: `${score}/${total}`,
         percentage: `${percentage}%`,
         mode: mode.charAt(0).toUpperCase() + mode.slice(1).replace(/_/g, ' '),
-        timeUsed: formatTime(total * 120 - timeRemaining),
-        totalTime: formatTime(total * 120),
+        timeUsed: formatTime(total * 60 - timeRemaining),
+        totalTime: formatTime(total * 60),
         timeRemaining: formatTime(timeRemaining),
         performanceLevel: getPerformanceLevel().level,
         timeEfficiency: getTimeEfficiency().status,
@@ -609,10 +609,10 @@ export default function ResultsPage() {
                   <h3 className="text-lg font-semibold">Time Analysis</h3>
                 </div>
                 <div className="text-xl font-bold text-green-400 mb-2">
-                  {formatTime(total * 120 - timeRemaining)}
+                  {formatTime(total * 60 - timeRemaining)}
                 </div>
                 <div className="text-gray-400 text-sm mb-3">
-                  of {formatTime(total * 120)} total
+                  of {formatTime(total * 60)} total
                 </div>
                 <div className={`text-sm font-medium ${getTimeEfficiency().color}`}>
                   {getTimeEfficiency().status}: {getTimeEfficiency().description}
