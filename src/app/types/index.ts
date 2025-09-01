@@ -79,3 +79,26 @@ export interface SessionStats {
   totalQuestions: number;
   mode: PracticeMode;
 }
+
+export interface QuestionDetail {
+  questionNumber: number;
+  question: string;
+  options: (string | OptionItem)[];
+  userAnswer: number[];
+  correctAnswer: number[];
+  isCorrect: boolean;
+  explanation: string;
+  questionType: 'single' | 'multiple';
+  image?: string;
+  imageSize?: 'small' | 'medium' | 'large' | 'full';
+}
+
+export interface DetailedResults {
+  score: number;
+  total: number;
+  mode: PracticeMode;
+  timeRemaining: number;
+  timeUp: boolean;
+  questionDetails: QuestionDetail[];
+  completedAt: string;
+}

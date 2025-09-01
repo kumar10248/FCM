@@ -8,7 +8,7 @@ import { FaArrowLeft, FaArrowRight, FaClock, FaTimes, FaBars, FaCheck,
   FaChevronRight, FaBrain, FaCheckCircle, FaTimesCircle, FaHistory,
   FaInfoCircle, FaSquare, FaCheckSquare, FaBook } from 'react-icons/fa';
 import { getAllQuestions, getAllPassageQuestions, getDemoExamQuestions, debugQuestionsData } from '../../lib/questions';
-import { Question, PracticeMode, OptionItem, PassageQuestion, DemoExamData } from '../../types';
+import { Question, PracticeMode, OptionItem, PassageQuestion, DemoExamData, QuestionDetail, DetailedResults } from '../../types';
 import { formatTime, calculateSessionTime, validateImagePath, getImageDisplayName } from '@/app/lib/utils';
 
 export default function QuestionPracticePage() {
@@ -28,6 +28,7 @@ export default function QuestionPracticePage() {
   const totalQuestionsRef = useRef<number>(0);
   const [isExplanationExpanded, setIsExplanationExpanded] = useState(true);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [questionDetails, setQuestionDetails] = useState<QuestionDetail[]>([]);
   
   // Update score reference when score changes
   useEffect(() => {
@@ -232,6 +233,19 @@ export default function QuestionPracticePage() {
               if (timerRef.current) {
                 clearInterval(timerRef.current);
               }
+              
+              // Store detailed results in localStorage for time-up scenario
+              const detailedResults: DetailedResults = {
+                score: scoreRef.current,
+                total: totalQuestionsRef.current,
+                mode,
+                timeRemaining: 0,
+                timeUp: true,
+                questionDetails,
+                completedAt: new Date().toISOString()
+              };
+              localStorage.setItem('detailedResults', JSON.stringify(detailedResults));
+              
               router.push(`/results?score=${scoreRef.current}&total=${totalQuestionsRef.current}&mode=${mode}&timeUp=true`);
               return 0;
             }
@@ -391,6 +405,23 @@ const handleSingleOptionSelect = (optionIndex: number) => {
   
   const isCorrect = currentQuestion.correctAnswer.includes(optionIndex);
   
+  // Create detailed question record
+  const questionDetail: QuestionDetail = {
+    questionNumber: globalIndex + 1,
+    question: currentQuestion.question,
+    options: currentQuestion.options,
+    userAnswer: [optionIndex],
+    correctAnswer: [...currentQuestion.correctAnswer],
+    isCorrect: isCorrect,
+    explanation: currentQuestion.explanation,
+    questionType: currentQuestion.correctAnswer.length > 1 ? 'multiple' : 'single',
+    image: currentQuestion.image,
+    imageSize: currentQuestion.imageSize
+  };
+  
+  // Add to question details
+  setQuestionDetails(prev => [...prev, questionDetail]);
+  
   if (isCorrect) {
     setScore(prevScore => prevScore + 1);
     setShowConfetti(true);
@@ -430,6 +461,23 @@ const handleSingleOptionSelect = (optionIndex: number) => {
       sortedSelections.length === sortedCorrectAnswers.length && 
       sortedSelections.every((value, index) => value === sortedCorrectAnswers[index]);
     
+    // Create detailed question record
+    const questionDetail: QuestionDetail = {
+      questionNumber: globalIndex + 1,
+      question: currentQuestion.question,
+      options: currentQuestion.options,
+      userAnswer: [...currentSelections],
+      correctAnswer: [...currentQuestion.correctAnswer],
+      isCorrect: isCorrect,
+      explanation: currentQuestion.explanation,
+      questionType: currentQuestion.correctAnswer.length > 1 ? 'multiple' : 'single',
+      image: currentQuestion.image,
+      imageSize: currentQuestion.imageSize
+    };
+    
+    // Add to question details
+    setQuestionDetails(prev => [...prev, questionDetail]);
+    
     if (isCorrect) {
       setScore(prevScore => prevScore + 1);
       setShowConfetti(true);
@@ -456,7 +504,20 @@ const handleSingleOptionSelect = (optionIndex: number) => {
           clearInterval(timerRef.current);
         }
         const totalQuestions = getTotalQuestions();
-        router.push(`/results?score=${score}&total=${totalQuestions}&mode=${mode}&timeRemaining=${timeRemaining}`);
+        
+        // Store detailed results in localStorage
+        const detailedResults: DetailedResults = {
+          score: scoreRef.current,
+          total: totalQuestions,
+          mode,
+          timeRemaining,
+          timeUp: false,
+          questionDetails,
+          completedAt: new Date().toISOString()
+        };
+        localStorage.setItem('detailedResults', JSON.stringify(detailedResults));
+        
+        router.push(`/results?score=${scoreRef.current}&total=${totalQuestions}&mode=${mode}&timeRemaining=${timeRemaining}`);
       }
     } else if (mode === 'demo-exam') {
       // Handle demo exam mode navigation using global index
@@ -469,7 +530,20 @@ const handleSingleOptionSelect = (optionIndex: number) => {
         if (timerRef.current) {
           clearInterval(timerRef.current);
         }
-        router.push(`/results?score=${score}&total=${totalQuestions}&mode=${mode}&timeRemaining=${timeRemaining}`);
+        
+        // Store detailed results in localStorage
+        const detailedResults: DetailedResults = {
+          score: scoreRef.current,
+          total: totalQuestions,
+          mode,
+          timeRemaining,
+          timeUp: false,
+          questionDetails,
+          completedAt: new Date().toISOString()
+        };
+        localStorage.setItem('detailedResults', JSON.stringify(detailedResults));
+        
+        router.push(`/results?score=${scoreRef.current}&total=${totalQuestions}&mode=${mode}&timeRemaining=${timeRemaining}`);
       }
     } else {
       // Handle regular mode navigation
@@ -482,7 +556,20 @@ const handleSingleOptionSelect = (optionIndex: number) => {
         if (timerRef.current) {
           clearInterval(timerRef.current);
         }
-        router.push(`/results?score=${score}&total=${totalQuestions}&mode=${mode}&timeRemaining=${timeRemaining}`);
+        
+        // Store detailed results in localStorage
+        const detailedResults: DetailedResults = {
+          score: scoreRef.current,
+          total: totalQuestions,
+          mode,
+          timeRemaining,
+          timeUp: false,
+          questionDetails,
+          completedAt: new Date().toISOString()
+        };
+        localStorage.setItem('detailedResults', JSON.stringify(detailedResults));
+        
+        router.push(`/results?score=${scoreRef.current}&total=${totalQuestions}&mode=${mode}&timeRemaining=${timeRemaining}`);
       }
     }
   };
