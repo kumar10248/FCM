@@ -2,7 +2,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { FaLayerGroup, FaChevronRight, FaHome, FaClipboardCheck, FaBookOpen, FaGraduationCap } from 'react-icons/fa';
+import { FaLayerGroup, FaChevronRight, FaHome, FaClipboardCheck, FaBookOpen, FaGraduationCap,
+  FaCube, FaRocket, FaStar, FaShieldAlt, FaAtom, FaSearch, FaBullseye } from 'react-icons/fa';
 import { PracticeMode } from '../types';
 import { hasQuestionsForMode } from '../lib/questions';
 
@@ -58,52 +59,96 @@ export default function PracticeSelectionPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex flex-col">
-      <header className="bg-black py-8 border-b border-amber-500/20">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex flex-col relative overflow-hidden">
+      {/* Background decoration elements */}
+      <div className="fixed inset-0 z-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-2/3 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      </div>
+      
+      <header className="bg-gradient-to-r from-black via-gray-900 to-black py-8 border-b border-amber-500/20 shadow-2xl relative z-10">
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-center">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-300">
-              FCWMC Practice Center
-            </span>
-          </h1>
-          <p className="text-center text-gray-400 mt-2">Choose your practice mode and start learning</p>
+          <div className="text-center">
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="bg-gradient-to-r from-amber-400 to-yellow-500 p-3 rounded-xl shadow-lg animate-pulse">
+                <FaGraduationCap className="text-2xl text-black" />
+              </div>
+              <h1 className="text-3xl md:text-4xl font-bold">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500">
+                  FCWMC Practice Center
+                </span>
+              </h1>
+              <div className="bg-gradient-to-r from-amber-400 to-yellow-500 p-3 rounded-xl shadow-lg animate-pulse">
+                <FaRocket className="text-2xl text-black" />
+              </div>
+            </div>
+            <p className="text-center text-gray-400 mt-2 text-lg">Choose your practice mode and start your learning journey</p>
+            <div className="flex justify-center items-center gap-2 mt-4">
+              <FaStar className="text-yellow-400 animate-pulse" />
+              <span className="text-gray-300 text-sm">Practice makes perfect</span>
+              <FaStar className="text-yellow-400 animate-pulse" />
+            </div>
+          </div>
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-8 flex-grow max-w-7xl">
-        <div className="w-full bg-gray-900/50 rounded-xl p-4 md:p-8 shadow-xl backdrop-blur-sm">
+      <div className="container mx-auto px-4 py-8 flex-grow max-w-7xl relative z-10">
+        <div className="w-full bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-2xl p-4 md:p-8 shadow-2xl backdrop-blur-xl border border-gray-700/50">
           
-          {/* Mobile Tab Navigation */}
-          <div className="lg:hidden mb-6">
-            <div className="flex bg-gray-800/50 rounded-lg p-1">
+          {/* Search and Filter Section */}
+          <div className="mb-8 bg-gray-800/50 rounded-xl p-6 border border-gray-700/50">
+            <div className="flex flex-col md:flex-row gap-4 items-center">
+              <div className="flex items-center gap-3 flex-1">
+                <FaSearch className="text-amber-400 text-xl" />
+                <div>
+                  <h3 className="text-lg font-bold text-amber-300">Quick Navigation</h3>
+                  <p className="text-gray-400 text-sm">Select a practice mode to begin your journey</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 bg-amber-500/10 px-4 py-2 rounded-lg border border-amber-500/30">
+                <FaBullseye className="text-amber-400" />
+                <span className="text-amber-300 font-medium">
+                  {selectedMode ? `Selected: ${selectedMode.replace('_', ' ').toUpperCase()}` : 'No mode selected'}
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          {/* Enhanced Mobile Tab Navigation */}
+          <div className="lg:hidden mb-8">
+            <div className="flex bg-gray-800/70 rounded-xl p-2 backdrop-blur-md border border-gray-700/50">
               <button
                 onClick={() => setActiveTab('unit1')}
-                className={`flex-1 py-3 px-4 rounded-md text-sm font-medium transition-all ${
+                className={`flex-1 py-4 px-4 rounded-lg text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
                   activeTab === 'unit1'
-                    ? 'bg-amber-600/20 text-amber-300 border border-amber-500/50'
-                    : 'text-gray-400 hover:text-amber-300'
+                    ? 'bg-gradient-to-r from-amber-500 to-yellow-600 text-black shadow-lg transform scale-105'
+                    : 'text-gray-400 hover:text-amber-300 hover:bg-amber-500/10'
                 }`}
               >
+                <FaCube className="text-lg" />
                 UNIT-1
               </button>
               <button
                 onClick={() => setActiveTab('unit2')}
-                className={`flex-1 py-3 px-4 rounded-md text-sm font-medium transition-all ${
+                className={`flex-1 py-4 px-4 rounded-lg text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
                   activeTab === 'unit2'
-                    ? 'bg-blue-600/20 text-blue-300 border border-blue-500/50'
-                    : 'text-gray-400 hover:text-blue-300'
+                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg transform scale-105'
+                    : 'text-gray-400 hover:text-blue-300 hover:bg-blue-500/10'
                 }`}
               >
+                <FaShieldAlt className="text-lg" />
                 UNIT-2
               </button>
               <button
                 onClick={() => setActiveTab('unit3')}
-                className={`flex-1 py-3 px-4 rounded-md text-sm font-medium transition-all ${
+                className={`flex-1 py-4 px-4 rounded-lg text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 ${
                   activeTab === 'unit3'
-                    ? 'bg-green-600/20 text-green-300 border border-green-500/50'
-                    : 'text-gray-400 hover:text-green-300'
+                    ? 'bg-gradient-to-r from-green-500 to-green-600 text-white shadow-lg transform scale-105'
+                    : 'text-gray-400 hover:text-green-300 hover:bg-green-500/10'
                 }`}
               >
+                <FaAtom className="text-lg" />
                 UNIT-3
               </button>
             </div>
@@ -119,59 +164,78 @@ export default function PracticeSelectionPage() {
             {/* Desktop Layout */}
             <div className="hidden lg:grid lg:grid-cols-3 gap-8">
               {/* UNIT-1 */}
-              <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700">
-                <div className="text-center mb-6">
-                  <div className="bg-amber-800/60 p-4 rounded-lg mb-4 inline-block">
-                    <span className="text-3xl font-bold text-amber-300">U1</span>
+              <div className="group bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-xl p-6 border border-amber-500/20 hover:border-amber-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/10 backdrop-blur-sm relative overflow-hidden">
+                {/* Background decoration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-y-16 translate-x-16"></div>
+                
+                <div className="text-center mb-6 relative z-10">
+                  <div className="bg-gradient-to-br from-amber-800/80 to-amber-900/80 p-4 rounded-xl mb-4 inline-block shadow-lg group-hover:shadow-amber-500/20 transition-all duration-500 group-hover:scale-105">
+                    <FaCube className="text-4xl text-amber-300 group-hover:text-amber-200 transition-colors duration-300" />
                   </div>
-                  <h3 className="font-semibold text-xl mb-2 text-amber-300">UNIT-1</h3>
-                  <p className="text-sm opacity-80 text-center">
+                  <h3 className="font-bold text-2xl mb-3 text-amber-300 group-hover:text-amber-200 transition-colors duration-300">UNIT-1</h3>
+                  <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
                     Wireless Communications for Everybody
                   </p>
+                  <div className="mt-3 text-xs text-amber-400/70 font-medium">
+                    Fundamentals & Core Concepts
+                  </div>
                 </div>
-                <div className="grid grid-cols-3 gap-2 mb-4">
+                <div className="grid grid-cols-3 gap-3 mb-6 relative z-10">
                   {[1, 2, 3, 4, 5, 6, 7].map((moduleNum) => {
                     const mode = `module${moduleNum}` as PracticeMode;
                     return (
                       <button
                         key={mode}
-                        className={`p-3 rounded-lg transition duration-300 transform hover:scale-105 flex flex-col items-center justify-center ${
+                        className={`p-4 rounded-xl transition-all duration-300 transform hover:scale-110 flex flex-col items-center justify-center shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                           selectedMode === mode
-                            ? 'bg-gradient-to-br from-amber-500 to-amber-600 text-black shadow-lg ring-2 ring-amber-300'
-                            : 'bg-gray-700/80 hover:bg-gray-600 border border-gray-600'
+                            ? 'bg-gradient-to-br from-amber-500 to-amber-600 text-black shadow-amber-500/30 ring-2 ring-amber-300/50'
+                            : 'bg-gradient-to-br from-gray-700/90 to-gray-800/90 hover:from-gray-600/90 hover:to-gray-700/90 border border-gray-600/50 hover:border-amber-500/30 text-gray-200 hover:text-amber-300'
                         }`}
                         onClick={() => setSelectedMode(mode)}
                       >
-                        <span className="text-lg mb-1 font-bold">M{moduleNum}</span>
-                        <span className="text-xs opacity-80">Mod {moduleNum}</span>
+                        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                        <span className="text-lg mb-1 font-bold relative z-10">M{moduleNum}</span>
+                        <span className="text-xs opacity-80 relative z-10">Module {moduleNum}</span>
                       </button>
                     );
                   })}
                 </div>
                 <button
-                  className={`w-full p-3 rounded-lg transition duration-300 transform hover:scale-105 ${
+                  className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 font-semibold shadow-lg hover:shadow-xl relative overflow-hidden group/all ${
                     selectedMode === 'unit1'
-                      ? 'bg-gradient-to-br from-amber-500 to-amber-600 text-black shadow-lg ring-2 ring-amber-300'
-                      : 'bg-amber-700/20 hover:bg-amber-600/30 border border-amber-600/50 text-amber-300'
+                      ? 'bg-gradient-to-br from-amber-500 to-amber-600 text-black shadow-amber-500/30 ring-2 ring-amber-300/50'
+                      : 'bg-gradient-to-br from-amber-700/20 to-amber-800/20 hover:from-amber-600/30 hover:to-amber-700/30 border border-amber-600/50 hover:border-amber-500/70 text-amber-300 hover:text-amber-200'
                   }`}
                   onClick={() => setSelectedMode('unit1')}
                 >
-                  <span className="font-semibold">All UNIT-1 Modules</span>
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent opacity-0 group-hover/all:opacity-100 transition-opacity duration-300"></div>
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    <FaRocket className="text-lg" />
+                    All UNIT-1 Modules
+                  </span>
                 </button>
               </div>
 
               {/* UNIT-2 */}
-              <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700">
-                <div className="text-center mb-6">
-                  <div className="bg-blue-800/60 p-4 rounded-lg mb-4 inline-block">
-                    <span className="text-3xl font-bold text-blue-300">U2</span>
+              <div className="group bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-xl p-6 border border-blue-500/20 hover:border-blue-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 backdrop-blur-sm relative overflow-hidden">
+                {/* Background decoration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-y-16 translate-x-16"></div>
+                
+                <div className="text-center mb-6 relative z-10">
+                  <div className="bg-gradient-to-br from-blue-800/80 to-blue-900/80 p-4 rounded-xl mb-4 inline-block shadow-lg group-hover:shadow-blue-500/20 transition-all duration-500 group-hover:scale-105">
+                    <FaShieldAlt className="text-4xl text-blue-300 group-hover:text-blue-200 transition-colors duration-300" />
                   </div>
-                  <h3 className="font-semibold text-xl mb-2 text-blue-300">UNIT-2</h3>
-                  <p className="text-sm opacity-80 text-center">
+                  <h3 className="font-bold text-2xl mb-3 text-blue-300 group-hover:text-blue-200 transition-colors duration-300">UNIT-2</h3>
+                  <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
                     4G Network Fundamentals
                   </p>
+                  <div className="mt-3 text-xs text-blue-400/70 font-medium">
+                    Advanced Topics & Applications
+                  </div>
                 </div>
-                <div className="grid grid-cols-3 gap-2 mb-4">
+                <div className="grid grid-cols-3 gap-3 mb-6 relative z-10">
                   {[1, 2, 3, 4, 5, 6, 7].map((moduleNum) => {
                     const mode = `unit2_module${moduleNum}` as PracticeMode;
                     const isAvailable = hasQuestionsForMode(mode);
@@ -180,54 +244,67 @@ export default function PracticeSelectionPage() {
                       return (
                         <button
                           key={mode}
-                          className={`p-3 rounded-lg transition duration-300 transform hover:scale-105 flex flex-col items-center justify-center ${
+                          className={`p-4 rounded-xl transition-all duration-300 transform hover:scale-110 flex flex-col items-center justify-center shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                             selectedMode === mode
-                              ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg ring-2 ring-blue-300'
-                              : 'bg-gray-700/80 hover:bg-gray-600 border border-gray-600'
+                              ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-blue-500/30 ring-2 ring-blue-300/50'
+                              : 'bg-gradient-to-br from-gray-700/90 to-gray-800/90 hover:from-gray-600/90 hover:to-gray-700/90 border border-gray-600/50 hover:border-blue-500/30 text-gray-200 hover:text-blue-300'
                           }`}
                           onClick={() => setSelectedMode(mode)}
                         >
-                          <span className="text-lg mb-1 font-bold">M{moduleNum}</span>
-                          <span className="text-xs opacity-80">Available</span>
+                          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                          <span className="text-lg mb-1 font-bold relative z-10">M{moduleNum}</span>
+                          <span className="text-xs opacity-80 relative z-10">Available</span>
                         </button>
                       );
                     } else {
                       return (
                         <div
                           key={moduleNum}
-                          className="p-3 rounded-lg bg-gray-800/50 border border-gray-700/50 flex flex-col items-center justify-center opacity-50"
+                          className="p-4 rounded-xl bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 flex flex-col items-center justify-center opacity-50 relative overflow-hidden"
                         >
-                          <span className="text-lg mb-1 font-bold text-gray-500">M{moduleNum}</span>
-                          <span className="text-xs text-gray-500">Soon</span>
+                          <div className="absolute inset-0 bg-gradient-to-br from-gray-600/10 to-transparent"></div>
+                          <span className="text-lg mb-1 font-bold text-gray-500 relative z-10">M{moduleNum}</span>
+                          <span className="text-xs text-gray-500 relative z-10">Soon</span>
                         </div>
                       );
                     }
                   })}
                 </div>
                 <button
-                  className={`w-full p-3 rounded-lg transition duration-300 transform hover:scale-105 ${
+                  className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 font-semibold shadow-lg hover:shadow-xl relative overflow-hidden group/all ${
                     selectedMode === 'unit2'
-                      ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg ring-2 ring-blue-300'
-                      : 'bg-blue-700/20 hover:bg-blue-600/30 border border-blue-600/50 text-blue-300'
+                      ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-blue-500/30 ring-2 ring-blue-300/50'
+                      : 'bg-gradient-to-br from-blue-700/20 to-blue-800/20 hover:from-blue-600/30 hover:to-blue-700/30 border border-blue-600/50 hover:border-blue-500/70 text-blue-300 hover:text-blue-200'
                   }`}
                   onClick={() => setSelectedMode('unit2')}
                 >
-                  <span className="font-semibold">All UNIT-2 Modules</span>
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-transparent opacity-0 group-hover/all:opacity-100 transition-opacity duration-300"></div>
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    <FaStar className="text-lg" />
+                    All UNIT-2 Modules
+                  </span>
                 </button>
               </div>
 
               {/* UNIT-3 */}
-              <div className="bg-gray-800/50 rounded-lg p-6 border border-gray-700">
-                <div className="text-center mb-6">
-                  <div className="bg-green-800/60 p-4 rounded-lg mb-4 inline-block">
-                    <span className="text-3xl font-bold text-green-300">U3</span>
+              <div className="group bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-xl p-6 border border-green-500/20 hover:border-green-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/10 backdrop-blur-sm relative overflow-hidden">
+                {/* Background decoration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-y-16 translate-x-16"></div>
+                
+                <div className="text-center mb-6 relative z-10">
+                  <div className="bg-gradient-to-br from-green-800/80 to-green-900/80 p-4 rounded-xl mb-4 inline-block shadow-lg group-hover:shadow-green-500/20 transition-all duration-500 group-hover:scale-105">
+                    <FaAtom className="text-4xl text-green-300 group-hover:text-green-200 transition-colors duration-300" />
                   </div>
-                  <h3 className="font-semibold text-xl mb-2 text-green-300">UNIT-3</h3>
-                  <p className="text-sm opacity-80 text-center">
+                  <h3 className="font-bold text-2xl mb-3 text-green-300 group-hover:text-green-200 transition-colors duration-300">UNIT-3</h3>
+                  <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
                     5G Network Architecture and Protocols 
-                                      </p>
+                  </p>
+                  <div className="mt-3 text-xs text-green-400/70 font-medium">
+                    Specialized Topics & Research
+                  </div>
                 </div>
-                <div className="grid grid-cols-3 gap-2 mb-4">
+                <div className="grid grid-cols-3 gap-3 mb-6 relative z-10">
                   {[1, 2, 3, 4, 5, 6, 7].map((moduleNum) => {
                     const mode = `unit3_module${moduleNum}` as PracticeMode;
                     const isAvailable = hasQuestionsForMode(mode);
@@ -236,42 +313,46 @@ export default function PracticeSelectionPage() {
                       return (
                         <button
                           key={mode}
-                          className={`p-3 rounded-lg transition duration-300 transform hover:scale-105 flex flex-col items-center justify-center ${
+                          className={`p-4 rounded-xl transition-all duration-300 transform hover:scale-110 flex flex-col items-center justify-center shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                             selectedMode === mode
-                              ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg ring-2 ring-green-300'
-                              : 'bg-gray-700/80 hover:bg-gray-600 border border-gray-600'
+                              ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-green-500/30 ring-2 ring-green-300/50'
+                              : 'bg-gradient-to-br from-gray-700/90 to-gray-800/90 hover:from-gray-600/90 hover:to-gray-700/90 border border-gray-600/50 hover:border-green-500/30 text-gray-200 hover:text-green-300'
                           }`}
                           onClick={() => setSelectedMode(mode)}
                         >
-                          <span className="text-lg mb-1 font-bold">M{moduleNum}</span>
-                          <span className="text-xs opacity-80">Available</span>
+                          <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                          <span className="text-lg mb-1 font-bold relative z-10">M{moduleNum}</span>
+                          <span className="text-xs opacity-80 relative z-10">Available</span>
                         </button>
                       );
                     } else {
                       return (
                         <div
                           key={moduleNum}
-                          className="p-3 rounded-lg bg-gray-800/50 border border-gray-700/50 flex flex-col items-center justify-center opacity-50"
+                          className="p-4 rounded-xl bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 flex flex-col items-center justify-center opacity-50 relative overflow-hidden"
                         >
-                          <span className="text-lg mb-1 font-bold text-gray-500">M{moduleNum}</span>
-                          <span className="text-xs text-gray-500">Soon</span>
+                          <div className="absolute inset-0 bg-gradient-to-br from-gray-600/10 to-transparent"></div>
+                          <span className="text-lg mb-1 font-bold text-gray-500 relative z-10">M{moduleNum}</span>
+                          <span className="text-xs text-gray-500 relative z-10">Soon</span>
                         </div>
                       );
                     }
                   })}
                 </div>
                 <button
-                  className={`w-full p-3 rounded-lg transition duration-300 transform hover:scale-105 ${
+                  className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 font-semibold shadow-lg hover:shadow-xl relative overflow-hidden group/all ${
                     hasQuestionsForMode('unit3')
                       ? selectedMode === 'unit3'
-                        ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg ring-2 ring-green-300'
-                        : 'bg-green-700/20 hover:bg-green-600/30 border border-green-600/50 text-green-300'
-                      : 'bg-green-700/20 border border-green-600/50 text-green-300 opacity-50 cursor-not-allowed'
+                        ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-green-500/30 ring-2 ring-green-300/50'
+                        : 'bg-gradient-to-br from-green-700/20 to-green-800/20 hover:from-green-600/30 hover:to-green-700/30 border border-green-600/50 hover:border-green-500/70 text-green-300 hover:text-green-200'
+                      : 'bg-gradient-to-br from-green-700/20 to-green-800/20 border border-green-600/50 text-green-300 opacity-50 cursor-not-allowed'
                   }`}
                   onClick={() => hasQuestionsForMode('unit3') && setSelectedMode('unit3')}
                   disabled={!hasQuestionsForMode('unit3')}
                 >
-                  <span className="font-semibold">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent opacity-0 group-hover/all:opacity-100 transition-opacity duration-300"></div>
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    <FaRocket className="text-lg" />
                     {hasQuestionsForMode('unit3') ? 'All UNIT-3 Modules' : 'Coming Soon'}
                   </span>
                 </button>
@@ -281,60 +362,73 @@ export default function PracticeSelectionPage() {
             {/* Mobile Layout - Tab Content */}
             <div className="lg:hidden">
               {activeTab === 'unit1' && (
-                <div className="bg-gray-800/50 rounded-lg p-6 border border-amber-600/30">
-                  <div className="text-center mb-6">
-                    <div className="bg-amber-800/60 p-4 rounded-lg mb-4 inline-block">
-                      <span className="text-3xl font-bold text-amber-300">U1</span>
+                <div className="group bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-xl p-6 border border-amber-600/30 hover:border-amber-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/10 backdrop-blur-sm relative overflow-hidden">
+                  {/* Background decoration */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-y-12 translate-x-12"></div>
+                  
+                  <div className="text-center mb-6 relative z-10">
+                    <div className="bg-gradient-to-br from-amber-800/80 to-amber-900/80 p-4 rounded-xl mb-4 inline-block shadow-lg group-hover:shadow-amber-500/20 transition-all duration-500 group-hover:scale-105">
+                      <FaCube className="text-4xl text-amber-300 group-hover:text-amber-200 transition-colors duration-300" />
                     </div>
-                    <h3 className="font-semibold text-xl mb-2 text-amber-300">UNIT-1</h3>
-                    <p className="text-sm opacity-80 text-center">
+                    <h3 className="font-bold text-2xl mb-3 text-amber-300 group-hover:text-amber-200 transition-colors duration-300">UNIT-1</h3>
+                    <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
                       Fundamentals & Core Concepts
                     </p>
                   </div>
-                  <div className="grid grid-cols-3 gap-3 mb-4">
+                  <div className="grid grid-cols-3 gap-3 mb-6 relative z-10">
                     {[1, 2, 3, 4, 5, 6, 7].map((moduleNum) => {
                       const mode = `module${moduleNum}` as PracticeMode;
                       return (
                         <button
                           key={mode}
-                          className={`p-4 rounded-lg transition duration-300 flex flex-col items-center justify-center ${
+                          className={`p-4 rounded-xl transition-all duration-300 transform hover:scale-110 flex flex-col items-center justify-center shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                             selectedMode === mode
-                              ? 'bg-gradient-to-br from-amber-500 to-amber-600 text-black shadow-lg ring-2 ring-amber-300'
-                              : 'bg-gray-700/80 hover:bg-gray-600 border border-gray-600'
+                              ? 'bg-gradient-to-br from-amber-500 to-amber-600 text-black shadow-amber-500/30 ring-2 ring-amber-300/50'
+                              : 'bg-gradient-to-br from-gray-700/90 to-gray-800/90 hover:from-gray-600/90 hover:to-gray-700/90 border border-gray-600/50 hover:border-amber-500/30 text-gray-200 hover:text-amber-300'
                           }`}
                           onClick={() => setSelectedMode(mode)}
                         >
-                          <span className="text-xl mb-1 font-bold">M{moduleNum}</span>
-                          <span className="text-xs opacity-80">Mod {moduleNum}</span>
+                          <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                          <span className="text-xl mb-1 font-bold relative z-10">M{moduleNum}</span>
+                          <span className="text-xs opacity-80 relative z-10">Module {moduleNum}</span>
                         </button>
                       );
                     })}
                   </div>
                   <button
-                    className={`w-full p-3 rounded-lg transition duration-300 ${
+                    className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 font-semibold shadow-lg hover:shadow-xl relative overflow-hidden group/all ${
                       selectedMode === 'unit1'
-                        ? 'bg-gradient-to-br from-amber-500 to-amber-600 text-black shadow-lg ring-2 ring-amber-300'
-                        : 'bg-amber-700/20 hover:bg-amber-600/30 border border-amber-600/50 text-amber-300'
+                        ? 'bg-gradient-to-br from-amber-500 to-amber-600 text-black shadow-amber-500/30 ring-2 ring-amber-300/50'
+                        : 'bg-gradient-to-br from-amber-700/20 to-amber-800/20 hover:from-amber-600/30 hover:to-amber-700/30 border border-amber-600/50 hover:border-amber-500/70 text-amber-300 hover:text-amber-200'
                     }`}
                     onClick={() => setSelectedMode('unit1')}
                   >
-                    <span className="font-semibold">All UNIT-1 Modules</span>
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent opacity-0 group-hover/all:opacity-100 transition-opacity duration-300"></div>
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      <FaRocket className="text-lg" />
+                      All UNIT-1 Modules
+                    </span>
                   </button>
                 </div>
               )}
 
               {activeTab === 'unit2' && (
-                <div className="bg-gray-800/50 rounded-lg p-6 border border-blue-600/30">
-                  <div className="text-center mb-6">
-                    <div className="bg-blue-800/60 p-4 rounded-lg mb-4 inline-block">
-                      <span className="text-3xl font-bold text-blue-300">U2</span>
+                <div className="group bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-xl p-6 border border-blue-600/30 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 backdrop-blur-sm relative overflow-hidden">
+                  {/* Background decoration */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-y-12 translate-x-12"></div>
+                  
+                  <div className="text-center mb-6 relative z-10">
+                    <div className="bg-gradient-to-br from-blue-800/80 to-blue-900/80 p-4 rounded-xl mb-4 inline-block shadow-lg group-hover:shadow-blue-500/20 transition-all duration-500 group-hover:scale-105">
+                      <FaShieldAlt className="text-4xl text-blue-300 group-hover:text-blue-200 transition-colors duration-300" />
                     </div>
-                    <h3 className="font-semibold text-xl mb-2 text-blue-300">UNIT-2</h3>
-                    <p className="text-sm opacity-80 text-center">
+                    <h3 className="font-bold text-2xl mb-3 text-blue-300 group-hover:text-blue-200 transition-colors duration-300">UNIT-2</h3>
+                    <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
                       Advanced Topics & Applications
                     </p>
                   </div>
-                  <div className="grid grid-cols-3 gap-3 mb-4">
+                  <div className="grid grid-cols-3 gap-3 mb-6 relative z-10">
                     {[1, 2, 3, 4, 5, 6, 7].map((moduleNum) => {
                       const mode = `unit2_module${moduleNum}` as PracticeMode;
                       const isAvailable = hasQuestionsForMode(mode);
@@ -343,42 +437,46 @@ export default function PracticeSelectionPage() {
                         return (
                           <button
                             key={mode}
-                            className={`p-4 rounded-lg transition duration-300 transform hover:scale-105 flex flex-col items-center justify-center ${
+                            className={`p-4 rounded-xl transition-all duration-300 transform hover:scale-110 flex flex-col items-center justify-center shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                               selectedMode === mode
-                                ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg ring-2 ring-blue-300'
-                                : 'bg-gray-700/80 hover:bg-gray-600 border border-gray-600'
+                                ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-blue-500/30 ring-2 ring-blue-300/50'
+                                : 'bg-gradient-to-br from-gray-700/90 to-gray-800/90 hover:from-gray-600/90 hover:to-gray-700/90 border border-gray-600/50 hover:border-blue-500/30 text-gray-200 hover:text-blue-300'
                             }`}
                             onClick={() => setSelectedMode(mode)}
                           >
-                            <span className="text-xl mb-1 font-bold">M{moduleNum}</span>
-                            <span className="text-xs opacity-80">Available</span>
+                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                            <span className="text-xl mb-1 font-bold relative z-10">M{moduleNum}</span>
+                            <span className="text-xs opacity-80 relative z-10">Available</span>
                           </button>
                         );
                       } else {
                         return (
                           <div
                             key={moduleNum}
-                            className="p-4 rounded-lg bg-gray-800/50 border border-gray-700/50 flex flex-col items-center justify-center opacity-50"
+                            className="p-4 rounded-xl bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 flex flex-col items-center justify-center opacity-50 relative overflow-hidden"
                           >
-                            <span className="text-xl mb-1 font-bold text-gray-500">M{moduleNum}</span>
-                            <span className="text-xs text-gray-500">Soon</span>
+                            <div className="absolute inset-0 bg-gradient-to-br from-gray-600/10 to-transparent"></div>
+                            <span className="text-xl mb-1 font-bold text-gray-500 relative z-10">M{moduleNum}</span>
+                            <span className="text-xs text-gray-500 relative z-10">Soon</span>
                           </div>
                         );
                       }
                     })}
                   </div>
                   <button
-                    className={`w-full p-3 rounded-lg transition duration-300 transform hover:scale-105 ${
+                    className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 font-semibold shadow-lg hover:shadow-xl relative overflow-hidden group/all ${
                       hasQuestionsForMode('unit2')
                         ? selectedMode === 'unit2'
-                          ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg ring-2 ring-blue-300'
-                          : 'bg-blue-700/20 hover:bg-blue-600/30 border border-blue-600/50 text-blue-300'
-                        : 'bg-blue-700/20 border border-blue-600/50 text-blue-300 opacity-50 cursor-not-allowed'
+                          ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-blue-500/30 ring-2 ring-blue-300/50'
+                          : 'bg-gradient-to-br from-blue-700/20 to-blue-800/20 hover:from-blue-600/30 hover:to-blue-700/30 border border-blue-600/50 hover:border-blue-500/70 text-blue-300 hover:text-blue-200'
+                        : 'bg-gradient-to-br from-blue-700/20 to-blue-800/20 border border-blue-600/50 text-blue-300 opacity-50 cursor-not-allowed'
                     }`}
                     onClick={() => hasQuestionsForMode('unit2') && setSelectedMode('unit2')}
                     disabled={!hasQuestionsForMode('unit2')}
                   >
-                    <span className="font-semibold">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-transparent opacity-0 group-hover/all:opacity-100 transition-opacity duration-300"></div>
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      <FaStar className="text-lg" />
                       {hasQuestionsForMode('unit2') ? 'All UNIT-2 Modules' : 'Coming Soon'}
                     </span>
                   </button>
@@ -386,17 +484,21 @@ export default function PracticeSelectionPage() {
               )}
 
               {activeTab === 'unit3' && (
-                <div className="bg-gray-800/50 rounded-lg p-6 border border-green-600/30">
-                  <div className="text-center mb-6">
-                    <div className="bg-green-800/60 p-4 rounded-lg mb-4 inline-block">
-                      <span className="text-3xl font-bold text-green-300">U3</span>
+                <div className="group bg-gradient-to-br from-gray-800/80 to-gray-900/80 rounded-xl p-6 border border-green-600/30 hover:border-green-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/10 backdrop-blur-sm relative overflow-hidden">
+                  {/* Background decoration */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-green-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-y-12 translate-x-12"></div>
+                  
+                  <div className="text-center mb-6 relative z-10">
+                    <div className="bg-gradient-to-br from-green-800/80 to-green-900/80 p-4 rounded-xl mb-4 inline-block shadow-lg group-hover:shadow-green-500/20 transition-all duration-500 group-hover:scale-105">
+                      <FaAtom className="text-4xl text-green-300 group-hover:text-green-200 transition-colors duration-300" />
                     </div>
-                    <h3 className="font-semibold text-xl mb-2 text-green-300">UNIT-3</h3>
-                    <p className="text-sm opacity-80 text-center">
+                    <h3 className="font-bold text-2xl mb-3 text-green-300 group-hover:text-green-200 transition-colors duration-300">UNIT-3</h3>
+                    <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
                       Specialized Topics & Research
                     </p>
                   </div>
-                  <div className="grid grid-cols-3 gap-3 mb-4">
+                  <div className="grid grid-cols-3 gap-3 mb-6 relative z-10">
                     {[1, 2, 3, 4, 5, 6, 7].map((moduleNum) => {
                       const mode = `unit3_module${moduleNum}` as PracticeMode;
                       const isAvailable = hasQuestionsForMode(mode);
@@ -405,42 +507,46 @@ export default function PracticeSelectionPage() {
                         return (
                           <button
                             key={mode}
-                            className={`p-4 rounded-lg transition duration-300 transform hover:scale-105 flex flex-col items-center justify-center ${
+                            className={`p-4 rounded-xl transition-all duration-300 transform hover:scale-110 flex flex-col items-center justify-center shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                               selectedMode === mode
-                                ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg ring-2 ring-green-300'
-                                : 'bg-gray-700/80 hover:bg-gray-600 border border-gray-600'
+                                ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-green-500/30 ring-2 ring-green-300/50'
+                                : 'bg-gradient-to-br from-gray-700/90 to-gray-800/90 hover:from-gray-600/90 hover:to-gray-700/90 border border-gray-600/50 hover:border-green-500/30 text-gray-200 hover:text-green-300'
                             }`}
                             onClick={() => setSelectedMode(mode)}
                           >
-                            <span className="text-xl mb-1 font-bold">M{moduleNum}</span>
-                            <span className="text-xs opacity-80">Available</span>
+                            <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                            <span className="text-xl mb-1 font-bold relative z-10">M{moduleNum}</span>
+                            <span className="text-xs opacity-80 relative z-10">Available</span>
                           </button>
                         );
                       } else {
                         return (
                           <div
                             key={moduleNum}
-                            className="p-4 rounded-lg bg-gray-800/50 border border-gray-700/50 flex flex-col items-center justify-center opacity-50"
+                            className="p-4 rounded-xl bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 flex flex-col items-center justify-center opacity-50 relative overflow-hidden"
                           >
-                            <span className="text-xl mb-1 font-bold text-gray-500">M{moduleNum}</span>
-                            <span className="text-xs text-gray-500">Soon</span>
+                            <div className="absolute inset-0 bg-gradient-to-br from-gray-600/10 to-transparent"></div>
+                            <span className="text-xl mb-1 font-bold text-gray-500 relative z-10">M{moduleNum}</span>
+                            <span className="text-xs text-gray-500 relative z-10">Soon</span>
                           </div>
                         );
                       }
                     })}
                   </div>
                   <button
-                    className={`w-full p-3 rounded-lg transition duration-300 transform hover:scale-105 ${
+                    className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 font-semibold shadow-lg hover:shadow-xl relative overflow-hidden group/all ${
                       hasQuestionsForMode('unit3')
                         ? selectedMode === 'unit3'
-                          ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg ring-2 ring-green-300'
-                          : 'bg-green-700/20 hover:bg-green-600/30 border border-green-600/50 text-green-300'
-                        : 'bg-green-700/20 border border-green-600/50 text-green-300 opacity-50 cursor-not-allowed'
+                          ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-green-500/30 ring-2 ring-green-300/50'
+                          : 'bg-gradient-to-br from-green-700/20 to-green-800/20 hover:from-green-600/30 hover:to-green-700/30 border border-green-600/50 hover:border-green-500/70 text-green-300 hover:text-green-200'
+                        : 'bg-gradient-to-br from-green-700/20 to-green-800/20 border border-green-600/50 text-green-300 opacity-50 cursor-not-allowed'
                     }`}
                     onClick={() => hasQuestionsForMode('unit3') && setSelectedMode('unit3')}
                     disabled={!hasQuestionsForMode('unit3')}
                   >
-                    <span className="font-semibold">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent opacity-0 group-hover/all:opacity-100 transition-opacity duration-300"></div>
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      <FaRocket className="text-lg" />
                       {hasQuestionsForMode('unit3') ? 'All UNIT-3 Modules' : 'Coming Soon'}
                     </span>
                   </button>
@@ -458,57 +564,64 @@ export default function PracticeSelectionPage() {
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* UNIT-1 Special */}
-              <div className="bg-amber-900/20 rounded-lg p-6 border border-amber-600/30">
-                <h4 className="text-amber-300 font-semibold mb-4 text-center">UNIT-1 Special</h4>
-                <div className="space-y-3">
+              <div className="group bg-gradient-to-br from-amber-900/30 to-amber-800/20 rounded-xl p-6 border border-amber-600/30 hover:border-amber-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/10 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute top-0 right-0 w-20 h-20 bg-amber-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-y-10 translate-x-10"></div>
+                
+                <h4 className="text-amber-300 font-bold mb-6 text-center relative z-10 text-xl group-hover:text-amber-200 transition-colors duration-300">UNIT-1 Special</h4>
+                <div className="space-y-3 relative z-10">
                   <button
-                    className={`w-full p-4 rounded-lg transition duration-300 ${
+                    className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                       selectedMode === 'unit1_assignment'
-                        ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-lg ring-2 ring-amber-300'
-                        : 'bg-amber-800/20 hover:bg-amber-700/30 border border-amber-600/50 text-amber-300'
+                        ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-amber-500/30 ring-2 ring-amber-300/50'
+                        : 'bg-gradient-to-br from-amber-800/30 to-amber-900/30 hover:from-amber-700/40 hover:to-amber-800/40 border border-amber-600/50 hover:border-amber-500/70 text-amber-300 hover:text-amber-200'
                     }`}
                     onClick={() => setSelectedMode('unit1_assignment')}
                   >
-                    <div className="text-left">
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                    <div className="text-left relative z-10">
                       <div className="font-semibold">Assignment</div>
                       <div className="text-sm opacity-80">UNIT-1 assignments only</div>
                     </div>
                   </button>
                   <button
-                    className={`w-full p-4 rounded-lg transition duration-300 ${
+                    className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                       selectedMode === 'unit1_passage'
-                        ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-lg ring-2 ring-amber-300'
-                        : 'bg-amber-800/20 hover:bg-amber-700/30 border border-amber-600/50 text-amber-300'
+                        ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-amber-500/30 ring-2 ring-amber-300/50'
+                        : 'bg-gradient-to-br from-amber-800/30 to-amber-900/30 hover:from-amber-700/40 hover:to-amber-800/40 border border-amber-600/50 hover:border-amber-500/70 text-amber-300 hover:text-amber-200'
                     }`}
                     onClick={() => setSelectedMode('unit1_passage')}
                   >
-                    <div className="text-left">
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                    <div className="text-left relative z-10">
                       <div className="font-semibold">Passage Based</div>
                       <div className="text-sm opacity-80">UNIT-1 passages only</div>
                     </div>
                   </button>
                   <button
-                    className={`w-full p-4 rounded-lg transition duration-300 ${
+                    className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                       selectedMode === 'unit1_demo'
-                        ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-lg ring-2 ring-amber-300'
-                        : 'bg-amber-800/20 hover:bg-amber-700/30 border border-amber-600/50 text-amber-300'
+                        ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-amber-500/30 ring-2 ring-amber-300/50'
+                        : 'bg-gradient-to-br from-amber-800/30 to-amber-900/30 hover:from-amber-700/40 hover:to-amber-800/40 border border-amber-600/50 hover:border-amber-500/70 text-amber-300 hover:text-amber-200'
                     }`}
                     onClick={() => setSelectedMode('unit1_demo')}
                   >
-                    <div className="text-left">
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                    <div className="text-left relative z-10">
                       <div className="font-semibold">Demo Exam</div>
                       <div className="text-sm opacity-80">UNIT-1 exam mode</div>
                     </div>
                   </button>
                   <button
-                    className={`w-full p-4 rounded-lg transition duration-300 ${
+                    className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                       selectedMode === 'unit1_all'
-                        ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-lg ring-2 ring-amber-300'
-                        : 'bg-amber-800/20 hover:bg-amber-700/30 border border-amber-600/50 text-amber-300'
+                        ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-amber-500/30 ring-2 ring-amber-300/50'
+                        : 'bg-gradient-to-br from-amber-800/30 to-amber-900/30 hover:from-amber-700/40 hover:to-amber-800/40 border border-amber-600/50 hover:border-amber-500/70 text-amber-300 hover:text-amber-200'
                     }`}
                     onClick={() => setSelectedMode('unit1_all')}
                   >
-                    <div className="text-left">
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                    <div className="text-left relative z-10">
                       <div className="font-semibold">All Questions</div>
                       <div className="text-sm opacity-80">All UNIT-1 questions</div>
                     </div>
@@ -517,21 +630,25 @@ export default function PracticeSelectionPage() {
               </div>
 
               {/* UNIT-2 Special */}
-              <div className="bg-blue-900/20 rounded-lg p-6 border border-blue-600/30">
-                <h4 className="text-blue-300 font-semibold mb-4 text-center">UNIT-2 Special</h4>
-                <div className="space-y-3">
+              <div className="group bg-gradient-to-br from-blue-900/30 to-blue-800/20 rounded-xl p-6 border border-blue-600/30 hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute top-0 right-0 w-20 h-20 bg-blue-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-y-10 translate-x-10"></div>
+                
+                <h4 className="text-blue-300 font-bold mb-6 text-center relative z-10 text-xl group-hover:text-blue-200 transition-colors duration-300">UNIT-2 Special</h4>
+                <div className="space-y-3 relative z-10">
                   <button
-                    className={`w-full p-4 rounded-lg transition duration-300 transform hover:scale-105 ${
+                    className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                       hasQuestionsForMode('unit2_assignment')
                         ? selectedMode === 'unit2_assignment'
-                          ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg ring-2 ring-blue-300'
-                          : 'bg-blue-800/20 hover:bg-blue-700/30 border border-blue-600/50 text-blue-300'
-                        : 'bg-blue-800/20 border border-blue-600/50 text-blue-300 opacity-50 cursor-not-allowed'
+                          ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-blue-500/30 ring-2 ring-blue-300/50'
+                          : 'bg-gradient-to-br from-blue-800/30 to-blue-900/30 hover:from-blue-700/40 hover:to-blue-800/40 border border-blue-600/50 hover:border-blue-500/70 text-blue-300 hover:text-blue-200'
+                        : 'bg-gradient-to-br from-blue-800/30 to-blue-900/30 border border-blue-600/50 text-blue-300 opacity-50 cursor-not-allowed'
                     }`}
                     onClick={() => hasQuestionsForMode('unit2_assignment') && setSelectedMode('unit2_assignment')}
                     disabled={!hasQuestionsForMode('unit2_assignment')}
                   >
-                    <div className="text-left">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                    <div className="text-left relative z-10">
                       <div className="font-semibold">Assignment</div>
                       <div className="text-sm opacity-80">
                         {hasQuestionsForMode('unit2_assignment') ? 'Available' : 'Coming Soon'}
@@ -539,17 +656,18 @@ export default function PracticeSelectionPage() {
                     </div>
                   </button>
                   <button
-                    className={`w-full p-4 rounded-lg transition duration-300 transform hover:scale-105 ${
+                    className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                       hasQuestionsForMode('unit2_passage')
                         ? selectedMode === 'unit2_passage'
-                          ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg ring-2 ring-blue-300'
-                          : 'bg-blue-800/20 hover:bg-blue-700/30 border border-blue-600/50 text-blue-300'
-                        : 'bg-blue-800/20 border border-blue-600/50 text-blue-300 opacity-50 cursor-not-allowed'
+                          ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-blue-500/30 ring-2 ring-blue-300/50'
+                          : 'bg-gradient-to-br from-blue-800/30 to-blue-900/30 hover:from-blue-700/40 hover:to-blue-800/40 border border-blue-600/50 hover:border-blue-500/70 text-blue-300 hover:text-blue-200'
+                        : 'bg-gradient-to-br from-blue-800/30 to-blue-900/30 border border-blue-600/50 text-blue-300 opacity-50 cursor-not-allowed'
                     }`}
                     onClick={() => hasQuestionsForMode('unit2_passage') && setSelectedMode('unit2_passage')}
                     disabled={!hasQuestionsForMode('unit2_passage')}
                   >
-                    <div className="text-left">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                    <div className="text-left relative z-10">
                       <div className="font-semibold">Passage Based</div>
                       <div className="text-sm opacity-80">
                         {hasQuestionsForMode('unit2_passage') ? 'Available' : 'Coming Soon'}
@@ -557,17 +675,18 @@ export default function PracticeSelectionPage() {
                     </div>
                   </button>
                   <button
-                    className={`w-full p-4 rounded-lg transition duration-300 transform hover:scale-105 ${
+                    className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                       hasQuestionsForMode('unit2_demo')
                         ? selectedMode === 'unit2_demo'
-                          ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg ring-2 ring-blue-300'
-                          : 'bg-blue-800/20 hover:bg-blue-700/30 border border-blue-600/50 text-blue-300'
-                        : 'bg-blue-800/20 border border-blue-600/50 text-blue-300 opacity-50 cursor-not-allowed'
+                          ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-blue-500/30 ring-2 ring-blue-300/50'
+                          : 'bg-gradient-to-br from-blue-800/30 to-blue-900/30 hover:from-blue-700/40 hover:to-blue-800/40 border border-blue-600/50 hover:border-blue-500/70 text-blue-300 hover:text-blue-200'
+                        : 'bg-gradient-to-br from-blue-800/30 to-blue-900/30 border border-blue-600/50 text-blue-300 opacity-50 cursor-not-allowed'
                     }`}
                     onClick={() => hasQuestionsForMode('unit2_demo') && setSelectedMode('unit2_demo')}
                     disabled={!hasQuestionsForMode('unit2_demo')}
                   >
-                    <div className="text-left">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                    <div className="text-left relative z-10">
                       <div className="font-semibold">Demo Exam</div>
                       <div className="text-sm opacity-80">
                         {hasQuestionsForMode('unit2_demo') ? 'Available' : 'Coming Soon'}
@@ -575,17 +694,18 @@ export default function PracticeSelectionPage() {
                     </div>
                   </button>
                   <button
-                    className={`w-full p-4 rounded-lg transition duration-300 transform hover:scale-105 ${
+                    className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                       hasQuestionsForMode('unit2_all')
                         ? selectedMode === 'unit2_all'
-                          ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg ring-2 ring-blue-300'
-                          : 'bg-blue-800/20 hover:bg-blue-700/30 border border-blue-600/50 text-blue-300'
-                        : 'bg-blue-800/20 border border-blue-600/50 text-blue-300 opacity-50 cursor-not-allowed'
+                          ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-blue-500/30 ring-2 ring-blue-300/50'
+                          : 'bg-gradient-to-br from-blue-800/30 to-blue-900/30 hover:from-blue-700/40 hover:to-blue-800/40 border border-blue-600/50 hover:border-blue-500/70 text-blue-300 hover:text-blue-200'
+                        : 'bg-gradient-to-br from-blue-800/30 to-blue-900/30 border border-blue-600/50 text-blue-300 opacity-50 cursor-not-allowed'
                     }`}
                     onClick={() => hasQuestionsForMode('unit2_all') && setSelectedMode('unit2_all')}
                     disabled={!hasQuestionsForMode('unit2_all')}
                   >
-                    <div className="text-left">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                    <div className="text-left relative z-10">
                       <div className="font-semibold">All Questions</div>
                       <div className="text-sm opacity-80">
                         {hasQuestionsForMode('unit2_all') ? 'Available' : 'Coming Soon'}
@@ -596,21 +716,25 @@ export default function PracticeSelectionPage() {
               </div>
 
               {/* UNIT-3 Special */}
-              <div className="bg-green-900/20 rounded-lg p-6 border border-green-600/30">
-                <h4 className="text-green-300 font-semibold mb-4 text-center">UNIT-3 Special</h4>
-                <div className="space-y-3">
+              <div className="group bg-gradient-to-br from-green-900/30 to-green-800/20 rounded-xl p-6 border border-green-600/30 hover:border-green-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/10 backdrop-blur-sm relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute top-0 right-0 w-20 h-20 bg-green-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-y-10 translate-x-10"></div>
+                
+                <h4 className="text-green-300 font-bold mb-6 text-center relative z-10 text-xl group-hover:text-green-200 transition-colors duration-300">UNIT-3 Special</h4>
+                <div className="space-y-3 relative z-10">
                   <button
-                    className={`w-full p-4 rounded-lg transition duration-300 transform hover:scale-105 ${
+                    className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                       hasQuestionsForMode('unit3_assignment')
                         ? selectedMode === 'unit3_assignment'
-                          ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg ring-2 ring-green-300'
-                          : 'bg-green-800/20 hover:bg-green-700/30 border border-green-600/50 text-green-300'
-                        : 'bg-green-800/20 border border-green-600/50 text-green-300 opacity-50 cursor-not-allowed'
+                          ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-green-500/30 ring-2 ring-green-300/50'
+                          : 'bg-gradient-to-br from-green-800/30 to-green-900/30 hover:from-green-700/40 hover:to-green-800/40 border border-green-600/50 hover:border-green-500/70 text-green-300 hover:text-green-200'
+                        : 'bg-gradient-to-br from-green-800/30 to-green-900/30 border border-green-600/50 text-green-300 opacity-50 cursor-not-allowed'
                     }`}
                     onClick={() => hasQuestionsForMode('unit3_assignment') && setSelectedMode('unit3_assignment')}
                     disabled={!hasQuestionsForMode('unit3_assignment')}
                   >
-                    <div className="text-left">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                    <div className="text-left relative z-10">
                       <div className="font-semibold">Assignment</div>
                       <div className="text-sm opacity-80">
                         {hasQuestionsForMode('unit3_assignment') ? 'Available' : 'Coming Soon'}
@@ -618,17 +742,18 @@ export default function PracticeSelectionPage() {
                     </div>
                   </button>
                   <button
-                    className={`w-full p-4 rounded-lg transition duration-300 transform hover:scale-105 ${
+                    className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                       hasQuestionsForMode('unit3_passage')
                         ? selectedMode === 'unit3_passage'
-                          ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg ring-2 ring-green-300'
-                          : 'bg-green-800/20 hover:bg-green-700/30 border border-green-600/50 text-green-300'
-                        : 'bg-green-800/20 border border-green-600/50 text-green-300 opacity-50 cursor-not-allowed'
+                          ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-green-500/30 ring-2 ring-green-300/50'
+                          : 'bg-gradient-to-br from-green-800/30 to-green-900/30 hover:from-green-700/40 hover:to-green-800/40 border border-green-600/50 hover:border-green-500/70 text-green-300 hover:text-green-200'
+                        : 'bg-gradient-to-br from-green-800/30 to-green-900/30 border border-green-600/50 text-green-300 opacity-50 cursor-not-allowed'
                     }`}
                     onClick={() => hasQuestionsForMode('unit3_passage') && setSelectedMode('unit3_passage')}
                     disabled={!hasQuestionsForMode('unit3_passage')}
                   >
-                    <div className="text-left">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                    <div className="text-left relative z-10">
                       <div className="font-semibold">Passage Based</div>
                       <div className="text-sm opacity-80">
                         {hasQuestionsForMode('unit3_passage') ? 'Available' : 'Coming Soon'}
@@ -636,17 +761,18 @@ export default function PracticeSelectionPage() {
                     </div>
                   </button>
                   <button
-                    className={`w-full p-4 rounded-lg transition duration-300 transform hover:scale-105 ${
+                    className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                       hasQuestionsForMode('unit3_demo')
                         ? selectedMode === 'unit3_demo'
-                          ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg ring-2 ring-green-300'
-                          : 'bg-green-800/20 hover:bg-green-700/30 border border-green-600/50 text-green-300'
-                        : 'bg-green-800/20 border border-green-600/50 text-green-300 opacity-50 cursor-not-allowed'
+                          ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-green-500/30 ring-2 ring-green-300/50'
+                          : 'bg-gradient-to-br from-green-800/30 to-green-900/30 hover:from-green-700/40 hover:to-green-800/40 border border-green-600/50 hover:border-green-500/70 text-green-300 hover:text-green-200'
+                        : 'bg-gradient-to-br from-green-800/30 to-green-900/30 border border-green-600/50 text-green-300 opacity-50 cursor-not-allowed'
                     }`}
                     onClick={() => hasQuestionsForMode('unit3_demo') && setSelectedMode('unit3_demo')}
                     disabled={!hasQuestionsForMode('unit3_demo')}
                   >
-                    <div className="text-left">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                    <div className="text-left relative z-10">
                       <div className="font-semibold">Demo Exam</div>
                       <div className="text-sm opacity-80">
                         {hasQuestionsForMode('unit3_demo') ? 'Available' : 'Coming Soon'}
@@ -654,17 +780,18 @@ export default function PracticeSelectionPage() {
                     </div>
                   </button>
                   <button
-                    className={`w-full p-4 rounded-lg transition duration-300 transform hover:scale-105 ${
+                    className={`w-full p-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl relative overflow-hidden group/btn ${
                       hasQuestionsForMode('unit3_all')
                         ? selectedMode === 'unit3_all'
-                          ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg ring-2 ring-green-300'
-                          : 'bg-green-800/20 hover:bg-green-700/30 border border-green-600/50 text-green-300'
-                        : 'bg-green-800/20 border border-green-600/50 text-green-300 opacity-50 cursor-not-allowed'
+                          ? 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-green-500/30 ring-2 ring-green-300/50'
+                          : 'bg-gradient-to-br from-green-800/30 to-green-900/30 hover:from-green-700/40 hover:to-green-800/40 border border-green-600/50 hover:border-green-500/70 text-green-300 hover:text-green-200'
+                        : 'bg-gradient-to-br from-green-800/30 to-green-900/30 border border-green-600/50 text-green-300 opacity-50 cursor-not-allowed'
                     }`}
                     onClick={() => hasQuestionsForMode('unit3_all') && setSelectedMode('unit3_all')}
                     disabled={!hasQuestionsForMode('unit3_all')}
                   >
-                    <div className="text-left">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                    <div className="text-left relative z-10">
                       <div className="font-semibold">All Questions</div>
                       <div className="text-sm opacity-80">
                         {hasQuestionsForMode('unit3_all') ? 'Available' : 'Coming Soon'}
