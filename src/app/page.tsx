@@ -92,29 +92,29 @@ export default function Home() {
                 <FaGraduationCap className="text-purple-400 text-3xl" />
               </div>
               <h3 className="text-2xl font-semibold mb-3 text-purple-50">Master Content</h3>
-              <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">Comprehensive question bank designed to help you succeed in your NPTEL exams</p>
+              <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">Comprehensive question bank designed to help you succeed in your FCWMC exams</p>
             </div>
           </div>
           
-          {/* Stats counter section */}
-          {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 mb-16">
+        
+          {<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 mb-16">
             <div className="p-6">
-              <div className="text-4xl font-bold text-amber-400 mb-2">5,000+</div>
+              <div className="text-4xl font-bold text-amber-400 mb-2">1,000+</div>
               <p className="text-gray-400">Practice Questions</p>
             </div>
             <div className="p-6">
               <div className="text-4xl font-bold text-green-400 mb-2">50+</div>
-              <p className="text-gray-400">NPTEL Courses</p>
+              <p className="text-gray-400">Topic Cover</p>
             </div>
             <div className="p-6">
-              <div className="text-4xl font-bold text-purple-400 mb-2">10,000+</div>
+              <div className="text-4xl font-bold text-purple-400 mb-2">1,000+</div>
               <p className="text-gray-400">Active Students</p>
             </div>
-          </div> */}
+          </div> }
           
           <div className="mt-20 pt-8 border-t border-gray-800/50">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()}Created with ❤️ by Kumar Devashish.
+              © {new Date().getFullYear()} Created with ❤️ by Kumar Devashish.
             </p>
           </div>
         </div>
