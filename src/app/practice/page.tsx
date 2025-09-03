@@ -76,7 +76,7 @@ export default function PracticeSelectionPage() {
               </div>
               <h1 className="text-3xl md:text-4xl font-bold">
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500">
-                  FCWMC Practice Center
+                  FCWMC Exam Practice Center
                 </span>
               </h1>
               <div className="bg-gradient-to-r from-amber-400 to-yellow-500 p-3 rounded-xl shadow-lg animate-pulse">
@@ -174,12 +174,10 @@ export default function PracticeSelectionPage() {
                     <FaCube className="text-4xl text-amber-300 group-hover:text-amber-200 transition-colors duration-300" />
                   </div>
                   <h3 className="font-bold text-2xl mb-3 text-amber-300 group-hover:text-amber-200 transition-colors duration-300">UNIT-1</h3>
-                  <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
+                  <p className="text-sm text-amber-400/70 font-bold group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
                     Wireless Communications for Everybody
                   </p>
-                  <div className="mt-3 text-xs text-amber-400/70 font-medium">
-                    Fundamentals & Core Concepts
-                  </div>
+                 
                 </div>
                 <div className="grid grid-cols-3 gap-3 mb-6 relative z-10">
                   {[1, 2, 3, 4, 5, 6, 7].map((moduleNum) => {
@@ -228,12 +226,10 @@ export default function PracticeSelectionPage() {
                     <FaShieldAlt className="text-4xl text-blue-300 group-hover:text-blue-200 transition-colors duration-300" />
                   </div>
                   <h3 className="font-bold text-2xl mb-3 text-blue-300 group-hover:text-blue-200 transition-colors duration-300">UNIT-2</h3>
-                  <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
+                  <p className="text-sm font-bold text-blue-400/70 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
                     4G Network Fundamentals
                   </p>
-                  <div className="mt-3 text-xs text-blue-400/70 font-medium">
-                    Advanced Topics & Applications
-                  </div>
+                
                 </div>
                 <div className="grid grid-cols-3 gap-3 mb-6 relative z-10">
                   {[1, 2, 3, 4, 5, 6, 7].map((moduleNum) => {
@@ -297,12 +293,10 @@ export default function PracticeSelectionPage() {
                     <FaAtom className="text-4xl text-green-300 group-hover:text-green-200 transition-colors duration-300" />
                   </div>
                   <h3 className="font-bold text-2xl mb-3 text-green-300 group-hover:text-green-200 transition-colors duration-300">UNIT-3</h3>
-                  <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
+                  <p className="text-sm font-bold text-green-400/70 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
                     5G Network Architecture and Protocols 
                   </p>
-                  <div className="mt-3 text-xs text-green-400/70 font-medium">
-                    Specialized Topics & Research
-                  </div>
+                
                 </div>
                 <div className="grid grid-cols-3 gap-3 mb-6 relative z-10">
                   {[1, 2, 3, 4, 5, 6, 7].map((moduleNum) => {
@@ -372,7 +366,7 @@ export default function PracticeSelectionPage() {
                       <FaCube className="text-4xl text-amber-300 group-hover:text-amber-200 transition-colors duration-300" />
                     </div>
                     <h3 className="font-bold text-2xl mb-3 text-amber-300 group-hover:text-amber-200 transition-colors duration-300">UNIT-1</h3>
-                    <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
+                    <p className="text-sm font-bold text-amber-400/70 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
                      Wireless Communications for Everybody
                     </p>
                   </div>
@@ -424,7 +418,7 @@ export default function PracticeSelectionPage() {
                       <FaShieldAlt className="text-4xl text-blue-300 group-hover:text-blue-200 transition-colors duration-300" />
                     </div>
                     <h3 className="font-bold text-2xl mb-3 text-blue-300 group-hover:text-blue-200 transition-colors duration-300">UNIT-2</h3>
-                    <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
+                    <p className="text-sm font-bold text-blue-400/70 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
                       4G Network Fundamentals
                     </p>
                   </div>
@@ -494,7 +488,7 @@ export default function PracticeSelectionPage() {
                       <FaAtom className="text-4xl text-green-300 group-hover:text-green-200 transition-colors duration-300" />
                     </div>
                     <h3 className="font-bold text-2xl mb-3 text-green-300 group-hover:text-green-200 transition-colors duration-300">UNIT-3</h3>
-                    <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
+                    <p className="text-sm font-bold text-green-400/70 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
                       5G Network Architecture and Protocols
                     </p>
                   </div>
