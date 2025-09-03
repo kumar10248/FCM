@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FaLayerGroup, FaChevronRight, FaHome, FaClipboardCheck, FaBookOpen, FaGraduationCap,
@@ -11,6 +11,17 @@ export default function PracticeSelectionPage() {
   const router = useRouter();
   const [selectedMode, setSelectedMode] = useState<PracticeMode | null>(null);
   const [activeTab, setActiveTab] = useState<'unit1' | 'unit2' | 'unit3'>('unit1');
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Add scroll event listener to track scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleStart = () => {
     if (selectedMode) {
@@ -885,7 +896,8 @@ export default function PracticeSelectionPage() {
               </p>
             </div>
             
-            <div className="flex gap-3">
+            {/* Hide buttons on mobile when fixed navigation is visible (scrolled) */}
+            <div className={`flex gap-3 ${isScrolled ? 'lg:flex sm:flex hidden' : 'flex'}`}>
               <Link 
                 href="/" 
                 className="px-6 py-3 rounded-lg bg-gray-700 hover:bg-gray-600 transition duration-300 flex items-center space-x-2"
@@ -904,6 +916,28 @@ export default function PracticeSelectionPage() {
               </button>
             </div>
           </div>
+        </div>
+      </div>
+      
+      {/* Fixed mobile navigation bar (visible only on mobile when scrolled) */}
+      <div className={`lg:hidden fixed bottom-0 left-0 right-0 bg-gray-900/95 backdrop-blur-lg border-t border-gray-800 p-3 z-50 transform transition-transform duration-300 ${isScrolled ? 'translate-y-0' : 'translate-y-full'}`}>
+        <div className="flex items-center justify-between gap-4 max-w-xl mx-auto">
+          <Link 
+            href="/" 
+            className="flex-1 px-4 py-3 rounded-lg bg-gray-700 hover:bg-gray-600 transition duration-300 flex items-center justify-center space-x-2"
+          >
+            <FaHome className="text-lg" />
+            <span>Home</span>
+          </Link>
+          
+          <button
+            onClick={handleStart}
+            disabled={!selectedMode}
+            className={`flex-1 px-4 py-3 rounded-lg font-semibold transition duration-300 flex items-center justify-center space-x-2 ${getButtonColors()}`}
+          >
+            <span>Start Practice</span>
+            <FaChevronRight />
+          </button>
         </div>
       </div>
     </div>
