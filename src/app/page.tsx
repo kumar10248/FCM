@@ -114,7 +114,7 @@ export default function Home() {
           
           <div className="mt-20 pt-8 border-t border-gray-800/50">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Created with ❤️ by Kumar Devashish.
+              © {new Date().getFullYear()} Created with ❤️ by <span className='text-amber-400 font-bold'>Kumar Devashish.</span>
             </p>
           </div>
         </div>

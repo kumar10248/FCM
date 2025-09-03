@@ -373,7 +373,7 @@ export default function PracticeSelectionPage() {
                     </div>
                     <h3 className="font-bold text-2xl mb-3 text-amber-300 group-hover:text-amber-200 transition-colors duration-300">UNIT-1</h3>
                     <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
-                      Fundamentals & Core Concepts
+                     Wireless Communications for Everybody
                     </p>
                   </div>
                   <div className="grid grid-cols-3 gap-3 mb-6 relative z-10">
@@ -425,7 +425,7 @@ export default function PracticeSelectionPage() {
                     </div>
                     <h3 className="font-bold text-2xl mb-3 text-blue-300 group-hover:text-blue-200 transition-colors duration-300">UNIT-2</h3>
                     <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
-                      Advanced Topics & Applications
+                      4G Network Fundamentals
                     </p>
                   </div>
                   <div className="grid grid-cols-3 gap-3 mb-6 relative z-10">
@@ -495,7 +495,7 @@ export default function PracticeSelectionPage() {
                     </div>
                     <h3 className="font-bold text-2xl mb-3 text-green-300 group-hover:text-green-200 transition-colors duration-300">UNIT-3</h3>
                     <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300 leading-relaxed">
-                      Specialized Topics & Research
+                      5G Network Architecture and Protocols
                     </p>
                   </div>
                   <div className="grid grid-cols-3 gap-3 mb-6 relative z-10">
