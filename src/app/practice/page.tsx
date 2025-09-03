@@ -86,7 +86,7 @@ export default function PracticeSelectionPage() {
             <p className="text-center text-gray-400 mt-2 text-lg">Choose your practice mode and start your learning journey</p>
             <div className="flex justify-center items-center gap-2 mt-4">
               <FaStar className="text-yellow-400 animate-pulse" />
-              <span className="text-gray-300 text-sm">Practice makes perfect</span>
+              <span className="text-amber-400 text-sm font-bold">Practice makes perfect</span>
               <FaStar className="text-yellow-400 animate-pulse" />
             </div>
           </div>
