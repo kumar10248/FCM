@@ -253,7 +253,7 @@ export default function PracticeSelectionPage() {
                         >
                           <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                           <span className="text-lg mb-1 font-bold relative z-10">M{moduleNum}</span>
-                          <span className="text-xs opacity-80 relative z-10">Available</span>
+                          <span className="text-xs opacity-80 relative z-10">Module {moduleNum}</span>
                         </button>
                       );
                     } else {
@@ -322,7 +322,7 @@ export default function PracticeSelectionPage() {
                         >
                           <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                           <span className="text-lg mb-1 font-bold relative z-10">M{moduleNum}</span>
-                          <span className="text-xs opacity-80 relative z-10">Available</span>
+                          <span className="text-xs opacity-80 relative z-10">Module {moduleNum}</span>
                         </button>
                       );
                     } else {
@@ -446,7 +446,7 @@ export default function PracticeSelectionPage() {
                           >
                             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                             <span className="text-xl mb-1 font-bold relative z-10">M{moduleNum}</span>
-                            <span className="text-xs opacity-80 relative z-10">Available</span>
+                            <span className="text-xs opacity-80 relative z-10">Module {moduleNum}</span>
                           </button>
                         );
                       } else {
@@ -516,7 +516,7 @@ export default function PracticeSelectionPage() {
                           >
                             <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                             <span className="text-xl mb-1 font-bold relative z-10">M{moduleNum}</span>
-                            <span className="text-xs opacity-80 relative z-10">Available</span>
+                            <span className="text-xs opacity-80 relative z-10">Module {moduleNum}</span>
                           </button>
                         );
                       } else {
@@ -609,7 +609,7 @@ export default function PracticeSelectionPage() {
                     <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                     <div className="text-left relative z-10">
                       <div className="font-semibold">Demo Exam</div>
-                      <div className="text-sm opacity-80">UNIT-1 exam mode</div>
+                      <div className="text-sm opacity-80">UNIT-1 exam mode (20 MCQ + 4 passages)</div>
                     </div>
                   </button>
                   <button
@@ -651,7 +651,7 @@ export default function PracticeSelectionPage() {
                     <div className="text-left relative z-10">
                       <div className="font-semibold">Assignment</div>
                       <div className="text-sm opacity-80">
-                        {hasQuestionsForMode('unit2_assignment') ? 'Available' : 'Coming Soon'}
+                        {hasQuestionsForMode('unit2_assignment') ? 'UNIT-2 assignments only' : 'Coming Soon'}
                       </div>
                     </div>
                   </button>
@@ -670,7 +670,7 @@ export default function PracticeSelectionPage() {
                     <div className="text-left relative z-10">
                       <div className="font-semibold">Passage Based</div>
                       <div className="text-sm opacity-80">
-                        {hasQuestionsForMode('unit2_passage') ? 'Available' : 'Coming Soon'}
+                        {hasQuestionsForMode('unit2_passage') ? 'UNIT-2 passages only' : 'Coming Soon'}
                       </div>
                     </div>
                   </button>
@@ -689,7 +689,7 @@ export default function PracticeSelectionPage() {
                     <div className="text-left relative z-10">
                       <div className="font-semibold">Demo Exam</div>
                       <div className="text-sm opacity-80">
-                        {hasQuestionsForMode('unit2_demo') ? 'Available' : 'Coming Soon'}
+                        {hasQuestionsForMode('unit2_demo') ? 'UNIT-2 exam mode (20 MCQ + 4 passages)' : 'Coming Soon'}
                       </div>
                     </div>
                   </button>
@@ -708,7 +708,7 @@ export default function PracticeSelectionPage() {
                     <div className="text-left relative z-10">
                       <div className="font-semibold">All Questions</div>
                       <div className="text-sm opacity-80">
-                        {hasQuestionsForMode('unit2_all') ? 'Available' : 'Coming Soon'}
+                        {hasQuestionsForMode('unit2_all') ? 'All UNIT-2 questions' : 'Coming Soon'}
                       </div>
                     </div>
                   </button>
@@ -737,7 +737,7 @@ export default function PracticeSelectionPage() {
                     <div className="text-left relative z-10">
                       <div className="font-semibold">Assignment</div>
                       <div className="text-sm opacity-80">
-                        {hasQuestionsForMode('unit3_assignment') ? 'Available' : 'Coming Soon'}
+                        {hasQuestionsForMode('unit3_assignment') ? 'UNIT-3 assignments only' : 'Coming Soon'}
                       </div>
                     </div>
                   </button>
@@ -756,7 +756,7 @@ export default function PracticeSelectionPage() {
                     <div className="text-left relative z-10">
                       <div className="font-semibold">Passage Based</div>
                       <div className="text-sm opacity-80">
-                        {hasQuestionsForMode('unit3_passage') ? 'Available' : 'Coming Soon'}
+                        {hasQuestionsForMode('unit3_passage') ? 'UNIT-2 passages only' : 'Coming Soon'}
                       </div>
                     </div>
                   </button>
@@ -775,7 +775,7 @@ export default function PracticeSelectionPage() {
                     <div className="text-left relative z-10">
                       <div className="font-semibold">Demo Exam</div>
                       <div className="text-sm opacity-80">
-                        {hasQuestionsForMode('unit3_demo') ? 'Available' : 'Coming Soon'}
+                        {hasQuestionsForMode('unit3_demo') ? 'UNIT-3 exam mode (20 MCQ + 4 passages)' : 'Coming Soon'}
                       </div>
                     </div>
                   </button>
@@ -794,7 +794,7 @@ export default function PracticeSelectionPage() {
                     <div className="text-left relative z-10">
                       <div className="font-semibold">All Questions</div>
                       <div className="text-sm opacity-80">
-                        {hasQuestionsForMode('unit3_all') ? 'Available' : 'Coming Soon'}
+                        {hasQuestionsForMode('unit3_all') ? 'All UNIT-3 Questions' : 'Coming Soon'}
                       </div>
                     </div>
                   </button>
@@ -807,7 +807,7 @@ export default function PracticeSelectionPage() {
           <div className="mb-10">
             <h3 className="text-lg font-medium mb-6 pl-2 border-l-4 border-purple-400 flex items-center">
               <span className="bg-purple-400 text-black rounded-full p-1 mr-2 text-xs flex items-center justify-center w-6 h-6 font-bold">G</span>
-              Global Practice Modes
+            EST Practice Modes
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -855,7 +855,7 @@ export default function PracticeSelectionPage() {
                 <div className="text-center">
                   <FaGraduationCap className="text-3xl mb-3 mx-auto text-red-400" />
                   <h4 className="font-semibold mb-2">Demo Exam</h4>
-                  <p className="text-sm opacity-80">Simulated exam with mixed question types</p>
+                  <p className="text-sm opacity-80">40 MCQ + 40 passage based Question</p>
                 </div>
               </button>
 
