@@ -4751,182 +4751,875 @@ module7:[
   unit2: {
     // Placeholder - copy of unit1 for now
     module6: [
-       {
-        "question": "Which software is usually used for network access control in an organizational network?",
-        "options": [
-          "Firewall",
-          "Gateway",
-          "Router",
-          "Virus checker"
-        ],
-        "explanation": "A firewall is a network securing software that prevents unauthorized users and dangerous elements from accessing the network. Software firewall acts as a filter for our network which prevents harmful information.",
-        "correctAnswer": [0]
-      },
-      {
-        "question": "Which of the following is/are used for connectionless sockets?",
-        "options": [
-          "Datagram Socket only",
-          "Datagram Packet only",
-          "Both (i) and (ii)",
-          "None of these"
-        ],
-        "explanation": "Datagram is basically some information traveling between the sender and the receiver, but there is no guarantee of its content, arrival or arrival time. Datagram Socket, Datagram Packet are used for connection-less socket programming, while Server Socket is used for connection-oriented socket programming.",
-        "correctAnswer": [2]
-      },
-      {
-        "question": "Which of the following is most appropriate about Threads?",
-        "options": [
-          "only global variables",
-          "only heap",
-          "neither global variables nor heap",
-          "both heap and global variables"
-        ],
-        "explanation": "A thread shares all other resources of the process except local data like registers and stacks.",
-        "correctAnswer": [3]
-      },
-      {
-        "question": "What is the maximum number of hosts under class B addresses?",
-        "options": [
-          "65536",
-          "65534",
-          "65535",
-          "254"
-        ],
-        "explanation": "In Class B, IP address first two octets are used to represent the network number, which leaves two octets or 16 bits to represent the host portion of the address. With 16 bits total, 2^16 combinations are possible, yielding 65,536 Class B addresses. Although two of those numbers, the lowest and highest values, are reserved for special purposes. Therefore, each Class B address can support up to 65,534 (2^16-2) hosts.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "Consider a system with 2 level caches. The access times of Level 1 cache, Level 2 cache, and main memory are 1 ns, 10ns, and 400 ns, respectively. The hit rates of Level 1 and Level 2 caches are 0.8 and 0.9, respectively. What is the average access time of the system, ignoring the search time within the cache?",
-        "options": [
-          "12.6 ns",
-          "11.2 ns",
-          "10.6 ns",
-          "12.4 ns"
-        ],
-        "explanation": "Average access time = [H1*T1]+[(1-H1)*H2*T2]+[(1-H1)(1-H2)*Hm*Tm], where H1 = 0.8, T1 = 1 ns, H2 = 0.9, T2 = 10 ns, Hm = 1, Tm = 400 ns",
-        "correctAnswer": [2]
-      },
-      {
-        "question": "Using a larger block size in a fixed block size file system leads to",
-        "options": [
-          "better disk throughput but poorer disk space utilization",
-          "better disk throughput and better disk space utilization",
-          "poorer disk throughput but better disk space utilization",
-          "poorer disk throughput and poorer disk space utilization"
-        ],
-        "explanation": "Using larger block size in a fixed block size system leads to poor disk space utilization due to data items that are very small comparable to block size cause fragmentation. But it leads to better disk throughput since no. of blocks needs to fetch & replace become less.",
-        "correctAnswer": [0]
-      },
-      {
-        "question": "Transport layer is implemented in the NIC of a typical computer system.",
-        "options": [
-          "True",
-          "False"
-        ],
-        "explanation": "Transport layer is implemented in the kernel.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "A computer's processor sends 32 bit addresses to the cache controller. It has a 512 KByte, 8-way set associative, write back data cache with block size of 32 Bytes. In addition to the address tag, each cache tag directory entry contains 3 valid bits and 1 modified bit. Find the size of the cache tag directory.",
-        "options": [
-          "212 Kbits",
-          "320 Kbits",
-          "160 Kbits",
-          "120 Kbits"
-        ],
-        "explanation": "Number of blocks = Cache_Size/Block_Size = 512 KB / 32 Bytes = 2^14. Number of Sets = 2^14 / 8 = 2^11. Tag + Set offset + Byte offset = 32. Tag + 11 + 5 = 32. Tag = 16. 16 bit address + 3 bit valid + 1 modified = 20 bits. 20 × no. of blocks = 320 K bits.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "Flow control is mainly implemented in",
-        "options": [
-          "Physical Layer",
-          "Application Layer",
-          "Transport Layer",
-          "Session Layer"
-        ],
-        "explanation": "Flow control is mainly a function of the Transport Layer.",
-        "correctAnswer": [2]
-      },
-      {
-        "question": "Where does the swap space reside?",
-        "options": [
-          "RAM",
-          "Disk",
-          "ROM",
-          "On-chip cache"
-        ],
-        "explanation": "Swap space is an area on disk that temporarily holds a process memory image.",
-        "correctAnswer": [1]
-      }
-    ],
-    module2: [
-       {
-        "question": "Where does the swap space reside?",
-        "options": [
-          "RAM",
-          "Disk",
-          "ROM",
-          "On-chip cache"
-        ],
-        "explanation": "Swap space is an area on disk that temporarily holds a process memory image.",
-        "correctAnswer": [1]
-      }
-    ],
-    module3: [
-      {
-    "question": "What is the most important gain from the packet scheming in the cellular system?",
+  {
+    "question": "When a 4G terminal is turned on, it",
     "options": [
-      "Increasing \"average\" data rate of each user.",
-      "Save the power consumption of base stations."
+      "performs a \"UE-triggered Service Request\" procedure to activate the 4G service,",
+      "performs simultaneously an \"Attach\" procedure and a \"PDN connectivity request\" procedure (to get an IP address),",
+      "attaches itself to the network and requests the establishment of connectivity later on only if there is data to transmit,",
+      "does not do anything."
     ],
-    "explanation": "Packet scheduling's primary benefit is increasing the average data rate for each user by intelligently allocating resources based on channel conditions, traffic demands, and fairness criteria. By scheduling transmissions when channel conditions are favorable and managing resources efficiently, packet scheduling significantly improves user experience and network efficiency compared to simple round-robin approaches.",
-    "correctAnswer": [0]
-  }
-    ],
-    module4: [
-      {
-    "question": "What is the most important gain from the packet scheming in the cellular system?",
-    "options": [
-      "Increasing \"average\" data rate of each user.",
-      "Save the power consumption of base stations."
-    ],
-    "explanation": "Packet scheduling's primary benefit is increasing the average data rate for each user by intelligently allocating resources based on channel conditions, traffic demands, and fairness criteria. By scheduling transmissions when channel conditions are favorable and managing resources efficiently, packet scheduling significantly improves user experience and network efficiency compared to simple round-robin approaches.",
-    "correctAnswer": [0]
-  }
-    ],
-    module5: [
-        {
-    "question": "To balance between fairness and throughput-maximization, which objective could be used in packet scheduling?",
-    "options": [
-      "Maximize the minimum throughput of users",
-      "Proportional fairness"
-    ],
-    "explanation": "Proportional fairness is a widely used objective in packet scheduling that balances fairness and throughput maximization. It ensures that users receive bandwidth proportional to their channel conditions while maintaining some level of fairness. This approach prevents users with poor channel conditions from being completely starved while still allowing the system to achieve good overall throughput.",
+    "explanation": "When a 4G terminal powers on, it must first attach to the network and obtain an IP address before it can communicate. This is accomplished by simultaneously executing the Attach procedure (to register with the network) and the PDN Connectivity Request procedure (to establish a data connection and receive an IP address from the PGW).",
     "correctAnswer": [1]
   },
+  {
+    "question": "After a long period of inactivity of a terminal on the radio channel (neither transmissions nor receptions of data packets), the network",
+    "options": [
+      "establishes an idle bearer",
+      "only releases the radio connection,",
+      "only releases the radio connection, the S1-AP connection and the S1 bearer",
+      "releases the radio connection, the S1-AP connections and all data bearers and control tunnels"
     ],
+    "explanation": "After prolonged inactivity, the network initiates a transition to idle mode to save resources. This involves releasing the radio connection (between UE and eNodeB), the S1-AP signaling connection (between eNodeB and MME), and the S1 bearer (user plane connection between eNodeB and SGW). However, the S5/S8 bearers between SGW and PGW are maintained to preserve the UE's IP address and connection state.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Continuation of the question. Just after the previous action is done, the UE is in state",
+    "options": [
+      "EMM-Deregistered / ECM-Idle",
+      "EMM-Deregistered / ECM-Connected",
+      "EMM-Registered / ECM-Idle",
+      "EMM-Registered / ECM-Connected"
+    ],
+    "explanation": "After the network releases the radio and S1 connections due to inactivity, the UE transitions to EMM-Registered / ECM-Idle state. It remains registered with the network (EMM-Registered) so it can quickly resume communication, but the signaling connection is released (ECM-Idle) to conserve resources.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Continuation of the question. The UE has no longer",
+    "options": [
+      "RNTI",
+      "IMSI",
+      "TMSI",
+      "IP address"
+    ],
+    "explanation": "When the UE transitions to idle mode, it loses its RNTI (Radio Network Temporary Identifier), which is only valid while there is an active radio connection. The RNTI is used for scheduling and identifying the UE on the radio interface. The UE retains its IMSI, TMSI (for network identification), and IP address (maintained by the SGW-PGW connection).",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Continuation of the question. After one hour, the terminal has data to transmit. Which procedure is executed?",
+    "options": [
+      "EMM Attach Request",
+      "PDN Connectivity Request",
+      "Network-triggered Service Request",
+      "UE-triggered Service Request"
+    ],
+    "explanation": "When a UE in ECM-Idle state (but still EMM-Registered) has data to transmit, it initiates a UE-triggered Service Request procedure. This procedure re-establishes the radio and S1 connections without requiring a full attach procedure, since the UE is still registered with the network.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "After the UE-triggered Service Request and Network-triggered Service Request procedures,",
+    "options": [
+      "the terminal is in the EMM Deregistered and ECM-idle state,",
+      "the terminal is in the EMM Registered and ECM-idle state,",
+      "the terminal is in the EMM Registered and ECM-connected state,",
+      "nothing can be said on the state of the terminal."
+    ],
+    "explanation": "After successfully completing either a UE-triggered or Network-triggered Service Request procedure, the radio and S1 signaling connections are re-established. The terminal transitions to EMM-Registered (it was already registered) and ECM-Connected state (signaling connection is now active), allowing data transmission to resume.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Let us consider a terminal that correctly works on the network but has not been used for the last few minutes. At 4:00 am, an application triggers the transmission of an IP packet every 500 ms to a server.",
+    "options": [
+      "all the packets reach the server in the same amount of time (for example, they arrive at 4:00:00.04, 4:00:00.54, 4:00:01.04, 4:00:01.54)",
+      "the first packet requires more time than the following packet to reach the server (for example, they arrive at 4:00:00.34, 4:00:00.54, 4:00:01.04, 4:00:01.54)",
+      "the packets need more and more time to reach the server (for example, they arrive at 4:00:00.04, 4:00:00.58, 4:00:01.12, 4:00:01.66)",
+      "the first packet never arrives and the next ones arrive immediately (for example, they arrive at 4:00:00.50, 4:00:01.00, 4:00:01.50)"
+    ],
+    "explanation": "Since the terminal hasn't been used for several minutes, it's likely in ECM-Idle state. When the first packet needs to be sent, the UE must perform a Service Request procedure to re-establish the radio and S1 connections, which takes additional time (typically 30-300ms). Subsequent packets can use the already-established connections and experience normal transmission delays.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "When a specific guarantee on the quality of service is required for a given data flow",
+    "options": [
+      "a Network-triggered Service Request procedure should be executed",
+      "a PDN Connectivity Request procedure should be executed",
+      "a dedicated bearer should be set-up"
+    ],
+    "explanation": "When specific QoS (Quality of Service) guarantees are needed for a particular data flow (such as low latency for voice calls or guaranteed bandwidth for video streaming), the network establishes a dedicated bearer. Dedicated bearers have specific QoS parameters and are separate from the default bearer, ensuring the required service quality for that flow.",
+    "correctAnswer": [2]
+  }
+],
+    module2: [
+  {
+    "question": "In 4G, the USIM card",
+    "options": [
+      "is not required any longer",
+      "contains all the procedures to manage the radio channel",
+      "contains the international mobile subscriber identity",
+      "contains the subscriber's banking information"
+    ],
+    "explanation": "The USIM card is still required in 4G as it contains the IMSI (International Mobile Subscriber Identity), which is essential for identifying the subscriber in the network.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "In a cellular network, the smaller a cell is",
+    "options": [
+      "the smaller the capacity in Mbit/s/km2 (bit rate per square kilometer) is",
+      "the greater the capacity in Mbit/s/km2 (bit rate per square kilometer) is",
+      "the worse the quality of the link is",
+      "the smaller the antenna size should be"
+    ],
+    "explanation": "Smaller cells increase the frequency reuse factor, which improves capacity (Mbit/s/km2).",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "The coverage of a base station is",
+    "options": [
+      "always circular",
+      "always as large as the country",
+      "the same for all base stations",
+      "depends on the environment (rural area, city center, suburbs, etc)",
+      "deduced by the terminals by use of the beacon channel sent by the base station"
+    ],
+    "explanation": "Base station coverage is not fixed but depends on environment and is determined by terminals through beacon channel measurements.",
+    "correctAnswer": [3, 4]
+  },
+  {
+    "question": "The beacon channel is used",
+    "options": [
+      "to enable signal strength measurement at the terminal side",
+      "to enable transmission power measurement at the terminal side",
+      "to broadcast information such as the identity of the operator",
+      "in zones not covered by an operator, to indicate in which direction to move to get coverage"
+    ],
+    "explanation": "The beacon channel is used for measuring signal strength and broadcasting information like operator identity.",
+    "correctAnswer": [0, 2]
+  },
+  {
+    "question": "The 4G core network of a mobile operator",
+    "options": [
+      "is an IP network",
+      "is a network using a Layer3 protocol based on the MNP protocol (Mobile Network Protocol)",
+      "is a network based on Signalling System No. 7 used by telecom operators"
+    ],
+    "explanation": "The 4G core network (EPC) is a fully IP-based network architecture.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "We consider a 4G subscriber who visits a Web page. Select the devices that are concerned by the user-data packet flow between the mobile terminal and the Web server",
+    "options": [
+      "eNodeB",
+      "HSS",
+      "MME",
+      "PGW",
+      "SGW"
+    ],
+    "explanation": "For user-plane data flow, the involved elements are eNodeB, SGW, and PGW. HSS and MME are part of the control-plane, not the user-plane.",
+    "correctAnswer": [0, 3, 4]
+  },
+  {
+    "question": "Are two base stations exchanging messages on the X2 interface necessarily connected through a direct link?",
+    "options": [
+      "Yes",
+      "No"
+    ],
+    "explanation": "X2 communication is logical and does not necessarily require a direct physical link between base stations.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "When someone turns on his 4G terminal and connects to a 4G network,",
+    "options": [
+      "the subscriber profile stored in the terminal is transferred to the HSS",
+      "the subscriber profile is permanently stored in the MME and is locally activated",
+      "the subscriber profile permanently stored in the HSS is transferred to the MME"
+    ],
+    "explanation": "The subscriber profile is stored in the HSS and sent to the MME during the attach procedure for session management.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "The HSS",
+    "options": [
+      "contains the list of the network subscribers",
+      "is queried by the MME so the latter can have the profile of the subscribers who are in the zone managed by that MME",
+      "is queried by the MME, the SGW and the PGW so all retrieve the subscriber profile and speed up access control mechanisms",
+      "contains the precise state of each terminal (idle, active, transferring) at any time"
+    ],
+    "explanation": "The HSS contains subscriber data and is queried by the MME for subscriber profiles. SGW/PGW do not directly query the HSS.",
+    "correctAnswer": [0, 1]
+  }
+]
+,
+    module3: [
+  {
+    "question": "A 4G subscriber is uniquely and permanently identified by",
+    "options": [
+      "his phone number",
+      "his IP address",
+      "his GUTI",
+      "his TMSI",
+      "his IMSI"
+    ],
+    "explanation": "The IMSI (International Mobile Subscriber Identity) is the unique and permanent identifier for a 4G subscriber. Unlike temporary identifiers like TMSI or GUTI, the IMSI remains constant and is stored in the SIM card.",
+    "correctAnswer": [4]
+  },
+  {
+    "question": "In addition to memory, the SIM (or USIM) card must include a processor to:",
+    "options": [
+      "speed up authentication processing,",
+      "prevent stolen terminals from being used,",
+      "help old terminals with slow processors to process data,",
+      "have the authentication processed by a hardware controlled by the operator."
+    ],
+    "explanation": "The processor in the SIM/USIM card ensures that authentication is handled by hardware controlled by the operator, providing a secure and trusted environment for cryptographic operations that cannot be compromised even if the terminal is malicious.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "The IMSI is permanently stored in (tick 2 boxes)",
+    "options": [
+      "the USIM card",
+      "the eNodeB",
+      "the HSS",
+      "the MME",
+      "the PGW",
+      "the SGW",
+      "the terminal"
+    ],
+    "explanation": "The IMSI is permanently stored in both the USIM card (which is inserted in the user's device) and the HSS (Home Subscriber Server), which is the master database containing subscriber information in the operator's network.",
+    "correctAnswer": [0, 2]
+  },
+  {
+    "question": "Select the security functions a 4G network provides (tick several boxes)",
+    "options": [
+      "terminal authentication by the network,",
+      "network authentication by the terminal,",
+      "user-data encryption,",
+      "signaling encryption,",
+      "integrity protection for signaling messages,",
+      "integrity protection for user data,",
+      "identity confidentiality."
+    ],
+    "explanation": "4G networks provide mutual authentication (both terminal and network authenticate each other), encryption for both user data and signaling, integrity protection for signaling messages, and identity confidentiality to protect subscriber privacy. User data integrity protection is not provided due to overhead concerns.",
+    "correctAnswer": [0, 1, 2, 3, 4, 6]
+  },
+  {
+    "question": "The use of authentication vectors (tick 2 boxes)",
+    "options": [
+      "makes the system vulnerable to eavesdropping,",
+      "allows any (trusted) node in the 4G network to authenticate a terminal without revealing its secret key",
+      "allows a visited network to authenticate a terminal but only if the secret key is forwarded to the HSS of the visited network.",
+      "reduces the load of the HSS, which can simultaneously send several vectors and so limit the number of requests sent to it."
+    ],
+    "explanation": "Authentication vectors allow distributed authentication without exposing the secret key stored in the HSS. They also reduce HSS load by allowing multiple authentication vectors to be sent at once, reducing signaling overhead.",
+    "correctAnswer": [1, 3]
+  },
+  {
+    "question": "Which entities execute the authentication algorithm (f function in the course)? (tick 2 boxes)",
+    "options": [
+      "the SIM card (USIM)",
+      "the terminal (UE)",
+      "the eNodeB",
+      "the MME",
+      "the HSS",
+      "a unique security center for all 4G operators"
+    ],
+    "explanation": "The authentication algorithm is executed by the SIM card (USIM) on the user side and by the HSS (Home Subscriber Server) on the network side. This ensures that the secret key never leaves these secure locations.",
+    "correctAnswer": [0, 4]
+  },
+  {
+    "question": "Which entities execute the data encryption algorithm on the radio channel? (tick 2 boxes)",
+    "options": [
+      "the SIM card (USIM)",
+      "the terminal (UE)",
+      "the eNodeB",
+      "the MME",
+      "the HSS",
+      "a same security center for every 4G operators"
+    ],
+    "explanation": "Data encryption on the radio channel is performed between the terminal (UE) and the eNodeB (base station), as they are the endpoints of the radio interface where encryption/decryption needs to occur.",
+    "correctAnswer": [1, 2]
+  },
+  {
+    "question": "We consider the authentication mechanism. To minimize the signaling load, an engineer proposes an evolution of the standard: reduce the number of bits of the random number (the challenge) to 12 bits (instead of 128) and the number of bits of the signed result to 8 bits (instead of 32). (tick 2 boxes)",
+    "options": [
+      "it is a good idea because it will greatly reduce the size of authentication messages",
+      "it is useless because the size of the authentication messages will not be significantly reduced due to the headers and other fields",
+      "it will not reduce the security level if the challenge is still random",
+      "it will not reduce the security level if the size of the secret key is kept",
+      "it will reduce the security level because chances are higher to get twice the same challenge value",
+      "it will reduce the security level because the challenge is no more a multiple of 32 bits, which is a standard length for processors."
+    ],
+    "explanation": "Reducing the challenge from 128 bits to 12 bits significantly increases the probability of challenge reuse, which weakens security. Additionally, the message size reduction would be negligible due to protocol headers and other fields that remain unchanged.",
+    "correctAnswer": [1, 4]
+  },
+  {
+    "question": "We assume that a packet is reduced to a single ASCII character (UTF-8 to be more precise). This is impossible in 4G but we will consider it here to have a simple exercise. The binary value of the code for character M is 0100 1101. We assume that the ciphering sequence is 1010 0110. The ciphered sequence is",
+    "options": [
+      "1111 0001",
+      "1110 0011",
+      "1110 1011",
+      "1011 0111"
+    ],
+    "explanation": "To encrypt, we perform XOR operation between the plaintext and the ciphering sequence: 0100 1101 XOR 1010 0110 = 1110 1011",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Continuation of the previous question. To decode the sequence, the receiver",
+    "options": [
+      "performs a bit-wise XOR (exclusive Or) of the received sequence and the ciphering sequence,",
+      "performs a bit-wise XNOR (exclusive Not Or) of the received sequence and the ciphering sequence,",
+      "subtracts the hexadecimal value of the ciphering sequence from the hexadecimal value of the received sequence (in two's complement),",
+      "adds the ciphering sequence to the received sequence."
+    ],
+    "explanation": "XOR encryption is symmetric - the same operation (XOR) is used for both encryption and decryption. To decrypt, the receiver performs XOR of the received ciphertext with the same ciphering sequence.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "In the context of this question and the next one, MAC means Message Authentication Code. The integrity control prevents a third party from modifying a message if the key used to calculate the MAC code remains secret",
+    "options": [
+      "prevents a third party from modifying a message only if it is encrypted",
+      "prevents a third party from modifying a message if the key used to calculate the MAC code remains secret",
+      "prevents a third party from modifying a message only if the third party does not change the MAC code",
+      "prevents a third party from modifying a message only if the third party changes the length of this message"
+    ],
+    "explanation": "The MAC (Message Authentication Code) provides integrity protection by creating a cryptographic checksum using a secret key. Without knowing the key, an attacker cannot create a valid MAC for a modified message, thus the modification will be detected.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "The integrity control is",
+    "options": [
+      "faster if the MAC is longer,",
+      "safer if the MAC is longer,",
+      "less safe if the MAC is longer,",
+      "equally safe no matter the size of the MAC."
+    ],
+    "explanation": "A longer MAC provides better security because it's harder for an attacker to guess or forge a valid MAC through brute force. With more bits, the probability of a successful random forgery decreases exponentially.",
+    "correctAnswer": [1]
+  }
+],
+    module4: [
+  {
+    "question": "The radio transmission for 4G LTE systems is mainly based on",
+    "options": [
+      "CDMA (Code Division Multiple Access)",
+      "OFDM (Orthogonal Frequency Division Multiplexing)",
+      "UNB (Ultra Narrow Band)"
+    ],
+    "explanation": "4G LTE systems use OFDM (Orthogonal Frequency Division Multiplexing) as the primary radio transmission technology. OFDM divides the available spectrum into multiple orthogonal subcarriers, providing high spectral efficiency and resistance to multipath fading.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "In LTE modulation 256-QAM is possible. It is not mentioned in the course to keep things simple. Its name comes from the fact that it can reach 256 different states. How many bits can be transmitted in one 256-QAM symbol?",
+    "options": [
+      "1 bit / symbol",
+      "2 bits / symbol",
+      "3 bits / symbol",
+      "4 bits / symbol",
+      "6 bits / symbol",
+      "8 bits / symbol"
+    ],
+    "explanation": "256-QAM can represent 256 different states. Since 2^8 = 256, each symbol can carry 8 bits of information. This is calculated as log2(256) = 8 bits per symbol.",
+    "correctAnswer": [5]
+  },
+  {
+    "question": "To share the radio resource among UEs, LTE (tick several boxes)",
+    "options": [
+      "Systematically allows collision but provides a collision resolution mechanism",
+      "Splits the resource in time",
+      "Splits the resource in sub-frequencies",
+      "Uses orthogonal code sequences to distinguish users",
+      "Uses an allocation mechanism to manage the resource"
+    ],
+    "explanation": "LTE uses OFDMA (Orthogonal Frequency Division Multiple Access) which splits resources in both time and frequency. The eNodeB uses a scheduler (allocation mechanism) to assign specific time-frequency resource blocks to different users, preventing collisions through coordinated access.",
+    "correctAnswer": [1, 2, 4]
+  },
+  {
+    "question": "Consider a UE that transmits data to a server.",
+    "options": [
+      "The UE can use any pair of resource blocks",
+      "The UE has to scan all pairs of resource blocks to detect which ones are not used by other UEs",
+      "The UE should only use pairs of resource blocks that are indicated in the current allocation table sent by the eNB (also known as PDCCH)",
+      "The UE should only use pairs of resource blocks that were indicated 4-ms before in the allocation table sent by the eNB (also known as PDCCH)"
+    ],
+    "explanation": "In LTE uplink, the UE must use the resource blocks that were allocated to it 4ms earlier in the PDCCH (Physical Downlink Control Channel). This 4ms delay allows the UE time to prepare its transmission after receiving the allocation.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Consider a UE that transmits data to a server.",
+    "options": [
+      "Each transport block is systematically acknowledged (in case of correct reception) by the eNB in the MAC layer",
+      "Several transport blocks can be acknowledged (in case of correct reception) with the same Ack message by the eNB in the MAC layer",
+      "Transport blocks are acknowledged (in case of correct reception) in the MAC layer only if there is a commitment by the operator on the quality of service",
+      "Transport blocks are acknowledged (in case of correct reception) in the MAC layer only if acknowledgement mechanism are not activated in RLC Layer",
+      "There is no acknowledgement in the MAC layer"
+    ],
+    "explanation": "In LTE, the MAC layer uses HARQ (Hybrid Automatic Repeat Request) where each transport block is individually and systematically acknowledged by the eNB upon correct reception. This provides fast, physical layer error recovery.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "To transmit data in real time (such as voice over IP) RLC should be used in:",
+    "options": [
+      "Transparent Mode",
+      "Unacknowledged Mode (UM)",
+      "Acknowledged Mode (AM)."
+    ],
+    "explanation": "For real-time services like voice over IP, RLC Unacknowledged Mode (UM) is used because it doesn't introduce the delays associated with retransmissions. Real-time traffic is delay-sensitive and can tolerate some packet loss better than delays from retransmissions.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Choose the correct statement about the exchanges with a given UE in a system with one carrier (tick 3 boxes).",
+    "options": [
+      "On an eNB, there is only one MAC session.",
+      "On an eNB, there can be several MAC sessions.",
+      "On an eNB, there is only one RLC session.",
+      "On an eNB, there can be several RLC sessions.",
+      "On an eNB, there is only one PDCP session.",
+      "On an eNB, there can be several PDCP sessions"
+    ],
+    "explanation": "For a given UE on an eNB: there is only one MAC session (handles all data for that UE), but there can be multiple RLC sessions and multiple PDCP sessions (one per radio bearer/service). Different services or QoS flows require separate RLC and PDCP sessions.",
+    "correctAnswer": [0, 3, 5]
+  },
+  {
+    "question": "On the 4G radio interface, data are transmitted",
+    "options": [
+      "in transport blocks of different sizes but 1-ms duration",
+      "in transport blocks of 1500-byte sizes but with variable duration",
+      "in transport blocks with variable sizes and durations"
+    ],
+    "explanation": "In LTE, data is transmitted in transport blocks that have a fixed duration of 1ms (corresponding to one subframe/TTI - Transmission Time Interval), but the size of the transport block varies depending on the modulation scheme, number of allocated resource blocks, and channel conditions.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "To indicate on the radio interface to which UE resource blocks are assigned, the eNB uses",
+    "options": [
+      "the IMSI of the UE",
+      "the RNTI of the UE",
+      "the TMSI of the UE",
+      "the IP address of the UE"
+    ],
+    "explanation": "The eNB uses the RNTI (Radio Network Temporary Identifier) to identify UEs on the radio interface. The RNTI is a temporary identifier used for radio resource allocation and scheduling, providing both efficiency and privacy compared to using permanent identifiers like IMSI.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Let us consider a LTE network in the FDD mode (Frequency Division Duplex) with a 2x5 MHz bandwidth. How many pairs of resource block are there in a 1-ms sub-frame?",
+    "options": [
+      "6",
+      "25",
+      "27",
+      "50"
+    ],
+    "explanation": "In LTE FDD with 5 MHz bandwidth, there are 25 resource blocks in the frequency domain. Since FDD uses paired spectrum (uplink and downlink), and each subframe is 1ms, there are 25 pairs of resource blocks available in a 1-ms sub-frame.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Continuation of the previous question. There are now 10 UEs in the cell that have the same radio conditions (MCS 16 is used). All UEs are treated equally. Compared to the user bit rate found in M3.H.Q11",
+    "options": [
+      "The user bit rate of each UE is divided by 10",
+      "The user bit rate is unchanged",
+      "The user bit rate of each UE is multiplied by 10"
+    ],
+    "explanation": "When 10 UEs share the same resources equally, the available resource blocks must be divided among them. Since each UE gets 1/10th of the resources compared to having the cell to itself, the bit rate for each UE is divided by 10.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Let us consider the radio interface. When two terminals try to simultaneously access the random access channel (tick several boxes):",
+    "options": [
+      "The 2 attempts can succeed",
+      "One of the attempts can succeed",
+      "All the attempts will necessarily fail"
+    ],
+    "explanation": "In LTE random access, when multiple UEs transmit simultaneously on the random access channel, collisions can occur. Both attempts might succeed if they use different preambles, one might succeed if they use different preambles and the network detects only one, or they might fail if interference is too high. The outcome depends on several factors including preamble selection and signal strength.",
+    "correctAnswer": [0, 1]
+  }
+],
+    module5: [
+  {
+    "question": "From the packet decoding, select the IP address of the SGW",
+    "options": [
+      "10.5.1.9",
+      "10.5.1.10",
+      "10.19.2.19",
+      "170.22.0.80"
+    ],
+    "explanation": "Based on the packet decoding analysis, the SGW (Serving Gateway) IP address is identified as 10.5.1.10. The SGW is a key component in the LTE EPC architecture that routes user data packets between the eNodeB and the PGW.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "From the packet decoding, select the IP address of the PGW",
+    "options": [
+      "10.5.1.9",
+      "10.5.1.10",
+      "10.19.2.19",
+      "170.22.0.80"
+    ],
+    "explanation": "Based on the packet decoding analysis, the PGW (PDN Gateway) IP address is identified as 10.5.1.9. The PGW serves as the gateway between the LTE network and external packet data networks (like the Internet).",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "From the packet decoding, select the IP address of the UE",
+    "options": [
+      "10.5.1.9",
+      "10.5.1.10",
+      "10.19.2.19",
+      "170.22.0.80"
+    ],
+    "explanation": "Based on the packet decoding analysis, the UE (User Equipment) IP address is identified as 170.22.0.80. This is the IP address assigned to the mobile device for communication with external networks.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "What is the address of the visited server",
+    "options": [
+      "10.5.1.9",
+      "10.5.1.10",
+      "10.19.2.19",
+      "170.22.0.80"
+    ],
+    "explanation": "Based on the packet decoding analysis, the visited server address is 10.19.2.19. This is the external server that the UE is communicating with through the LTE network.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What is the TEID used for this tunnel?",
+    "options": [
+      "0x20912c25",
+      "64514",
+      "0x03d1"
+    ],
+    "explanation": "The TEID (Tunnel Endpoint Identifier) used for this GTP tunnel is 0x20912c25. TEIDs are used in GTP (GPRS Tunneling Protocol) to identify different tunnels and ensure packets are delivered to the correct endpoint.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "This TEID has been previously chosen by the",
+    "options": [
+      "eNodeB",
+      "MME",
+      "SGW",
+      "PGW",
+      "UE"
+    ],
+    "explanation": "The TEID is chosen by the PGW (PDN Gateway). In the GTP tunnel establishment process, each gateway selects the TEID that will be used for incoming traffic on its side of the tunnel.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Give the IP address of the eNodeB",
+    "options": [
+      "10.5.1.9",
+      "10.5.1.10",
+      "10.11.1.137",
+      "10.2.11.42",
+      "10.19.2.19",
+      "170.22.0.80"
+    ],
+    "explanation": "Based on the network configuration, the eNodeB (evolved NodeB) IP address is 10.2.11.42. The eNodeB is the base station in LTE networks that provides the radio interface to the UE.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "In the following questions, we consider the actions to perform for any packet received depending on the TEID (i.e. the action table). For each packet reaching the SGW with TEID 0x04b18525, to which IP address must we sent the packet?",
+    "options": [
+      "10.5.1.9",
+      "10.5.1.10",
+      "10.11.1.137",
+      "10.2.11.42",
+      "10.19.2.19",
+      "170.22.0.80"
+    ],
+    "explanation": "When the SGW receives a packet with TEID 0x04b18525, it looks up this TEID in its routing table and forwards the packet to the PGW at IP address 10.5.1.9. This is part of the uplink data path from UE to the external network.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Which TEID do we place in the GTP header of the packet sent by the SGW (i.e. after forwarding)?",
+    "options": [
+      "0x00000015",
+      "0x20912c25",
+      "0x04b18505",
+      "0x04b18525"
+    ],
+    "explanation": "After forwarding, the SGW places TEID 0x20912c25 in the GTP header. This is the TEID that was assigned by the PGW for receiving packets on this tunnel, allowing the PGW to identify which UE session the packet belongs to.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Choose the line which corresponds to another entry in the SGW.",
+    "options": [
+      "TEID=0x00000015: Action=Fowarding, IP dest=10.2.11.42, TEID=0x04b18505",
+      "TEID=0x00000015: Action=Fowarding, IP dest=10.5.1.9, TEID=0x20912c25",
+      "TEID=0x00000015: Action=Fowarding, IP dest=10.5.1.10, TEID=0x04b18525",
+      "TEID=0x04b18505: Action=Fowarding, IP dest=10.5.1.9, TEID=0x04b18525",
+      "TEID=0x04b18505: Action=Fowarding, IP dest=10.5.1.10, TEID=0x04b18525",
+      "TEID=0x04b18505: Action=Fowarding, IP dest=10.2.11.42, TEID=0x00000015"
+    ],
+    "explanation": "The SGW routing table contains bidirectional entries for the GTP tunnels. The entry 'TEID=0x04b18505: Action=Fowarding, IP dest=10.2.11.42, TEID=0x00000015' represents the downlink path, where packets from the PGW (with TEID 0x04b18505) are forwarded to the eNodeB at 10.2.11.42 with TEID 0x00000015.",
+    "correctAnswer": [5]
+  }
+],
     module1: [
-      {
-    "question": "What is the most important gain from the packet scheming in the cellular system?",
+  {
+    "question": "What is the main architectural difference between 3G and 4G LTE networks?",
     "options": [
-      "Increasing \"average\" data rate of each user.",
-      "Save the power consumption of base stations."
+      "4G uses circuit-switched architecture while 3G uses packet-switched",
+      "4G is a flat, all-IP architecture while 3G has a hierarchical architecture with separate circuit and packet domains",
+      "4G uses CDMA while 3G uses OFDMA",
+      "4G has more network elements than 3G"
     ],
-    "explanation": "Packet scheduling's primary benefit is increasing the average data rate for each user by intelligently allocating resources based on channel conditions, traffic demands, and fairness criteria. By scheduling transmissions when channel conditions are favorable and managing resources efficiently, packet scheduling significantly improves user experience and network efficiency compared to simple round-robin approaches.",
-    "correctAnswer": [0]
+    "explanation": "LTE introduces a simplified, flat, all-IP architecture. Unlike 3G which had separate domains for circuit-switched (voice) and packet-switched (data) services, LTE is purely packet-based, eliminating elements like RNC and SGSN, resulting in lower latency and higher efficiency.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "In the LTE protocol stack, what is the primary function of the PDCP (Packet Data Convergence Protocol) layer?",
+    "options": [
+      "Resource allocation and scheduling",
+      "IP header compression, encryption, and integrity protection",
+      "Segmentation and reassembly of data packets",
+      "Physical layer modulation"
+    ],
+    "explanation": "PDCP performs header compression (ROHC), ciphering (encryption) of user and control plane data, and integrity protection for control plane. It sits above RLC and ensures efficient and secure transmission of IP packets.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What is the main function of the RLC (Radio Link Control) layer in LTE?",
+    "options": [
+      "Radio resource allocation",
+      "Segmentation, ARQ (Automatic Repeat Request), and reordering",
+      "Encryption and decryption",
+      "Frequency allocation"
+    ],
+    "explanation": "RLC performs segmentation/concatenation of PDCP PDUs, provides ARQ for error correction (in AM mode), and handles reordering of received packets. It has three modes: Transparent Mode (TM), Unacknowledged Mode (UM), and Acknowledged Mode (AM).",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "During the LTE attach procedure, which entity assigns the IP address to the UE?",
+    "options": [
+      "eNodeB",
+      "MME",
+      "SGW",
+      "PGW"
+    ],
+    "explanation": "The PGW (PDN Gateway) assigns the IP address to the UE during the attach procedure. The PGW acts as the gateway to external packet data networks and manages IP address allocation, often interfacing with external DHCP servers or address pools.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "What is the primary advantage of the flat architecture in LTE's Evolved Packet Core (EPC)?",
+    "options": [
+      "Lower cost of user equipment",
+      "Reduced latency and simplified network topology",
+      "Support for circuit-switched voice calls",
+      "Compatibility with 2G networks"
+    ],
+    "explanation": "The flat architecture eliminates hierarchical elements like the RNC (Radio Network Controller) from 3G, reducing the number of network nodes that user data must traverse. This significantly reduces latency and simplifies network operations.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "In the LTE protocol stack, what is the primary function of the MAC (Medium Access Control) layer?",
+    "options": [
+      "Encryption of user data",
+      "Multiplexing of logical channels, scheduling, and HARQ",
+      "IP header compression",
+      "Radio bearer establishment"
+    ],
+    "explanation": "The MAC layer handles multiplexing of different logical channels onto transport channels, implements the scheduling decisions from the eNodeB, and manages HARQ (Hybrid ARQ) for fast retransmissions at the physical layer.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What are the two main planes in LTE architecture?",
+    "options": [
+      "Circuit plane and packet plane",
+      "Control plane and user plane",
+      "Signaling plane and data plane",
+      "Management plane and transport plane"
+    ],
+    "explanation": "LTE architecture is divided into the Control Plane (C-plane), which handles signaling for connection setup, mobility, and session management, and the User Plane (U-plane), which carries the actual user data. This separation allows for optimized routing and processing.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "During bearer setup in LTE, what is an EPS (Evolved Packet System) bearer?",
+    "options": [
+      "A physical cable connecting network elements",
+      "A logical tunnel that provides specific QoS treatment for data flows",
+      "A type of encryption algorithm",
+      "A backup server in the core network"
+    ],
+    "explanation": "An EPS bearer is an end-to-end logical tunnel between the UE and PGW that provides specific QoS treatment. It consists of radio bearers, S1 bearers, and S5/S8 bearers concatenated together, each with associated QoS parameters.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What information does the eNodeB broadcast on the Physical Broadcast Channel (PBCH)?",
+    "options": [
+      "User data packets",
+      "Master Information Block (MIB) containing essential system information",
+      "Paging messages",
+      "Handover commands"
+    ],
+    "explanation": "The PBCH carries the Master Information Block (MIB), which contains essential system information like system bandwidth, system frame number, and PHICH configuration. This allows UEs to initially access and synchronize with the cell.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "How does LTE achieve improved spectral efficiency compared to 3G?",
+    "options": [
+      "By using higher frequency bands only",
+      "By using OFDMA in downlink and SC-FDMA in uplink with advanced antenna techniques",
+      "By reducing the number of users per cell",
+      "By increasing transmission power"
+    ],
+    "explanation": "LTE achieves superior spectral efficiency through multiple technologies: OFDMA (downlink) and SC-FDMA (uplink) for efficient spectrum use, MIMO (Multiple Input Multiple Output) for spatial multiplexing, and advanced modulation schemes (up to 64-QAM or 256-QAM).",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What is the purpose of the S1-MME interface in LTE?",
+    "options": [
+      "To carry user data between eNodeB and SGW",
+      "To carry control signaling between eNodeB and MME",
+      "To connect two eNodeBs directly",
+      "To connect PGW to external networks"
+    ],
+    "explanation": "The S1-MME interface carries control plane signaling between the eNodeB and MME using the S1-AP protocol over SCTP. It handles procedures like UE context setup, paging, handovers, and other mobility management functions.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "During an intra-LTE handover, what is the main purpose of data forwarding?",
+    "options": [
+      "To encrypt data during transmission",
+      "To minimize packet loss during the transition between eNodeBs",
+      "To compress data for efficient transmission",
+      "To authenticate the user"
+    ],
+    "explanation": "Data forwarding from the source to target eNodeB (via X2 or through the SGW) ensures that downlink packets arriving during the handover are not lost. This maintains service continuity and improves user experience during mobility.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What is the relationship between radio bearers and EPS bearers?",
+    "options": [
+      "They are completely independent concepts",
+      "A radio bearer is the portion of an EPS bearer between UE and eNodeB",
+      "An EPS bearer is smaller than a radio bearer",
+      "Radio bearers only exist in 3G networks"
+    ],
+    "explanation": "An EPS bearer is the complete end-to-end tunnel from UE to PGW. The radio bearer is the segment of this EPS bearer between the UE and eNodeB, carrying data over the radio interface. Multiple radio bearers can exist for different services with different QoS requirements.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What is the role of the PHY (Physical) layer in LTE?",
+    "options": [
+      "To manage IP addresses",
+      "To perform modulation, coding, and transmission/reception of radio signals",
+      "To handle mobility management",
+      "To compress packet headers"
+    ],
+    "explanation": "The Physical layer handles the actual transmission and reception of radio signals. It performs channel coding, modulation (QPSK, 16-QAM, 64-QAM), MIMO processing, OFDM signal generation/reception, and maps data to physical resource blocks.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "In LTE, what enables seamless mobility across cells?",
+    "options": [
+      "Frequent IP address changes",
+      "Handover procedures that maintain bearer continuity and preserve IP address",
+      "Requiring users to manually reconnect",
+      "Using only one large cell"
+    ],
+    "explanation": "LTE enables seamless mobility through sophisticated handover procedures (X2-based or S1-based) that maintain EPS bearer continuity, preserve the UE's IP address, and minimize service interruption. The flat architecture and efficient signaling contribute to fast handover execution times.",
+    "correctAnswer": [1]
   }
-    ],
+],
     module7: [
-      {
-    "question": "What is the most important gain from the packet scheming in the cellular system?",
+   
+  {
+    "question": "We assume TAI 0 and TAI 1 are sent back to the terminal. The user moves to cell B (covered by eNB B). What happens?",
     "options": [
-      "Increasing \"average\" data rate of each user.",
-      "Save the power consumption of base stations."
+      "The terminal listens to the beacon channel of eNB B but does not send any message,",
+      "The terminal listens to the beacon channel of eNB B, detects that the cell is a new one and triggers a UE service request procedure,",
+      "The terminal listens to the beacon channel of eNB B, detects that the cell is a new one and triggers a Tracking Area Update request,",
+      "The MME updates in its database the location of the terminal as soon as the latter is in the new cell."
     ],
-    "explanation": "Packet scheduling's primary benefit is increasing the average data rate for each user by intelligently allocating resources based on channel conditions, traffic demands, and fairness criteria. By scheduling transmissions when channel conditions are favorable and managing resources efficiently, packet scheduling significantly improves user experience and network efficiency compared to simple round-robin approaches.",
+    "explanation": "When a UE in ECM-Connected state moves to a new cell within the same Tracking Area (both TAI 0 and TAI 1 are known to the terminal), it simply listens to the new cell's beacon channel but does not need to send any message to the network. The handover is handled at the lower layers, and since the Tracking Area hasn't changed, no TAU is needed.",
     "correctAnswer": [0]
+  },
+  {
+    "question": "The user now moves to cell C (covered by eNB C). What happens?",
+    "options": [
+      "The terminal listens to the beacon channel of eNB C but does not send any message",
+      "The terminal listens to the beacon channel of eNB C, detects that the cell is a new one and triggers a UE service request procedure",
+      "The terminal listens to the beacon channel of eNB C, detects that the cell is a new one and triggers a Tracking Area Update request",
+      "The MME updates in its database the location of the terminal as soon as the latter is in the new cell."
+    ],
+    "explanation": "When the UE moves to cell C in ECM-Connected state, if cell C belongs to a different Tracking Area (not in the TAI list), the terminal listens to the beacon channel, detects it's a new tracking area, but does not initiate a TAU immediately. In ECM-Connected state, the network already knows the UE's location at the cell level, so no TAU is triggered until the UE returns to idle mode.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "The terminal is still in cell C. Data is to be sent to the terminal. What happens?",
+    "options": [
+      "A \"UE-triggered service request\" procedure is performed.",
+      "A \"Network-triggered service request\" procedure that starts by sending paging messages in cell C is performed.",
+      "A \"Network-triggered service request\" procedure that starts by sending paging messages in cells A, B and C is performed.",
+      "A \"Network-triggered service request\" procedure that starts by sending paging messages in cells A to E is performed."
+    ],
+    "explanation": "When the terminal is in ECM-Connected state (still in cell C with an active connection), downlink data can be sent directly to the UE. However, if this question assumes the UE has transitioned to idle mode, the network would page in all cells of the Tracking Areas in the UE's TAI list (cells A, B, and C based on TAI 0 and TAI 1). The correct answer indicates paging in cells A, B, and C.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "The data transmission is finished and the terminal is back in idle mode. The user now moves to cell D (covered by eNB D). What happens?",
+    "options": [
+      "The terminal listens to the beacon channel of eNB D but does not send any message",
+      "The terminal listens to the beacon channel of eNB D, detects that the cell is a new one and triggers a UE service request procedure",
+      "The terminal listens to the beacon channel of eNB D, detects that the cell is a new one and triggers a Tracking Area Update request",
+      "The MME updates the location of the terminal in its database as soon as the latter is in the new cell."
+    ],
+    "explanation": "When the UE in idle mode moves to cell D, it reads the beacon channel and detects a new Tracking Area that is not in its TAI list. This triggers a Tracking Area Update (TAU) request to inform the network of its new location, allowing the MME to update its records and send a new TAI list if necessary.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "The user now moves to cell E (covered by eNB E). What happens?",
+    "options": [
+      "The terminal listens to the beacon channel of eNB E but does not send any message",
+      "The terminal listens to the beacon channel of eNB E and triggers a Tracking Area Update request. A tunnel is set up between SGW 1 and SGW 2",
+      "The terminal listens to the beacon channel of eNB E, triggers a Tracking Area Update request. SGW-PGW tunnels are moved from SGW 1 to SGW 2",
+      "The MME updates in its database the location of the terminal as soon as the latter is in the new cell."
+    ],
+    "explanation": "When the UE moves to cell E (covered by eNB E) which is connected to a different SGW (SGW 2), the UE triggers a TAU request. This results in the SGW-PGW tunnels being moved from the old SGW (SGW 1) to the new SGW (SGW 2) to maintain connectivity while preserving the UE's IP address and PDN connection.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Can TAI 2 and TAI 3 be in the same list transmitted to a terminal?",
+    "options": [
+      "Yes, because the maximum flexibility is given to the operator regarding the management of tracking areas.",
+      "Yes, because TAI 2 and TAI 3 correspond to neighbor cells.",
+      "No, because a list is restricted to only one tracking area.",
+      "No, because eNBs D and E are not connected to the same SGW and thus the SGW-PGW tunnel should be modified."
+    ],
+    "explanation": "TAI 2 and TAI 3 cannot be in the same list because eNBs D and E are connected to different SGWs (SGW 1 and SGW 2). If both TAIs were in the same list, the UE could move between them without triggering a TAU, but the network would need to modify the SGW-PGW tunnels when the UE actually moves, which cannot be done without explicit signaling from the UE.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "The \"X2AP Handover request\" message includes a TEID. This TEID is required to route data from the TeNB to the SGW. Which one is it?",
+    "options": [
+      "TEID of the S1 bearer (also called S1 GTP-U Tunnel) on the SeNB side",
+      "TEID of the S1 bearer (also called S1 GTP-U Tunnel) on the TeNB side",
+      "TEID of the S1 bearer (also called S1 GTP-U Tunnel) on the SGW side",
+      "TEID of the X2 bearer (also called X2 GTP-U Tunnel) on the SeNB side",
+      "TEID of the X2 bearer (also called X2 GTP-U Tunnel) on the TeNB side"
+    ],
+    "explanation": "The X2AP Handover request message includes the TEID of the S1 bearer on the SGW side. This allows the Target eNB (TeNB) to know where to forward uplink data from the UE after the handover, maintaining the uplink path to the SGW.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "The \"X2AP Handover request acknowledge\" message includes a TEID. This TEID is required to route data from the SeNB to the TeNB. Which one is it?",
+    "options": [
+      "TEID of the S1 bearer (also called S1 GTP-U Tunnel) on the SeNB side",
+      "TEID of the S1 bearer (also called S1 GTP-U Tunnel) on the TeNB side",
+      "TEID of the S1 bearer (also called S1 GTP-U Tunnel) on the SGW side",
+      "TEID of the X2 bearer (also called X2 GTP-U Tunnel) on the SeNB side",
+      "TEID of the X2 bearer (also called X2 GTP-U Tunnel) on the TeNB side"
+    ],
+    "explanation": "The X2AP Handover request acknowledge message includes the TEID of the X2 bearer on the TeNB side. This allows the Source eNB (SeNB) to forward downlink data to the Target eNB over the X2 interface during the handover execution phase, before the path is switched to go directly from SGW to TeNB.",
+    "correctAnswer": [4]
+  },
+  {
+    "question": "Does the SeNB need to choose a TEID for the X2 bearer (also called X2 GTP-U tunnel)?",
+    "options": [
+      "Yes, because it is necessary to route uplink data,",
+      "Yes, because it is necessary to cipher the tunnel between the SeNB and the TeNB",
+      "No, because no user data is transmitted from the TeNB to the SeNB",
+      "No, because the same TEID is used by the SeNB and the TeNB."
+    ],
+    "explanation": "The SeNB does not need to choose a TEID for the X2 bearer because during handover, user data only flows in one direction over X2: from the SeNB to the TeNB (downlink data forwarding). There is no uplink data transmitted from TeNB to SeNB over X2, so no TEID is needed on the SeNB side for the X2 tunnel.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Why should downlink data be routed to the SeNB and forwarded to the TeNB during the \"handover execution\" phase?",
+    "options": [
+      "because it is more efficient",
+      "because the SGW does not know the IP address of the terminal (UE) and cannot send the data directly",
+      "because the SGW does not know that a handover is triggered before step 8"
+    ],
+    "explanation": "During the handover execution phase (before step 8), the SGW has not yet been informed about the handover. The SGW continues to send downlink data to the SeNB because it doesn't know the handover is in progress. The SeNB forwards this data to the TeNB over the X2 interface to minimize packet loss. Only after step 8 (Path Switch) does the SGW learn about the new eNB and start sending data directly to the TeNB.",
+    "correctAnswer": [2]
   }
+
     ],
     assignment: [
        {
