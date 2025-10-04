@@ -5622,15 +5622,613 @@ module7:[
 
     ],
     assignment: [
-       {
-    "question": "The uplink power control is a typical example of radio resource management. When in the two-user case, is it optimal to shut off one of the users?",
-    "options": [
-      "The target SIR is too high.",
-      "One mobile is too close to the base station."
-    ],
-    "explanation": "In uplink power control, when the target Signal-to-Interference Ratio (SIR) is set too high, it may become impossible for both users to achieve their required quality simultaneously due to interference limitations. In such cases, it's better to shut off one user to allow the other to meet the high SIR requirement, rather than having both users fail to achieve acceptable performance.",
-    "correctAnswer": [0]
-  },
+      
+{
+"question": "What is a primary advantage of 4G over 3G?",
+"options": [
+"Lower data rates",
+"Circuit-switched core network",
+"Higher spectral efficiency",
+"Limited mobility support"
+],
+"explanation": "4G (LTE) improves spectral efficiency compared to 3G, enabling higher data rates and better use of spectrum. 4G is packet-switched rather than circuit-switched. (Lecture: Evolution from 3G to 4G).",
+"correctAnswer": [2]
+},
+{
+"question": "What does eNodeB stand for in LTE?",
+"options": [
+"Enhanced Node B",
+"Electronic Node Base",
+"Evolved Network Base",
+"Encrypted Node B"
+],
+"explanation": "eNodeB stands for Enhanced Node B; it is the LTE base station responsible for radio interface functions. (LTE Network Architecture Overview).",
+"correctAnswer": [0]
+},
+{
+"question": "The LTE architecture is primarily based on which type of network?",
+"options": [
+"Circuit-switched",
+"Packet-switched",
+"Hybrid (circuit + packet)",
+"ATM-switched"
+],
+"explanation": "LTE uses an all-IP packet-switched architecture for both data and voice (when using VoLTE). (LTE Network Architecture Overview).",
+"correctAnswer": [1]
+},
+{
+"question": "Which component is part of the LTE core network (EPC)?",
+"options": [
+"RLC",
+"MME",
+"UE",
+"PHY"
+],
+"explanation": "MME (Mobility Management Entity) is a core EPC control-plane element. RLC and PHY are radio protocol layers and UE is the user equipment. (Evolved Packet Core lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "In LTE, what is the primary purpose of the MME (Mobility Management Entity)?",
+"options": [
+"To route user data packets between the eNodeB and external networks",
+"To handle signaling, authentication, and mobility management",
+"To assign radio resources to UEs",
+"To provide charging and policy control"
+],
+"explanation": "The MME handles control-plane functions such as signaling, authentication, tracking-area management and mobility. User-plane routing is done by SGW/PGW. (EPC lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "The Serving Gateway (SGW) primarily handles:",
+"options": [
+"User authentication",
+"IP address allocation",
+"Routing user data packets",
+"Policy enforcement"
+],
+"explanation": "SGW forwards and routes user-plane packets and acts as the local mobility anchor during handovers; PGW handles IP allocation and policy often involves PCRF. (EPC lecture).",
+"correctAnswer": [2]
+},
+{
+"question": "Which EPC component interfaces directly with the internet?",
+"options": [
+"MME",
+"SGW",
+"PGW",
+"HSS"
+],
+"explanation": "The PDN Gateway (PGW) interfaces the EPC to external packet data networks (like the internet) and allocates IP addresses for UEs. (EPC lecture).",
+"correctAnswer": [2]
+},
+{
+"question": "Which interface/protocol is used between eNodeBs for coordination?",
+"options": [
+"S1",
+"X2",
+"GTP-U",
+"RTP"
+],
+"explanation": "The X2 interface connects eNodeBs directly for tasks like handover coordination and load management; S1 connects eNodeB to the core. (eNodeB lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "eNodeB connects directly to which of the following?",
+"options": [
+"PGW",
+"MME",
+"UE",
+"HSS"
+],
+"explanation": "eNodeB provides the radio interface and connects directly with UEs over the air. It connects to the core network via S1 interfaces. (eNodeB lecture).",
+"correctAnswer": [2]
+},
+{
+"question": "Who typically assigns the IP address to a UE in LTE?",
+"options": [
+"MME",
+"SGW",
+"PGW",
+"eNodeB"
+],
+"explanation": "The PGW (PDN Gateway) typically allocates the UE's IP address as part of the default bearer setup during attach. (IP Address Allocation lecture).",
+"correctAnswer": [2]
+},
+{
+"question": "Which protocol is commonly used for IP allocation in LTE environments?",
+"options": [
+"FTP",
+"DHCP",
+"HTTP",
+"SNMP"
+],
+"explanation": "DHCP is commonly used in networks for IP address allocation; PGW may coordinate IP assignment during attach (or use internal mechanisms), and DHCP is widely referenced. (IP Address Allocation lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "IP address allocation to a UE typically occurs during which procedure?",
+"options": [
+"Handover",
+"Attach procedure",
+"Detach procedure",
+"Paging"
+],
+"explanation": "IP allocation usually happens during the attach procedure (default bearer setup) when the UE registers with the network. (IP Address Allocation lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "What is an EPS bearer in LTE?",
+"options": [
+"A physical device attached to the UE",
+"A logical channel for user data with specific QoS",
+"A type of SIM card",
+"A security algorithm"
+],
+"explanation": "An EPS bearer is a logical channel between the UE and PDN that carries user data with an associated QoS. (Session Creation and Bearer Setup lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "What best describes the difference between a session and a bearer in LTE?",
+"options": [
+"They are the same thing",
+"Session is about user traffic; bearer is the transport path",
+"Bearer is about user traffic; session is the transport path",
+"Both relate only to voice"
+],
+"explanation": "A session refers to the end-to-end service/traffic context, while a bearer is the specific transport path in the EPC with QoS parameters. (Session Creation and Bearer Setup lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "PDCP sits above which layer in the LTE protocol stack?",
+"options": [
+"MAC",
+"RLC",
+"PHY",
+"NAS"
+],
+"explanation": "PDCP is positioned above RLC in the LTE Layer 2 stack; it provides header compression, ciphering and integrity protection. (PDCP lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "Which header compression technique is used by PDCP?",
+"options": [
+"LZW",
+"ROHC",
+"Huffman",
+"GZIP"
+],
+"explanation": "PDCP uses Robust Header Compression (ROHC) to reduce IP/UDP/RTP header overhead on radio links. (PDCP lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "Which of the following is NOT a function of the PDCP layer?",
+"options": [
+"Header compression",
+"Ciphering",
+"Scheduling",
+"Integrity protection"
+],
+"explanation": "PDCP handles header compression, ciphering and integrity protection. Scheduling is performed at MAC/RLC layers. (PDCP lecture).",
+"correctAnswer": [2]
+},
+{
+"question": "The RLC layer operates in which protocol layer of LTE?",
+"options": [
+"Layer 1",
+"Layer 2",
+"Layer 3",
+"Layer 4"
+],
+"explanation": "RLC (Radio Link Control) is part of Layer 2 (the data link layer) and performs segmentation, reassembly and retransmission functions. (RLC lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "Which RLC mode supports retransmissions for error correction?",
+"options": [
+"TM (Transparent Mode)",
+"UM (Unacknowledged Mode)",
+"AM (Acknowledged Mode)",
+"SM (Synchronized Mode)"
+],
+"explanation": "Acknowledged Mode (AM) provides retransmission and ARQ mechanisms for error correction in RLC. (RLC lecture).",
+"correctAnswer": [2]
+},
+{
+"question": "What is the main function of the RLC layer?",
+"options": [
+"Routing",
+"Segmentation and reassembly",
+"Encryption",
+"Scheduling"
+],
+"explanation": "RLC is responsible for segmentation of higher-layer PDUs into RLC PDUs and reassembly at the receiver, plus retransmissions in AM. (RLC lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "What is the primary responsibility of the MAC layer in LTE?",
+"options": [
+"IP routing",
+"Scheduling and multiplexing",
+"Header compression",
+"Encryption"
+],
+"explanation": "MAC performs scheduling, multiplexing and HARQ interaction with PHY, managing access to radio resources. (MAC lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "Which mechanism in the MAC layer is used for fast error correction and retransmission?",
+"options": [
+"FEC",
+"HARQ",
+"ARQ (only)",
+"CRC-only"
+],
+"explanation": "HARQ (Hybrid Automatic Repeat Request) combines error detection and retransmission with soft combining for fast recovery at MAC/PHY. (MAC lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "The MAC layer corresponds to which OSI model layer?",
+"options": [
+"Physical",
+"Data Link",
+"Network",
+"Transport"
+],
+"explanation": "MAC is part of the Data Link layer (Layer 2) in the OSI model and handles access to the physical medium. (MAC lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "Which modulation scheme is NOT typically used in the LTE PHY layer?",
+"options": [
+"QPSK",
+"16QAM",
+"64QAM",
+"FSK"
+],
+"explanation": "LTE PHY commonly uses QPSK, 16QAM and 64QAM. FSK is not used in standard LTE modulation schemes. (PHY lecture).",
+"correctAnswer": [3]
+},
+{
+"question": "Which multiple-access scheme is used for the LTE uplink?",
+"options": [
+"OFDMA",
+"SC-FDMA",
+"CDMA",
+"TDMA"
+],
+"explanation": "SC-FDMA is used on LTE uplink to provide lower PAPR for UE transmitters; OFDMA is used on downlink. (PHY lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "The PHY layer in LTE corresponds to which OSI layer?",
+"options": [
+"Layer 2",
+"Layer 3",
+"Layer 1",
+"Layer 4"
+],
+"explanation": "PHY implements the physical layer functions and corresponds to OSI Layer 1. (PHY lecture).",
+"correctAnswer": [2]
+},
+{
+"question": "The control plane in LTE is primarily responsible for:",
+"options": [
+"User data transfer",
+"Signaling and session management",
+"IP routing",
+"Only encryption"
+],
+"explanation": "The control plane handles signaling, bearer establishment, mobility and session management, while user-plane handles user data. (Control vs User Plane lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "Which protocol is commonly used for tunneling user-plane data in LTE?",
+"options": [
+"GTP-U",
+"SCTP",
+"RRC",
+"DNS"
+],
+"explanation": "GTP-U (GPRS Tunneling Protocol - User plane) tunnels user data over the core network (e.g., between SGW and PGW). (Control & User Plane lecture).",
+"correctAnswer": [0]
+},
+{
+"question": "Which plane handles bearer establishment and QoS management?",
+"options": [
+"Control plane",
+"User plane",
+"Both equally",
+"Physical plane"
+],
+"explanation": "Bearer establishment and QoS control are control-plane responsibilities (signaling to set up bearers with QoS). (Control vs User Plane lecture).",
+"correctAnswer": [0]
+},
+{
+"question": "What is the first message the UE sends during the LTE attach procedure?",
+"options": [
+"Attach Accept",
+"Attach Complete",
+"Attach Request",
+"Authentication Request"
+],
+"explanation": "The attach begins with the UE sending an Attach Request to the network to start registration and session setup. (Authentication & Attach lecture).",
+"correctAnswer": [2]
+},
+{
+"question": "What is the primary purpose of the LTE attach procedure?",
+"options": [
+"Frequency allocation",
+"Registration and session setup",
+"Paging",
+"SMS delivery"
+],
+"explanation": "Attach registers the UE with the network and triggers default bearer setup and IP allocation for session establishment. (Attach & Security lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "Which authentication protocol is used for mutual authentication in LTE?",
+"options": [
+"EAP",
+"EPS-AKA",
+"PAP",
+"CHAP"
+],
+"explanation": "EPS-AKA (Evolved Packet System Authentication and Key Agreement) provides mutual authentication between UE and network in LTE. (Authentication & Security lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "What role does the HSS play in LTE security?",
+"options": [
+"Assigns IP addresses",
+"Stores subscriber and authentication data",
+"Handles paging",
+"Manages radio resources"
+],
+"explanation": "HSS (Home Subscriber Server) stores subscriber profiles and authentication vectors used by MME for authentication. (Authentication & Security lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "NAS security in LTE primarily protects which plane?",
+"options": [
+"User plane",
+"Control plane",
+"Both planes",
+"Neither plane"
+],
+"explanation": "NAS (Non-Access Stratum) security focuses on protecting control-plane signaling between UE and core (MME). (Authentication & Security lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "What is meant by 'seamless connectivity' in LTE?",
+"options": [
+"Changing SIM cards without reboot",
+"Maintaining a stable connection during movement",
+"Switching devices without logging in",
+"None of the above"
+],
+"explanation": "Seamless connectivity refers to maintaining service continuity (voice/data) while a user moves, typically achieved via handovers and mobility management. (Seamless Connectivity lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "Which EPC component is NOT directly involved in radio mobility management?",
+"options": [
+"eNodeB",
+"MME",
+"PGW",
+"UE"
+],
+"explanation": "PGW handles external PDN access and IP allocation/policy; it is not directly involved in radio-level mobility management (that is eNodeB/MME/SGW roles). (Seamless Connectivity lecture).",
+"correctAnswer": [2]
+},
+{
+"question": "What is a common challenge for maintaining seamless connectivity at very high UE speeds?",
+"options": [
+"Increased handover failure risk",
+"Reduced latency",
+"Improved coverage",
+"Simpler authentication"
+],
+"explanation": "High speeds increase the frequency of handovers and the risk of handover failures, which makes maintaining seamless connectivity more difficult. (Seamless Connectivity lecture).",
+"correctAnswer": [0]
+},
+{
+"question": "An intra-frequency handover in LTE means:",
+"options": [
+"Handover between different RATs",
+"Handover between cells on the same frequency",
+"Handover between different operators",
+"Handover between different continents"
+],
+"explanation": "Intra-frequency handover occurs between cells using the same carrier frequency (within the same RAT). (Handovers lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "Which of the following is an example of an Inter-RAT handover?",
+"options": [
+"LTE to LTE on the same frequency",
+"LTE to GSM",
+"LTE to LTE on a different frequency",
+"LTE to LTE-A"
+],
+"explanation": "Inter-RAT handover refers to handovers between different radio access technologies, e.g., LTE ↔ GSM. (Handovers lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "Which transport protocol is commonly used for signaling on the S1-MME (control) interface?",
+"options": [
+"GTP-U",
+"SCTP",
+"HTTP",
+"FTP"
+],
+"explanation": "S1-MME (control-plane) uses SCTP as the transport protocol for reliable delivery of signaling messages between eNodeB and MME. (eNodeB / EPC lectures).",
+"correctAnswer": [1]
+},
+{
+"question": "Which protocol tunnels user-plane data between SGW and PGW?",
+"options": [
+"GTP-U",
+"SCTP",
+"RRC",
+"ICMP"
+],
+"explanation": "GTP-U is used to carry user-plane packets (tunneled) through the core network, such as between SGW and PGW. (Control & User Plane lecture).",
+"correctAnswer": [0]
+},
+{
+"question": "What is the function of the X2 interface between eNodeBs?",
+"options": [
+"Support handover signaling and coordination between eNodeBs",
+"Connect eNodeB to the PGW",
+"Encrypt user data end-to-end",
+"Perform DHCP for UEs"
+],
+"explanation": "X2 is used for inter-eNodeB signaling—helpful in handover execution, load balancing and resource coordination. (eNodeB lecture).",
+"correctAnswer": [0]
+},
+{
+"question": "What does ROHC stand for (used by PDCP)?",
+"options": [
+"Robust Operational Header Control",
+"Robust Header Compression",
+"Reliable Header Check",
+"Reduced Header Code"
+],
+"explanation": "ROHC stands for Robust Header Compression; it reduces IP header overhead over radio links. (PDCP lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "Which RLC mode is typically used when no retransmission is desired?",
+"options": [
+"AM (Acknowledged Mode)",
+"UM (Unacknowledged Mode)",
+"TM (Transparent Mode)",
+"SM (Sporadic Mode)"
+],
+"explanation": "Unacknowledged Mode (UM) provides no retransmissions and is used for delay-sensitive applications that can tolerate some loss. (RLC lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "Which modulation among the following gives the highest spectral efficiency in LTE?",
+"options": [
+"QPSK",
+"16QAM",
+"64QAM",
+"BPSK"
+],
+"explanation": "64QAM carries more bits per symbol than QPSK or 16QAM, providing higher spectral efficiency when channel conditions allow. (PHY lecture).",
+"correctAnswer": [2]
+},
+{
+"question": "Which multiple-access scheme is used for the downlink in LTE?",
+"options": [
+"OFDMA",
+"SC-FDMA",
+"CDMA",
+"TDMA"
+],
+"explanation": "OFDMA (Orthogonal Frequency Division Multiple Access) is used in LTE downlink to allow flexible subcarrier allocation among UEs. (PHY lecture).",
+"correctAnswer": [0]
+},
+{
+"question": "During a handover, the SGW commonly acts as:",
+"options": [
+"The local mobility anchor for user-plane",
+"The entity that runs EPS-AKA",
+"The element that assigns RLC modes",
+"The UE's SIM card"
+],
+"explanation": "SGW typically acts as the local mobility anchor for the user plane during inter-eNodeB handovers, ensuring continuity of data flows. (EPC lecture).",
+"correctAnswer": [0]
+},
+{
+"question": "Which bearer type is established by default during the LTE attach process?",
+"options": [
+"Default EPS bearer",
+"Dedicated bearer",
+"Emergency bearer only",
+"Signaling-only bearer"
+],
+"explanation": "During attach, a default EPS bearer is established to provide basic IP connectivity; dedicated bearers may be added later for specific QoS. (Attach & Bearer lecture).",
+"correctAnswer": [0]
+},
+{
+"question": "Which entity provides subscriber profile and authentication vectors to the MME?",
+"options": [
+"PGW",
+"HSS",
+"eNodeB",
+"PCRF"
+],
+"explanation": "HSS (Home Subscriber Server) stores subscriber data and provides authentication information to the MME. (Authentication & Security lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "Which of the following best describes HARQ?",
+"options": [
+"A header compression method",
+"A hybrid ARQ mechanism combining error detection and retransmission",
+"An IP routing protocol",
+"A bearer type"
+],
+"explanation": "HARQ combines error detection and retransmission with soft combining at the receiver to improve link reliability and throughput. (MAC lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "Which of these is NOT a role of the eNodeB?",
+"options": [
+"Radio resource management",
+"Signal transmission/reception",
+"IP address allocation for UE",
+"Handover execution coordination"
+],
+"explanation": "eNodeB manages radio resources, executes handovers and handles PHY/MAC functions; IP address allocation is done by the PGW. (eNodeB and IP lecture).",
+"correctAnswer": [2]
+},
+{
+"question": "GTP-U is primarily used for:",
+"options": [
+"Carrying user-plane payloads",
+"Delivering control-plane signaling between eNodeB and MME",
+"Subscriber authentication",
+"Header compression"
+],
+"explanation": "GTP-U is the tunneling protocol used for transporting user-plane packets across the EPC. (Control & User Plane lecture).",
+"correctAnswer": [0]
+},
+{
+"question": "Which element is mainly responsible for policy and charging control in the LTE architecture (PCC framework)?",
+"options": [
+"MME",
+"PCRF",
+"eNodeB",
+"PDCP"
+],
+"explanation": "PCRF (Policy and Charging Rules Function) is responsible for policy and charging decisions in the PCC architecture; it interacts with PGW. (EPC context).",
+"correctAnswer": [1]
+},
+{
+"question": "Which layer handles header compression and integrity protection for control/user data?",
+"options": [
+"RLC",
+"PDCP",
+"MAC",
+"PHY"
+],
+"explanation": "PDCP provides header compression (ROHC), ciphering and integrity protection for data and control-plane PDUs. (PDCP lecture).",
+"correctAnswer": [1]
+},
+{
+"question": "Which component is most directly involved in making handover decisions based on radio measurements?",
+"options": [
+"eNodeB (with X2/S1 support)",
+"PGW",
+"HSS",
+"PCRF"
+],
+"explanation": "eNodeB uses UE measurement reports and coordinates with neighboring eNodeBs (X2) or core (S1) to execute handovers. (Handovers & eNodeB lectures).",
+"correctAnswer": [0]
+}
+
     ],
     passage_based_questions: {
        
