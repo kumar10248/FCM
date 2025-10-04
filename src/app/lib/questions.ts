@@ -6231,497 +6231,377 @@ module7:[
 
     ],
     passage_based_questions: {
-       
   "passage_1": {
     "title": "LTE Network Architecture and EPC Components",
     "passage": "The LTE network architecture consists of two main parts: the E-UTRAN (Evolved Universal Terrestrial Radio Access Network) and the EPC (Evolved Packet Core). The E-UTRAN contains eNodeBs (evolved NodeBs), which are base stations providing radio interface to UEs. The EPC includes several key elements: MME (Mobility Management Entity) handles signaling and control plane functions; SGW (Serving Gateway) routes user data packets; PGW (PDN Gateway) provides connectivity to external networks and assigns IP addresses; and HSS (Home Subscriber Server) stores subscriber information and authentication data. This flat, all-IP architecture eliminates hierarchical elements from 3G, reducing latency.",
     "questions": [
       {
         "question": "Which LTE component is responsible for assigning IP addresses to user equipment?",
-        "options": [
-          "MME",
-          "SGW",
-          "PGW",
-          "eNodeB"
-        ],
-        "explanation": "The PGW (PDN Gateway) assigns IP addresses to UEs and provides connectivity to external packet data networks like the Internet. It acts as the gateway between the LTE network and external networks.",
+        "options": ["MME", "SGW", "PGW", "eNodeB"],
+        "explanation": "The PGW assigns IP addresses and provides connectivity to external packet data networks.",
         "correctAnswer": [2]
       },
       {
         "question": "What does the MME primarily handle in LTE networks?",
-        "options": [
-          "User data routing",
-          "IP address allocation",
-          "Control plane signaling and mobility management",
-          "Radio resource scheduling"
-        ],
-        "explanation": "The MME handles control plane functions including signaling, authentication, tracking area management, bearer establishment, and mobility management. It does not handle user plane data.",
+        "options": ["User data routing", "IP address allocation", "Control plane signaling and mobility management", "Radio resource scheduling"],
+        "explanation": "The MME handles signaling, authentication, and mobility management.",
         "correctAnswer": [2]
       },
       {
         "question": "Which element stores subscriber authentication credentials?",
-        "options": [
-          "MME",
-          "HSS",
-          "SGW",
-          "eNodeB"
-        ],
-        "explanation": "The HSS (Home Subscriber Server) is the master database that stores subscriber information including authentication credentials, authorized services, and QoS profiles.",
+        "options": ["MME", "HSS", "SGW", "eNodeB"],
+        "explanation": "HSS stores subscriber profiles, authentication vectors, and QoS information.",
         "correctAnswer": [1]
       },
       {
         "question": "What is the main advantage of LTE's flat architecture?",
-        "options": [
-          "More network elements for redundancy",
-          "Support for circuit-switched calls",
-          "Reduced latency and simplified topology",
-          "Compatibility with 2G networks"
-        ],
-        "explanation": "The flat architecture eliminates hierarchical elements like RNC from 3G, reducing the number of hops for data and signaling, which significantly reduces latency and simplifies network operations.",
+        "options": ["More network elements", "Circuit-switched support", "Reduced latency and simplified topology", "Backward compatibility with 2G"],
+        "explanation": "Flat architecture removes intermediate nodes like RNC, reducing latency.",
         "correctAnswer": [2]
       },
       {
         "question": "What does E-UTRAN stand for?",
-        "options": [
-          "Enhanced Universal Transmission Radio Access Network",
-          "Evolved Universal Terrestrial Radio Access Network",
-          "Extended Universal Telecommunication Radio Access Network",
-          "Evolved Unified Terminal Radio Access Network"
-        ],
-        "explanation": "E-UTRAN stands for Evolved Universal Terrestrial Radio Access Network and consists of eNodeBs that provide the radio interface between UEs and the core network.",
+        "options": ["Enhanced Universal Transmission Radio Access Network", "Evolved Universal Terrestrial Radio Access Network", "Extended Universal Telecommunication Radio Access Network", "Evolved Unified Terminal Radio Access Network"],
+        "explanation": "E-UTRAN means Evolved Universal Terrestrial Radio Access Network.",
         "correctAnswer": [1]
       }
     ]
   },
+
   "passage_2": {
-    "title": "LTE Protocol Stack and Layer Functions",
-    "passage": "The LTE protocol stack consists of multiple layers, each with specific functions. The Physical (PHY) layer handles modulation, coding, and radio transmission. The MAC (Medium Access Control) layer manages scheduling, multiplexing of logical channels, and HARQ (Hybrid Automatic Repeat Request). The RLC (Radio Link Control) layer provides segmentation, ARQ, and operates in three modes: Transparent (TM), Unacknowledged (UM), and Acknowledged (AM). The PDCP (Packet Data Convergence Protocol) layer performs IP header compression, encryption, and integrity protection. These layers work together to ensure reliable, secure, and efficient data transmission over the radio interface.",
+    "title": "eNodeB and the Radio Interface",
+    "passage": "The eNodeB is the LTE base station responsible for managing the radio interface with the user equipment (UE). It handles radio resource management, scheduling, handover decisions, and HARQ processes. Unlike 3G, where the RNC was a separate entity, LTE integrates these functions directly into the eNodeB. eNodeBs communicate with each other using the X2 interface, which helps in handover and load balancing.",
     "questions": [
       {
-        "question": "Which layer performs IP header compression in LTE?",
-        "options": [
-          "MAC",
-          "RLC",
-          "PDCP",
-          "PHY"
-        ],
-        "explanation": "The PDCP layer performs IP header compression using ROHC (Robust Header Compression), along with encryption and integrity protection for both user and control plane data.",
-        "correctAnswer": [2]
-      },
-      {
-        "question": "What is the primary function of the MAC layer?",
-        "options": [
-          "Encryption and decryption",
-          "Scheduling and HARQ",
-          "Segmentation and ARQ",
-          "Modulation and coding"
-        ],
-        "explanation": "The MAC layer handles scheduling decisions, multiplexing of logical channels onto transport channels, and manages HARQ for fast retransmissions at the physical layer.",
+        "question": "What is the main role of the eNodeB?",
+        "options": ["Packet routing to the Internet", "Managing the radio interface with UE", "Storing subscriber information", "Providing IP addresses"],
+        "explanation": "The eNodeB manages the radio interface, scheduling, and handovers.",
         "correctAnswer": [1]
       },
       {
-        "question": "Which RLC mode provides retransmission capabilities?",
-        "options": [
-          "Transparent Mode (TM)",
-          "Unacknowledged Mode (UM)",
-          "Acknowledged Mode (AM)",
-          "Both UM and AM"
-        ],
-        "explanation": "RLC Acknowledged Mode (AM) provides ARQ (Automatic Repeat Request) for retransmissions of lost packets. Unacknowledged Mode (UM) does not provide retransmissions, and Transparent Mode (TM) provides no RLC functionality.",
-        "correctAnswer": [2]
-      },
-      {
-        "question": "What does HARQ stand for?",
-        "options": [
-          "High Accuracy Request Query",
-          "Hybrid Automatic Repeat Request",
-          "High-speed Adaptive Retransmission Queue",
-          "Hierarchical ARQ"
-        ],
-        "explanation": "HARQ stands for Hybrid Automatic Repeat Request, which combines fast physical layer retransmissions with forward error correction for efficient error recovery.",
+        "question": "Which interface allows direct communication between eNodeBs?",
+        "options": ["S1", "X2", "Uu", "Gn"],
+        "explanation": "The X2 interface connects eNodeBs for handovers and coordination.",
         "correctAnswer": [1]
       },
       {
-        "question": "Which layer handles modulation and coding?",
-        "options": [
-          "PDCP",
-          "RLC",
-          "MAC",
-          "PHY"
-        ],
-        "explanation": "The Physical (PHY) layer handles modulation schemes (QPSK, 16-QAM, 64-QAM), channel coding, OFDM signal generation, and the actual radio transmission and reception.",
-        "correctAnswer": [3]
-      }
-    ]
-  },
-  "passage_3": {
-    "title": "LTE Attach Procedure and Bearer Establishment",
-    "passage": "The LTE attach procedure occurs when a UE powers on and connects to the network. The process involves: UE sends an Attach Request to the MME via eNodeB; MME authenticates the UE using credentials from HSS; MME sends Create Session Request to SGW/PGW; PGW assigns an IP address and establishes a default bearer; the default bearer is an always-on connection with best-effort QoS. Additional dedicated bearers can be established for services requiring specific QoS guarantees. An EPS bearer is the complete end-to-end tunnel from UE to PGW, consisting of concatenated radio bearers (UE-eNodeB), S1 bearers (eNodeB-SGW), and S5/S8 bearers (SGW-PGW).",
-    "questions": [
-      {
-        "question": "When does the LTE attach procedure typically occur?",
-        "options": [
-          "Every time the UE sends data",
-          "When the UE powers on or first connects to the network",
-          "During handover between cells",
-          "When making a voice call"
-        ],
-        "explanation": "The attach procedure occurs when a UE initially powers on and needs to register with the network, authenticate itself, and establish connectivity including obtaining an IP address.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "What type of QoS does a default bearer typically have?",
-        "options": [
-          "Guaranteed bit rate",
-          "Best-effort",
-          "Highest priority",
-          "Voice-optimized"
-        ],
-        "explanation": "The default bearer is established during attach and typically has best-effort QoS with no guaranteed bit rate. It remains active as long as the UE is attached to the network.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "Which entity authenticates the UE during attach?",
-        "options": [
-          "eNodeB",
-          "SGW",
-          "MME using credentials from HSS",
-          "PGW"
-        ],
-        "explanation": "The MME authenticates the UE by using authentication vectors and subscriber credentials obtained from the HSS (Home Subscriber Server).",
-        "correctAnswer": [2]
-      },
-      {
-        "question": "What is an EPS bearer?",
-        "options": [
-          "Only the radio connection between UE and eNodeB",
-          "The connection between SGW and PGW",
-          "An end-to-end logical tunnel from UE to PGW with specific QoS",
-          "A physical cable in the core network"
-        ],
-        "explanation": "An EPS bearer is an end-to-end logical tunnel between the UE and PGW that provides specific QoS treatment. It consists of concatenated radio bearers, S1 bearers, and S5/S8 bearers.",
-        "correctAnswer": [2]
-      },
-      {
-        "question": "When are dedicated bearers established?",
-        "options": [
-          "During initial attach for all users",
-          "When specific QoS guarantees are needed",
-          "Only for voice calls",
-          "Never, only default bearers exist"
-        ],
-        "explanation": "Dedicated bearers are established when specific services require guaranteed QoS parameters, such as VoIP calls or video streaming that need guaranteed bandwidth or low latency.",
-        "correctAnswer": [1]
-      }
-    ]
-  },
-  "passage_4": {
-    "title": "LTE Handover Procedures",
-    "passage": "LTE supports different types of handovers to maintain connectivity during mobility. X2-based handover occurs between eNodeBs with direct X2 interface, providing fast handover with minimal core network involvement. S1-based handover involves the MME and is used when no X2 interface exists. During handover execution, the source eNodeB forwards downlink data to the target eNodeB to minimize packet loss. After successful handover, a Path Switch procedure updates the user plane path from SGW to the new eNodeB. Intra-LTE handovers maintain the UE's IP address and EPS bearer continuity. Inter-RAT handovers between LTE and other technologies (3G, 2G) are also supported.",
-    "questions": [
-      {
-        "question": "What is the main advantage of X2-based handover?",
-        "options": [
-          "It changes the UE's IP address",
-          "It's faster with minimal core network involvement",
-          "It requires MME participation",
-          "It only works for voice calls"
-        ],
-        "explanation": "X2-based handover is faster because eNodeBs communicate directly via the X2 interface without involving the MME, reducing latency and signaling overhead during the handover process.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "When is S1-based handover used?",
-        "options": [
-          "Always, for all handovers",
-          "When eNodeBs don't have an X2 interface",
-          "Only during attach procedure",
-          "For international roaming only"
-        ],
-        "explanation": "S1-based handover is used when there is no direct X2 interface between the source and target eNodeBs, requiring the MME to coordinate the handover via S1 interfaces.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "Why is data forwarding performed during handover?",
-        "options": [
-          "To encrypt the data",
-          "To minimize packet loss during transition",
-          "To compress data",
-          "To change IP address"
-        ],
-        "explanation": "Data forwarding from source to target eNodeB ensures that downlink packets arriving during the handover execution phase are not lost, maintaining service continuity.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "What happens to the UE's IP address during intra-LTE handover?",
-        "options": [
-          "It changes to match the new cell",
-          "It is maintained/preserved",
-          "It is temporarily suspended",
-          "It depends on the operator"
-        ],
-        "explanation": "During intra-LTE handover, the UE's IP address is preserved to maintain session continuity. The EPS bearer is also maintained, only the radio and S1 connections are switched to the new eNodeB.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "What is the purpose of the Path Switch procedure?",
-        "options": [
-          "To authenticate the UE",
-          "To update the user plane path from SGW to the new eNodeB",
-          "To assign a new IP address",
-          "To release the old bearer"
-        ],
-        "explanation": "The Path Switch procedure, initiated by the target eNodeB, updates the SGW so that downlink user plane traffic is routed to the new eNodeB instead of the old one.",
-        "correctAnswer": [1]
-      }
-    ]
-  },
-  "passage_5": {
-    "title": "LTE Radio Resource Management and OFDMA",
-    "passage": "LTE uses OFDMA (Orthogonal Frequency Division Multiple Access) for downlink and SC-FDMA for uplink. In OFDMA, the available spectrum is divided into orthogonal subcarriers spaced 15 kHz apart. A resource block (RB) consists of 12 subcarriers (180 kHz) in frequency and one slot (0.5 ms) in time. Resource allocation is dynamic, controlled by the eNodeB scheduler via PDCCH (Physical Downlink Control Channel). Different modulation schemes (QPSK, 16-QAM, 64-QAM, 256-QAM) are used based on channel conditions. MIMO (Multiple Input Multiple Output) technology uses multiple antennas to increase capacity and spectral efficiency through spatial multiplexing.",
-    "questions": [
-      {
-        "question": "What is the subcarrier spacing in LTE OFDMA?",
-        "options": [
-          "7.5 kHz",
-          "15 kHz",
-          "30 kHz",
-          "60 kHz"
-        ],
-        "explanation": "LTE uses 15 kHz subcarrier spacing for OFDMA in the downlink. This spacing provides a balance between spectral efficiency and robustness to frequency errors and Doppler spread.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "How many subcarriers make up one resource block?",
-        "options": [
-          "6",
-          "12",
-          "24",
-          "48"
-        ],
-        "explanation": "One resource block in LTE consists of 12 subcarriers in the frequency domain (12 × 15 kHz = 180 kHz) and one slot (0.5 ms) in the time domain.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "Which channel carries scheduling information?",
-        "options": [
-          "PDSCH",
-          "PUSCH",
-          "PDCCH",
-          "PBCH"
-        ],
-        "explanation": "The PDCCH (Physical Downlink Control Channel) carries downlink control information including scheduling grants and resource allocations for both uplink and downlink transmissions.",
-        "correctAnswer": [2]
-      },
-      {
-        "question": "What does MIMO technology provide?",
-        "options": [
-          "Better encryption",
-          "Lower power consumption",
-          "Increased capacity through spatial multiplexing",
-          "Longer battery life"
-        ],
-        "explanation": "MIMO uses multiple antennas at transmitter and receiver to create multiple spatial streams, increasing capacity and data rates through spatial multiplexing, and improving reliability through spatial diversity.",
-        "correctAnswer": [2]
-      },
-      {
-        "question": "Which modulation scheme provides the highest data rate?",
-        "options": [
-          "QPSK",
-          "16-QAM",
-          "64-QAM",
-          "256-QAM"
-        ],
-        "explanation": "256-QAM provides the highest data rate among these options, transmitting 8 bits per symbol, but requires excellent channel conditions. It's used in LTE-Advanced and newer releases.",
-        "correctAnswer": [3]
-      }
-    ]
-  },
-  "passage_6": {
-    "title": "LTE Mobility Management and State Transitions",
-    "passage": "LTE defines two main states for UE mobility: EMM (EPS Mobility Management) states and ECM (EPS Connection Management) states. EMM states are EMM-Registered (UE is known to network) and EMM-Deregistered (UE is not registered). ECM states are ECM-Connected (signaling connection exists) and ECM-Idle (no signaling connection). A UE in ECM-Idle state monitors a Tracking Area List (TAI list). When moving to a new tracking area not in its list, the UE performs a Tracking Area Update (TAU). After inactivity, the network releases radio resources, transitioning the UE from ECM-Connected to ECM-Idle to conserve resources while maintaining registration.",
-    "questions": [
-      {
-        "question": "What triggers a Tracking Area Update?",
-        "options": [
-          "Moving to any new cell",
-          "Moving to a tracking area not in the UE's TAI list",
-          "Every 5 minutes automatically",
-          "Only when data needs to be sent"
-        ],
-        "explanation": "A TAU is triggered when an idle-mode UE moves to a cell belonging to a tracking area that is not in its current TAI list, allowing the network to update the UE's location for paging.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "In which state does a UE have an active signaling connection?",
-        "options": [
-          "EMM-Deregistered",
-          "ECM-Idle",
-          "ECM-Connected",
-          "EMM-Detached"
-        ],
-        "explanation": "In ECM-Connected state, the UE has an active RRC (Radio Resource Control) connection and S1 signaling connection with the network, allowing data transmission and reception.",
-        "correctAnswer": [2]
-      },
-      {
-        "question": "What happens after prolonged inactivity in ECM-Connected state?",
-        "options": [
-          "UE detaches from network",
-          "Transitions to ECM-Idle to conserve resources",
-          "Remains connected indefinitely",
-          "IP address is changed"
-        ],
-        "explanation": "After an inactivity timer expires, the network releases the radio and S1 connections, transitioning the UE to ECM-Idle state while remaining registered (EMM-Registered) to conserve network resources.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "What is a Tracking Area List (TAI list)?",
-        "options": [
-          "List of all cells in the network",
-          "List of tracking areas where UE can move without updating",
-          "List of neighboring eNodeBs",
-          "List of available frequencies"
-        ],
-        "explanation": "A TAI list is a set of tracking area identities provided to the UE by the MME. The UE can move within these tracking areas while in idle mode without needing to perform a TAU.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "When a UE is in ECM-Idle state, how does the network locate it for incoming data?",
-        "options": [
-          "Sends paging in all tracking areas in the UE's TAI list",
-          "Knows exact cell location",
-          "Cannot deliver data until UE initiates contact",
-          "Uses GPS tracking"
-        ],
-        "explanation": "When downlink data arrives for a UE in ECM-Idle state, the MME initiates paging in all cells belonging to the tracking areas in the UE's TAI list to locate and establish connection with the UE.",
+        "question": "What function was moved from the RNC to the eNodeB in LTE?",
+        "options": ["Handover control", "IP address assignment", "Authentication", "Subscriber storage"],
+        "explanation": "In LTE, the RNC's control tasks like handover are integrated into the eNodeB.",
         "correctAnswer": [0]
-      }
-    ]
-  },
-  "passage_7": {
-    "title": "LTE Security Architecture",
-    "passage": "LTE implements comprehensive security through multiple mechanisms. Authentication uses challenge-response based on symmetric key cryptography with the secret key K stored in USIM and HSS. After successful authentication, a base key Kasme is derived from which all other keys are generated. Encryption protects both user plane data and control plane signaling on the radio interface. Integrity protection is applied to control plane signaling to detect unauthorized modifications. The USIM card contains a processor that performs authentication computations, ensuring the secret key never leaves the card. Identity confidentiality is achieved using temporary identifiers (GUTI, TMSI) instead of permanent IMSI in radio transmissions.",
-    "questions": [
+      },
       {
-        "question": "Where is the secret key K permanently stored?",
-        "options": [
-          "In the UE's memory",
-          "In the USIM card and HSS",
-          "In the eNodeB",
-          "In the MME"
-        ],
-        "explanation": "The secret key K is permanently stored in two secure locations: the USIM card (in the UE) and the HSS (in the core network). It never leaves these secure environments.",
+        "question": "Which process is related to error correction in eNodeB?",
+        "options": ["ROHC", "HARQ", "ARQ only", "CRC"],
+        "explanation": "eNodeB implements HARQ for fast retransmissions.",
         "correctAnswer": [1]
       },
       {
-        "question": "What is Kasme used for?",
-        "options": [
-          "Direct encryption of user data",
-          "Base key from which other security keys are derived",
-          "Authentication with the HSS",
-          "IP address encryption"
-        ],
-        "explanation": "Kasme is the base security key established between UE and MME after successful authentication. All other keys for encryption and integrity protection are derived from Kasme using key derivation functions.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "What type of data receives integrity protection in LTE?",
-        "options": [
-          "User plane data only",
-          "Control plane signaling only",
-          "Both user and control plane",
-          "Neither, only encryption is used"
-        ],
-        "explanation": "Integrity protection in LTE is applied to control plane signaling (RRC and NAS messages) to detect unauthorized modifications. User plane data receives encryption but not integrity protection due to overhead concerns.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "Why does the USIM card contain a processor?",
-        "options": [
-          "To speed up data transmission",
-          "To perform authentication computations without exposing the secret key",
-          "To store more phone numbers",
-          "To connect to Wi-Fi"
-        ],
-        "explanation": "The USIM processor performs authentication algorithm computations (f1-f5 functions) internally, ensuring the secret key K never leaves the secure environment of the card, even if the device is compromised.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "What provides identity confidentiality in LTE?",
-        "options": [
-          "Using GPS coordinates",
-          "Using temporary identifiers like GUTI instead of IMSI",
-          "Encrypting the phone number",
-          "Using VPN tunnels"
-        ],
-        "explanation": "Identity confidentiality is achieved by using temporary identifiers (GUTI - Globally Unique Temporary Identity, TMSI - Temporary Mobile Subscriber Identity) instead of the permanent IMSI in radio transmissions, protecting subscriber privacy.",
+        "question": "The eNodeB belongs to which LTE subsystem?",
+        "options": ["EPC", "E-UTRAN", "OSS", "IMS"],
+        "explanation": "eNodeB is part of E-UTRAN, the radio access network.",
         "correctAnswer": [1]
       }
     ]
   },
-  "passage_8": {
-    "title": "LTE QoS and Bearer Management",
-    "passage": "LTE provides Quality of Service (QoS) through the bearer concept and QoS Class Identifiers (QCI). QCI is a scalar (1-9 for standardized values) defining bearer characteristics: resource type (GBR - Guaranteed Bit Rate or non-GBR), priority level, packet delay budget, and acceptable packet error loss rate. Default bearers are non-GBR with best-effort service. Dedicated bearers can be GBR or non-GBR and are established for specific services requiring QoS guarantees. Each bearer has associated QoS parameters enforced by network elements. Traffic Flow Templates (TFT) map IP flows to appropriate bearers. The PCRF (Policy and Charging Rules Function) provides policy control for dynamic bearer management.",
+
+  "passage_3": {
+    "title": "LTE Protocol Stack",
+    "passage": "The LTE protocol stack includes multiple layers. The PHY layer handles modulation and coding. The MAC layer manages scheduling and HARQ. The RLC layer ensures segmentation and retransmission. The PDCP layer performs header compression, ciphering, and integrity protection. Above these, the RRC protocol manages connection setup and handovers, while NAS messages handle mobility and session management with the core.",
     "questions": [
       {
-        "question": "What does QCI stand for?",
-        "options": [
-          "Quality Control Indicator",
-          "QoS Class Identifier",
-          "Quick Connection Interface",
-          "Queue Control Index"
-        ],
-        "explanation": "QCI stands for QoS Class Identifier, a scalar value that defines QoS characteristics of a bearer including priority, delay budget, and acceptable packet loss rate.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "What is a GBR bearer?",
-        "options": [
-          "A bearer with no guaranteed bandwidth",
-          "A bearer with Guaranteed Bit Rate",
-          "A bearer only for voice calls",
-          "A bearer that works globally"
-        ],
-        "explanation": "GBR (Guaranteed Bit Rate) bearer provides dedicated network resources with guaranteed bandwidth, typically used for real-time services like VoIP or video streaming that require consistent data rates.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "What is the typical resource type for a default bearer?",
-        "options": [
-          "GBR",
-          "non-GBR",
-          "Variable GBR",
-          "Priority GBR"
-        ],
-        "explanation": "Default bearers are typically non-GBR with best-effort QoS. They don't guarantee specific bit rates but share available network resources among users.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "What is the function of a Traffic Flow Template (TFT)?",
-        "options": [
-          "To encrypt traffic",
-          "To map IP flows to appropriate bearers",
-          "To compress data packets",
-          "To schedule radio resources"
-        ],
-        "explanation": "A TFT (Traffic Flow Template) consists of packet filters that map specific IP flows (based on source/destination IP, ports, protocol) to the appropriate EPS bearer with the required QoS characteristics.",
-        "correctAnswer": [1]
-      },
-      {
-        "question": "Which entity provides policy control for bearer management?",
-        "options": [
-          "eNodeB",
-          "MME",
-          "PCRF",
-          "HSS"
-        ],
-        "explanation": "The PCRF (Policy and Charging Rules Function) provides dynamic policy control, determining QoS rules and charging policies for bearer establishment and modification based on operator policies and subscriber profiles.",
+        "question": "Which LTE layer handles header compression?",
+        "options": ["MAC", "RLC", "PDCP", "PHY"],
+        "explanation": "The PDCP layer provides header compression using ROHC.",
         "correctAnswer": [2]
+      },
+      {
+        "question": "Which layer performs scheduling in LTE?",
+        "options": ["PHY", "MAC", "RLC", "NAS"],
+        "explanation": "The MAC layer handles scheduling and multiplexing.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "What is the role of RLC in LTE?",
+        "options": ["Handover signaling", "Segmentation and reassembly", "Ciphering", "Radio frequency allocation"],
+        "explanation": "RLC segments and reassembles packets, and handles retransmissions in AM mode.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which protocol manages UE connection setup and handover?",
+        "options": ["RRC", "PDCP", "SCTP", "HARQ"],
+        "explanation": "RRC handles signaling related to connection management and handover.",
+        "correctAnswer": [0]
+      },
+      {
+        "question": "Which layer is directly above PHY?",
+        "options": ["RLC", "MAC", "PDCP", "RRC"],
+        "explanation": "The MAC layer sits directly above PHY in LTE.",
+        "correctAnswer": [1]
+      }
+    ]
+  },
+
+  "passage_4": {
+    "title": "IP Address Allocation in LTE",
+    "passage": "In LTE, IP addresses for UEs are typically allocated by the PGW (PDN Gateway). This allocation usually occurs during the attach procedure when a default bearer is created. The PGW may use DHCP or internal mechanisms to assign IP addresses. The assigned IP allows the UE to communicate with external networks such as the Internet.",
+    "questions": [
+      {
+        "question": "Which entity assigns IP addresses to UEs?",
+        "options": ["MME", "SGW", "PGW", "eNodeB"],
+        "explanation": "PGW provides IP addresses to UEs during attach.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "When does IP allocation usually occur?",
+        "options": ["Detach procedure", "Attach procedure", "Paging", "Handover"],
+        "explanation": "IP allocation occurs during attach when the default bearer is set up.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which protocol is often used for IP allocation?",
+        "options": ["DHCP", "FTP", "SNMP", "RTP"],
+        "explanation": "DHCP is commonly used for IP assignment in LTE.",
+        "correctAnswer": [0]
+      },
+      {
+        "question": "The default bearer is created between which two points?",
+        "options": ["UE and PGW", "UE and eNodeB", "SGW and MME", "UE and HSS"],
+        "explanation": "The default bearer connects UE to the PGW for IP services.",
+        "correctAnswer": [0]
+      },
+      {
+        "question": "Which network allows UEs to access the Internet?",
+        "options": ["E-UTRAN", "EPC", "IMS", "NG-RAN"],
+        "explanation": "The EPC, through PGW, connects UEs to external networks.",
+        "correctAnswer": [1]
+      }
+    ]
+  },
+
+  "passage_5": {
+    "title": "LTE Bearers and QoS",
+    "passage": "In LTE, bearers are logical paths that carry data with specific QoS attributes. A default bearer is always established during attach, providing best-effort service. Dedicated bearers can be created for services that require specific QoS, such as low latency or guaranteed bit rate. The MME and PCRF play key roles in bearer setup and QoS enforcement.",
+    "questions": [
+      {
+        "question": "What is a bearer in LTE?",
+        "options": ["Physical channel", "Logical path with QoS attributes", "SIM card function", "A subscriber identity"],
+        "explanation": "A bearer is a logical channel that provides a data path with defined QoS.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which bearer is established during attach?",
+        "options": ["Dedicated bearer", "Default bearer", "Emergency bearer", "QoS bearer"],
+        "explanation": "The default bearer is created during attach for basic connectivity.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which element enforces QoS policies?",
+        "options": ["PGW", "PCRF", "eNodeB", "HSS"],
+        "explanation": "PCRF ensures that QoS rules are applied in the core.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which service would likely require a dedicated bearer?",
+        "options": ["Email", "Web browsing", "VoIP", "SMS"],
+        "explanation": "VoIP requires a dedicated bearer for low latency.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "What does QoS stand for?",
+        "options": ["Quality of Signal", "Quality of Service", "Quantity of Subscribers", "Queue of Sessions"],
+        "explanation": "QoS stands for Quality of Service, defining performance attributes.",
+        "correctAnswer": [1]
+      }
+    ]
+  },
+
+  "passage_6": {
+    "title": "PDCP Layer Functions",
+    "passage": "The PDCP layer provides key functions in LTE such as header compression using ROHC, ciphering for data confidentiality, and integrity protection for signaling messages. It sits above the RLC layer and works for both control-plane and user-plane data.",
+    "questions": [
+      {
+        "question": "Which compression method is used by PDCP?",
+        "options": ["Huffman", "ROHC", "LZW", "ZIP"],
+        "explanation": "PDCP uses ROHC for header compression.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which PDCP function ensures data confidentiality?",
+        "options": ["Segmentation", "Ciphering", "Integrity protection", "Scheduling"],
+        "explanation": "Ciphering secures data confidentiality in PDCP.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which function applies only to control-plane messages?",
+        "options": ["Header compression", "Integrity protection", "Ciphering", "Segmentation"],
+        "explanation": "Integrity protection applies to signaling/control messages.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Above which layer does PDCP sit?",
+        "options": ["MAC", "PHY", "RLC", "RRC"],
+        "explanation": "PDCP sits above RLC in the protocol stack.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "Which plane does PDCP serve?",
+        "options": ["Control plane only", "User plane only", "Both user and control planes", "Neither plane"],
+        "explanation": "PDCP serves both user and control planes.",
+        "correctAnswer": [2]
+      }
+    ]
+  },
+
+  "passage_7": {
+    "title": "RLC Modes",
+    "passage": "The RLC (Radio Link Control) layer supports three operation modes: Transparent Mode (TM), Unacknowledged Mode (UM), and Acknowledged Mode (AM). TM is used for control messages, UM is used for real-time services where retransmission is not desired, and AM supports retransmissions for reliable data delivery.",
+    "questions": [
+      {
+        "question": "Which RLC mode supports retransmissions?",
+        "options": ["TM", "UM", "AM", "SM"],
+        "explanation": "Acknowledged Mode (AM) provides retransmissions.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "Which RLC mode is used for real-time services?",
+        "options": ["TM", "UM", "AM", "RM"],
+        "explanation": "Unacknowledged Mode (UM) is used for real-time services like voice.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which mode is typically used for control messages?",
+        "options": ["UM", "TM", "AM", "DM"],
+        "explanation": "Transparent Mode (TM) is used for control-plane signaling.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "What is the main job of the RLC layer?",
+        "options": ["Scheduling", "Segmentation and reassembly", "Ciphering", "Header compression"],
+        "explanation": "RLC handles segmentation and reassembly of PDUs.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which higher layer sits directly above RLC?",
+        "options": ["MAC", "PHY", "PDCP", "RRC"],
+        "explanation": "PDCP sits above RLC in LTE.",
+        "correctAnswer": [2]
+      }
+    ]
+  },
+
+  "passage_8": {
+    "title": "MAC Layer Responsibilities",
+    "passage": "The MAC (Medium Access Control) layer is responsible for multiplexing data from higher layers, scheduling, and managing retransmissions using HARQ. It interacts closely with PHY to transmit data and ensures efficient resource usage in LTE.",
+    "questions": [
+      {
+        "question": "What is a key MAC responsibility?",
+        "options": ["Header compression", "Scheduling and multiplexing", "Authentication", "IP allocation"],
+        "explanation": "MAC manages scheduling and multiplexing of radio resources.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which error control method is handled by MAC?",
+        "options": ["CRC only", "ARQ only", "HARQ", "None"],
+        "explanation": "MAC implements HARQ for retransmissions.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "MAC corresponds to which OSI layer?",
+        "options": ["Physical", "Data Link", "Network", "Transport"],
+        "explanation": "MAC belongs to the Data Link layer.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which layer does MAC interact directly with below?",
+        "options": ["PDCP", "PHY", "RRC", "NAS"],
+        "explanation": "MAC works with PHY for radio transmission.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which function is NOT handled by MAC?",
+        "options": ["Scheduling", "Multiplexing", "Ciphering", "HARQ"],
+        "explanation": "Ciphering is handled by PDCP, not MAC.",
+        "correctAnswer": [2]
+      }
+    ]
+  },
+
+  "passage_9": {
+    "title": "LTE PHY Layer",
+    "passage": "The physical layer of LTE is responsible for modulation, coding, MIMO, and OFDM-based transmission. LTE uses OFDMA for downlink and SC-FDMA for uplink to improve efficiency and reduce power consumption. Modulation schemes include QPSK, 16QAM, and 64QAM.",
+    "questions": [
+      {
+        "question": "Which scheme is used in LTE uplink?",
+        "options": ["OFDMA", "SC-FDMA", "CDMA", "TDMA"],
+        "explanation": "LTE uplink uses SC-FDMA to reduce power usage.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which modulation is NOT used in LTE?",
+        "options": ["QPSK", "16QAM", "64QAM", "FSK"],
+        "explanation": "FSK is not part of LTE modulation.",
+        "correctAnswer": [3]
+      },
+      {
+        "question": "What does LTE use for downlink multiple access?",
+        "options": ["CDMA", "TDMA", "OFDMA", "SC-FDMA"],
+        "explanation": "OFDMA is used in LTE downlink.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "Which OSI layer corresponds to PHY?",
+        "options": ["Layer 1", "Layer 2", "Layer 3", "Layer 4"],
+        "explanation": "PHY is OSI Layer 1 (physical).",
+        "correctAnswer": [0]
+      },
+      {
+        "question": "Which modulation provides highest spectral efficiency?",
+        "options": ["QPSK", "16QAM", "64QAM", "BPSK"],
+        "explanation": "64QAM carries more bits per symbol, providing high efficiency.",
+        "correctAnswer": [2]
+      }
+    ]
+  },
+
+  "passage_10": {
+    "title": "Authentication and Security in LTE",
+    "passage": "LTE ensures secure communication using EPS-AKA for mutual authentication between UE and network. The HSS provides authentication vectors to the MME. Security includes ciphering for confidentiality and integrity protection for signaling. NAS security applies to control-plane, while AS security applies to radio access signaling and data.",
+    "questions": [
+      {
+        "question": "Which protocol is used for mutual authentication?",
+        "options": ["PAP", "EPS-AKA", "CHAP", "EAP-TLS"],
+        "explanation": "EPS-AKA provides mutual authentication in LTE.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which entity provides authentication vectors?",
+        "options": ["PGW", "MME", "HSS", "eNodeB"],
+        "explanation": "HSS provides authentication vectors to MME.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "Which type of security protects control-plane messages?",
+        "options": ["AS security", "NAS security", "PDCP security", "HARQ"],
+        "explanation": "NAS security protects signaling/control messages.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "What does ciphering ensure?",
+        "options": ["Integrity", "Confidentiality", "Authentication", "QoS"],
+        "explanation": "Ciphering provides data confidentiality.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which type of security applies to signaling over the radio interface?",
+        "options": ["NAS security", "AS security", "PCRF security", "Bearer security"],
+        "explanation": "AS security protects access stratum signaling and user data.",
+        "correctAnswer": [1]
       }
     ]
   }
+}
 
-  },
   },
   unit3: {
     // Placeholder - copy of unit1 for now
