@@ -6598,7 +6598,611 @@ module7:[
 ],
 "explanation": "eNodeB uses UE measurement reports and coordinates with neighboring eNodeBs (X2) or core (S1) to execute handovers. (Handovers & eNodeB lectures).",
 "correctAnswer": [0]
+},
+{
+"question": "In 3G, which technology was used mainly in Europe and Asia under UMTS?",
+"options": ["CDMA2000", "LTE", "WCDMA", "WiMAX"],
+"explanation": "WCDMA (Wideband Code Division Multiple Access) was adopted as the radio access technology for UMTS networks, especially in Europe and Asia.",
+"correctAnswer": [2]
+},
+{
+"question": "Typical latency of a 3G network is:",
+"options": ["Less than 20 ms", "100–500 ms", "10–50 ms", "More than 1 second"],
+"explanation": "3G networks have high latency compared to 4G, typically ranging from 100 ms to 500 ms.",
+"correctAnswer": [1]
+},
+{
+"question": "Main limitation of 3G networks compared to 4G:",
+"options": ["Lack of multimedia support", "Low speed and high latency", "Absence of packet switching", "Incompatibility with smartphones"],
+"explanation": "3G networks offered slower data rates and higher latency than 4G, making them less suitable for modern multimedia applications.",
+"correctAnswer": [1]
+},
+{
+"question": "4G was introduced to:",
+"options": ["Support voice-only communication", "Provide higher data rates and low latency", "Replace Wi-Fi", "Eliminate IP networks"],
+"explanation": "4G’s primary goal was to achieve faster data speeds and lower latency using an all-IP architecture.",
+"correctAnswer": [1]
+},
+{
+"question": "Dominant 4G technology worldwide:",
+"options": ["WiMAX", "LTE", "GSM", "EDGE"],
+"explanation": "LTE (Long Term Evolution) became the most widely adopted 4G technology globally.",
+"correctAnswer": [1]
+},
+{
+"question": "OFDMA in LTE is used for:",
+"options": ["Error correction", "Channel coding", "Efficient use of spectrum", "Multiplexing users in time domain"],
+"explanation": "OFDMA (Orthogonal Frequency Division Multiple Access) divides the spectrum efficiently among multiple users by assigning subcarriers.",
+"correctAnswer": [2]
+},
+{
+"question": "Technology that uses multiple antennas to improve capacity:",
+"options": ["IMS", "OFDMA", "MIMO", "EPC"],
+"explanation": "MIMO (Multiple Input Multiple Output) increases throughput and reliability by using multiple transmit and receive antennas.",
+"correctAnswer": [2]
+},
+{
+"question": "The Evolved Packet Core (EPC) handles:",
+"options": ["Only user plane", "Both control and user planes", "Only signaling", "Only IP address assignment"],
+"explanation": "EPC supports both control and user planes, enabling data transfer and signaling in LTE networks.",
+"correctAnswer": [1]
+},
+{
+"question": "eNodeB in LTE replaces:",
+"options": ["NodeB only", "RNC only", "Both NodeB and RNC", "SGW and PGW"],
+"explanation": "eNodeB integrates the functions of NodeB and RNC, simplifying LTE’s flat architecture.",
+"correctAnswer": [2]
+},
+{
+"question": "In LTE, IP address is assigned by:",
+"options": ["MME", "HSS", "PGW", "eNodeB"],
+"explanation": "The Packet Gateway (PGW) allocates the IP address to user equipment during attach.",
+"correctAnswer": [2]
+},
+{
+"question": "Intra-RAT handover occurs between:",
+"options": ["LTE and 3G", "LTE and WiMAX", "LTE to LTE", "LTE to GSM"],
+"explanation": "Intra-RAT handover happens within the same radio access technology, such as LTE-to-LTE.",
+"correctAnswer": [2]
+},
+{
+"question": "Interface used for handover signaling between eNodeBs:",
+"options": ["S1", "X2", "Uu", "Gn"],
+"explanation": "The X2 interface connects eNodeBs and carries signaling during handover within LTE.",
+"correctAnswer": [1]
+},
+{
+"question": "Purpose of Attach Procedure in LTE:",
+"options": ["Disconnect a device", "Register UE with the network", "Restart base station", "Allocate bearer to MME only"],
+"explanation": "The Attach Procedure allows a UE to register and connect with the LTE network for service.",
+"correctAnswer": [1]
+},
+{
+"question": "Default bearer in LTE provides:",
+"options": ["Dedicated high QoS", "Always-on IP connectivity", "Temporary data connection", "Non-IP signaling"],
+"explanation": "The default bearer gives continuous, always-on IP connectivity to the UE after attach.",
+"correctAnswer": [1]
+},
+{
+"question": "Protocol layer responsible for header compression and security:",
+"options": ["MAC", "PDCP", "RLC", "PHY"],
+"explanation": "The PDCP layer performs header compression, ciphering, and integrity protection.",
+"correctAnswer": [1]
+},
+{
+"question": "RLC layer mainly ensures:",
+"options": ["Data integrity and reliability", "Header compression", "Multiplexing", "Resource allocation"],
+"explanation": "The RLC (Radio Link Control) layer provides reliable data transfer through segmentation and retransmission.",
+"correctAnswer": [0]
+},
+{
+"question": "MAC layer handles:",
+"options": ["Scheduling, multiplexing, and error recovery", "Radio signal conversion", "Authentication", "Bearer setup"],
+"explanation": "The MAC (Medium Access Control) layer manages resource scheduling, multiplexing, and retransmissions.",
+"correctAnswer": [0]
+},
+{
+"question": "Lowest layer in LTE protocol stack:",
+"options": ["PDCP", "MAC", "RLC", "PHY"],
+"explanation": "The Physical (PHY) layer is the lowest layer, responsible for radio transmission and reception.",
+"correctAnswer": [3]
+},
+{
+"question": "Control Plane in LTE carries:",
+"options": ["User data", "Signaling messages", "Multimedia traffic", "Error correction codes"],
+"explanation": "The Control Plane handles signaling information between UE and the network.",
+"correctAnswer": [1]
+},
+{
+"question": "User Plane in LTE carries:",
+"options": ["Authentication messages", "Handover signaling", "Voice, video, and internet traffic", "Control signaling"],
+"explanation": "The User Plane transports actual user data such as voice, video, and internet packets.",
+"correctAnswer": [2]
+},
+{
+"question": "Latency of 4G is approximately:",
+"options": ["100–200 ms", "Less than 50 ms", "1–2 seconds", "75–150 ms"],
+"explanation": "4G networks achieve very low latency, typically below 50 ms.",
+"correctAnswer": [1]
+},
+{
+"question": "Speed of 4G in mobile environment:",
+"options": ["Up to 2 Mbps", "Up to 10 Mbps", "Up to 100 Mbps", "Up to 1 Gbps"],
+"explanation": "In mobile scenarios, 4G offers speeds up to about 100 Mbps.",
+"correctAnswer": [2]
+},
+{
+"question": "Speed of 4G in stationary environment:",
+"options": ["Up to 10 Mbps", "Up to 100 Mbps", "Up to 1 Gbps", "Up to 5 Gbps"],
+"explanation": "Under stationary or low-mobility conditions, 4G can reach speeds up to 1 Gbps.",
+"correctAnswer": [2]
+},
+{
+"question": "Network type used in 4G:",
+"options": ["Hybrid (Circuit + Packet)", "Circuit-switched", "All-IP", "Non-IP"],
+"explanation": "4G networks are all-IP, meaning all communications—voice and data—use Internet Protocol.",
+"correctAnswer": [2]
+},
+{
+"question": "Bearer responsible for special QoS like VoIP:",
+"options": ["Default bearer", "Dedicated bearer", "Dynamic bearer", "Static bearer"],
+"explanation": "A dedicated bearer is established to provide specific QoS parameters for services such as VoIP.",
+"correctAnswer": [1]
 }
+,
+{
+"question": "Bearer created automatically during attach procedure:",
+"options": ["Default bearer", "Dedicated bearer", "Temporary bearer", "Control bearer"],
+"explanation": "The default bearer is automatically created during the attach procedure to provide basic IP connectivity.",
+"correctAnswer": [0]
+},
+{
+"question": "Layer managing ciphering and integrity protection:",
+"options": ["MAC", "PDCP", "PHY", "RLC"],
+"explanation": "PDCP layer provides ciphering and integrity protection for both control and user plane data.",
+"correctAnswer": [1]
+},
+{
+"question": "Which entity authenticates and manages mobility?",
+"options": ["eNodeB", "MME", "PGW", "SGW"],
+"explanation": "The MME (Mobility Management Entity) handles user authentication and mobility management in LTE.",
+"correctAnswer": [1]
+},
+{
+"question": "Dynamic IP in LTE is:",
+"options": ["Assigned permanently", "Assigned per session", "Static allocation", "Shared between users"],
+"explanation": "Dynamic IP addresses are allocated per session and released after disconnection.",
+"correctAnswer": [1]
+},
+{
+"question": "Static IP in LTE is:",
+"options": ["For normal users", "For special users", "Randomly assigned", "Deprecated"],
+"explanation": "Static IP addresses are reserved for special users or enterprise applications requiring fixed IPs.",
+"correctAnswer": [1]
+},
+{
+"question": "Inter-RAT handover occurs between:",
+"options": ["LTE to LTE", "LTE to 3G or GSM", "UMTS to UMTS", "LTE cells under same eNodeB"],
+"explanation": "Inter-RAT handover happens when switching between different radio access technologies such as LTE and 3G.",
+"correctAnswer": [1]
+},
+{
+"question": "Main controller for inter-RAT handover:",
+"options": ["SGW", "eNodeB", "MME", "PGW"],
+"explanation": "MME coordinates inter-RAT handovers by managing signaling and mobility between different technologies.",
+"correctAnswer": [2]
+},
+{
+"question": "Interface used between UE and eNodeB:",
+"options": ["Uu interface", "X2 interface", "S1 interface", "Gn interface"],
+"explanation": "The Uu interface connects the user equipment (UE) to the eNodeB over the air interface.",
+"correctAnswer": [0]
+},
+{
+"question": "Purpose of EPC:",
+"options": ["Manages routing only", "Provides IP connectivity, mobility, and QoS", "Handles only voice traffic", "Encrypts user data"],
+"explanation": "The Evolved Packet Core (EPC) provides IP connectivity, manages mobility, and ensures QoS in LTE.",
+"correctAnswer": [1]
+},
+{
+"question": "Primary role of MAC scheduler:",
+"options": ["Security", "Resource allocation per TTI", "Authentication", "Modulation"],
+"explanation": "The MAC scheduler allocates radio resources per Transmission Time Interval (TTI) based on QoS and priority.",
+"correctAnswer": [1]
+},
+{
+"question": "PDCP ensures:",
+"options": ["Random transmission", "In-order delivery and duplicate detection", "Error coding", "Frame synchronization"],
+"explanation": "The PDCP layer ensures in-order delivery, removes duplicates, and handles header compression.",
+"correctAnswer": [1]
+},
+{
+"question": "Physical layer converts:",
+"options": ["Packets into frames", "Bits into radio waves", "Bytes into symbols", "IP into MAC"],
+"explanation": "The Physical (PHY) layer modulates digital bits into radio waves for wireless transmission.",
+"correctAnswer": [1]
+},
+{
+"question": "Core function of LTE architecture:",
+"options": ["High latency and low throughput", "Low latency and high throughput", "Only voice communication", "Pure circuit switching"],
+"explanation": "LTE was designed for low latency and high throughput using an all-IP flat architecture.",
+"correctAnswer": [1]
+},
+{
+"question": "Control Plane is handled by:",
+"options": ["PGW", "SGW", "MME", "eNodeB only"],
+"explanation": "MME manages the Control Plane functions like authentication and signaling.",
+"correctAnswer": [2]
+},
+{
+"question": "User Plane is handled by:",
+"options": ["MME", "SGW and PGW", "eNodeB", "HSS"],
+"explanation": "The Serving Gateway and Packet Gateway manage user plane data transfer in LTE.",
+"correctAnswer": [1]
+},
+{
+"question": "Which of the following is a 3G standard used primarily in North America?",
+"options": ["WCDMA", "GSM", "CDMA2000", "LTE"],
+"explanation": "CDMA2000 was the dominant 3G technology in North America, while WCDMA was used in Europe and Asia.",
+"correctAnswer": [2]
+},
+{
+"question": "What is the maximum practical speed of 3G networks?",
+"options": ["10 Mbps", "2 Mbps", "100 Mbps", "1 Gbps"],
+"explanation": "3G networks typically achieve a maximum of around 2 Mbps in practical scenarios.",
+"correctAnswer": [1]
+},
+{
+"question": "Which network element controlled both circuit-switched and packet-switched traffic in 3G?",
+"options": ["eNodeB", "RNC", "MME", "PGW"],
+"explanation": "The Radio Network Controller (RNC) managed both circuit-switched and packet-switched traffic in 3G.",
+"correctAnswer": [1]
+},
+{
+"question": "Which was a key motivation for moving from 3G to 4G?",
+"options": ["Increase in call drops", "Need for higher data rates and all-IP networks", "Decline in smartphone usage", "Elimination of mobile internet"],
+"explanation": "The shift to 4G was driven by the need for higher data rates and an all-IP infrastructure for modern multimedia services.",
+"correctAnswer": [1]
+},
+{
+"question": "LTE stands for:",
+"options": ["Long Term Evolution", "Linear Transmission Exchange", "Local Telecommunication Extension", "Light Transmission Entity"],
+"explanation": "LTE stands for Long Term Evolution, the standard for 4G mobile broadband technology.",
+"correctAnswer": [0]
+},
+{
+"question": "Which of the following is not a feature of 4G?",
+"options": ["Packet-switched network", "High latency", "High data rate", "IP-based voice (VoLTE)"],
+"explanation": "4G features low latency and high data rate, making 'High latency' incorrect.",
+"correctAnswer": [1]
+},
+{
+"question": "The latency in 4G networks is typically:",
+"options": ["200 ms", "100–500 ms", "<50 ms", ">1 second"],
+"explanation": "4G networks have latency less than 50 ms, enabling real-time communication.",
+"correctAnswer": [2]
+},
+{
+"question": "LTE’s flat architecture helps to:",
+"options": ["Increase latency", "Reduce latency and complexity", "Increase number of nodes", "Decrease scalability"],
+"explanation": "Flat architecture reduces the number of intermediate nodes, minimizing latency and simplifying design.",
+"correctAnswer": [1]
+},
+{
+"question": "IMS in LTE stands for:",
+"options": ["Internet Messaging System", "IP Multimedia Subsystem", "Integrated Mobility System", "Internal Message Setup"],
+"explanation": "IMS stands for IP Multimedia Subsystem, which manages IP-based multimedia services like VoLTE.",
+"correctAnswer": [1]
+},
+{
+"question": "The main advantage of an all-IP network is:",
+"options": ["Supports both voice and data using IP", "Increases circuit switching", "Uses analog transmission", "Eliminates internet access"],
+"explanation": "An all-IP network allows unified transport of voice, video, and data using Internet Protocol.",
+"correctAnswer": [0]
+}
+,
+{
+"question": "The function of MME in LTE is:",
+"options": ["Handling radio transmission", "Authentication and mobility management", "IP address allocation", "Packet forwarding"],
+"explanation": "The Mobility Management Entity (MME) handles authentication, session management, and mobility in the control plane.",
+"correctAnswer": [1]
+},
+{
+"question": "The function of SGW in LTE is:",
+"options": ["Route and forward user data packets", "Assign IP addresses", "Authenticate users", "Manage radio channels"],
+"explanation": "The Serving Gateway (SGW) routes and forwards user data packets between eNodeB and the Packet Gateway (PGW).",
+"correctAnswer": [0]
+},
+{
+"question": "Which of the following is responsible for IP address allocation in LTE?",
+"options": ["SGW", "eNodeB", "PGW", "MME"],
+"explanation": "The Packet Gateway (PGW) is responsible for allocating IP addresses to user equipment.",
+"correctAnswer": [2]
+},
+{
+"question": "When is the IP address allocated to a UE in LTE?",
+"options": ["During attach procedure", "During call termination", "After session release", "During paging"],
+"explanation": "The IP address is assigned to the UE during the attach procedure via the PGW.",
+"correctAnswer": [0]
+},
+{
+"question": "The default bearer is established during:",
+"options": ["Detach procedure", "Attach procedure", "Paging procedure", "Inter-RAT handover"],
+"explanation": "A default bearer is created during the attach procedure to provide always-on connectivity.",
+"correctAnswer": [1]
+},
+{
+"question": "The dedicated bearer is created:",
+"options": ["Automatically", "For services needing special QoS", "For every session", "Only for control signaling"],
+"explanation": "Dedicated bearers are established for services requiring specific Quality of Service (QoS), such as VoIP.",
+"correctAnswer": [1]
+},
+{
+"question": "Which of the following provides always-on IP connectivity?",
+"options": ["Dedicated bearer", "Default bearer", "Control bearer", "S1 interface"],
+"explanation": "The default bearer provides a permanent IP connection that remains active during user sessions.",
+"correctAnswer": [1]
+},
+{
+"question": "Which LTE layer performs ciphering and integrity protection?",
+"options": ["RLC", "MAC", "PDCP", "PHY"],
+"explanation": "The PDCP layer handles ciphering and integrity protection to ensure data security in LTE.",
+"correctAnswer": [2]
+},
+{
+"question": "Which layer in LTE is responsible for error correction and retransmission?",
+"options": ["PDCP", "RLC", "MAC", "PHY"],
+"explanation": "The Radio Link Control (RLC) layer ensures reliability using ARQ for error correction and retransmission.",
+"correctAnswer": [1]
+},
+{
+"question": "Which of the following functions are performed by the MAC layer?",
+"options": ["Scheduling and multiplexing", "IP routing", "Header compression", "Authentication"],
+"explanation": "The MAC (Medium Access Control) layer performs scheduling, multiplexing, and error recovery.",
+"correctAnswer": [0]
+},
+{
+"question": "The Physical layer in LTE:",
+"options": ["Handles encryption", "Converts bits to radio signals", "Manages sessions", "Allocates IP addresses"],
+"explanation": "The PHY layer converts digital bits into radio signals for wireless transmission and vice versa.",
+"correctAnswer": [1]
+},
+{
+"question": "The RLC layer belongs to which OSI layer?",
+"options": ["Network Layer", "Data Link Layer", "Physical Layer", "Application Layer"],
+"explanation": "RLC is part of the Data Link Layer and provides reliable data transmission over the air interface.",
+"correctAnswer": [1]
+},
+{
+"question": "Which of the following ensures QoS (Quality of Service) in LTE?",
+"options": ["EPC", "eNodeB", "MME", "RLC"],
+"explanation": "The Evolved Packet Core (EPC) manages Quality of Service through bearer establishment and traffic control.",
+"correctAnswer": [0]
+},
+{
+"question": "In LTE, handover ensures:",
+"options": ["IP allocation", "Seamless transition between cells", "Packet encryption", "Paging procedure"],
+"explanation": "Handover allows seamless transition from one cell to another without dropping the ongoing connection.",
+"correctAnswer": [1]
+},
+{
+"question": "The Intra-eNodeB handover occurs when:",
+"options": ["UE moves between eNodeBs", "UE moves between cells controlled by the same eNodeB", "UE switches to 3G", "UE detaches from the network"],
+"explanation": "Intra-eNodeB handover happens when the UE moves between cells under the same eNodeB controller.",
+"correctAnswer": [1]
+},
+{
+"question": "The Inter-eNodeB handover is the most common type of:",
+"options": ["Intra-RAT handover", "Inter-RAT handover", "EPC handover", "IMS transfer"],
+"explanation": "Inter-eNodeB handover occurs within the same radio access technology, making it an Intra-RAT handover.",
+"correctAnswer": [0]
+},
+{
+"question": "The Control Plane is responsible for:",
+"options": ["User data", "Signaling and session management", "Radio transmission", "IP forwarding"],
+"explanation": "The Control Plane handles signaling, authentication, and session control between UE and the core network.",
+"correctAnswer": [1]
+},
+{
+"question": "The User Plane is handled by:",
+"options": ["MME", "SGW and PGW", "eNodeB only", "PDCP layer"],
+"explanation": "User Plane traffic is handled by the Serving Gateway (SGW) and Packet Gateway (PGW).",
+"correctAnswer": [1]
+},
+{
+"question": "The traffic volume in Control Plane is:",
+"options": ["Very high", "Low", "Moderate", "Variable"],
+"explanation": "Control Plane traffic is low because it carries signaling data, not user payload.",
+"correctAnswer": [1]
+},
+{
+"question": "The traffic volume in User Plane is:",
+"options": ["Low", "High", "Constant", "Negligible"],
+"explanation": "User Plane traffic is high since it carries user data such as voice, video, and browsing content.",
+"correctAnswer": [1]
+},
+{
+"question": "The X2 interface connects:",
+"options": ["eNodeB and MME", "Two eNodeBs", "UE and eNodeB", "PGW and SGW"],
+"explanation": "The X2 interface links two eNodeBs and is mainly used for handover signaling.",
+"correctAnswer": [1]
+},
+{
+"question": "The S1 interface connects:",
+"options": ["eNodeB to EPC", "UE to eNodeB", "MME to HSS", "SGW to PGW"],
+"explanation": "The S1 interface connects the eNodeB with the EPC components (MME and SGW).",
+"correctAnswer": [0]
+},
+{
+"question": "Which protocol in LTE handles sequence numbering and reordering?",
+"options": ["PDCP", "MAC", "RLC", "PHY"],
+"explanation": "The PDCP layer ensures sequence numbering, reordering, and in-order delivery of packets.",
+"correctAnswer": [0]
+},
+{
+"question": "HARQ is a feature of which layer?",
+"options": ["MAC layer", "RLC layer", "PDCP layer", "PHY layer"],
+"explanation": "Hybrid Automatic Repeat reQuest (HARQ) is implemented at the MAC layer to enhance reliability.",
+"correctAnswer": [0]
+},
+{
+"question": "The Attach Request message is sent by:",
+"options": ["MME", "UE", "SGW", "PGW"],
+"explanation": "The User Equipment (UE) initiates the attach procedure by sending an Attach Request to the MME.",
+"correctAnswer": [1]
+}
+,
+{
+"question": "During LTE attach, which entity verifies subscriber identity?",
+"options": ["PGW", "HSS", "SGW", "eNodeB"],
+"explanation": "The Home Subscriber Server (HSS) verifies the subscriber's identity and provides authentication information to the MME.",
+"correctAnswer": [1]
+},
+{
+"question": "The authentication vector is generated by:",
+"options": ["MME", "HSS", "eNodeB", "UE"],
+"explanation": "The HSS generates authentication vectors used by the MME to authenticate the user equipment.",
+"correctAnswer": [1]
+},
+{
+"question": "The PDN Connectivity Procedure is used for:",
+"options": ["Establishing IP connectivity with external networks", "Disconnecting UE", "Handling paging", "Handover control"],
+"explanation": "The PDN Connectivity Procedure enables the UE to establish IP connectivity with external packet data networks via the PGW.",
+"correctAnswer": [0]
+},
+{
+"question": "LTE supports which IP versions?",
+"options": ["IPv4 only", "IPv6 only", "Both IPv4 and IPv6", "IPv3"],
+"explanation": "LTE supports dual-stack operation, allowing both IPv4 and IPv6 for compatibility and future scalability.",
+"correctAnswer": [2]
+},
+{
+"question": "LTE provides VoIP services through:",
+"options": ["EPC", "IMS subsystem", "RNC", "WiMAX"],
+"explanation": "Voice over LTE (VoLTE) is implemented using the IP Multimedia Subsystem (IMS) framework.",
+"correctAnswer": [1]
+},
+{
+"question": "The Attach Request message is sent during which procedure?",
+"options": ["Detach Procedure", "Attach Procedure", "Paging Procedure", "Tracking Area Update"],
+"explanation": "The Attach Request is the first message sent by the UE during the Attach Procedure to connect to the LTE network.",
+"correctAnswer": [1]
+},
+{
+"question": "The Detach Procedure is used to:",
+"options": ["Establish a new session", "Deregister UE from the network", "Update frequency band", "Reassign QoS"],
+"explanation": "The Detach Procedure allows the UE to deregister and disconnect from the LTE network properly.",
+"correctAnswer": [1]
+},
+{
+"question": "Which LTE entity initiates the Detach Accept message?",
+"options": ["UE", "MME", "SGW", "PGW"],
+"explanation": "The UE sends the Detach Accept message to confirm successful disconnection from the network.",
+"correctAnswer": [0]
+},
+{
+"question": "The Attach Reject message is sent when:",
+"options": ["Authentication fails", "QoS is insufficient", "Paging is successful", "IP pool is empty"],
+"explanation": "If authentication fails or the UE is unauthorized, the MME sends an Attach Reject message.",
+"correctAnswer": [0]
+},
+{
+"question": "LTE uses which algorithm for authentication?",
+"options": ["AES only", "EPS-AKA (Evolved Packet System AKA)", "RSA", "HMAC-SHA256"],
+"explanation": "LTE uses the EPS-AKA algorithm, which is an evolved version of 3G's Authentication and Key Agreement protocol.",
+"correctAnswer": [1]
+},
+{
+"question": "In LTE security, ciphering keys are generated from:",
+"options": ["Session Manager", "Authentication Vector", "eNodeB", "HSS cache"],
+"explanation": "Ciphering and integrity protection keys are derived from the authentication vector obtained from the HSS.",
+"correctAnswer": [1]
+},
+{
+"question": "K_ASME key is derived and used by which entity?",
+"options": ["PGW", "MME", "SGW", "HSS"],
+"explanation": "The MME derives and uses the K_ASME key for further key generation and authentication processes.",
+"correctAnswer": [1]
+},
+{
+"question": "Which key is used for signaling message integrity?",
+"options": ["K_UPenc", "K_RRCint", "K_eNB", "K_SMC"],
+"explanation": "K_RRCint is used to ensure the integrity of signaling messages exchanged between UE and eNodeB.",
+"correctAnswer": [1]
+},
+{
+"question": "LTE security modes are activated after:",
+"options": ["Attach Accept", "Authentication Completion", "Paging Response", "Handover Request"],
+"explanation": "Security modes are activated after authentication is successfully completed between UE and network.",
+"correctAnswer": [1]
+},
+{
+"question": "VoLTE (QoS Class Identifier) for real-time voice calls is:",
+"options": ["QCI 1", "QCI 3", "QCI 5", "QCI 9"],
+"explanation": "QCI 1 is used for real-time conversational voice services like VoLTE with low latency requirements.",
+"correctAnswer": [0]
+},
+{
+"question": "The SRVCC (Single Radio Voice Call Continuity) procedure is used for:",
+"options": ["Handover between Wi-Fi and LTE", "Maintaining voice call from LTE to 2G/3G", "Changing IP address", "Establishing new default bearer"],
+"explanation": "SRVCC enables an ongoing VoLTE call to continue when the user moves from LTE coverage to 2G or 3G networks.",
+"correctAnswer": [1]
+},
+{
+"question": "In IMS, SIP stands for:",
+"options": ["Secure Internet Protocol", "Session Initiation Protocol", "Signal Integration Path", "Subscriber IP Profile"],
+"explanation": "SIP (Session Initiation Protocol) is used in IMS to establish, modify, and terminate multimedia sessions.",
+"correctAnswer": [1]
+},
+{
+"question": "PCRF (Policy and Charging Rules Function) is connected to:",
+"options": ["PGW", "MME", "HSS", "SGW"],
+"explanation": "The PCRF communicates with the Packet Gateway (PGW) to apply policy control and charging rules.",
+"correctAnswer": [0]
+},
+{
+"question": "VoLTE uses which protocol for signaling setup?",
+"options": ["HTTP", "SIP", "FTP", "DHCP"],
+"explanation": "SIP (Session Initiation Protocol) is used for session control and signaling setup in VoLTE.",
+"correctAnswer": [1]
+},
+{
+"question": "LTE’s average user throughput is approximately:",
+"options": ["1–2 Mbps", "5–12 Mbps for downlink", "50–100 Mbps uplink", "100 Mbps downlink and uplink both"],
+"explanation": "The average user throughput in LTE networks is about 5–12 Mbps for downlink, depending on conditions.",
+"correctAnswer": [1]
+},
+{
+"question": "The spectrum efficiency of LTE compared to 3G is about:",
+"options": ["2× higher", "5× higher", "10× higher", "Same as 3G"],
+"explanation": "LTE provides roughly five times better spectrum efficiency than 3G due to advanced modulation and MIMO.",
+"correctAnswer": [1]
+},
+{
+"question": "LTE-Advanced can achieve data rates up to:",
+"options": ["100 Mbps", "500 Mbps", "1 Gbps", "3 Gbps"],
+"explanation": "LTE-Advanced enhances LTE with carrier aggregation and MIMO to achieve data rates up to 1 Gbps.",
+"correctAnswer": [2]
+},
+{
+"question": "Carrier aggregation in LTE-A supports a maximum bandwidth of:",
+"options": ["20 MHz", "40 MHz", "100 MHz", "200 MHz"],
+"explanation": "Carrier aggregation allows combining up to five 20 MHz carriers for a total of 100 MHz bandwidth.",
+"correctAnswer": [2]
+},
+{
+"question": "The main goal of LTE architecture simplification was to:",
+"options": ["Increase circuit switching", "Reduce latency and improve efficiency", "Support legacy hardware", "Eliminate QoS"],
+"explanation": "Simplified LTE architecture reduces latency and improves network efficiency by minimizing intermediate nodes.",
+"correctAnswer": [1]
+},
+{
+"question": "The key difference between 3G and 4G is:",
+"options": ["3G uses packet-switching only", "4G is fully IP based and packet switched", "3G is faster than 4G", "4G uses circuit-switched core"],
+"explanation": "Unlike 3G, 4G is entirely IP-based and relies on packet switching for all services including voice.",
+"correctAnswer": [1]
+}
+
 
     ],
     passage_based_questions: {
@@ -7191,7 +7795,267 @@ module7:[
       "correctAnswer": [1]
     }
   ]
-}
+},
+
+  "passage_17": {
+    "title": "Evolution from 3G to 4G",
+    "passage": "3G was introduced in the early 2000s to support mobile internet and multimedia services. It used technologies such as WCDMA and CDMA2000. However, 3G networks suffered from low speed, high latency, and complex design. To overcome these issues, 4G was introduced around 2010. 4G, based on LTE and WiMAX technologies, provided higher data rates, lower latency, and an all-IP architecture.",
+    "questions": [
+      {
+        "question": "What were the main technologies used in 3G?",
+        "options": ["LTE and WiMAX", "WCDMA and CDMA2000", "GSM and EDGE", "OFDMA and MIMO"],
+        "explanation": "3G networks primarily used WCDMA and CDMA2000 technologies to provide mobile data and voice services.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "When was 4G introduced?",
+        "options": ["2000", "2005", "2010", "2015"],
+        "explanation": "4G networks were introduced around 2010, bringing high-speed data and an all-IP design.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "What type of network architecture does 4G use?",
+        "options": ["Circuit-switched", "Hybrid", "All-IP", "Optical fiber"],
+        "explanation": "4G employs an all-IP architecture, replacing circuit-switched systems with packet-based communication.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "What were the main limitations of 3G?",
+        "options": ["High speed and simple design", "Low speed and high latency", "Lack of radio access", "Poor IP integration"],
+        "explanation": "3G suffered from low data rates, high latency, and a complex network structure.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which 4G technology became dominant worldwide?",
+        "options": ["WiMAX", "LTE", "GSM", "EDGE"],
+        "explanation": "LTE became the globally dominant 4G technology due to its efficiency and compatibility.",
+        "correctAnswer": [1]
+      }
+    ]
+  },
+
+  "passage_18": {
+    "title": "Evolved Packet Core (EPC)",
+    "passage": "The Evolved Packet Core (EPC) is the all-IP core network of LTE that manages both control and user planes. It connects user equipment to external packet networks, manages mobility, authentication, and Quality of Service (QoS). The EPC also handles IP address allocation and session setup between the user and the internet.",
+    "questions": [
+      {
+        "question": "What is EPC in LTE?",
+        "options": ["A base station for LTE", "A network that manages both control and user planes", "A device for encryption", "A 3G protocol"],
+        "explanation": "EPC is the LTE core network responsible for managing both the control and user planes.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "What are the key functions of EPC?",
+        "options": ["Routing only", "Authentication, QoS, and IP connectivity", "Hardware installation", "Modulation of signals"],
+        "explanation": "EPC handles functions like authentication, QoS management, and providing IP connectivity to UEs.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "What type of networks does EPC connect to?",
+        "options": ["PSTN", "Internet and IMS", "GSM core", "Wi-Fi routers"],
+        "explanation": "EPC connects LTE users to packet-based networks like the Internet and IMS.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which entity in EPC assigns IP addresses to UE?",
+        "options": ["eNodeB", "MME", "PGW", "SGW"],
+        "explanation": "The PGW assigns IP addresses and provides connectivity to external data networks.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "Why is EPC important in LTE architecture?",
+        "options": ["Provides real-time handovers", "Enables mobility and IP-based connectivity", "Reduces radio interference", "Increases battery backup"],
+        "explanation": "EPC enables mobility, authentication, and IP-based connectivity for LTE users.",
+        "correctAnswer": [1]
+      }
+    ]
+  },
+
+  "passage_19": {
+    "title": "eNodeB and Its Functions",
+    "passage": "The eNodeB is the base station in LTE that connects the user equipment (UE) to the EPC. It combines the roles of NodeB and RNC from 3G, simplifying the architecture. It enables real-time scheduling, supports MIMO and carrier aggregation, and provides direct connectivity for faster data transfer.",
+    "questions": [
+      {
+        "question": "What is the function of eNodeB in LTE?",
+        "options": ["Manages only authentication", "Connects UE to EPC and handles radio communication", "Acts as a router", "Only manages billing"],
+        "explanation": "eNodeB connects user equipment to the EPC and manages radio communication and resource allocation.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which two 3G components are replaced by eNodeB?",
+        "options": ["NodeB and RNC", "SGW and PGW", "MSC and HLR", "EPC and IMS"],
+        "explanation": "eNodeB combines the functionalities of the 3G NodeB and RNC into a single LTE entity.",
+        "correctAnswer": [0]
+      },
+      {
+        "question": "What advanced features does eNodeB support?",
+        "options": ["IMS", "OFDMA", "MIMO and carrier aggregation", "DNS"],
+        "explanation": "eNodeB supports advanced LTE technologies like MIMO and carrier aggregation for higher throughput.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "What is the advantage of integrating RNC functions into eNodeB?",
+        "options": ["Reduces latency and simplifies architecture", "Increases call drop rate", "Decreases network efficiency", "Eliminates MIMO"],
+        "explanation": "Integrating RNC into eNodeB simplifies the network and reduces latency.",
+        "correctAnswer": [0]
+      },
+      {
+        "question": "Which interface enables communication between eNodeBs?",
+        "options": ["X2 interface", "Uu interface", "S1 interface", "Gn interface"],
+        "explanation": "The X2 interface allows eNodeBs to communicate directly with each other for handovers.",
+        "correctAnswer": [0]
+      }
+    ]
+  },
+
+  "passage_20": {
+    "title": "LTE Attach Procedure",
+    "passage": "The Attach Procedure in LTE is used when the User Equipment (UE) registers with the network to receive voice and data services. During this process, the network authenticates the user, allocates an IP address, and establishes a default bearer for communication.",
+    "questions": [
+      {
+        "question": "What is the purpose of the LTE Attach Procedure?",
+        "options": ["Disconnect UE", "Register UE with network", "Perform a handover", "Update location only"],
+        "explanation": "The attach procedure is used for registering the UE with the LTE network to begin data communication.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which bearer is created during the attach process?",
+        "options": ["Default bearer", "Dedicated bearer", "Control bearer", "Temporary bearer"],
+        "explanation": "The default bearer is established during attach, allowing basic data connectivity.",
+        "correctAnswer": [0]
+      },
+      {
+        "question": "What is assigned to the UE during the attach process?",
+        "options": ["IMSI", "IP address", "MAC ID", "Session ID only"],
+        "explanation": "The UE is assigned an IP address during the attach procedure for data communication.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which network element authenticates the user?",
+        "options": ["eNodeB", "MME", "PGW", "SGW"],
+        "explanation": "The MME handles user authentication and session establishment in LTE.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "What does the attach procedure enable for UE?",
+        "options": ["Continuous mobility and session management", "Only call setup", "Only text messaging", "No handovers"],
+        "explanation": "It allows continuous mobility and session management once the UE is connected.",
+        "correctAnswer": [0]
+      }
+    ]
+  },
+
+  "passage_21": {
+    "title": "Handover in LTE",
+    "passage": "Handover is the process of transferring an active call or data session from one cell to another without interruption. In LTE, there are two main types of handovers: Intra-RAT (within LTE) and Inter-RAT (between LTE and other technologies such as 3G or GSM). Intra-RAT handovers are managed by eNodeBs using the X2 interface, while Inter-RAT handovers are controlled mainly by MME.",
+    "questions": [
+      {
+        "question": "What is the purpose of handover in LTE?",
+        "options": ["To increase signal strength", "To maintain continuous service when moving between cells", "To change frequency", "To authenticate UE"],
+        "explanation": "Handover ensures uninterrupted service when a UE moves between coverage areas.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "What are the two types of handovers in LTE?",
+        "options": ["Intra-cell and inter-cell", "Intra-RAT and Inter-RAT", "Soft and hard", "Local and remote"],
+        "explanation": "LTE supports Intra-RAT (within LTE) and Inter-RAT (between different technologies) handovers.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which handover occurs between LTE and 3G networks?",
+        "options": ["Intra-RAT", "Inter-RAT", "Soft", "Local"],
+        "explanation": "Inter-RAT handovers happen between LTE and other systems like 3G or GSM.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Who manages the Intra-RAT handover?",
+        "options": ["MME", "eNodeBs", "SGW", "PGW"],
+        "explanation": "Intra-RAT handovers are managed directly between eNodeBs using the X2 interface.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "What is the role of the X2 interface?",
+        "options": ["Enables signaling between eNodeBs", "Provides authentication", "Allocates IP address", "Compresses headers"],
+        "explanation": "The X2 interface allows signaling and coordination between eNodeBs for handovers.",
+        "correctAnswer": [0]
+      }
+    ]
+  },
+
+  "passage_22": {
+    "title": "LTE Protocol Stack",
+    "passage": "The LTE protocol stack includes several layers such as PDCP, RLC, MAC, and PHY. PDCP handles header compression and security, RLC manages error correction and in-order delivery, MAC schedules data transmission, and PHY performs the actual radio transmission.",
+    "questions": [
+      {
+        "question": "Which LTE layer handles header compression and encryption?",
+        "options": ["MAC", "PDCP", "RLC", "PHY"],
+        "explanation": "The PDCP layer is responsible for header compression and security functions like encryption.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which layer ensures in-order data delivery?",
+        "options": ["MAC", "RLC", "PHY", "PDCP"],
+        "explanation": "RLC ensures reliable transmission and in-order delivery of data packets.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which layer schedules radio resources?",
+        "options": ["MAC", "PDCP", "PHY", "NAS"],
+        "explanation": "The MAC layer handles scheduling of radio resources and multiplexing of data.",
+        "correctAnswer": [0]
+      },
+      {
+        "question": "Which layer converts bits into radio signals?",
+        "options": ["PDCP", "RLC", "MAC", "PHY"],
+        "explanation": "The PHY layer performs modulation and physical transmission over the air interface.",
+        "correctAnswer": [3]
+      },
+      {
+        "question": "Which layer directly interacts with the radio interface?",
+        "options": ["MAC", "RLC", "PHY", "PDCP"],
+        "explanation": "The PHY layer interfaces directly with the radio hardware for transmission and reception.",
+        "correctAnswer": [2]
+      }
+    ]
+  },
+
+  "passage_23": {
+    "title": "Control and User Plane in LTE",
+    "passage": "In LTE, communication is divided into two logical planes: Control Plane (C-Plane) and User Plane (U-Plane). The Control Plane carries signaling information used for mobility management, authentication, and session setup, handled by the MME. The User Plane carries actual user data like voice, video, and web traffic, handled by SGW and PGW.",
+    "questions": [
+      {
+        "question": "What is the function of the Control Plane?",
+        "options": ["Transmit user data", "Manage signaling and mobility", "Provide encryption", "Compress headers"],
+        "explanation": "The Control Plane manages signaling and mobility functions, enabling communication setup and maintenance.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "Which entity handles the Control Plane?",
+        "options": ["SGW", "MME", "eNodeB", "PGW"],
+        "explanation": "MME is responsible for handling signaling and control-plane operations in LTE.",
+        "correctAnswer": [1]
+      },
+      {
+        "question": "What type of data is carried by the User Plane?",
+        "options": ["Signaling information", "Control messages", "Actual user data like voice and video", "Authentication keys"],
+        "explanation": "The User Plane carries real user data such as voice, video, and web traffic.",
+        "correctAnswer": [2]
+      },
+      {
+        "question": "Which entities handle the User Plane?",
+        "options": ["SGW and PGW", "MME only", "eNodeB", "HSS"],
+        "explanation": "The SGW and PGW handle the user data transfer in the LTE User Plane.",
+        "correctAnswer": [0]
+      },
+      {
+        "question": "How do the Control and User planes differ in data type?",
+        "options": ["Control plane carries user data; user plane carries signaling", "Control plane carries signaling; user plane carries user data", "Both carry control information", "Both carry user data"],
+        "explanation": "The Control Plane carries signaling data while the User Plane carries user traffic.",
+        "correctAnswer": [1]
+      }
+    ]
+  }
+
 
 }
 
