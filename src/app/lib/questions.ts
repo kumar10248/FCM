@@ -5508,120 +5508,375 @@ module7:[
 ],
     module7: [
    
+  
   {
-    "question": "We assume TAI 0 and TAI 1 are sent back to the terminal. The user moves to cell B (covered by eNB B). What happens?",
-    "options": [
-      "The terminal listens to the beacon channel of eNB B but does not send any message,",
-      "The terminal listens to the beacon channel of eNB B, detects that the cell is a new one and triggers a UE service request procedure,",
-      "The terminal listens to the beacon channel of eNB B, detects that the cell is a new one and triggers a Tracking Area Update request,",
-      "The MME updates in its database the location of the terminal as soon as the latter is in the new cell."
-    ],
-    "explanation": "When a UE in ECM-Connected state moves to a new cell within the same Tracking Area (both TAI 0 and TAI 1 are known to the terminal), it simply listens to the new cell's beacon channel but does not need to send any message to the network. The handover is handled at the lower layers, and since the Tracking Area hasn't changed, no TAU is needed.",
+    "question": "The first 3G service was launched by:",
+    "options": ["Verizon", "NTT DoCoMo", "Airtel", "AT&T"],
+    "explanation": "NTT DoCoMo launched the world’s first 3G service in Japan, pioneering high-speed mobile internet.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "The 3G system’s data rate was up to:",
+    "options": ["128 kbps", "2 Mbps", "20 Mbps", "1 Gbps"],
+    "explanation": "3G systems offered up to 2 Mbps for stationary users and lower rates for mobility.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "The main reason to move from 3G to 4G was:",
+    "options": ["Need for faster, lower-latency networks", "Increase in text messages", "Lower voice demand", "Reduce cost of towers"],
+    "explanation": "4G addressed the demand for higher data rates and lower latency for modern multimedia applications.",
     "correctAnswer": [0]
   },
   {
-    "question": "The user now moves to cell C (covered by eNB C). What happens?",
-    "options": [
-      "The terminal listens to the beacon channel of eNB C but does not send any message",
-      "The terminal listens to the beacon channel of eNB C, detects that the cell is a new one and triggers a UE service request procedure",
-      "The terminal listens to the beacon channel of eNB C, detects that the cell is a new one and triggers a Tracking Area Update request",
-      "The MME updates in its database the location of the terminal as soon as the latter is in the new cell."
-    ],
-    "explanation": "When the UE moves to cell C in ECM-Connected state, if cell C belongs to a different Tracking Area (not in the TAI list), the terminal listens to the beacon channel, detects it's a new tracking area, but does not initiate a TAU immediately. In ECM-Connected state, the network already knows the UE's location at the cell level, so no TAU is triggered until the UE returns to idle mode.",
+    "question": "The global 4G technology standard is:",
+    "options": ["GSM", "LTE", "CDMA", "Wi-Fi"],
+    "explanation": "LTE (Long Term Evolution) became the standard for 4G globally.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "4G networks are:",
+    "options": ["Circuit-switched", "Fully IP-based", "Hybrid", "Analog"],
+    "explanation": "4G networks are fully IP-based, enabling data and voice to run over packet-switched networks.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "LTE network mainly consists of:",
+    "options": ["NodeB, MSC, SGSN", "UE, eNodeB, EPC", "BTS, RNC, MSC", "IMS, PCRF, P-CSCF"],
+    "explanation": "The LTE system consists of UE (User Equipment), eNodeB, and EPC (Evolved Packet Core).",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "eNodeB is responsible for:",
+    "options": ["Core routing", "Radio communication and control", "Internet gateway", "Billing"],
+    "explanation": "eNodeB handles radio communication, scheduling, and control with the UE.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "The EPC represents:",
+    "options": ["Evolved Packet Core", "Enhanced Protocol Channel", "Encrypted Packet Cell", "Ethernet Path Connection"],
+    "explanation": "EPC stands for Evolved Packet Core, which handles user data and control signaling in LTE.",
     "correctAnswer": [0]
   },
   {
-    "question": "The terminal is still in cell C. Data is to be sent to the terminal. What happens?",
-    "options": [
-      "A \"UE-triggered service request\" procedure is performed.",
-      "A \"Network-triggered service request\" procedure that starts by sending paging messages in cell C is performed.",
-      "A \"Network-triggered service request\" procedure that starts by sending paging messages in cells A, B and C is performed.",
-      "A \"Network-triggered service request\" procedure that starts by sending paging messages in cells A to E is performed."
-    ],
-    "explanation": "When the terminal is in ECM-Connected state (still in cell C with an active connection), downlink data can be sent directly to the UE. However, if this question assumes the UE has transitioned to idle mode, the network would page in all cells of the Tracking Areas in the UE's TAI list (cells A, B, and C based on TAI 0 and TAI 1). The correct answer indicates paging in cells A, B, and C.",
+    "question": "LTE uses:",
+    "options": ["OFDMA and MIMO", "CDMA", "TDMA", "GSM"],
+    "explanation": "LTE employs OFDMA in the downlink and MIMO for improving throughput and spectral efficiency.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "The eNodeB connects to EPC using which interface?",
+    "options": ["X2", "S1", "Uu", "Gm"],
+    "explanation": "The S1 interface connects eNodeB with the EPC components (MME and SGW).",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "MME handles:",
+    "options": ["User data forwarding", "Mobility and authentication", "Charging", "Radio scheduling"],
+    "explanation": "The Mobility Management Entity (MME) is responsible for authentication, mobility, and session management.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "SGW acts as:",
+    "options": ["Bridge between eNodeB and PGW", "Database", "Gateway to IMS", "Security center"],
+    "explanation": "The Serving Gateway (SGW) bridges the radio access network (eNodeB) and the core network (PGW).",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "PGW assigns:",
+    "options": ["Bearer ID", "IP address to the UE", "Handover command", "Session key"],
+    "explanation": "The Packet Data Network Gateway (PGW) provides IP address allocation and connectivity to external networks.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "HSS stores:",
+    "options": ["App data", "SIM and subscriber info", "Routing tables", "Bearer parameters"],
+    "explanation": "The Home Subscriber Server (HSS) stores SIM-related data and authentication information.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "PCRF manages:",
+    "options": ["Power saving", "QoS and data policies", "Transmission speed", "Modulation"],
+    "explanation": "PCRF (Policy and Charging Rules Function) controls QoS and charging policies for data services.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "eNodeB combines the function of:",
+    "options": ["RNC and MSC", "NodeB and RNC", "HSS and PGW", "MME and SGW"],
+    "explanation": "In LTE, eNodeB combines the roles of the NodeB and RNC from 3G systems.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Handover ensures:",
+    "options": ["Battery saving", "Seamless connection during movement", "SIM update", "IP reallocation"],
+    "explanation": "Handover enables users to maintain ongoing sessions while moving between cells.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Intra-RAT handover means:",
+    "options": ["LTE → 3G", "LTE → LTE", "LTE → Wi-Fi", "3G → 2G"],
+    "explanation": "Intra-RAT refers to handover within the same Radio Access Technology, e.g., LTE to LTE.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Inter-RAT handover occurs between:",
+    "options": ["Same networks", "Different technologies (e.g., LTE → 3G)", "Different frequencies only", "Different SIMs"],
+    "explanation": "Inter-RAT handover happens between different RATs such as LTE and 3G.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "X2 interface connects:",
+    "options": ["MME ↔ HSS", "eNodeB ↔ eNodeB", "SGW ↔ PGW", "UE ↔ MME"],
+    "explanation": "The X2 interface connects eNodeBs directly for coordination during handovers.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "The Attach procedure starts when:",
+    "options": ["UE sends Attach Request", "MME authenticates UE", "SGW allocates IP", "PCRF checks policy"],
+    "explanation": "The Attach process begins when the UE sends an Attach Request to the MME.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Authentication ensures:",
+    "options": ["SIM balance check", "Genuine user identity", "Speed increase", "VoLTE setup"],
+    "explanation": "Authentication verifies the legitimacy of the subscriber and device.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Authentication uses:",
+    "options": ["AES or SNOW 3G", "MD5", "DES", "Diffie–Hellman"],
+    "explanation": "LTE authentication algorithms include AES and SNOW 3G for security.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "MME gets authentication keys from:",
+    "options": ["eNodeB", "HSS", "PGW", "PCRF"],
+    "explanation": "The MME retrieves authentication vectors from the HSS for UE verification.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "After attach, UE receives:",
+    "options": ["IMSI only", "IP and default bearer", "Temporary ID only", "Routing info"],
+    "explanation": "After a successful attach, the UE gets an IP address and a default bearer established.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "A bearer is:",
+    "options": ["A type of UE", "Logical data path with QoS", "Encryption channel", "Authentication signal"],
+    "explanation": "A bearer defines the logical data path with specific QoS between UE and the network.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Default bearer provides:",
+    "options": ["Voice-only", "Basic IP connectivity", "SMS", "Billing"],
+    "explanation": "The default bearer offers basic IP connectivity upon network attach.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Dedicated bearer is for:",
+    "options": ["Background sync", "VoIP or video", "System update", "Handover"],
+    "explanation": "Dedicated bearers are established for applications requiring specific QoS like VoIP or video.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "IP address is assigned during:",
+    "options": ["Bearer modification", "Attach procedure", "Paging", "Idle mode"],
+    "explanation": "The IP address is assigned during the Attach procedure via PGW.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "The PGW connects LTE to:",
+    "options": ["eNodeB", "Internet", "HSS", "SGW"],
+    "explanation": "PGW provides connectivity from LTE core to external packet data networks such as the Internet.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "PDCP handles:",
+    "options": ["Encryption and header compression", "Scheduling", "IP assignment", "Modulation"],
+    "explanation": "PDCP manages header compression and data encryption for efficient transmission.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "RLC provides:",
+    "options": ["Error correction and segmentation", "Encryption", "Authentication", "Addressing"],
+    "explanation": "RLC ensures reliable transmission through segmentation and error correction mechanisms.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "MAC layer is responsible for:",
+    "options": ["HARQ and multiplexing", "IP routing", "Frequency tuning", "Bearer control"],
+    "explanation": "MAC layer manages multiplexing, scheduling, and HARQ retransmissions.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "PHY layer performs:",
+    "options": ["Encryption", "Modulation and coding", "Scheduling", "Authentication"],
+    "explanation": "The physical (PHY) layer handles modulation, coding, and radio transmission.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "HARQ is used in which layer?",
+    "options": ["PDCP", "MAC", "RLC", "PHY"],
+    "explanation": "HARQ (Hybrid ARQ) operates in the MAC layer for retransmission control.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Control plane carries:",
+    "options": ["User data", "Signaling", "Multimedia", "Audio"],
+    "explanation": "The Control Plane is responsible for signaling and connection management.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "User plane carries:",
+    "options": ["Control info", "Actual data", "Paging", "Authentication keys"],
+    "explanation": "The User Plane transmits actual user traffic data packets.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "MME operates in:",
+    "options": ["User Plane", "Control Plane", "Transport Plane", "Application Plane"],
+    "explanation": "MME is a Control Plane entity that handles signaling and mobility management.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "SGW and PGW mainly handle:",
+    "options": ["Control signaling", "User data", "Authentication", "Handover"],
+    "explanation": "Serving Gateway and Packet Gateway manage user plane data forwarding.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Control plane messages are protected using:",
+    "options": ["Encryption only", "Integrity + Encryption", "No security", "Hashing only"],
+    "explanation": "Control plane signaling uses both encryption and integrity protection for security.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which component of LTE manages IP address allocation and session setup?",
+    "options": ["MME", "PGW", "SGW", "PCRF"],
+    "explanation": "PGW is responsible for IP address management and session setup toward external networks.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "The EPC component responsible for handover control and authentication is:",
+    "options": ["SGW", "MME", "eNodeB", "PDCP"],
+    "explanation": "MME handles authentication and coordinates handovers.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which LTE interface connects the eNodeB directly to the EPC?",
+    "options": ["X2", "S1", "Uu", "Gn"],
+    "explanation": "S1 is the standard interface linking eNodeB with EPC.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What is the purpose of the Evolved Packet Core (EPC)?",
+    "options": ["To convert analog signals", "To manage control and user planes", "To handle SMS traffic", "To store SIM data"],
+    "explanation": "The EPC manages the Control Plane and User Plane in LTE architecture.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "The main function of the PDCP layer is to:",
+    "options": ["Perform modulation and demodulation", "Handle encryption and header compression", "Schedule radio resources", "Assign IP addresses"],
+    "explanation": "PDCP is responsible for encryption, integrity protection, and header compression.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "PDCP operates between which two layers?",
+    "options": ["RLC and MAC", "IP and RLC", "MAC and PHY", "NAS and IP"],
+    "explanation": "PDCP resides between IP and RLC layers in the LTE protocol stack.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which LTE layer ensures in-order delivery and duplicate detection?",
+    "options": ["RLC", "MAC", "PDCP", "PHY"],
+    "explanation": "RLC ensures in-order delivery and duplicate detection of data PDUs.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "RLC in Acknowledged Mode (AM) performs:",
+    "options": ["Segmentation only", "Error correction using ACK/NACK", "Scheduling", "IP forwarding"],
+    "explanation": "RLC-AM uses acknowledgment (ACK/NACK) for reliable delivery and retransmission.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "The MAC layer operates directly above:",
+    "options": ["PHY", "PDCP", "IP", "RRC"],
+    "explanation": "MAC is positioned directly above the physical (PHY) layer in LTE.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "The RLC layer is part of which OSI layer?",
+    "options": ["Network", "Data Link", "Physical", "Transport"],
+    "explanation": "RLC operates in the Data Link layer of the OSI model.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "The MAC layer performs HARQ to:",
+    "options": ["Provide security", "Enable fast retransmission and error recovery", "Authenticate the user", "Allocate IP addresses"],
+    "explanation": "HARQ in MAC enables quick retransmissions for error recovery.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "In LTE, resource allocation and scheduling are managed by:",
+    "options": ["UE", "MME", "eNodeB", "SGW"],
+    "explanation": "eNodeB manages radio resource scheduling and allocation to UEs.",
     "correctAnswer": [2]
   },
   {
-    "question": "The data transmission is finished and the terminal is back in idle mode. The user now moves to cell D (covered by eNB D). What happens?",
-    "options": [
-      "The terminal listens to the beacon channel of eNB D but does not send any message",
-      "The terminal listens to the beacon channel of eNB D, detects that the cell is a new one and triggers a UE service request procedure",
-      "The terminal listens to the beacon channel of eNB D, detects that the cell is a new one and triggers a Tracking Area Update request",
-      "The MME updates the location of the terminal in its database as soon as the latter is in the new cell."
-    ],
-    "explanation": "When the UE in idle mode moves to cell D, it reads the beacon channel and detects a new Tracking Area that is not in its TAI list. This triggers a Tracking Area Update (TAU) request to inform the network of its new location, allowing the MME to update its records and send a new TAI list if necessary.",
+    "question": "The PHY layer handles:",
+    "options": ["IP routing", "Radio wave transmission", "QoS enforcement", "Handover logic"],
+    "explanation": "The PHY layer transmits and receives data over the air interface using radio waves.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which of the following ensures efficient radio resource usage in LTE?",
+    "options": ["MAC", "RLC", "PDCP", "PHY"],
+    "explanation": "The MAC layer optimizes resource utilization through scheduling and multiplexing.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "The Control Plane in LTE carries:",
+    "options": ["User IP data", "Signaling messages", "Multimedia traffic", "ARQ packets"],
+    "explanation": "The Control Plane transmits signaling information for mobility and session control.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "The User Plane in LTE handles:",
+    "options": ["Paging", "Authentication", "User data traffic", "RRC control"],
+    "explanation": "The User Plane is dedicated to carrying actual user IP data traffic.",
     "correctAnswer": [2]
   },
   {
-    "question": "The user now moves to cell E (covered by eNB E). What happens?",
-    "options": [
-      "The terminal listens to the beacon channel of eNB E but does not send any message",
-      "The terminal listens to the beacon channel of eNB E and triggers a Tracking Area Update request. A tunnel is set up between SGW 1 and SGW 2",
-      "The terminal listens to the beacon channel of eNB E, triggers a Tracking Area Update request. SGW-PGW tunnels are moved from SGW 1 to SGW 2",
-      "The MME updates in its database the location of the terminal as soon as the latter is in the new cell."
-    ],
-    "explanation": "When the UE moves to cell E (covered by eNB E) which is connected to a different SGW (SGW 2), the UE triggers a TAU request. This results in the SGW-PGW tunnels being moved from the old SGW (SGW 1) to the new SGW (SGW 2) to maintain connectivity while preserving the UE's IP address and PDN connection.",
-    "correctAnswer": [2]
+    "question": "Control Plane messages are mainly handled by:",
+    "options": ["MME", "SGW", "PGW", "PDCP"],
+    "explanation": "MME processes Control Plane signaling like attach, authentication, and mobility.",
+    "correctAnswer": [0]
   },
   {
-    "question": "Can TAI 2 and TAI 3 be in the same list transmitted to a terminal?",
-    "options": [
-      "Yes, because the maximum flexibility is given to the operator regarding the management of tracking areas.",
-      "Yes, because TAI 2 and TAI 3 correspond to neighbor cells.",
-      "No, because a list is restricted to only one tracking area.",
-      "No, because eNBs D and E are not connected to the same SGW and thus the SGW-PGW tunnel should be modified."
-    ],
-    "explanation": "TAI 2 and TAI 3 cannot be in the same list because eNBs D and E are connected to different SGWs (SGW 1 and SGW 2). If both TAIs were in the same list, the UE could move between them without triggering a TAU, but the network would need to modify the SGW-PGW tunnels when the UE actually moves, which cannot be done without explicit signaling from the UE.",
-    "correctAnswer": [3]
+    "question": "The User Plane data is primarily processed by:",
+    "options": ["MME", "SGW and PGW", "HSS", "PCRF"],
+    "explanation": "User data in LTE is handled by the SGW and PGW entities.",
+    "correctAnswer": [1]
   },
-  {
-    "question": "The \"X2AP Handover request\" message includes a TEID. This TEID is required to route data from the TeNB to the SGW. Which one is it?",
-    "options": [
-      "TEID of the S1 bearer (also called S1 GTP-U Tunnel) on the SeNB side",
-      "TEID of the S1 bearer (also called S1 GTP-U Tunnel) on the TeNB side",
-      "TEID of the S1 bearer (also called S1 GTP-U Tunnel) on the SGW side",
-      "TEID of the X2 bearer (also called X2 GTP-U Tunnel) on the SeNB side",
-      "TEID of the X2 bearer (also called X2 GTP-U Tunnel) on the TeNB side"
-    ],
-    "explanation": "The X2AP Handover request message includes the TEID of the S1 bearer on the SGW side. This allows the Target eNB (TeNB) to know where to forward uplink data from the UE after the handover, maintaining the uplink path to the SGW.",
-    "correctAnswer": [2]
-  },
-  {
-    "question": "The \"X2AP Handover request acknowledge\" message includes a TEID. This TEID is required to route data from the SeNB to the TeNB. Which one is it?",
-    "options": [
-      "TEID of the S1 bearer (also called S1 GTP-U Tunnel) on the SeNB side",
-      "TEID of the S1 bearer (also called S1 GTP-U Tunnel) on the TeNB side",
-      "TEID of the S1 bearer (also called S1 GTP-U Tunnel) on the SGW side",
-      "TEID of the X2 bearer (also called X2 GTP-U Tunnel) on the SeNB side",
-      "TEID of the X2 bearer (also called X2 GTP-U Tunnel) on the TeNB side"
-    ],
-    "explanation": "The X2AP Handover request acknowledge message includes the TEID of the X2 bearer on the TeNB side. This allows the Source eNB (SeNB) to forward downlink data to the Target eNB over the X2 interface during the handover execution phase, before the path is switched to go directly from SGW to TeNB.",
-    "correctAnswer": [4]
-  },
-  {
-    "question": "Does the SeNB need to choose a TEID for the X2 bearer (also called X2 GTP-U tunnel)?",
-    "options": [
-      "Yes, because it is necessary to route uplink data,",
-      "Yes, because it is necessary to cipher the tunnel between the SeNB and the TeNB",
-      "No, because no user data is transmitted from the TeNB to the SeNB",
-      "No, because the same TEID is used by the SeNB and the TeNB."
-    ],
-    "explanation": "The SeNB does not need to choose a TEID for the X2 bearer because during handover, user data only flows in one direction over X2: from the SeNB to the TeNB (downlink data forwarding). There is no uplink data transmitted from TeNB to SeNB over X2, so no TEID is needed on the SeNB side for the X2 tunnel.",
-    "correctAnswer": [2]
-  },
-  {
-    "question": "Why should downlink data be routed to the SeNB and forwarded to the TeNB during the \"handover execution\" phase?",
-    "options": [
-      "because it is more efficient",
-      "because the SGW does not know the IP address of the terminal (UE) and cannot send the data directly",
-      "because the SGW does not know that a handover is triggered before step 8"
-    ],
-    "explanation": "During the handover execution phase (before step 8), the SGW has not yet been informed about the handover. The SGW continues to send downlink data to the SeNB because it doesn't know the handover is in progress. The SeNB forwards this data to the TeNB over the X2 interface to minimize packet loss. Only after step 8 (Path Switch) does the SGW learn about the new eNB and start sending data directly to the TeNB.",
-    "correctAnswer": [2]
-  }
 
+ {
+  "question": "The PDCP layer supports mobility through:",
+  "options": ["HARQ", "Header compression", "Sequence numbering and reordering", "Modulation"],
+  "explanation": "The PDCP (Packet Data Convergence Protocol) layer ensures mobility by maintaining data continuity during handovers using sequence numbering and reordering of packets. This prevents data loss and ensures proper in-sequence delivery when the UE moves between cells.",
+  "correctAnswer": [2]
+},
+
+{
+  "question": "The main reason for using a flat architecture in LTE is:",
+  "options": ["Increase latency", "Simplify design and reduce delay", "Reduce bandwidth", "Support more circuit-switched connections"],
+  "explanation": "LTE uses a flat network architecture to minimize the number of intermediate nodes between the user and the core network. This simplification reduces signaling overhead and latency, resulting in faster data transfer and improved efficiency.",
+  "correctAnswer": [1]
+}
+
+  
     ],
     assignment: [
+
+      
       
 {
 "question": "What is a primary advantage of 4G over 3G?",
