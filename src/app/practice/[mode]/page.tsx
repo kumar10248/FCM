@@ -6,7 +6,8 @@ import Image from 'next/image';
 import { FaArrowLeft, FaArrowRight, FaClock, FaTimes, FaBars, FaCheck, 
   FaTrophy, FaExclamationCircle, FaLightbulb, 
   FaChevronRight, FaBrain, FaCheckCircle, FaTimesCircle, FaHistory,
-  FaInfoCircle, FaSquare, FaCheckSquare, FaBook } from 'react-icons/fa';
+  FaInfoCircle, FaSquare, FaCheckSquare, FaBook, FaKeyboard, FaExpand, 
+  FaCompress, FaPause, FaPlay, FaFire } from 'react-icons/fa';
 import { getAllQuestions, getAllPassageQuestions, getDemoExamQuestions, debugQuestionsData } from '../../lib/questions';
 import { Question, PracticeMode, OptionItem, PassageQuestion, DemoExamData, QuestionDetail, DetailedResults } from '../../types';
 import { formatTime, calculateSessionTime, validateImagePath, getImageDisplayName } from '@/app/lib/utils';
@@ -43,6 +44,11 @@ export default function QuestionPracticePage() {
   
   const [timeRemaining, setTimeRemaining] = useState(0);
   const [showSidebar, setShowSidebar] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [showKeyboardShortcuts, setShowKeyboardShortcuts] = useState(false);
+  const [streak, setStreak] = useState(0);
+  const [bestStreak, setBestStreak] = useState(0);
  
   const [isLoading, setIsLoading] = useState(true);
   const [loadingError, setLoadingError] = useState<string | null>(null);
@@ -274,6 +280,153 @@ export default function QuestionPracticePage() {
       }
     };
   }, [mode, router]);
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      // Ignore if user is typing in an input
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      // Ignore if paused
+      if (isPaused) {
+        // Only allow P key to unpause
+        if (e.key.toLowerCase() === 'p') {
+          setIsPaused(false);
+        }
+        return;
+      }
+
+      const currentQuestion = getCurrentQuestion();
+      const globalIndex = getGlobalQuestionIndex();
+      const isAnswered = answeredQuestions[globalIndex];
+      const currentSelection = selectedOptions[globalIndex] || [];
+
+      switch(e.key.toLowerCase()) {
+        case 'arrowright':
+        case 'd':
+          // Next question
+          if (globalIndex < getTotalQuestions() - 1) {
+            handleNextQuestion();
+          }
+          break;
+        case 'arrowleft':
+        case 'a':
+          // Previous question
+          if (globalIndex > 0) {
+            goToPreviousQuestion();
+          }
+          break;
+        case ' ':
+        case 'enter':
+          // Submit answer
+          e.preventDefault();
+          if (!isAnswered && currentSelection.length > 0) {
+            submitAnswer();
+          }
+          break;
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+          // Select option 1-9
+          e.preventDefault();
+          const optionIndex = parseInt(e.key) - 1;
+          if (!isAnswered && currentQuestion && optionIndex < currentQuestion.options.length) {
+            const isMultiple = Array.isArray(currentQuestion.correctAnswer) && currentQuestion.correctAnswer.length > 1;
+            if (isMultiple) {
+              toggleOptionSelection(optionIndex);
+            } else {
+              handleSingleOptionSelect(optionIndex);
+            }
+          }
+          break;
+        case 'k':
+          // Show keyboard shortcuts
+          setShowKeyboardShortcuts(!showKeyboardShortcuts);
+          break;
+        case 'f':
+          // Toggle fullscreen
+          toggleFullscreen();
+          break;
+        case 'p':
+          // Toggle pause
+          setIsPaused(!isPaused);
+          break;
+        case 's':
+          // Toggle sidebar
+          setShowSidebar(!showSidebar);
+          break;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [answeredQuestions, selectedOptions, showKeyboardShortcuts, isPaused, showSidebar, 
+      currentQuestionIndex, currentPassageIndex, currentQuestionInPassage, demoExamQuestionIndex,
+      questions, passageQuestions, demoExamData]);
+
+  // Pause timer when paused
+  useEffect(() => {
+    // Clear any existing timer
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+
+    // Only start timer if not paused and time remaining
+    if (!isPaused && timeRemaining > 0) {
+      timerRef.current = setInterval(() => {
+        setTimeRemaining((prevTime) => {
+          if (prevTime <= 1) {
+            if (timerRef.current) {
+              clearInterval(timerRef.current);
+              timerRef.current = null;
+            }
+            const detailedResults: DetailedResults = {
+              score: scoreRef.current,
+              total: totalQuestionsRef.current,
+              mode,
+              timeRemaining: 0,
+              timeUp: true,
+              questionDetails: questionDetailsRef.current,
+              completedAt: new Date().toISOString()
+            };
+            localStorage.setItem('detailedResults', JSON.stringify(detailedResults));
+            router.push(`/results?score=${scoreRef.current}&total=${totalQuestionsRef.current}&mode=${mode}&timeUp=true`);
+            return 0;
+          }
+          return prevTime - 1;
+        });
+      }, 1000);
+    }
+    
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    };
+  }, [isPaused, timeRemaining, mode, router]);
+
+  // Fullscreen toggle
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+      setIsFullscreen(true);
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+        setIsFullscreen(false);
+      }
+    }
+  };
   
   // Helper functions for passage mode
   const getCurrentQuestion = (): Question | null => {
@@ -428,8 +581,17 @@ const handleSingleOptionSelect = (optionIndex: number) => {
   
   if (isCorrect) {
     setScore(prevScore => prevScore + 1);
+    setStreak(prevStreak => {
+      const newStreak = prevStreak + 1;
+      if (newStreak > bestStreak) {
+        setBestStreak(newStreak);
+      }
+      return newStreak;
+    });
     setShowConfetti(true);
     setTimeout(() => setShowConfetti(false), 2000);
+  } else {
+    setStreak(0);
   }
 };
   // Submit the answer for evaluation
@@ -484,8 +646,17 @@ const handleSingleOptionSelect = (optionIndex: number) => {
     
     if (isCorrect) {
       setScore(prevScore => prevScore + 1);
+      setStreak(prevStreak => {
+        const newStreak = prevStreak + 1;
+        if (newStreak > bestStreak) {
+          setBestStreak(newStreak);
+        }
+        return newStreak;
+      });
       setShowConfetti(true);
       setTimeout(() => setShowConfetti(false), 2000);
+    } else {
+      setStreak(0);
     }
   };
   
@@ -605,6 +776,34 @@ const handleSingleOptionSelect = (optionIndex: number) => {
       if (globalIndex !== currentQuestionIndex) {
         setCurrentQuestionIndex(globalIndex);
         setShowSidebar(false);
+      }
+    }
+  };
+
+  const goToPreviousQuestion = () => {
+    if (mode === 'passage' || mode.endsWith('_passage')) {
+      // Handle passage mode navigation
+      if (currentQuestionInPassage > 0) {
+        // Move to previous question in current passage
+        setCurrentQuestionInPassage(currentQuestionInPassage - 1);
+        setIsExplanationExpanded(true);
+      } else if (currentPassageIndex > 0) {
+        // Move to last question of previous passage
+        setCurrentPassageIndex(currentPassageIndex - 1);
+        setCurrentQuestionInPassage(passageQuestions[currentPassageIndex - 1].questions.length - 1);
+        setIsExplanationExpanded(true);
+      }
+    } else if (mode === 'demo-exam') {
+      // Handle demo exam mode
+      if (demoExamQuestionIndex > 0) {
+        setDemoExamQuestionIndex(demoExamQuestionIndex - 1);
+        setIsExplanationExpanded(true);
+      }
+    } else {
+      // Handle regular mode
+      if (currentQuestionIndex > 0) {
+        setCurrentQuestionIndex(currentQuestionIndex - 1);
+        setIsExplanationExpanded(true);
       }
     }
   };
@@ -793,6 +992,168 @@ const handleSingleOptionSelect = (optionIndex: number) => {
       >
         {showSidebar ? <FaTimes className="text-amber-400" /> : <FaBars className="text-amber-400" />}
       </button>
+
+      {/* Keyboard Shortcuts Modal */}
+      {showKeyboardShortcuts && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 max-w-2xl w-full border border-amber-500/30 shadow-2xl">
+            <div className="flex justify-between items-center mb-6">
+              <div className="flex items-center gap-3">
+                <div className="bg-amber-500/20 p-3 rounded-xl">
+                  <FaKeyboard className="text-amber-400 text-2xl" />
+                </div>
+                <h2 className="text-2xl font-bold text-amber-400">Keyboard Shortcuts</h2>
+              </div>
+              <button 
+                onClick={() => setShowKeyboardShortcuts(false)}
+                className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+              >
+                <FaTimes className="text-gray-400" />
+              </button>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
+                <span className="text-gray-300">Next Question</span>
+                <kbd className="px-3 py-1 bg-gray-700 rounded text-sm font-mono text-amber-400">→</kbd>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
+                <span className="text-gray-300">Previous Question</span>
+                <kbd className="px-3 py-1 bg-gray-700 rounded text-sm font-mono text-amber-400">←</kbd>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
+                <span className="text-gray-300">Submit Answer</span>
+                <kbd className="px-3 py-1 bg-gray-700 rounded text-sm font-mono text-amber-400">Space</kbd>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
+                <span className="text-gray-300">Select Options</span>
+                <kbd className="px-3 py-1 bg-gray-700 rounded text-sm font-mono text-amber-400">1-9</kbd>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
+                <span className="text-gray-300">Toggle Sidebar</span>
+                <kbd className="px-3 py-1 bg-gray-700 rounded text-sm font-mono text-amber-400">S</kbd>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
+                <span className="text-gray-300">Fullscreen</span>
+                <kbd className="px-3 py-1 bg-gray-700 rounded text-sm font-mono text-amber-400">F</kbd>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
+                <span className="text-gray-300">Pause/Resume</span>
+                <kbd className="px-3 py-1 bg-gray-700 rounded text-sm font-mono text-amber-400">P</kbd>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-gray-800/50 rounded-lg">
+                <span className="text-gray-300">This Menu</span>
+                <kbd className="px-3 py-1 bg-gray-700 rounded text-sm font-mono text-amber-400">K</kbd>
+              </div>
+            </div>
+            
+            <div className="mt-6 p-4 bg-amber-500/10 rounded-lg border border-amber-500/30">
+              <p className="text-sm text-amber-300 flex items-center gap-2">
+                <FaLightbulb className="flex-shrink-0" />
+                <span>Press <kbd className="px-2 py-0.5 bg-gray-700 rounded text-xs font-mono mx-1">K</kbd> anytime to show/hide this menu</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Enhanced Control Panel - Fixed at top */}
+      <div className="fixed top-0 left-0 right-0 z-40 bg-gradient-to-r from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-lg border-b border-gray-700/50 shadow-2xl">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-between gap-4">
+            {/* Left side - Back button and mode */}
+            <div className="flex items-center gap-3">
+              <Link
+                href="/practice"
+                className="flex items-center gap-2 px-4 py-2 bg-gray-800/80 hover:bg-gray-700 rounded-lg transition-all duration-300 text-sm font-medium"
+              >
+                <FaArrowLeft className="text-amber-400" />
+                <span className="hidden sm:inline">Back</span>
+              </Link>
+              <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-amber-500/10 rounded-lg border border-amber-500/30">
+                <FaBook className="text-amber-400" />
+                <span className="text-amber-300 text-sm font-medium">{formatModeLabel(mode)}</span>
+              </div>
+            </div>
+
+            {/* Center - Streak and Score */}
+            <div className="flex items-center gap-3">
+              {streak > 0 && (
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-lg border border-orange-500/30 animate-pulse">
+                  <FaFire className="text-orange-400" />
+                  <span className="text-orange-300 font-bold text-sm">{streak} 🔥</span>
+                </div>
+              )}
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-green-500/10 rounded-lg border border-green-500/30">
+                <FaTrophy className="text-green-400" />
+                <span className="text-green-300 font-bold text-sm">{score}/{totalQuestions}</span>
+              </div>
+            </div>
+
+            {/* Right side - Controls */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setShowKeyboardShortcuts(true)}
+                className="p-2 bg-gray-800/80 hover:bg-gray-700 rounded-lg transition-all duration-300 group"
+                title="Keyboard Shortcuts (K)"
+              >
+                <FaKeyboard className="text-gray-400 group-hover:text-amber-400" />
+              </button>
+              <button
+                onClick={() => setIsPaused(!isPaused)}
+                className={`p-2 rounded-lg transition-all duration-300 ${
+                  isPaused 
+                    ? 'bg-green-500/20 hover:bg-green-500/30 border border-green-500/30' 
+                    : 'bg-gray-800/80 hover:bg-gray-700'
+                }`}
+                title={isPaused ? 'Resume (P)' : 'Pause (P)'}
+              >
+                {isPaused ? (
+                  <FaPlay className="text-green-400" />
+                ) : (
+                  <FaPause className="text-gray-400 group-hover:text-amber-400" />
+                )}
+              </button>
+              <button
+                onClick={toggleFullscreen}
+                className="hidden md:block p-2 bg-gray-800/80 hover:bg-gray-700 rounded-lg transition-all duration-300 group"
+                title="Fullscreen (F)"
+              >
+                {isFullscreen ? (
+                  <FaCompress className="text-gray-400 group-hover:text-amber-400" />
+                ) : (
+                  <FaExpand className="text-gray-400 group-hover:text-amber-400" />
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Progress bar */}
+          <div className="mt-3 w-full bg-gray-800 rounded-full h-2 overflow-hidden">
+            <div 
+              className="h-full bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 transition-all duration-500 ease-out"
+              style={{ width: `${progressPercentage}%` }}
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Pause Overlay */}
+      {isPaused && (
+        <div className="fixed inset-0 z-45 flex items-center justify-center bg-black/70 backdrop-blur-md">
+          <div className="text-center p-8 bg-gray-900/90 rounded-2xl border border-amber-500/30 shadow-2xl">
+            <FaPause className="text-6xl text-amber-400 mx-auto mb-4" />
+            <h2 className="text-3xl font-bold text-amber-400 mb-2">Practice Paused</h2>
+            <p className="text-gray-400 mb-6">Press P or click Resume to continue</p>
+            <button
+              onClick={() => setIsPaused(false)}
+              className="px-8 py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black rounded-lg font-bold transition-all duration-300 transform hover:scale-105"
+            >
+              Resume Practice
+            </button>
+          </div>
+        </div>
+      )}
       
       {/* Sidebar for question navigation */}
       <div
@@ -861,7 +1222,7 @@ const handleSingleOptionSelect = (optionIndex: number) => {
               else if (answeredQuestions[index]) {
                 // Get the correct answer based on mode
                 let correctAnswer;
-                if (mode === 'passage') {
+                if (mode === 'passage' || mode.endsWith('_passage')) {
                   // Find which passage and question this global index corresponds to
                   let globalIdx = 0;
                   let found = false;
@@ -988,201 +1349,226 @@ const handleSingleOptionSelect = (optionIndex: number) => {
         </div>
       </div>
       
-      {/* Main content */}
-      <div className="md:ml-80 transition-all duration-300 relative z-10">
-        <div className="container mx-auto px-4 py-8 mt-10 pb-20">
-          <div className="max-w-3xl mx-auto">
-            {/* Timer and progress - Mobile view */}
-            <div className="md:hidden flex justify-between items-center mb-6 bg-gray-800/80 p-4 rounded-lg backdrop-blur-md shadow-lg">
-              <div className="text-sm flex items-center">
-                <FaBrain className="mr-2 text-amber-400" />
-                <span className="font-medium">Q{globalQuestionIndex + 1}/{totalQuestions}</span>
-              </div>
-              <div className={`flex items-center font-mono ${isLowTime ? 'text-red-400' : 'text-amber-400'}`}>
-                <FaClock className={`mr-1 ${isLowTime ? 'animate-pulse' : ''}`} />
-                <span className="font-medium">{formatTime(timeRemaining)}</span>
-              </div>
-            </div>
+      {/* Main content - Restructured Layout */}
+      <div className="md:ml-80 transition-all duration-300 relative z-10 pt-24">
+        <div className="container mx-auto px-4 py-6 pb-24">
+          <div className="max-w-6xl mx-auto">
             
-            {/* Desktop header */}
-            <div className="hidden md:flex justify-between items-center mb-8">
-              <div className="text-xl font-medium">
-                <span className="text-amber-400">Question {globalQuestionIndex + 1}</span> of {totalQuestions}
-              </div>
-              <div className={`flex items-center bg-gray-800/90 backdrop-blur-md px-6 py-3 rounded-lg shadow-lg ${
-                isLowTime ? 'border border-red-500/50' : ''
-              }`}>
-                <FaClock className={`mr-2 ${isLowTime ? 'text-red-400 animate-pulse' : 'text-amber-400'}`} />
-                <span className="font-mono text-xl font-medium">
-                  {formatTime(timeRemaining)}
-                </span>
-              </div>
-            </div>
-            
-            {/* Progress bar */}
-            <div className="w-full h-3 bg-gray-800/80 rounded-full mb-8 overflow-hidden shadow-inner">
-              <div 
-                className="h-full bg-gradient-to-r from-green-600 to-green-400 rounded-full transition-all duration-700 ease-out relative"
-                style={{ width: `${progressPercentage}%` }}
-              >
-                <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-r from-transparent to-green-300/30 blur-sm"></div>
-              </div>
-            </div>
-            
-            {/* Question card */}
-            <div className="bg-gradient-to-br from-gray-900/90 to-gray-800/90 rounded-xl p-8 mb-8 border border-gray-700/50 shadow-xl backdrop-blur-md">
-              
-              {/* Passage content for passage mode and demo exam mode */}
-              {(((mode === 'passage' || mode.endsWith('_passage')) && passageQuestions.length > 0) || (mode === 'demo-exam' && getDemoExamCurrentPassage())) && (
-                <div className="mb-8 p-6 bg-gradient-to-br from-blue-900/20 to-blue-800/20 rounded-lg border border-blue-500/30">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-blue-500/20 p-2 rounded-lg mr-3">
-                      <FaBook className="text-blue-400" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-blue-300">
-                      {(mode === 'passage' || mode.endsWith('_passage')) ? 
-                        (passageQuestions[currentPassageIndex]?.title || 'Loading...') : 
-                        (getDemoExamCurrentPassage()?.title || 'Loading...')}
-                    </h3>
+            {/* Question Header Card */}
+            <div className="bg-gradient-to-r from-gray-900/95 to-gray-800/95 rounded-2xl p-6 mb-6 border border-gray-700/50 shadow-2xl backdrop-blur-lg">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="bg-amber-500/20 p-3 rounded-xl border border-amber-500/30">
+                    <FaBrain className="text-amber-400 text-2xl" />
                   </div>
-                  <div className="prose prose-invert max-w-none">
-                    <p className="text-gray-300 leading-relaxed whitespace-pre-wrap">
-                      {(mode === 'passage' || mode.endsWith('_passage')) ? 
-                        (passageQuestions[currentPassageIndex]?.passage || 'Loading passage text...') : 
-                        (getDemoExamCurrentPassage()?.passage || 'Loading passage text...')}
-                    </p>
-                  </div>
-                  <div className="mt-4 text-sm text-blue-400 border-t border-blue-500/20 pt-3">
-                    {(mode === 'passage' || mode.endsWith('_passage')) ? (
-                      <>Question {currentQuestionInPassage + 1} of {passageQuestions[currentPassageIndex]?.questions.length || 0} for this passage</>
-                    ) : (
-                      <>Passage-based question in Demo Exam</>
-                    )}
+                  <div>
+                    <h2 className="text-2xl font-bold text-amber-400">
+                      Question {globalQuestionIndex + 1}
+                    </h2>
+                    <p className="text-gray-400 text-sm">of {totalQuestions} questions</p>
                   </div>
                 </div>
-              )}
-              
-              {/* Question type indicator */}
-              <div className="flex items-center mb-4 text-sm">
-                <div className={`px-3 py-1 rounded-full ${currentQuestionIsMultipleChoice ? 'bg-purple-600/30 text-purple-300' : 'bg-amber-600/30 text-amber-300'} flex items-center`}>
-                  <FaInfoCircle className="mr-2" />
-                  {currentQuestionIsMultipleChoice ? 'Select all that apply' : 'Select one answer'} 
-                </div>
-              </div>
-              
-              <h2 className="text-xl md:text-2xl mb-6 font-medium leading-relaxed">
-                <pre className="bg-clip-text text-transparent bg-gradient-to-r from-amber-200 to-amber-400 whitespace-pre-wrap">
-                  {currentQuestion?.question || "Question not available"}
-                </pre>
-              </h2>
-              
-              {/* Question image - displayed if image URL is provided */}
-              {currentQuestion?.image && validateImagePath(currentQuestion.image) && (
-                <div className="mb-8 flex justify-center">
-                  <div className={`bg-white p-4 rounded-lg shadow-lg w-full ${
-                    currentQuestion.imageSize === 'small' ? 'max-w-md' :
-                    currentQuestion.imageSize === 'medium' ? 'max-w-lg' :
-                    currentQuestion.imageSize === 'large' ? 'max-w-2xl' :
-                    currentQuestion.imageSize === 'full' ? 'max-w-full' :
-                    'max-w-2xl' // default
+                
+                <div className="flex items-center gap-4">
+                  {/* Timer */}
+                  <div className={`flex items-center gap-2 px-4 py-3 rounded-xl border ${
+                    isLowTime 
+                      ? 'bg-red-900/30 border-red-500/50' 
+                      : 'bg-gray-800/80 border-gray-700/50'
                   }`}>
-                    <div className="mb-2 text-center">
-                      <span className="text-sm text-gray-600 font-medium">
-                        {getImageDisplayName(currentQuestion.image)}
-                      </span>
+                    <FaClock className={`text-xl ${isLowTime ? 'text-red-400 animate-pulse' : 'text-amber-400'}`} />
+                    <span className={`font-mono text-xl font-bold ${isLowTime ? 'text-red-400' : 'text-amber-400'}`}>
+                      {formatTime(timeRemaining)}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Progress Bar */}
+              <div className="mt-4 w-full h-2 bg-gray-800 rounded-full overflow-hidden shadow-inner">
+                <div 
+                  className="h-full bg-gradient-to-r from-amber-500 via-yellow-500 to-green-500 rounded-full transition-all duration-700 ease-out relative"
+                  style={{ width: `${progressPercentage}%` }}
+                >
+                  <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-r from-transparent to-white/30 blur-sm"></div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Question Content Card - Restructured */}
+            <div className="bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 rounded-2xl border border-gray-700/50 shadow-2xl backdrop-blur-lg overflow-hidden">
+              
+              {/* Passage Section - Enhanced Display */}
+              {(((mode === 'passage' || mode.endsWith('_passage')) && passageQuestions.length > 0) || (mode === 'demo-exam' && getDemoExamCurrentPassage())) && (
+                <div className="p-8 bg-gradient-to-br from-blue-900/30 to-indigo-900/30 border-b border-blue-500/20">
+                  {/* Passage Header */}
+                  <div className="flex items-start mb-6">
+                    <div className="bg-gradient-to-br from-blue-500/30 to-indigo-500/30 p-3 rounded-xl mr-4 shadow-lg">
+                      <FaBook className="text-blue-300 text-xl" />
                     </div>
-                    {currentQuestion.image.endsWith('.svg') ? (
-                      <Image
-                        src={currentQuestion.image} 
-                        alt={`Diagram: ${getImageDisplayName(currentQuestion.image)}`}
-                        width={800}
-                        height={600}
-                        className="w-full h-auto rounded"
-                        onError={() => {
-                          console.error('Failed to load image:', currentQuestion.image);
-                        }}
-                      />
-                    ) : (
-                      <Image
-                        src={currentQuestion.image}
-                        alt={`Diagram: ${getImageDisplayName(currentQuestion.image)}`}
-                        width={800}
-                        height={600}
-                        className="w-full h-auto rounded"
-                        onError={() => {
-                          console.error('Failed to load image:', currentQuestion.image);
-                        }}
-                      />
-                    )}
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-blue-200 mb-2">
+                        {(mode === 'passage' || mode.endsWith('_passage')) ? 
+                          (passageQuestions[currentPassageIndex]?.title || 'Loading...') : 
+                          (getDemoExamCurrentPassage()?.title || 'Loading...')}
+                      </h3>
+                      <div className="text-sm text-blue-400/80 flex items-center">
+                        <div className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></div>
+                        {(mode === 'passage' || mode.endsWith('_passage')) ? (
+                          <>Question {currentQuestionInPassage + 1} of {passageQuestions[currentPassageIndex]?.questions.length || 0} in this passage</>
+                        ) : (
+                          <>Passage-based question</>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Passage Content */}
+                  <div className="bg-gray-900/40 rounded-xl p-6 border border-blue-500/10 shadow-inner">
+                    <div className="prose prose-invert prose-lg max-w-none">
+                      <p className="text-gray-200 leading-loose whitespace-pre-wrap text-base">
+                        {(mode === 'passage' || mode.endsWith('_passage')) ? 
+                          (passageQuestions[currentPassageIndex]?.passage || 'Loading passage text...') : 
+                          (getDemoExamCurrentPassage()?.passage || 'Loading passage text...')}
+                      </p>
+                    </div>
                   </div>
                 </div>
               )}
               
-              <div className="space-y-4">
+              {/* Question Section */}
+              <div className="p-8">
+                {/* Question Type Badge */}
+                <div className="flex items-center mb-6">
+                  <div className={`px-4 py-2 rounded-xl ${
+                    currentQuestionIsMultipleChoice 
+                      ? 'bg-gradient-to-r from-purple-600/30 to-pink-600/30 border border-purple-500/30' 
+                      : 'bg-gradient-to-r from-amber-600/30 to-orange-600/30 border border-amber-500/30'
+                  } flex items-center shadow-lg backdrop-blur-sm`}>
+                    <FaInfoCircle className={`mr-2 ${currentQuestionIsMultipleChoice ? 'text-purple-300' : 'text-amber-300'}`} />
+                    <span className={`font-medium ${currentQuestionIsMultipleChoice ? 'text-purple-200' : 'text-amber-200'}`}>
+                      {currentQuestionIsMultipleChoice ? 'Select all that apply' : 'Select one answer'}
+                    </span>
+                  </div>
+                </div>
+                
+                {/* Question Text */}
+                <div className="mb-8">
+                  <h2 className="text-2xl md:text-3xl font-semibold leading-relaxed">
+                    <pre className="bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-yellow-200 to-amber-300 whitespace-pre-wrap font-sans">
+                      {currentQuestion?.question || "Question not available"}
+                    </pre>
+                  </h2>
+                </div>
+                
+                {/* Question Image */}
+                {currentQuestion?.image && validateImagePath(currentQuestion.image) && (
+                  <div className="mb-8 flex justify-center">
+                    <div className={`bg-white p-6 rounded-xl shadow-2xl border-4 border-gray-700/30 w-full ${
+                      currentQuestion.imageSize === 'small' ? 'max-w-md' :
+                      currentQuestion.imageSize === 'medium' ? 'max-w-lg' :
+                      currentQuestion.imageSize === 'large' ? 'max-w-2xl' :
+                      currentQuestion.imageSize === 'full' ? 'max-w-full' :
+                      'max-w-2xl'
+                    }`}>
+                      <div className="mb-3 text-center">
+                        <span className="text-sm text-gray-700 font-semibold bg-gray-100 px-3 py-1 rounded-full">
+                          {getImageDisplayName(currentQuestion.image)}
+                        </span>
+                      </div>
+                      {currentQuestion.image.endsWith('.svg') ? (
+                        <Image
+                          src={currentQuestion.image} 
+                          alt={`Diagram: ${getImageDisplayName(currentQuestion.image)}`}
+                          width={800}
+                          height={600}
+                          className="w-full h-auto rounded-lg shadow-md"
+                          onError={() => {
+                            console.error('Failed to load image:', currentQuestion.image);
+                          }}
+                        />
+                      ) : (
+                        <Image
+                          src={currentQuestion.image}
+                          alt={`Diagram: ${getImageDisplayName(currentQuestion.image)}`}
+                          width={800}
+                          height={600}
+                          className="w-full h-auto rounded-lg shadow-md"
+                          onError={() => {
+                            console.error('Failed to load image:', currentQuestion.image);
+                          }}
+                        />
+                      )}
+                    </div>
+                  </div>
+                )}
+                
+                {/* Options Section - Enhanced */}
+                <div className="space-y-3">
                 {currentQuestion?.options?.map((option, index) => {
                   const optionText = getOptionText(option);
                   const optionImage = getOptionImage(option);
                   const optionImageSize = getOptionImageSize(option);
                   
-                  // Define the styling based on the state and question type
-                  const baseStyle = "w-full text-left p-5 rounded-lg transition-all duration-300 flex items-start border";
-                  let dynamicStyle = "bg-gray-800/80 hover:bg-gray-700/90 hover:border-gray-500 border-transparent";
+                  // Enhanced styling for better UX
+                  const baseStyle = "w-full text-left p-6 rounded-xl transition-all duration-300 flex items-start border-2 transform hover:scale-[1.02] hover:shadow-2xl";
+                  let dynamicStyle = "bg-gradient-to-r from-gray-800/90 to-gray-800/70 hover:from-gray-700/90 hover:to-gray-700/70 border-gray-700/50 hover:border-gray-600";
                   
-                  // Different icon for single vs multiple choice
+                  // Icon component with enhanced visuals
                   let iconComponent = currentQuestionIsMultipleChoice ? (
-                    <div className="w-8 h-8 flex items-center justify-center rounded-md bg-gray-700/80 text-gray-300">
-                      {currentSelectedOption.includes(index) ? <FaCheckSquare /> : <FaSquare />}
+                    <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-gradient-to-br from-gray-700 to-gray-600 text-gray-300 shadow-lg">
+                      {currentSelectedOption.includes(index) ? <FaCheckSquare className="text-lg" /> : <FaSquare className="text-lg" />}
                     </div>
                   ) : (
-                    <div className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700/80 text-gray-300">
+                    <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-gray-700 to-gray-600 text-gray-300 font-bold text-lg shadow-lg">
                       {String.fromCharCode(65 + index)}
                     </div>
                   );
                   
-                  // For answered questions
+                  // State-based styling with enhanced visuals
                   if (isCurrentQuestionAnswered) {
                     if (currentQuestion.correctAnswer.includes(index)) {
-                      dynamicStyle = "bg-gradient-to-r from-green-800/40 to-green-700/40 border-green-500/50 text-white font-medium";
-                   iconComponent = currentQuestionIsMultipleChoice ? (
-                        <div className="w-8 h-8 flex items-center justify-center rounded-md bg-green-600/80 text-white">
-                          <FaCheckSquare />
+                      dynamicStyle = "bg-gradient-to-r from-green-900/60 to-green-800/60 border-green-500 shadow-green-500/50 text-white font-semibold";
+                      iconComponent = currentQuestionIsMultipleChoice ? (
+                        <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-gradient-to-br from-green-500 to-green-600 text-white shadow-xl">
+                          <FaCheckSquare className="text-lg" />
                         </div>
                       ) : (
-                        <div className="w-8 h-8 flex items-center justify-center rounded-full bg-green-600/80 text-white">
-                          <FaCheck />
+                        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white shadow-xl">
+                          <FaCheck className="text-lg" />
                         </div>
                       );
                     } else if (currentSelectedOption.includes(index)) {
-                      // Selected but incorrect
-                      dynamicStyle = "bg-gradient-to-r from-red-800/40 to-red-700/40 border-red-500/50 text-white";
+                      // Selected but incorrect with enhanced error styling
+                      dynamicStyle = "bg-gradient-to-r from-red-900/60 to-red-800/60 border-red-500 shadow-red-500/50 text-white";
                       iconComponent = currentQuestionIsMultipleChoice ? (
-                        <div className="w-8 h-8 flex items-center justify-center rounded-md bg-red-600/80 text-white">
-                          <FaTimesCircle />
+                        <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-gradient-to-br from-red-500 to-red-600 text-white shadow-xl">
+                          <FaTimesCircle className="text-lg" />
                         </div>
                       ) : (
-                        <div className="w-8 h-8 flex items-center justify-center rounded-full bg-red-600/80 text-white">
-                          <FaTimes />
+                        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-red-500 to-red-600 text-white shadow-xl">
+                          <FaTimes className="text-lg" />
                         </div>
                       );
                     } else {
-                      // Not selected and not correct
-                      dynamicStyle = "bg-gray-800/60 border-transparent opacity-70";
+                      // Not selected and not correct - dimmed
+                      dynamicStyle = "bg-gray-800/40 border-gray-700/30 opacity-50";
                     }
                   } else if (currentSelectedOption.includes(index)) {
-                    // Selected but not yet answered
-                    dynamicStyle = "bg-gradient-to-r from-amber-800/30 to-amber-700/30 border-amber-500/50";
+                    // Selected but not yet answered - highlighted selection
+                    dynamicStyle = "bg-gradient-to-r from-amber-900/60 to-orange-900/60 border-amber-500 shadow-amber-500/50";
                     iconComponent = currentQuestionIsMultipleChoice ? (
-                      <div className="w-8 h-8 flex items-center justify-center rounded-md bg-amber-600/80 text-white">
-                        <FaCheckSquare />
+                      <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-gradient-to-br from-amber-500 to-orange-500 text-white shadow-xl">
+                        <FaCheckSquare className="text-lg" />
                       </div>
                     ) : (
-                      <div className="w-8 h-8 flex items-center justify-center rounded-full bg-amber-600/80 text-white">
+                      <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-br from-amber-500 to-orange-500 text-white font-bold text-lg shadow-xl">
                         {String.fromCharCode(65 + index)}
                       </div>
                     );
                   }
                   
-                  // Handle option click based on question type
+                  // Handle option click
                   const handleOptionClick = () => {
                     if (currentQuestionIsMultipleChoice) {
                       toggleOptionSelection(index);
@@ -1194,20 +1580,34 @@ const handleSingleOptionSelect = (optionIndex: number) => {
                   return (
                     <button
                       key={index}
-                      className={`${baseStyle} ${dynamicStyle}`}
+                      className={`${baseStyle} ${dynamicStyle} relative group`}
                       onClick={handleOptionClick}
                       disabled={isCurrentQuestionAnswered}
                     >
-                      {iconComponent}
-                      <div className="ml-4 flex-1">
-                        <div className="text-lg text-left">{optionText}</div>
+                      {/* Enhanced keyboard shortcut badge - Hidden on mobile - Shows for options 1-9 */}
+                      {!isCurrentQuestionAnswered && index < 9 && (
+                        <div className="hidden md:flex absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full border-2 border-gray-800 items-center justify-center text-sm font-bold text-white shadow-xl group-hover:scale-110 transition-transform">
+                          {index + 1}
+                        </div>
+                      )}
+                      
+                      {/* Icon */}
+                      <div className="flex-shrink-0">
+                        {iconComponent}
+                      </div>
+                      
+                      {/* Option content */}
+                      <div className="ml-5 flex-1">
+                        <div className="text-lg font-medium text-left leading-relaxed">{optionText}</div>
+                        
+                        {/* Option image */}
                         {optionImage && validateImagePath(optionImage) && (
-                          <div className={`mt-3 ${
+                          <div className={`mt-4 ${
                             optionImageSize === 'small' ? 'max-w-xs' :
                             optionImageSize === 'medium' ? 'max-w-sm' :
                             'max-w-md'
                           }`}>
-                            <div className="bg-white p-2 rounded shadow-md">
+                            <div className="bg-white p-3 rounded-lg shadow-lg border-2 border-gray-300">
                               {optionImage.endsWith('.svg') ? (
                                 <Image
                                   src={optionImage} 
@@ -1238,31 +1638,57 @@ const handleSingleOptionSelect = (optionIndex: number) => {
                     </button>
                   );
                 })}
-              </div>
-              
-              {/* Submit button - only for multiple choice questions */}
-              {currentQuestionIsMultipleChoice && (
-                <div className="mt-8 flex justify-center">
-                  <button
-                    className={`px-8 py-3 rounded-lg font-medium transition duration-300 flex items-center justify-center min-w-[200px] ${
+                </div>
+                
+                {/* Submit Button - Enhanced for Multiple Choice */}
+                {currentQuestionIsMultipleChoice && (
+                  <div className="mt-8 flex justify-center">
+                    <button
+                      className={`px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center min-w-[240px] shadow-xl transform hover:scale-105 ${
                       !answeredQuestions[currentQuestionIndex] && selectedOptions[currentQuestionIndex]?.length > 0
-                        ? "bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black transform hover:scale-105"
-                        : "bg-gray-700 text-gray-400 cursor-not-allowed"
+                        ? "bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-black shadow-amber-500/50"
+                        : "bg-gray-700/50 text-gray-500 cursor-not-allowed"
                     }`}
                     onClick={submitAnswer}
                     disabled={answeredQuestions[currentQuestionIndex] || !selectedOptions[currentQuestionIndex]?.length}
                   >
                     {answeredQuestions[currentQuestionIndex] ? (
                       <>
-                        <FaCheck className="mr-2" /> Submitted
+                        <FaCheck className="mr-3 text-xl" /> Submitted
                       </>
                     ) : (
-                      "Submit Answer"
+                      <>
+                        <span className="mr-2">Submit Answer</span>
+                        <span className="hidden md:inline text-sm opacity-75">(Space)</span>
+                      </>
                     )}
                   </button>
                 </div>
-              )}
+                )}
+              </div>
             </div>
+            
+            {/* Streak Celebration Message */}
+            {isCurrentQuestionAnswered && isCurrentQuestionCorrect && streak > 2 && (
+              <div className="mb-8 bg-gradient-to-r from-orange-900/40 to-red-900/40 rounded-xl p-6 border border-orange-500/50 animate-pulse">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-orange-500/30 p-3 rounded-xl animate-bounce">
+                      <FaFire className="text-orange-400 text-2xl" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-orange-300">
+                        {streak} {streak === 3 ? 'Correct Answers' : streak < 5 ? 'in a Row!' : streak < 10 ? 'Streak! You\'re on Fire! 🔥' : 'Amazing Streak! Unstoppable! 🚀'}
+                      </h3>
+                      <p className="text-orange-200 text-sm">
+                        {bestStreak > streak ? `Best: ${bestStreak} | ` : ''}Keep it going!
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-4xl font-bold text-orange-400">{streak}🔥</div>
+                </div>
+              </div>
+            )}
             
             {/* Explanation section - shown after answering */}
             {isCurrentQuestionAnswered && (
@@ -1322,13 +1748,57 @@ const handleSingleOptionSelect = (optionIndex: number) => {
               </div>
             )}
             
-            {/* Navigation buttons */}
-            <div className="flex justify-between mt-10">
+            {/* Floating Pro Tips Icon - Right Side - Hidden on Mobile */}
+            <div className="hidden md:block fixed right-6 bottom-24 z-30 group">
+              {/* Tooltip Card - Shows on Hover */}
+              <div className="absolute right-full mr-4 bottom-0 w-80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-x-0 translate-x-4">
+                <div className="bg-gradient-to-br from-indigo-900/95 to-purple-900/95 backdrop-blur-xl rounded-2xl p-5 border-2 border-indigo-500/50 shadow-2xl">
+                  <div className="flex items-center gap-2 mb-4">
+                    <FaLightbulb className="text-yellow-400 text-lg" />
+                    <h4 className="font-bold text-indigo-200">Pro Tips</h4>
+                  </div>
+                  <ul className="space-y-2 text-sm text-gray-200">
+                    <li className="flex items-center gap-2">
+                      <span className="text-indigo-400">•</span>
+                      Press <kbd className="px-2 py-1 bg-gray-800 rounded text-xs font-mono text-amber-400">1-9</kbd> to select options
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-indigo-400">•</span>
+                      Use <kbd className="px-2 py-1 bg-gray-800 rounded text-xs font-mono text-amber-400">→</kbd> <kbd className="px-2 py-1 bg-gray-800 rounded text-xs font-mono text-amber-400">←</kbd> to navigate
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-indigo-400">•</span>
+                      Press <kbd className="px-2 py-1 bg-gray-800 rounded text-xs font-mono text-amber-400">K</kbd> for all shortcuts
+                    </li>
+                    {bestStreak > 0 && (
+                      <li className="flex items-center gap-2 text-orange-300 font-medium pt-2 border-t border-indigo-500/30">
+                        <FaTrophy className="text-yellow-400" />
+                        Best streak: {bestStreak} correct!
+                      </li>
+                    )}
+                  </ul>
+                </div>
+                {/* Arrow pointer */}
+                <div className="absolute right-0 bottom-6 transform translate-x-1/2">
+                  <div className="w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-8 border-l-indigo-500/50"></div>
+                </div>
+              </div>
+              
+              {/* Floating Icon Button */}
+              <button className="relative bg-gradient-to-br from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 p-4 rounded-full shadow-2xl border-2 border-indigo-400/50 hover:border-indigo-300 transition-all duration-300 transform hover:scale-110 group-hover:shadow-indigo-500/50">
+                <FaLightbulb className="text-yellow-300 text-xl" />
+                {/* Pulse animation ring */}
+                <span className="absolute inset-0 rounded-full bg-indigo-400/30 animate-ping"></span>
+              </button>
+            </div>
+            
+            {/* Navigation Buttons - Enhanced - Fixed on Mobile */}
+            <div className="flex justify-between items-center mt-12 md:mt-12 gap-4 md:relative fixed bottom-0 left-0 right-0 bg-gray-900/95 md:bg-transparent backdrop-blur-lg md:backdrop-blur-none p-4 md:p-0 border-t md:border-t-0 border-gray-800/50 z-40">
               <button
-                className={`px-6 py-3 rounded-lg flex items-center transition duration-300 ${
+                className={`flex-1 md:flex-initial px-4 md:px-8 py-3 md:py-4 rounded-xl flex items-center justify-center gap-2 md:gap-3 font-semibold text-base md:text-lg transition-all duration-300 shadow-lg ${
                   globalQuestionIndex > 0
-                    ? "bg-gray-800 hover:bg-gray-700 text-white"
-                    : "bg-gray-800/50 text-gray-500 cursor-not-allowed"
+                    ? "bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 text-white border-2 border-gray-600/50 hover:border-gray-500 transform hover:scale-105 hover:shadow-xl"
+                    : "bg-gray-800/30 text-gray-600 cursor-not-allowed border-2 border-gray-700/30"
                 }`}
                 onClick={() => {
                   if (globalQuestionIndex > 0) {
@@ -1337,25 +1807,41 @@ const handleSingleOptionSelect = (optionIndex: number) => {
                 }}
                 disabled={globalQuestionIndex === 0}
               >
-                <FaArrowLeft className="mr-2" /> Previous
+                <FaArrowLeft className="text-lg md:text-xl" />
+                <span>Previous</span>
+                {globalQuestionIndex > 0 && (
+                  <kbd className="hidden md:inline ml-2 px-2 py-1 bg-gray-900/50 rounded text-xs font-mono text-amber-400">←</kbd>
+                )}
               </button>
               
               <button
-                className={`px-6 py-3 rounded-lg flex items-center ${
+                className={`flex-1 md:flex-initial px-4 md:px-8 py-3 md:py-4 rounded-xl flex items-center justify-center gap-2 md:gap-3 font-semibold text-base md:text-lg transition-all duration-300 shadow-lg ${
                   answeredQuestions[globalQuestionIndex]
-                    ? "bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black transform hover:scale-105 transition duration-300"
-                    : "bg-gray-800/50 text-gray-500 cursor-not-allowed"
+                    ? "bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black border-2 border-amber-400/50 hover:border-yellow-400 transform hover:scale-105 shadow-amber-500/50"
+                    : "bg-gray-800/30 text-gray-600 cursor-not-allowed border-2 border-gray-700/30"
                 }`}
                 onClick={handleNextQuestion}
                 disabled={!answeredQuestions[globalQuestionIndex]}
               >
                 {globalQuestionIndex < totalQuestionsRef.current - 1 ? (
-                  <>Next <FaArrowRight className="ml-2" /></>
+                  <>
+                    <span>Next</span>
+                    <FaArrowRight className="text-lg md:text-xl" />
+                    {answeredQuestions[globalQuestionIndex] && (
+                      <kbd className="hidden md:inline ml-1 px-2 py-1 bg-black/30 rounded text-xs font-mono text-amber-200">→</kbd>
+                    )}
+                  </>
                 ) : (
-                  <>Finish <FaTrophy className="ml-2" /></>
+                  <>
+                    <span>Finish</span>
+                    <FaTrophy className="text-lg md:text-xl" />
+                  </>
                 )}
               </button>
             </div>
+            
+            {/* Spacer for fixed mobile navigation */}
+            <div className="md:hidden h-20"></div>
           </div>
         </div>
       </div>
