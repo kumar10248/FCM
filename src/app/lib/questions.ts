@@ -8631,18 +8631,231 @@ module7:[
     ],
     "explanation": "Connected vehicles use IoT for vehicle-to-vehicle (V2V) and vehicle-to-infrastructure (V2I) communication, enabling real-time traffic prediction, collision avoidance, and improved traffic management for enhanced safety and efficiency.",
     "correctAnswer": [0]
+  },
+
+  {
+    "question": "What are the key security requirements for 5G networks?",
+    "options": [
+      "Robust encryption, secure authentication, resilience against Denial of Service attacks, stringent privacy protections, and adherence to international standards",
+      "Reduced operational costs and improved network efficiency",
+      "Enhanced user interfaces and better customer service",
+      "Fast data transmission and increased bandwidth"
+    ],
+    "explanation": "5G networks require comprehensive security measures including robust encryption, secure authentication mechanisms, DDoS protection, strict privacy protections, and compliance with international security standards to protect against sophisticated threats.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Which of the following is NOT considered a threat actor in 5G networks?",
+    "options": [
+      "Cyber criminals",
+      "State-sponsored groups",
+      "Hacktivists",
+      "Network engineers"
+    ],
+    "explanation": "Network engineers are legitimate professionals who design, maintain, and secure networks. They are not threat actors. Threat actors include cyber criminals, state-sponsored groups, and hacktivists who attempt to compromise network security.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "What type of attacks do sophisticated threat actors often employ in 5G networks?",
+    "options": [
+      "Basic malware and spyware",
+      "Advanced Persistent Threats, zero-day exploits, and artificial intelligence",
+      "Traditional denial-of-service attacks",
+      "Simple phishing attacks"
+    ],
+    "explanation": "Sophisticated threat actors use Advanced Persistent Threats (APTs), zero-day exploits, and AI-powered attacks to target 5G networks, making these attacks more complex and harder to detect than traditional methods.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Why are traditional security measures often inadequate against sophisticated attacks on 5G networks?",
+    "options": [
+      "They are too expensive to implement",
+      "They improve network speed but not security",
+      "They focus only on physical security",
+      "They are reactive and address only known vulnerabilities"
+    ],
+    "explanation": "Traditional security measures are reactive, addressing only known vulnerabilities after they are discovered. Sophisticated attacks on 5G networks use novel techniques including zero-day exploits and APTs that bypass conventional defenses.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Which of the following is an attack vector in 5G networks?",
+    "options": [
+      "Compromised user equipment and IoT devices",
+      "Reduced data transmission speeds",
+      "Enhanced customer support",
+      "Improved network efficiency"
+    ],
+    "explanation": "Compromised user equipment and IoT devices serve as entry points (attack vectors) for malicious actors to infiltrate 5G networks, potentially leading to data breaches and network disruptions.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "What is a potential consequence of unauthorized physical access to the gNodeB?",
+    "options": [
+      "Tampering, theft, vandalism, and service interruptions",
+      "Improved data encryption",
+      "Increased network speed",
+      "Better user authentication"
+    ],
+    "explanation": "Unauthorized physical access to gNodeBs (5G base stations) can result in equipment tampering, theft, vandalism, or intentional service disruptions, compromising network availability and security.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Why do 5G networks face significant security challenges?",
+    "options": [
+      "Because of fragmented security measures and interoperability with legacy systems",
+      "Because they use outdated technology",
+      "Due to reduced user demand",
+      "Due to increased bandwidth and speed"
+    ],
+    "explanation": "5G networks face security challenges due to fragmented security implementations across different vendors and the need to interoperate with less secure legacy systems (4G, 3G), creating potential vulnerabilities.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "What strategy is essential for effective protection of 5G networks?",
+    "options": [
+      "Increasing operational costs",
+      "Comprehensive defense-in-depth strategy",
+      "Single-layer security approach",
+      "Reducing the number of connected devices"
+    ],
+    "explanation": "A comprehensive defense-in-depth strategy employs multiple layers of security controls throughout the network infrastructure, ensuring that if one layer is breached, others continue to provide protection.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which organization is responsible for setting security standards from 3G to 5G?",
+    "options": [
+      "IETF",
+      "ETSI ISG NFV",
+      "3GPP",
+      "NIST"
+    ],
+    "explanation": "3GPP (3rd Generation Partnership Project) is the organization responsible for developing technical specifications and security standards for mobile telecommunications from 3G through 5G networks.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What is the role of the Authentication Server Function (AUSF) in 5G networks?",
+    "options": [
+      "Managing subscription data",
+      "Handling network authentication and securing signaling",
+      "Working with UDM for secure user authentication",
+      "Protecting communication between networks"
+    ],
+    "explanation": "The AUSF works with the UDM (Unified Data Management) to perform secure user authentication in 5G networks, ensuring that only authorized users can access network services.",
+    "correctAnswer": [2]
   }
 ],
     module5: [
-      {
-    "question": "What is the most important gain from the packet scheming in the cellular system?",
+    {
+    "question": "How does 5G improve healthcare?",
     "options": [
-      "Increasing \"average\" data rate of each user.",
-      "Save the power consumption of base stations."
+      "By increasing the cost of medical procedures",
+      "By enabling remote surgeries and supporting real-time patient monitoring",
+      "By reducing the speed of data transmission",
+      "By limiting access to medical data"
     ],
-    "explanation": "Packet scheduling's primary benefit is increasing the average data rate for each user by intelligently allocating resources based on channel conditions, traffic demands, and fairness criteria. By scheduling transmissions when channel conditions are favorable and managing resources efficiently, packet scheduling significantly improves user experience and network efficiency compared to simple round-robin approaches.",
+    "explanation": "5G's ultra-low latency and high reliability enable remote surgeries, real-time patient monitoring, telemedicine, and rapid transmission of medical imaging data, revolutionizing healthcare delivery.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What benefit does 5G bring to supply chains?",
+    "options": [
+      "It eliminates the need for data management",
+      "It increases the complexity of operations",
+      "It decreases security measures for data and goods",
+      "It automates operations and provides real-time data transmission to streamline operations and reduce costs"
+    ],
+    "explanation": "5G enables automation, real-time tracking, predictive analytics, and seamless data transmission across supply chains, improving efficiency, reducing costs, and enhancing visibility of goods in transit.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "How do fixed wireless networks benefit from 5G technology?",
+    "options": [
+      "They reduce the reliability of internet access",
+      "They offer affordable, high-speed internet, especially for underserved areas",
+      "They provide slower internet speeds",
+      "They become more expensive and less accessible"
+    ],
+    "explanation": "5G fixed wireless access (FWA) provides high-speed internet without the need for physical cable infrastructure, making it cost-effective for deploying broadband in rural and underserved areas.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What is one way 5G helps bridge the digital divide?",
+    "options": [
+      "By increasing internet costs for underserved areas",
+      "By reducing the availability of high-speed internet",
+      "By limiting access to digital technologies",
+      "By promoting economic development and education, helping lift millions out of poverty"
+    ],
+    "explanation": "5G technology helps bridge the digital divide by providing affordable high-speed internet access to underserved and remote areas, enabling access to education, economic opportunities, and digital services that can help lift communities out of poverty.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "In smart cities, how does 5G enhance urban living?",
+    "options": [
+      "By reducing traffic management capabilities",
+      "By limiting public service availability",
+      "By increasing air pollution levels",
+      "By improving traffic management, air quality monitoring, and smarter public services"
+    ],
+    "explanation": "5G enables smart city applications including intelligent traffic management systems, real-time air quality monitoring, smart lighting, waste management, and enhanced public services, improving urban sustainability and quality of life.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "What is one benefit of 5G in smart stadia and venues?",
+    "options": [
+      "Limited coverage and reduced shopping efficiency",
+      "Increased network congestion",
+      "Frictionless shopping and better coverage through network slicing and edge computing",
+      "Decreased user experience quality"
+    ],
+    "explanation": "5G enhances experiences in stadiums and large venues through network slicing for dedicated bandwidth, edge computing for low latency, augmented reality features, frictionless mobile payments, and improved connectivity for dense crowds.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "How does 5G support connected and driverless vehicles?",
+    "options": [
+      "By limiting data exchange between vehicles",
+      "By increasing communication latency between vehicles",
+      "By ensuring low-latency, high-volume communication, improving safety and efficiency",
+      "By reducing the efficiency of autonomous driving systems"
+    ],
+    "explanation": "5G provides the ultra-low latency and high-bandwidth communication required for vehicle-to-vehicle (V2V) and vehicle-to-infrastructure (V2I) communication, enabling real-time decision making for autonomous vehicles and improving road safety.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What advantage does 5G bring to gaming and augmented reality (AR)?",
+    "options": [
+      "Seamless, high-quality experiences with multi-modal AR and immersive gaming",
+      "Limited support for augmented reality applications",
+      "Increased latency and lower-quality visuals",
+      "Reduced interactivity and engagement"
+    ],
+    "explanation": "5G's high bandwidth and low latency enable cloud gaming, multi-modal augmented reality experiences, immersive VR/AR applications, and real-time multiplayer gaming without lag or quality degradation.",
     "correctAnswer": [0]
+  },
+  {
+    "question": "Which technology improves efficiency and reduces latency in TDD deployments?",
+    "options": [
+      "IAB and Smart Repeaters",
+      "AI/ML Data-Driven Designs",
+      "Enhanced MIMO",
+      "Evolved Duplexing"
+    ],
+    "explanation": "Evolved Duplexing technologies improve the efficiency and reduce latency in Time Division Duplex (TDD) deployments by optimizing the allocation of time slots for uplink and downlink transmission.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "What is the focus of Enhanced Uplink and Broadband Evolution in Release 18?",
+    "options": [
+      "Increasing latency and power consumption",
+      "Optimizing 5G performance and efficiency",
+      "Reducing device-to-network transmission performance",
+      "Limiting the capabilities of 5G NR devices"
+    ],
+    "explanation": "Release 18 focuses on Enhanced Uplink and Broadband Evolution to optimize 5G performance and efficiency, improving uplink speeds, coverage, and overall network capacity for better user experiences.",
+    "correctAnswer": [1]
   }
+
     ],
     module1: [
   {
