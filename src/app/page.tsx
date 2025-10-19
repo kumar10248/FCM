@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { FaBook, FaClock, FaGraduationCap, FaInstagram, FaGithub, FaTwitter, FaCode, FaLinkedinIn,  FaArrowRight, FaDownload } from 'react-icons/fa';
 import {ExamWishesBanner} from './components/ExamWishesBanner';
+import {FeedbackForm} from './components/FeedbackForm';
+import {FeedbackViewer} from './components/FeedbackViewer';
 
 export default function Home() {
   return (
@@ -112,13 +114,123 @@ export default function Home() {
             </div>
           </div> }
           
-          <div className="mt-20 pt-8 border-t border-gray-800/50">
-            <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Created with ❤️ by <span className='text-amber-400 font-bold'>Kumar Devashish.</span>
-            </p>
-          </div>
+          {/* Enhanced Footer */}
+          <footer className="mt-32 relative">
+            {/* Decorative top border with gradient */}
+            <div className="absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
+            
+            {/* Main Footer Content */}
+            <div className="pt-16 pb-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                {/* About Section */}
+                <div className="text-center md:text-left">
+                  <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
+                    FCWMC Practice
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    Your comprehensive platform for mastering Fundamentals of Computing and Wireless Mobile Communications. Practice, learn, and excel!
+                  </p>
+                </div>
+
+                {/* Quick Links */}
+                <div className="text-center">
+                  <h4 className="text-lg font-semibold mb-4 text-amber-300">Quick Links</h4>
+                  <ul className="space-y-2">
+                    <li>
+                      <Link href="/practice" className="text-gray-400 hover:text-amber-400 transition-colors duration-300 text-sm inline-flex items-center gap-2 group">
+                        <FaArrowRight className="text-xs transform group-hover:translate-x-1 transition-transform" />
+                        Start Practice
+                      </Link>
+                    </li>
+                    <li>
+                      <a href="/FCWMC.pdf" download className="text-gray-400 hover:text-green-400 transition-colors duration-300 text-sm inline-flex items-center gap-2 group">
+                        <FaDownload className="text-xs transform group-hover:translate-y-1 transition-transform" />
+                        Download Notes
+                      </a>
+                    </li>
+                  
+                  </ul>
+                </div>
+
+                {/* Connect Section */}
+                <div className="text-center md:text-right">
+                  <h4 className="text-lg font-semibold mb-4 text-amber-300">Connect With Me</h4>
+                  <div className="flex justify-center md:justify-end space-x-4 mb-4">
+                    <a href="https://www.devashish.top" 
+                       className="group relative p-3 rounded-lg bg-gradient-to-br from-purple-900/30 to-purple-800/20 hover:from-purple-600/40 hover:to-purple-700/30 border border-purple-500/30 hover:border-purple-400/60 transition-all duration-300 transform hover:scale-110">
+                      <FaCode className="text-purple-400 group-hover:text-purple-300 transition-colors" />
+                      <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                        Portfolio
+                      </span>
+                    </a>
+                    <a href="https://linkedin.com/in/kumar-devashishh" target="_blank" rel="noopener noreferrer"
+                       className="group relative p-3 rounded-lg bg-gradient-to-br from-blue-900/30 to-blue-800/20 hover:from-blue-600/40 hover:to-blue-700/30 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-300 transform hover:scale-110">
+                      <FaLinkedinIn className="text-blue-400 group-hover:text-blue-300 transition-colors" />
+                      <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                        LinkedIn
+                      </span>
+                    </a>
+                    <a href="https://github.com/kumar10248" target="_blank" rel="noopener noreferrer"
+                       className="group relative p-3 rounded-lg bg-gradient-to-br from-green-900/30 to-green-800/20 hover:from-green-600/40 hover:to-green-700/30 border border-green-500/30 hover:border-green-400/60 transition-all duration-300 transform hover:scale-110">
+                      <FaGithub className="text-green-400 group-hover:text-green-300 transition-colors" />
+                      <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-green-400 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                        GitHub
+                      </span>
+                    </a>
+                    <a href="https://twitter.com/kumarDe10248" target="_blank" rel="noopener noreferrer"
+                       className="group relative p-3 rounded-lg bg-gradient-to-br from-sky-900/30 to-sky-800/20 hover:from-sky-600/40 hover:to-sky-700/30 border border-sky-500/30 hover:border-sky-400/60 transition-all duration-300 transform hover:scale-110">
+                      <FaTwitter className="text-sky-400 group-hover:text-sky-300 transition-colors" />
+                      <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-sky-400 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                        Twitter
+                      </span>
+                    </a>
+                  </div>
+                  <p className="text-gray-400 text-sm">
+                    Let&apos;s connect and collaborate!
+                  </p>
+                </div>
+              </div>
+
+              {/* Bottom Bar */}
+              <div className="pt-8 mt-8 border-t border-gray-800/50">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
+                    <p className="text-sm text-gray-400">
+                      © {new Date().getFullYear()} <span className="font-bold bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">FCWMC Practice</span>
+                    </p>
+                  </div>
+                  
+                  <div className="flex items-center gap-2 text-sm">
+                    <span className="text-gray-500">Made with</span>
+                    <span className="text-red-500 animate-pulse">❤️</span>
+                    <span className="text-gray-500">by</span>
+                    <a href="https://www.devashish.top" className="font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-amber-400 bg-clip-text text-transparent hover:from-purple-300 hover:via-pink-400 hover:to-amber-300 transition-all duration-300">
+                      Kumar Devashish
+                    </a>
+                  </div>
+                  
+                  <div className="flex items-center gap-3 text-xs text-gray-500">
+                    <span className="px-3 py-1 bg-gray-800/50 rounded-full border border-gray-700/50 hover:border-amber-500/30 transition-colors cursor-default">
+                      v1.0.0
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Decorative Elements */}
+              <div className="absolute -bottom-0 left-1/4 w-32 h-32 bg-amber-500/5 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-0 right-1/4 w-32 h-32 bg-purple-500/5 rounded-full blur-3xl"></div>
+            </div>
+          </footer>
         </div>
       </div>
+      
+      {/* Feedback Form Component */}
+      <FeedbackForm />
+      
+      {/* Feedback Viewer Component (Admin) */}
+      <FeedbackViewer />
     </div>
   );
 }

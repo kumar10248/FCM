@@ -1,0 +1,4 @@
+# This directory stores user feedback submissions as text files
+# Each submission creates:
+# - An individual .txt file with formatted feedback
+# - A feedbacks.json file with all feedbacks in JSON format
