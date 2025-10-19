@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
-import { readFile, writeFile } from 'fs/promises';
-import { existsSync } from 'fs';
-import path from 'path';
+import getClientPromise from '@/lib/mongodb';
 
 interface Feedback {
   name: string;
@@ -14,31 +12,35 @@ interface Feedback {
 
 export async function GET() {
   try {
-    const jsonFilePath = path.join(process.cwd(), 'feedbacks', 'feedbacks.json');
-    
-    // Check if feedbacks file exists
-    if (!existsSync(jsonFilePath)) {
-      return NextResponse.json({
-        success: true,
-        feedbacks: [],
-        count: 0,
-        averageRating: 0
-      });
-    }
+    // Connect to MongoDB
+    const client = await getClientPromise();
+    const db = client.db('fcwmc-feedback');
+    const collection = db.collection('feedbacks');
 
-    // Read feedbacks
-    const data = await readFile(jsonFilePath, 'utf-8');
-    const feedbacks: Feedback[] = JSON.parse(data);
+    // Fetch all feedbacks, sorted by most recent first
+    const feedbacks = await collection
+      .find({})
+      .sort({ createdAt: -1 })
+      .toArray();
+
+    // Convert MongoDB documents to plain objects
+    const feedbacksData: Feedback[] = feedbacks.map(doc => ({
+      name: doc.name,
+      uid: doc.uid,
+      rating: doc.rating,
+      feedback: doc.feedback,
+      timestamp: doc.timestamp,
+    }));
 
     // Calculate statistics
-    const count = feedbacks.length;
+    const count = feedbacksData.length;
     const averageRating = count > 0 
-      ? feedbacks.reduce((sum: number, f: Feedback) => sum + f.rating, 0) / count 
+      ? feedbacksData.reduce((sum: number, f: Feedback) => sum + f.rating, 0) / count 
       : 0;
 
     return NextResponse.json({
       success: true,
-      feedbacks,
+      feedbacks: feedbacksData,
       count,
       averageRating: Math.round(averageRating * 10) / 10
     });
@@ -54,11 +56,13 @@ export async function GET() {
 
 export async function DELETE() {
   try {
-    const jsonFilePath = path.join(process.cwd(), 'feedbacks', 'feedbacks.json');
-    
-    if (existsSync(jsonFilePath)) {
-      await writeFile(jsonFilePath, '[]', 'utf-8');
-    }
+    // Connect to MongoDB
+    const client = await getClientPromise();
+    const db = client.db('fcwmc-feedback');
+    const collection = db.collection('feedbacks');
+
+    // Delete all feedbacks
+    await collection.deleteMany({});
 
     return NextResponse.json({
       success: true,
@@ -73,3 +77,4 @@ export async function DELETE() {
     );
   }
 }
+
