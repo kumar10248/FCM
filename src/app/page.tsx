@@ -212,7 +212,7 @@ export default function Home() {
                   
                   <div className="flex items-center gap-3 text-xs text-gray-500">
                     <span className="px-3 py-1 bg-gray-800/50 rounded-full border border-gray-700/50 hover:border-amber-500/30 transition-colors cursor-default">
-                      v1.0.0
+                      v3.1.1
                     </span>
                   </div>
                 </div>
