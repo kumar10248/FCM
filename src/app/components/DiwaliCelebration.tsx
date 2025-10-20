@@ -50,19 +50,19 @@ export function DiwaliCelebration() {
           <path
             d="M 0,0 Q 50,50 0,100"
             fill="none"
-            stroke="rgba(139, 69, 19, 0.3)"
-            strokeWidth="2"
+            stroke="rgba(255, 215, 0, 0.5)"
+            strokeWidth="3"
           />
           {[...Array(8)].map((_, i) => (
             <circle
               key={i}
               cx={Math.sin((i * Math.PI) / 14) * 50}
               cy={(i * 100) / 7}
-              r="4"
+              r="7"
               className="animate-led-blink"
               style={{
-                fill: ['#FFD700', '#FF6B35', '#F7931E', '#FDB913', '#FF1744'][i % 5],
-                animationDelay: `${i * 0.15}s`,
+                fill: ['#FFD700', '#FFA500', '#FFD700', '#FFBF00', '#FFD700', '#FFA500', '#FFD700', '#FFBF00'][i],
+                animationDelay: `${i * 0.12}s`,
               }}
             />
           ))}
@@ -70,24 +70,25 @@ export function DiwaliCelebration() {
       </div>
 
       {/* Top-Right Corner LED Lari */}
+            {/* Top-Right Corner LED Lari */}
       <div className="absolute top-0 right-0 w-64 h-64">
         <svg className="w-full h-full" viewBox="0 0 200 200">
           <path
             d="M 200,0 Q 150,50 200,100"
             fill="none"
-            stroke="rgba(139, 69, 19, 0.3)"
-            strokeWidth="2"
+            stroke="rgba(255, 215, 0, 0.5)"
+            strokeWidth="3"
           />
           {[...Array(8)].map((_, i) => (
             <circle
               key={i}
               cx={200 - Math.sin((i * Math.PI) / 14) * 50}
               cy={(i * 100) / 7}
-              r="4"
+              r="7"
               className="animate-led-blink"
               style={{
-                fill: ['#FDB913', '#FF1744', '#FFD700', '#FF6B35', '#F7931E'][i % 5],
-                animationDelay: `${i * 0.15 + 0.5}s`,
+                fill: ['#FFBF00', '#FFA500', '#FFD700', '#FFBF00', '#FFD700', '#FFA500', '#FFD700', '#FFBF00'][i],
+                animationDelay: `${i * 0.12 + 0.4}s`,
               }}
             />
           ))}
@@ -100,19 +101,19 @@ export function DiwaliCelebration() {
           <path
             d="M 0,200 Q 50,150 0,100"
             fill="none"
-            stroke="rgba(139, 69, 19, 0.3)"
-            strokeWidth="2"
+            stroke="rgba(255, 215, 0, 0.5)"
+            strokeWidth="3"
           />
           {[...Array(8)].map((_, i) => (
             <circle
               key={i}
               cx={Math.sin((i * Math.PI) / 14) * 50}
               cy={200 - (i * 100) / 7}
-              r="4"
+              r="7"
               className="animate-led-blink"
               style={{
-                fill: ['#FF6B35', '#F7931E', '#FDB913', '#FFD700', '#FF1744'][i % 5],
-                animationDelay: `${i * 0.15 + 0.25}s`,
+                fill: ['#FFBF00', '#FFD700', '#FFA500', '#FFD700', '#FFBF00', '#FFA500', '#FFD700', '#FFBF00'][i],
+                animationDelay: `${i * 0.12 + 0.2}s`,
               }}
             />
           ))}
@@ -125,19 +126,19 @@ export function DiwaliCelebration() {
           <path
             d="M 200,200 Q 150,150 200,100"
             fill="none"
-            stroke="rgba(139, 69, 19, 0.3)"
-            strokeWidth="2"
+            stroke="rgba(255, 215, 0, 0.5)"
+            strokeWidth="3"
           />
           {[...Array(8)].map((_, i) => (
             <circle
               key={i}
               cx={200 - Math.sin((i * Math.PI) / 14) * 50}
               cy={200 - (i * 100) / 7}
-              r="4"
+              r="7"
               className="animate-led-blink"
               style={{
-                fill: ['#F7931E', '#FFD700', '#FF1744', '#FF6B35', '#FDB913'][i % 5],
-                animationDelay: `${i * 0.15 + 0.75}s`,
+                fill: ['#FFD700', '#FFBF00', '#FFA500', '#FFD700', '#FFBF00', '#FFD700', '#FFA500', '#FFBF00'][i],
+                animationDelay: `${i * 0.12 + 0.6}s`,
               }}
             />
           ))}
@@ -340,11 +341,11 @@ export function DiwaliCelebration() {
         @keyframes led-blink {
           0%, 100% {
             opacity: 1;
-            filter: drop-shadow(0 0 3px currentColor) drop-shadow(0 0 6px currentColor);
+            filter: drop-shadow(0 0 8px #FFD700) drop-shadow(0 0 12px #FFD700) drop-shadow(0 0 16px #FFA500);
           }
           50% {
-            opacity: 0.3;
-            filter: drop-shadow(0 0 1px currentColor);
+            opacity: 0.6;
+            filter: drop-shadow(0 0 4px #FFD700) drop-shadow(0 0 6px #FFA500);
           }
         }
 
