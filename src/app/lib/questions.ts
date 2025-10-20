@@ -8061,18 +8061,231 @@ module7:[
 
   },
   unit3: {
-    // Placeholder - copy of unit1 for now
-    module6: [ {
-        "question": "Where does the swap space reside?",
-        "options": [
-          "RAM",
-          "Disk",
-          "ROM",
-          "On-chip cache"
-        ],
-        "explanation": "Swap space is an area on disk that temporarily holds a process memory image.",
-        "correctAnswer": [1]
-      }],
+
+    module1: [
+  {
+    "question": "Which generation of mobile networks introduced Short Message Service (SMS) and laid the groundwork for limited mobile internet browsing?",
+    "options": [
+      "2nd Generation",
+      "1st Generation",
+      "4th Generation",
+      "3rd Generation"
+    ],
+    "explanation": "The 2nd generation introduced digital communication, enhancing voice quality and introducing SMS. It also laid the groundwork for basic data services like GPRS, enabling limited mobile internet browsing.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "What role does Massive MIMO play in 5G technology compared to 4G?",
+    "options": [
+      "It is used in both 4G and 5G, but is mandatory for 5G's high-frequency bands to enhance signal strength and coverage.",
+      "It is mandatory for 4G networks but optional for 5G's higher frequency bands.",
+      "It is optional for both 4G and 5G networks but enhances signal quality and reduces interference.",
+      "It is not used in 4G but is essential for 5G to ensure coverage for high-frequency bands."
+    ],
+    "explanation": "Massive MIMO is employed in both 4G and 5G networks, but its use is mandatory for 5G's higher frequency bands to ensure enhanced signal strength and coverage, making it a crucial technology for the advanced capabilities of 5G.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "What key advantage does 5G's ultra-low latency provide compared to 4G?",
+    "options": [
+      "Increased bandwidth for more simultaneous connections",
+      "Real-time responsiveness essential for applications like remote surgery and autonomous vehicles",
+      "Enhanced signal strength and reduced interference",
+      "Higher data rates for streaming video"
+    ],
+    "explanation": "5G's ultra-low latency significantly reduces data transmission delays, making it critical for applications requiring immediate response, such as remote surgery and autonomous vehicles.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which of the following accurately describes a major advancement introduced with the 4th generation (4G) of mobile networks?",
+    "options": [
+      "Enhancement of voice quality and the introduction of Short Message Service (SMS)",
+      "Rapid mobile Internet resembling home broadband speeds and real-time video calling",
+      "Introduction of analog voice communication and the ability to converse without cords",
+      "High-speed data connectivity, multimedia streaming for HD videos, and Long-Term Evolution (LTE) technology"
+    ],
+    "explanation": "The 4th generation (4G) introduced these advancements, significantly enhancing mobile network capabilities and services.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Which aspect of 5G technology empowers seamless and buffer-free experiences, from high-definition video streaming to augmented reality?",
+    "options": [
+      "Predictive maintenance strategies",
+      "Edge computing",
+      "Massive Internet of Things (MIoT)",
+      "Software-Defined Networking (SDN)."
+    ],
+    "explanation": "Edge computing is integrated with 5G's low latency and high-speed connectivity, empowers seamless and buffer-free experiences.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "What challenge did the 4th generation (4G) of mobile networks face that paved the way for 5G innovation?",
+    "options": [
+      "Absence of digital communication and inability to send text messages",
+      "Limited to analog communication with poor voice quality",
+      "Network congestion and difficulty accommodating the Internet of Things (IoT) devices",
+      "Lack of mobile voice communication capabilities"
+    ],
+    "explanation": "4G networks faced challenges such as network congestion and the strain of connecting numerous IoT devices, which created opportunities for the innovations brought by 5G.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What is a key difference between 4G and 5G in terms of frequency bands and bandwidth?",
+    "options": [
+      "5G can offer a bandwidth of up to 400 MHz, whereas 4G is confined to a maximum of 20 MHz bandwidth per cell",
+      "4G can offer up to 400 MHz bandwidth, whereas 5G is limited to 20 MHz bandwidth per cell",
+      "4G uses millimeter wave frequencies while 5G is confined to lower frequency bands",
+      "4G and 5G both offer the same bandwidth but differ in their data rates and latency"
+    ],
+    "explanation": "5G technology allows for a significantly larger bandwidth of up to 400 MHz, compared to 4G's maximum of 20 MHz per cell, which is a key factor driving the higher data rates and increased capacity of 5G.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Which feature of 5G technology allows for the creation of virtual networks tailored to specific applications or user groups, optimizing resources and service efficiency?",
+    "options": [
+      "Beamforming",
+      "Edge Computing",
+      "Network Slicing",
+      "Massive MIMO"
+    ],
+    "explanation": "Network slicing allows for the creation of virtual networks tailored to specific applications or user groups, optimizing resources and service efficiency in 5G networks.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which feature of 5G technology significantly extends device battery life, promoting eco-friendliness and cost savings?",
+    "options": [
+      "Real-time connectivity",
+      "Edge computing",
+      "Massive Internet of Things (MIoT)",
+      "Enhanced energy efficiency"
+    ],
+    "explanation": "Enhanced energy efficiency in 5G technology extends device battery life, promoting eco-friendliness and cost savings.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "What role does edge computing play in the context of 5G technology?",
+    "options": [
+      "Enhancing signal delivery and user experience",
+      "Reducing data transmission delays and Round-Trip Time (RTT)",
+      "Optimizing resources and service efficiency",
+      "Bringing computation closer to end-users and reducing latency"
+    ],
+    "explanation": "Edge computing in the context of 5G technology involves bringing computation closer to end-users to reduce latency, enabling real-time execution of operations in demanding applications.",
+    "correctAnswer": [3]
+  },
+  
+  {
+    "question": "What key feature characterizes the evolution of the Radio Access Network (RAN) in the 5G era?",
+    "options": [
+      "Splitting into Central Unit (CU) and Distributed Unit (DU)",
+      "Convergence with various access networks",
+      "Deployment using cloud-native techniques",
+      "Integration of Control and User planes"
+    ],
+    "explanation": "In the 5G era, the RAN has evolved by splitting into the Central Unit (CU) and Distributed Unit (DU) for reduced latency and improved user experience.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "What is a significant advantage of the distributed architecture in 5G RAN compared to previous generations?",
+    "options": [
+      "Reduction in spectrum allocation complexity",
+      "Decreased air interface latency",
+      "Expansion of available frequency bands",
+      "Enhanced coverage in densely populated areas"
+    ],
+    "explanation": "The distributed architecture allows the DU to be placed closer to the end user, reducing air interface latency and improving user experience.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which deployment mode of 5G utilizes existing LTE RAN and core networks, supplemented by a 5G component carrier to boost bandwidth?",
+    "options": [
+      "Service-Based Architecture (SBA)",
+      "Standalone mode",
+      "Non-standalone mode",
+      "Cloud-aligned mode"
+    ],
+    "explanation": "Non-standalone mode of 5G utilizes existing LTE RAN and core networks, supplemented by a 5G component carrier to boost bandwidth, allowing for seamless integration of 5G capabilities alongside existing LTE infrastructure.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which of the following statements accurately describes network slicing in 5G?",
+    "options": [
+      "Network slicing is only supported in non-standalone 5G deployments, utilizing existing 4G infrastructure.",
+      "Network slicing divides the network into virtual networks with unique abilities, managed in hardware rather than software.",
+      "Network slicing enables customization of services without physically altering the network infrastructure, maximizing efficiency and offering tailored solutions.",
+      "Network slicing allows for physical alteration of the network infrastructure to meet specific user needs."
+    ],
+    "explanation": "This accurately describes network slicing in 5G. It emphasizes customization of services without physical changes to the infrastructure, maximizing efficiency and offering tailored solutions.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "How does the 5G Core Network differ from its 4G counterpart in terms of access network convergence?",
+    "options": [
+      "It utilizes cloud-native deployment techniques",
+      "It employs single component Baseband Unit (BBU)",
+      "It converges with various access networks, including 4G RAN, WiFi, and WiMAX",
+      "It integrates Control and User planes"
+    ],
+    "explanation": "The 5G Core Network offers convergence with various access networks, providing unified access to legacy technologies.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What is a distinguishing feature of Standalone (SA) 5G compared to Non-Standalone (NSA) 5G?",
+    "options": [
+      "Lower initial capital expenditure (CAPEX)",
+      "Reliance on existing 4G infrastructure",
+      "Reduced latency to as low as 1ms end-to-end",
+      "Integration with existing 4G core networks"
+    ],
+    "explanation": "SA 5G offers reduced latency to as low as 1ms end-to-end, enabling services demanding ultra-low latency, such as automated driving and remote surgery, which is a distinguishing feature compared to NSA 5G.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "What is a key advantage of the high band frequencies in 5G spectrum allocation?",
+    "options": [
+      "Lightning-fast speeds in densely populated urban environments",
+      "Versatility for various applications",
+      "Expansive coverage in rural areas",
+      "Lower latency for critical applications"
+    ],
+    "explanation": "High band frequencies offer extremely high bandwidth, enabling lightning-fast speeds in densely populated urban areas, making them well-suited for applications requiring high data rates.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Which of the following components is responsible for creating user sessions and ensuring smooth data flow within the network?",
+    "options": [
+      "UPF (User Plane Function)",
+      "AMF (Access and Mobility Management Function)",
+      "CU (Central Unit)",
+      "SMF (Session Management Function)"
+    ],
+    "explanation": "The SMF (Session Management Function) is indeed responsible for creating user sessions and ensuring smooth data flow within the network.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "How do small cells contribute to mitigating network congestion in 5G networks?",
+    "options": [
+      "By serving as primary power sources during network outages.",
+      "By restricting data usage during peak hours to alleviate strain on the network.",
+      "By replacing large cell towers with more efficient infrastructure.",
+      "By redirecting data traffic away from congested areas, ensuring network responsiveness."
+    ],
+    "explanation": "Small cells help alleviate network congestion by redirecting data traffic away from congested areas, ensuring that the network remains responsive even during peak usage times.",
+    "correctAnswer": [3]
+  },
+  {
+    "question": "Which of the following accurately describes the role of the SDN controller in Software-Defined Networking (SDN)?",
+    "options": [
+      "The SDN controller primarily focuses on packet forwarding and routing decisions within the network switches",
+      "The SDN controller serves as the central intelligence of the SDN architecture, managing and controlling network devices through standardized protocols",
+      "The SDN controller is responsible for developing network applications that interact with the control plane to define network policies and behavior",
+      "The SDN controller facilitates communication between the data plane and the control plane, ensuring seamless forwarding of data packets"
+    ],
+    "explanation": "The SDN controller acts as the central intelligence of the SDN architecture, managing and controlling network devices through standardized protocols like OpenFlow or southbound APIs.",
+    "correctAnswer": [1]
+  }
+
+],
     module2: [
   {
     "question": "Why are millimeter waves significant in the context of 5G networks?",
@@ -8857,230 +9070,18 @@ module7:[
   }
 
     ],
-    module1: [
-  {
-    "question": "Which generation of mobile networks introduced Short Message Service (SMS) and laid the groundwork for limited mobile internet browsing?",
-    "options": [
-      "2nd Generation",
-      "1st Generation",
-      "4th Generation",
-      "3rd Generation"
-    ],
-    "explanation": "The 2nd generation introduced digital communication, enhancing voice quality and introducing SMS. It also laid the groundwork for basic data services like GPRS, enabling limited mobile internet browsing.",
-    "correctAnswer": [0]
-  },
-  {
-    "question": "What role does Massive MIMO play in 5G technology compared to 4G?",
-    "options": [
-      "It is used in both 4G and 5G, but is mandatory for 5G's high-frequency bands to enhance signal strength and coverage.",
-      "It is mandatory for 4G networks but optional for 5G's higher frequency bands.",
-      "It is optional for both 4G and 5G networks but enhances signal quality and reduces interference.",
-      "It is not used in 4G but is essential for 5G to ensure coverage for high-frequency bands."
-    ],
-    "explanation": "Massive MIMO is employed in both 4G and 5G networks, but its use is mandatory for 5G's higher frequency bands to ensure enhanced signal strength and coverage, making it a crucial technology for the advanced capabilities of 5G.",
-    "correctAnswer": [0]
-  },
-  {
-    "question": "What key advantage does 5G's ultra-low latency provide compared to 4G?",
-    "options": [
-      "Increased bandwidth for more simultaneous connections",
-      "Real-time responsiveness essential for applications like remote surgery and autonomous vehicles",
-      "Enhanced signal strength and reduced interference",
-      "Higher data rates for streaming video"
-    ],
-    "explanation": "5G's ultra-low latency significantly reduces data transmission delays, making it critical for applications requiring immediate response, such as remote surgery and autonomous vehicles.",
-    "correctAnswer": [1]
-  },
-  {
-    "question": "Which of the following accurately describes a major advancement introduced with the 4th generation (4G) of mobile networks?",
-    "options": [
-      "Enhancement of voice quality and the introduction of Short Message Service (SMS)",
-      "Rapid mobile Internet resembling home broadband speeds and real-time video calling",
-      "Introduction of analog voice communication and the ability to converse without cords",
-      "High-speed data connectivity, multimedia streaming for HD videos, and Long-Term Evolution (LTE) technology"
-    ],
-    "explanation": "The 4th generation (4G) introduced these advancements, significantly enhancing mobile network capabilities and services.",
-    "correctAnswer": [3]
-  },
-  {
-    "question": "Which aspect of 5G technology empowers seamless and buffer-free experiences, from high-definition video streaming to augmented reality?",
-    "options": [
-      "Predictive maintenance strategies",
-      "Edge computing",
-      "Massive Internet of Things (MIoT)",
-      "Software-Defined Networking (SDN)."
-    ],
-    "explanation": "Edge computing is integrated with 5G's low latency and high-speed connectivity, empowers seamless and buffer-free experiences.",
-    "correctAnswer": [1]
-  },
-  {
-    "question": "What challenge did the 4th generation (4G) of mobile networks face that paved the way for 5G innovation?",
-    "options": [
-      "Absence of digital communication and inability to send text messages",
-      "Limited to analog communication with poor voice quality",
-      "Network congestion and difficulty accommodating the Internet of Things (IoT) devices",
-      "Lack of mobile voice communication capabilities"
-    ],
-    "explanation": "4G networks faced challenges such as network congestion and the strain of connecting numerous IoT devices, which created opportunities for the innovations brought by 5G.",
-    "correctAnswer": [2]
-  },
-  {
-    "question": "What is a key difference between 4G and 5G in terms of frequency bands and bandwidth?",
-    "options": [
-      "5G can offer a bandwidth of up to 400 MHz, whereas 4G is confined to a maximum of 20 MHz bandwidth per cell",
-      "4G can offer up to 400 MHz bandwidth, whereas 5G is limited to 20 MHz bandwidth per cell",
-      "4G uses millimeter wave frequencies while 5G is confined to lower frequency bands",
-      "4G and 5G both offer the same bandwidth but differ in their data rates and latency"
-    ],
-    "explanation": "5G technology allows for a significantly larger bandwidth of up to 400 MHz, compared to 4G's maximum of 20 MHz per cell, which is a key factor driving the higher data rates and increased capacity of 5G.",
-    "correctAnswer": [0]
-  },
-  {
-    "question": "Which feature of 5G technology allows for the creation of virtual networks tailored to specific applications or user groups, optimizing resources and service efficiency?",
-    "options": [
-      "Beamforming",
-      "Edge Computing",
-      "Network Slicing",
-      "Massive MIMO"
-    ],
-    "explanation": "Network slicing allows for the creation of virtual networks tailored to specific applications or user groups, optimizing resources and service efficiency in 5G networks.",
-    "correctAnswer": [2]
-  },
-  {
-    "question": "Which feature of 5G technology significantly extends device battery life, promoting eco-friendliness and cost savings?",
-    "options": [
-      "Real-time connectivity",
-      "Edge computing",
-      "Massive Internet of Things (MIoT)",
-      "Enhanced energy efficiency"
-    ],
-    "explanation": "Enhanced energy efficiency in 5G technology extends device battery life, promoting eco-friendliness and cost savings.",
-    "correctAnswer": [3]
-  },
-  {
-    "question": "What role does edge computing play in the context of 5G technology?",
-    "options": [
-      "Enhancing signal delivery and user experience",
-      "Reducing data transmission delays and Round-Trip Time (RTT)",
-      "Optimizing resources and service efficiency",
-      "Bringing computation closer to end-users and reducing latency"
-    ],
-    "explanation": "Edge computing in the context of 5G technology involves bringing computation closer to end-users to reduce latency, enabling real-time execution of operations in demanding applications.",
-    "correctAnswer": [3]
-  },
-  
-  {
-    "question": "What key feature characterizes the evolution of the Radio Access Network (RAN) in the 5G era?",
-    "options": [
-      "Splitting into Central Unit (CU) and Distributed Unit (DU)",
-      "Convergence with various access networks",
-      "Deployment using cloud-native techniques",
-      "Integration of Control and User planes"
-    ],
-    "explanation": "In the 5G era, the RAN has evolved by splitting into the Central Unit (CU) and Distributed Unit (DU) for reduced latency and improved user experience.",
-    "correctAnswer": [0]
-  },
-  {
-    "question": "What is a significant advantage of the distributed architecture in 5G RAN compared to previous generations?",
-    "options": [
-      "Reduction in spectrum allocation complexity",
-      "Decreased air interface latency",
-      "Expansion of available frequency bands",
-      "Enhanced coverage in densely populated areas"
-    ],
-    "explanation": "The distributed architecture allows the DU to be placed closer to the end user, reducing air interface latency and improving user experience.",
-    "correctAnswer": [1]
-  },
-  {
-    "question": "Which deployment mode of 5G utilizes existing LTE RAN and core networks, supplemented by a 5G component carrier to boost bandwidth?",
-    "options": [
-      "Service-Based Architecture (SBA)",
-      "Standalone mode",
-      "Non-standalone mode",
-      "Cloud-aligned mode"
-    ],
-    "explanation": "Non-standalone mode of 5G utilizes existing LTE RAN and core networks, supplemented by a 5G component carrier to boost bandwidth, allowing for seamless integration of 5G capabilities alongside existing LTE infrastructure.",
-    "correctAnswer": [2]
-  },
-  {
-    "question": "Which of the following statements accurately describes network slicing in 5G?",
-    "options": [
-      "Network slicing is only supported in non-standalone 5G deployments, utilizing existing 4G infrastructure.",
-      "Network slicing divides the network into virtual networks with unique abilities, managed in hardware rather than software.",
-      "Network slicing enables customization of services without physically altering the network infrastructure, maximizing efficiency and offering tailored solutions.",
-      "Network slicing allows for physical alteration of the network infrastructure to meet specific user needs."
-    ],
-    "explanation": "This accurately describes network slicing in 5G. It emphasizes customization of services without physical changes to the infrastructure, maximizing efficiency and offering tailored solutions.",
-    "correctAnswer": [2]
-  },
-  {
-    "question": "How does the 5G Core Network differ from its 4G counterpart in terms of access network convergence?",
-    "options": [
-      "It utilizes cloud-native deployment techniques",
-      "It employs single component Baseband Unit (BBU)",
-      "It converges with various access networks, including 4G RAN, WiFi, and WiMAX",
-      "It integrates Control and User planes"
-    ],
-    "explanation": "The 5G Core Network offers convergence with various access networks, providing unified access to legacy technologies.",
-    "correctAnswer": [2]
-  },
-  {
-    "question": "What is a distinguishing feature of Standalone (SA) 5G compared to Non-Standalone (NSA) 5G?",
-    "options": [
-      "Lower initial capital expenditure (CAPEX)",
-      "Reliance on existing 4G infrastructure",
-      "Reduced latency to as low as 1ms end-to-end",
-      "Integration with existing 4G core networks"
-    ],
-    "explanation": "SA 5G offers reduced latency to as low as 1ms end-to-end, enabling services demanding ultra-low latency, such as automated driving and remote surgery, which is a distinguishing feature compared to NSA 5G.",
-    "correctAnswer": [2]
-  },
-  {
-    "question": "What is a key advantage of the high band frequencies in 5G spectrum allocation?",
-    "options": [
-      "Lightning-fast speeds in densely populated urban environments",
-      "Versatility for various applications",
-      "Expansive coverage in rural areas",
-      "Lower latency for critical applications"
-    ],
-    "explanation": "High band frequencies offer extremely high bandwidth, enabling lightning-fast speeds in densely populated urban areas, making them well-suited for applications requiring high data rates.",
-    "correctAnswer": [0]
-  },
-  {
-    "question": "Which of the following components is responsible for creating user sessions and ensuring smooth data flow within the network?",
-    "options": [
-      "UPF (User Plane Function)",
-      "AMF (Access and Mobility Management Function)",
-      "CU (Central Unit)",
-      "SMF (Session Management Function)"
-    ],
-    "explanation": "The SMF (Session Management Function) is indeed responsible for creating user sessions and ensuring smooth data flow within the network.",
-    "correctAnswer": [3]
-  },
-  {
-    "question": "How do small cells contribute to mitigating network congestion in 5G networks?",
-    "options": [
-      "By serving as primary power sources during network outages.",
-      "By restricting data usage during peak hours to alleviate strain on the network.",
-      "By replacing large cell towers with more efficient infrastructure.",
-      "By redirecting data traffic away from congested areas, ensuring network responsiveness."
-    ],
-    "explanation": "Small cells help alleviate network congestion by redirecting data traffic away from congested areas, ensuring that the network remains responsive even during peak usage times.",
-    "correctAnswer": [3]
-  },
-  {
-    "question": "Which of the following accurately describes the role of the SDN controller in Software-Defined Networking (SDN)?",
-    "options": [
-      "The SDN controller primarily focuses on packet forwarding and routing decisions within the network switches",
-      "The SDN controller serves as the central intelligence of the SDN architecture, managing and controlling network devices through standardized protocols",
-      "The SDN controller is responsible for developing network applications that interact with the control plane to define network policies and behavior",
-      "The SDN controller facilitates communication between the data plane and the control plane, ensuring seamless forwarding of data packets"
-    ],
-    "explanation": "The SDN controller acts as the central intelligence of the SDN architecture, managing and controlling network devices through standardized protocols like OpenFlow or southbound APIs.",
-    "correctAnswer": [1]
-  }
-
-],
+     module6: [ {
+        "question": "Where does the swap space reside?",
+        "options": [
+          "RAM",
+          "Disk",
+          "ROM",
+          "On-chip cache"
+        ],
+        "explanation": "Swap space is an area on disk that temporarily holds a process memory image.",
+        "correctAnswer": [1]
+      }],
+   
     module7: [
       {
     "question": "What is the most important gain from the packet scheming in the cellular system?",
