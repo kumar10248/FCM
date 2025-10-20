@@ -3,10 +3,14 @@ import { FaBook, FaClock, FaGraduationCap, FaInstagram, FaGithub, FaTwitter, FaC
 import {ExamWishesBanner} from './components/ExamWishesBanner';
 import {FeedbackForm} from './components/FeedbackForm';
 import {FeedbackViewer} from './components/FeedbackViewer';
+import {DiwaliCelebration} from './components/DiwaliCelebration';
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden relative">
+      {/* Diwali Celebration Component */}
+      <DiwaliCelebration />
+      
       {/* Animated background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl animate-pulse"></div>
