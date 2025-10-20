@@ -43,6 +43,107 @@ export function DiwaliCelebration() {
 
   return (
     <div className="fixed inset-0 z-[100] pointer-events-none">
+      {/* LED Light Strings in All 4 Corners */}
+      {/* Top-Left Corner LED Lari */}
+      <div className="absolute top-0 left-0 w-64 h-64">
+        <svg className="w-full h-full" viewBox="0 0 200 200">
+          <path
+            d="M 0,0 Q 50,50 0,100"
+            fill="none"
+            stroke="rgba(139, 69, 19, 0.3)"
+            strokeWidth="2"
+          />
+          {[...Array(8)].map((_, i) => (
+            <circle
+              key={i}
+              cx={Math.sin((i * Math.PI) / 14) * 50}
+              cy={(i * 100) / 7}
+              r="4"
+              className="animate-led-blink"
+              style={{
+                fill: ['#FFD700', '#FF6B35', '#F7931E', '#FDB913', '#FF1744'][i % 5],
+                animationDelay: `${i * 0.15}s`,
+              }}
+            />
+          ))}
+        </svg>
+      </div>
+
+      {/* Top-Right Corner LED Lari */}
+      <div className="absolute top-0 right-0 w-64 h-64">
+        <svg className="w-full h-full" viewBox="0 0 200 200">
+          <path
+            d="M 200,0 Q 150,50 200,100"
+            fill="none"
+            stroke="rgba(139, 69, 19, 0.3)"
+            strokeWidth="2"
+          />
+          {[...Array(8)].map((_, i) => (
+            <circle
+              key={i}
+              cx={200 - Math.sin((i * Math.PI) / 14) * 50}
+              cy={(i * 100) / 7}
+              r="4"
+              className="animate-led-blink"
+              style={{
+                fill: ['#FDB913', '#FF1744', '#FFD700', '#FF6B35', '#F7931E'][i % 5],
+                animationDelay: `${i * 0.15 + 0.5}s`,
+              }}
+            />
+          ))}
+        </svg>
+      </div>
+
+      {/* Bottom-Left Corner LED Lari */}
+      <div className="absolute bottom-0 left-0 w-64 h-64">
+        <svg className="w-full h-full" viewBox="0 0 200 200">
+          <path
+            d="M 0,200 Q 50,150 0,100"
+            fill="none"
+            stroke="rgba(139, 69, 19, 0.3)"
+            strokeWidth="2"
+          />
+          {[...Array(8)].map((_, i) => (
+            <circle
+              key={i}
+              cx={Math.sin((i * Math.PI) / 14) * 50}
+              cy={200 - (i * 100) / 7}
+              r="4"
+              className="animate-led-blink"
+              style={{
+                fill: ['#FF6B35', '#F7931E', '#FDB913', '#FFD700', '#FF1744'][i % 5],
+                animationDelay: `${i * 0.15 + 0.25}s`,
+              }}
+            />
+          ))}
+        </svg>
+      </div>
+
+      {/* Bottom-Right Corner LED Lari */}
+      <div className="absolute bottom-0 right-0 w-64 h-64">
+        <svg className="w-full h-full" viewBox="0 0 200 200">
+          <path
+            d="M 200,200 Q 150,150 200,100"
+            fill="none"
+            stroke="rgba(139, 69, 19, 0.3)"
+            strokeWidth="2"
+          />
+          {[...Array(8)].map((_, i) => (
+            <circle
+              key={i}
+              cx={200 - Math.sin((i * Math.PI) / 14) * 50}
+              cy={200 - (i * 100) / 7}
+              r="4"
+              className="animate-led-blink"
+              style={{
+                fill: ['#F7931E', '#FFD700', '#FF1744', '#FF6B35', '#FDB913'][i % 5],
+                animationDelay: `${i * 0.15 + 0.75}s`,
+              }}
+            />
+          ))}
+        </svg>
+      </div>
+
       {/* Fireworks */}
       {fireworks.map((fw) => (
         <div
@@ -234,6 +335,21 @@ export function DiwaliCelebration() {
 
         .animate-spin-reverse {
           animation: spin-reverse 4s linear infinite;
+        }
+
+        @keyframes led-blink {
+          0%, 100% {
+            opacity: 1;
+            filter: drop-shadow(0 0 3px currentColor) drop-shadow(0 0 6px currentColor);
+          }
+          50% {
+            opacity: 0.3;
+            filter: drop-shadow(0 0 1px currentColor);
+          }
+        }
+
+        .animate-led-blink {
+          animation: led-blink 1.5s ease-in-out infinite;
         }
       `}</style>
     </div>
