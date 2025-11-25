@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden relative">
       {/* Diwali Celebration Component */}
-      <DiwaliCelebration />
+      {/* <DiwaliCelebration /> */}
       
       {/* Animated background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
