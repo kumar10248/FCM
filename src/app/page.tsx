@@ -3,6 +3,7 @@ import { FaBook, FaClock, FaGraduationCap, FaInstagram, FaGithub, FaTwitter, FaC
 import {ExamWishesBanner} from './components/ExamWishesBanner';
 import {FeedbackForm} from './components/FeedbackForm';
 import {FeedbackViewer} from './components/FeedbackViewer';
+import {FeedbackPopup} from './components/FeedbackPopup';
 
 
 export default function Home() {
@@ -235,6 +236,9 @@ export default function Home() {
       
       {/* Feedback Viewer Component (Admin) */}
       <FeedbackViewer />
+      
+      {/* Feedback Popup - Auto shows on visit, tracks by device ID */}
+      <FeedbackPopup />
     </div>
   );
 }

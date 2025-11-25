@@ -2,14 +2,26 @@
 import { useState, useEffect } from 'react';
 import { FaPaperPlane, FaComments, FaStar, FaTimes, FaCheckCircle } from 'react-icons/fa';
 
-export function FeedbackForm() {
-  const [isOpen, setIsOpen] = useState(false);
+interface FeedbackFormProps {
+  autoOpen?: boolean;
+  onClose?: () => void;
+}
+
+export function FeedbackForm({ autoOpen = false, onClose }: FeedbackFormProps = {}) {
+  const [isOpen, setIsOpen] = useState(autoOpen);
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
   const [feedback, setFeedback] = useState('');
   const [uid, setUid] = useState('');
   const [name, setName] = useState('');
   const [submitted, setSubmitted] = useState(false);
+
+  // Handle autoOpen prop changes
+  useEffect(() => {
+    if (autoOpen) {
+      setIsOpen(true);
+    }
+  }, [autoOpen]);
 
   // Prevent background scroll when modal is open
   useEffect(() => {
@@ -61,6 +73,10 @@ export function FeedbackForm() {
       const result = await response.json();
 
       if (response.ok && result.success) {
+        // Mark feedback as submitted for device tracking
+        localStorage.setItem('feedbackSubmitted', 'true');
+        localStorage.setItem('feedbackSubmittedAt', Date.now().toString());
+        
         // Success - show checkmark for 2 seconds then close
         setTimeout(() => {
           setSubmitted(false);
@@ -70,6 +86,7 @@ export function FeedbackForm() {
           setRating(0);
           setHoveredRating(0);
           setFeedback('');
+          onClose?.(); // Call onClose callback if provided
         }, 2000);
       } else {
         // Error
@@ -85,7 +102,8 @@ export function FeedbackForm() {
 
   return (
     <>
-      {/* Floating Feedback Button */}
+      {/* Floating Feedback Button - Only show if not auto-opened */}
+      {!autoOpen && (
       <button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 group"
@@ -109,6 +127,7 @@ export function FeedbackForm() {
           </div>
         </div>
       </button>
+      )}
 
       {/* Feedback Modal */}
       {isOpen && (
