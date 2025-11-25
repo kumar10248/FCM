@@ -230,7 +230,7 @@ export default function Home() {
         </div>
       </div>
       
-      {/* Feedback Form Component */}
+      {/* Feedback Form Component - Floating button on homepage */}
       <FeedbackForm />
       
       {/* Feedback Viewer Component (Admin) */}

@@ -31,5 +31,10 @@ export function FeedbackPopup() {
     setShouldAutoOpen(false);
   };
 
-  return <FeedbackForm autoOpen={shouldAutoOpen} onClose={handleClose} />;
+  // Only render FeedbackForm when popup should be shown
+  if (!shouldAutoOpen) {
+    return null;
+  }
+
+  return <FeedbackForm autoOpen={true} onClose={handleClose} />;
 }
