@@ -21,7 +21,7 @@ export function FeedbackPopup() {
       const timer = setTimeout(() => {
         setShouldAutoOpen(true);
         localStorage.setItem('lastFeedbackPopupShown', now.toString());
-      }, 1000);
+      }, 180000);
 
       return () => clearTimeout(timer);
     }

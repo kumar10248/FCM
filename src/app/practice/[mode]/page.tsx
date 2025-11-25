@@ -11,6 +11,7 @@ import { FaArrowLeft, FaArrowRight, FaClock, FaTimes, FaBars, FaCheck,
 import { getAllQuestions, getAllPassageQuestions, getDemoExamQuestions, debugQuestionsData } from '../../lib/questions';
 import { Question, PracticeMode, OptionItem, PassageQuestion, DemoExamData, QuestionDetail, DetailedResults } from '../../types';
 import { formatTime, calculateSessionTime, validateImagePath, getImageDisplayName } from '@/app/lib/utils';
+import { FeedbackPopup } from '@/app/components/FeedbackPopup';
 
 export default function QuestionPracticePage() {
   const router = useRouter();
@@ -1859,6 +1860,9 @@ const handleSingleOptionSelect = (optionIndex: number) => {
           }
         }
       `}</style>
+      
+      {/* Feedback Popup - Auto shows during practice session */}
+      <FeedbackPopup />
     </div>
   );
 }
