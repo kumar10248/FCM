@@ -11,19 +11,15 @@ export function FeedbackPopup() {
     const hasSubmittedFeedback = localStorage.getItem('feedbackSubmitted');
     const lastPopupShown = localStorage.getItem('lastFeedbackPopupShown');
     const now = Date.now();
-    const oneDayInMs = 24 * 60 * 60 * 1000;
+    const twoDaysInMs = 48 * 60 * 60 * 1000; // 48 hours
 
     // Show popup if:
     // 1. User hasn't submitted feedback OR
-    // 2. Last popup was shown more than 1 day ago
-    if (!hasSubmittedFeedback || (lastPopupShown && now - parseInt(lastPopupShown) > oneDayInMs)) {
-      // Delay popup by 3 seconds after page load
-      const timer = setTimeout(() => {
-        setShouldAutoOpen(true);
-        localStorage.setItem('lastFeedbackPopupShown', now.toString());
-      }, 3000);
-
-      return () => clearTimeout(timer);
+    // 2. Last popup was shown more than 48 hours ago
+    if (!hasSubmittedFeedback || (lastPopupShown && now - parseInt(lastPopupShown) > twoDaysInMs)) {
+      // Show popup immediately
+      setShouldAutoOpen(true);
+      localStorage.setItem('lastFeedbackPopupShown', now.toString());
     }
   }, []);
 
