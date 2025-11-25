@@ -3,7 +3,7 @@ import { FaBook, FaClock, FaGraduationCap, FaInstagram, FaGithub, FaTwitter, FaC
 import {ExamWishesBanner} from './components/ExamWishesBanner';
 import {FeedbackForm} from './components/FeedbackForm';
 import {FeedbackViewer} from './components/FeedbackViewer';
-import {DiwaliCelebration} from './components/DiwaliCelebration';
+
 
 export default function Home() {
   return (
@@ -12,11 +12,11 @@ export default function Home() {
       {/* <DiwaliCelebration /> */}
       
       {/* Animated background elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+      {/* <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-green-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
         <div className="absolute top-2/3 left-1/3 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s' }}></div>
-      </div>
+      </div> */}
       
       <div className="container mx-auto px-4 py-12 relative z-10">
         {/* Social Media Icons with glowing effects */}
