@@ -19,8 +19,7 @@ export function FeedbackViewer() {
   const [feedbacksData, setFeedbacksData] = useState<Feedback[]>([]);
   const [stats, setStats] = useState({ count: 0, averageRating: 0 });
   const [loading, setLoading] = useState(false);
-
-  const ADMIN_PASSWORD = 'Kumar@7050';
+  const [isVerifying, setIsVerifying] = useState(false);
 
   // Prevent background scroll when modal is open
   useEffect(() => {
@@ -78,14 +77,36 @@ export function FeedbackViewer() {
     fetchCount();
   }, []);
 
-  const handlePasswordSubmit = (e: React.FormEvent) => {
+  const handlePasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
-      setIsAuthenticated(true);
-      setError('');
-    } else {
-      setError('Incorrect password. Please try again.');
+    setIsVerifying(true);
+    setError('');
+
+    try {
+      // Call API to verify password securely on server-side
+      const response = await fetch('/api/verify-admin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ password }),
+      });
+
+      const data = await response.json();
+
+      if (data.success && data.authenticated) {
+        setIsAuthenticated(true);
+        setError('');
+      } else {
+        setError('Incorrect password. Please try again.');
+        setPassword('');
+      }
+    } catch (error) {
+      console.error('Authentication error:', error);
+      setError('Authentication failed. Please try again.');
       setPassword('');
+    } finally {
+      setIsVerifying(false);
     }
   };
 
@@ -301,10 +322,20 @@ ${feedbacksText}
 
                     <button
                       type="submit"
-                      className="w-full py-3 sm:py-4 bg-gradient-to-r from-green-600 via-green-700 to-green-800 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white font-bold text-base sm:text-lg rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3"
+                      disabled={isVerifying}
+                      className="w-full py-3 sm:py-4 bg-gradient-to-r from-green-600 via-green-700 to-green-800 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-white font-bold text-base sm:text-lg rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                     >
-                      <FaUnlock className="text-lg sm:text-xl" />
-                      Verify & Access
+                      {isVerifying ? (
+                        <>
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                          Verifying...
+                        </>
+                      ) : (
+                        <>
+                          <FaUnlock className="text-lg sm:text-xl" />
+                          Verify & Access
+                        </>
+                      )}
                     </button>
 
                     <p className="text-gray-500 text-xs mt-4">
