@@ -9689,6 +9689,313 @@ module7:[
     "explanation": "URLLC targets extremely low end-to-end latency around 1 ms.",
     "correctAnswer": [2]
   },
+  
+  {
+    "question": "5G primarily aims to act as a unified platform for:",
+    "options": ["Only high-speed mobile broadband", "Connecting people, devices, machines, and infrastructure", "Only IoT sensors", "Only fixed broadband"],
+    "correctAnswer": [1],
+    "explanation": "5G connects not just people but also IoT devices, machines, vehicles, and infrastructure."
+  },
+  {
+    "question": "Which of the following is NOT a main 5G service category?",
+    "options": ["Enhanced Mobile Broadband (eMBB)", "Ultra-Reliable Low Latency Communications (URLLC)", "Massive Machine Type Communications (mMTC)", "Circuit-Switched Voice Service (CSVS)"],
+    "correctAnswer": [3],
+    "explanation": "CSVS is a legacy service and not part of the 5G IMT-2020 service categories."
+  },
+  {
+    "question": "eMBB mainly focuses on:",
+    "options": ["Extremely low latency", "High data rate and high capacity", "Connecting billions of IoT devices", "Only voice calls"],
+    "correctAnswer": [1],
+    "explanation": "eMBB supports high-speed applications like UHD video, VR, and cloud services."
+  },
+  {
+    "question": "A typical peak downlink data rate target for 5G eMBB is around:",
+    "options": ["2 Mbps", "200 Mbps", "20 Gbps", "2 Gbps"],
+    "correctAnswer": [2],
+    "explanation": "IMT-2020 defines 20 Gbps as the peak downlink throughput target."
+  },
+  {
+    "question": "URLLC is most suitable for:",
+    "options": ["Email services", "File downloads", "Remote surgery and industrial robots", "Best-effort web browsing"],
+    "correctAnswer": [2],
+    "explanation": "URLLC is used where delay or failure can cause severe damage, such as surgery or robotics."
+  },
+  {
+    "question": "The reliability target for URLLC services is approximately:",
+    "options": ["90%", "95%", "99%", "99.999%"],
+    "correctAnswer": [3],
+    "explanation": "URLLC requires extremely high reliability, defined as 99.999%."
+  },
+  {
+    "question": "mMTC mainly targets:",
+    "options": ["High-throughput video streaming", "Massive number of low-power devices", "Voice over LTE", "Satellite communication"],
+    "correctAnswer": [1],
+    "explanation": "mMTC connects huge numbers of low-power IoT devices."
+  },
+  {
+    "question": "A typical device density target for mMTC is up to:",
+    "options": ["100 devices/km2", "1,000 devices/km2", "100,000 devices/km2", "1,000,000 devices/km2"],
+    "correctAnswer": [3],
+    "explanation": "mMTC supports up to 1 million devices per square kilometre."
+  },
+  {
+    "question": "Which 5G feature enables different virtual networks on a common physical infrastructure?",
+    "options": ["Beamforming", "Network slicing", "Carrier aggregation", "HARQ"],
+    "correctAnswer": [1],
+    "explanation": "Network slicing creates independent logical networks sharing the same infrastructure."
+  },
+  {
+    "question": "Network slicing allows:",
+    "options": ["Sharing of SIM cards", "Dedicated logical networks optimized for specific services", "Only voice and SMS separation", "Only Wi-Fi offloading"],
+    "correctAnswer": [1],
+    "explanation": "Each slice is tailored for a specific service: eMBB, URLLC, or mMTC."
+  },
+  {
+    "question": "The 5G Core (5GC) is designed as:",
+    "options": ["Circuit-switched network", "Monolithic hardware-based system", "Cloud-native, service-based architecture", "Pure satellite core"],
+    "correctAnswer": [2],
+    "explanation": "5GC follows a microservice-based Service-Based Architecture (SBA)."
+  },
+  {
+    "question": "In 5GC, network functions typically communicate using:",
+    "options": ["SS7", "ATM", "HTTP/2 and REST APIs", "Morse code"],
+    "correctAnswer": [2],
+    "explanation": "NFs in SBA use HTTP/2 based interfaces for communication."
+  },
+  {
+    "question": "Control and User Plane Separation (CUPS) allows:",
+    "options": ["Joint scaling of all functions", "Independent scaling of control and user planes", "Only core network virtualization", "Only radio access optimization"],
+    "correctAnswer": [1],
+    "explanation": "CUPS allows operators to scale user plane capacity independent of the control plane."
+  },
+  {
+    "question": "Which function handles user-plane data forwarding in 5G core?",
+    "options": ["AMF", "SMF", "UPF", "PCF"],
+    "correctAnswer": [2],
+    "explanation": "UPF manages all user-plane packet forwarding and routing."
+  },
+  {
+    "question": "The AMF in 5GC is responsible for:",
+    "options": ["User-plane packet forwarding only", "Access, registration, and mobility management", "Radio scheduling", "Content caching"],
+    "correctAnswer": [1],
+    "explanation": "AMF handles UE registration, authentication, and mobility management."
+  },
+  {
+    "question": "The SMF mainly manages:",
+    "options": ["Radio resource allocation", "PDU sessions and UPF control", "Physical layer coding", "Antenna beam patterns"],
+    "correctAnswer": [1],
+    "explanation": "SMF manages PDU session establishment, IP addressing, and UPF selection."
+  },
+  {
+    "question": "A PDU session in 5G represents:",
+    "options": ["A voice-only call", "A logical data connection between UE and data network", "Only SMS connection", "A physical radio link"],
+    "correctAnswer": [1],
+    "explanation": "PDU sessions define logical connectivity between UE and external data networks."
+  },
+  {
+    "question": "The main 5G radio access network is called:",
+    "options": ["GERAN", "UTRAN", "E-UTRAN", "NG-RAN"],
+    "correctAnswer": [3],
+    "explanation": "NG-RAN supports 5G NR and connects to the 5G Core."
+  },
+  {
+    "question": "The 5G base station is referred to as:",
+    "options": ["NodeB", "eNodeB", "gNodeB", "Home NodeB"],
+    "correctAnswer": [2],
+    "explanation": "gNodeB is the 5G NR base station (successor of eNodeB)."
+  },
+  {
+    "question": "In Non-Standalone (NSA) 5G, control plane signaling is primarily handled by:",
+    "options": ["5G Core", "4G EPC", "Wi-Fi controller", "Satellite gateway"],
+    "correctAnswer": [1],
+    "explanation": "NSA anchors its control plane on LTE EPC while using 5G NR for data."
+  },
+  {
+    "question": "Standalone (SA) 5G deployment uses:",
+    "options": ["Only LTE core network", "5G NR with 5G Core", "Only Wi-Fi radios", "GSM core"],
+    "correctAnswer": [1],
+    "explanation": "SA represents full 5G operation with NR and the 5G Core (5GC)."
+  },
+  {
+    "question": "Massive MIMO improves:",
+    "options": ["Only coverage, not capacity", "Capacity and spectral efficiency", "Only latency", "Only billing"],
+    "correctAnswer": [1],
+    "explanation": "Massive MIMO increases network capacity and spectral efficiency via spatial multiplexing."
+  },
+  {
+    "question": "Spatial multiplexing in massive MIMO allows:",
+    "options": ["Multiple frequency bands to be fused", "Multiple independent data streams on same time-frequency resources", "Only broadcast services", "Only control signaling"],
+    "correctAnswer": [1],
+    "explanation": "Spatial multiplexing allows several data streams to be transmitted simultaneously."
+  },
+  {
+    "question": "Beamforming mainly:",
+    "options": ["Randomizes signal directions", "Directs signals toward specific users", "Disables MIMO", "Increases latency"],
+    "correctAnswer": [1],
+    "explanation": "Beamforming focuses beams toward users to increase link quality and coverage."
+  },
+  {
+    "question": "mmWave frequencies for 5G typically lie in:",
+    "options": ["1–2 GHz", "2–6 GHz", "24–100 GHz", "0.1–1 GHz"],
+    "correctAnswer": [2],
+    "explanation": "mmWave spectrum spans roughly 24–100 GHz, enabling very high data rates."
+  }
+
+,
+
+  {
+    "question": "A major drawback of mmWave is:",
+    "options": ["Low data rates", "Very long range", "High path loss and poor penetration", "Incompatibility with OFDM"],
+    "correctAnswer": [2],
+    "explanation": "mmWave signals cannot penetrate walls easily and suffer high attenuation, limiting their useful range."
+  },
+  {
+    "question": "Edge computing in 5G mainly helps to:",
+    "options": ["Increase transmission distance", "Reduce latency by processing near users", "Replace radio access network", "Eliminate core network"],
+    "correctAnswer": [1],
+    "explanation": "Edge computing processes data near the gNodeB to reduce latency and offload the core."
+  },
+  {
+    "question": "SDN in 5G:",
+    "options": ["Ties control and data planes together", "Separates control from data forwarding", "Removes virtualization", "Is only for Wi-Fi"],
+    "correctAnswer": [1],
+    "explanation": "SDN decouples control and data planes for programmable networking."
+  },
+  {
+    "question": "NFV implements network functions as:",
+    "options": ["Dedicated hardware appliances only", "Software on standard servers", "Optical components", "Satellites"],
+    "correctAnswer": [1],
+    "explanation": "NFV turns network functions into software running on cloud hardware instead of specialized appliances."
+  },
+  {
+    "question": "One benefit of NFV is:",
+    "options": ["Slower deployment of services", "Higher dependency on proprietary hardware", "Flexible scaling and faster provisioning", "Fixed capacity configurations"],
+    "correctAnswer": [2],
+    "explanation": "NFV makes scaling, upgrading, and deploying network functions easier and faster."
+  },
+  {
+    "question": "Unified authentication in 5G aims to:",
+    "options": ["Remove mutual authentication", "Strengthen and unify authentication mechanisms", "Disable roaming", "Eliminate encryption"],
+    "correctAnswer": [1],
+    "explanation": "5G-AKA and EAP-AKA' unify and enhance authentication for better security and privacy."
+  },
+  {
+    "question": "SUPI in 5G is:",
+    "options": ["Temporary device key", "Permanent subscriber identifier", "Radio bearer ID", "Cell identity"],
+    "correctAnswer": [1],
+    "explanation": "SUPI is the permanent identity of the subscriber, replacing the IMSI concept with more privacy."
+  },
+  {
+    "question": "SUCI is:",
+    "options": ["Plaintext version of SUPI", "Encrypted form of SUPI for over-the-air use", "IP address of UE", "PLMN code"],
+    "correctAnswer": [1],
+    "explanation": "SUCI encrypts SUPI using the operator's public key, preventing IMSI-catcher-style attacks."
+  },
+  {
+    "question": "SEPP primarily secures:",
+    "options": ["UE to eNodeB interface only", "Inter-operator signaling across N32", "Only user-plane data", "Wi-Fi connections"],
+    "correctAnswer": [1],
+    "explanation": "SEPP protects traffic between PLMNs when roaming, securing N32 interface messages."
+  },
+  {
+    "question": "NB-IoT and LTE-M are:",
+    "options": ["2G technologies", "Core 3GPP technologies for mMTC", "Only Wi-Fi standards", "Satellite standards"],
+    "correctAnswer": [1],
+    "explanation": "NB-IoT and LTE-M are key low-power wide-area (LPWA) technologies supporting massive IoT deployment."
+  },
+  {
+    "question": "One key challenge for mMTC is:",
+    "options": ["Lack of devices", "Handling interference in dense deployments", "Excess battery capacity", "Very high per-device data rate"],
+    "correctAnswer": [1],
+    "explanation": "Massive IoT leads to contention and interference issues due to heavy device density."
+  },
+  {
+    "question": "In 5G, low-latency communication is vital for:",
+    "options": ["Offline backup", "Autonomous vehicles and AR/VR", "Bulk email services", "Static web pages"],
+    "correctAnswer": [1],
+    "explanation": "Autonomous driving and AR/VR depend on rapid real-time response, supported by URLLC and edge computing."
+  },
+  {
+    "question": "Network slicing helps URLLC by:",
+    "options": ["Sharing resources with best-effort traffic", "Providing a dedicated optimized slice", "Removing QoS features", "Disabling redundancy"],
+    "correctAnswer": [1],
+    "explanation": "URLLC slices are isolated and optimized for ultra-low latency and reliability."
+  },
+  {
+    "question": "A major goal of 5G security design is:",
+    "options": ["Transmit permanent IDs in clear text", "Enhance privacy and prevent tracking", "Avoid mutual authentication", "Remove encryption overhead"],
+    "correctAnswer": [1],
+    "explanation": "5G includes SUCI to protect identity and strong mutual authentication to enhance privacy."
+  },
+  {
+    "question": "Edge computing is often implemented using:",
+    "options": ["MEC nodes", "Data centers thousands of km away", "SMS gateways", "Firewalls only"],
+    "correctAnswer": [0],
+    "explanation": "MEC places computing close to the RAN, enabling low-latency services."
+  },
+  {
+    "question": "Terahertz (THz) bands for future 6G roughly cover:",
+    "options": ["0.1–10 THz", "0.1–10 GHz", "10–100 GHz", "10–100 THz"],
+    "correctAnswer": [0],
+    "explanation": "6G is expected to utilize THz spectrum from 0.1 to 10 THz for ultrahigh-speed communication."
+  },
+  {
+    "question": "A key opportunity of THz communication is:",
+    "options": ["Extremely narrow bandwidth", "Ultra-wide bandwidth enabling Tbps rates", "No atmospheric absorption issues", "Unlimited range"],
+    "correctAnswer": [1],
+    "explanation": "THz offers huge bandwidth enabling terabit-per-second communication."
+  },
+  {
+    "question": "A major challenge of THz communication is:",
+    "options": ["Low data rate", "Extreme signal attenuation and short range", "Lack of modulation schemes", "Poor spectral efficiency"],
+    "correctAnswer": [1],
+    "explanation": "THz signals cannot travel far and are strongly absorbed by the atmosphere."
+  },
+  {
+    "question": "AI-native networks in 6G mainly aim for:",
+    "options": ["Manual configuration only", "Self-optimizing and self-healing behavior", "Removal of analytics", "Fixed resource allocation"],
+    "correctAnswer": [1],
+    "explanation": "AI-native architectures will enable autonomous, predictive network management."
+  },
+  {
+    "question": "One challenge of AI-native networks is:",
+    "options": ["Too little data", "Privacy and explainability concerns", "No need for security", "Inflexible resource management"],
+    "correctAnswer": [1],
+    "explanation": "AI systems must be explainable and secure, making their design complex."
+  },
+  {
+    "question": "Quantum Key Distribution (QKD) offers:",
+    "options": ["No security benefits", "Near-perfect security properties", "Only higher data rates", "Only lower latency"],
+    "correctAnswer": [1],
+    "explanation": "QKD uses quantum physics to ensure keys cannot be intercepted without detection."
+  },
+  {
+    "question": "A limitation of current quantum communication is:",
+    "options": ["Fully mature, low cost", "Short range and high cost", "Infinite range", "No need for repeaters"],
+    "correctAnswer": [1],
+    "explanation": "Quantum communication requires advanced hardware and works only over limited distances."
+  },
+  {
+    "question": "In NSA 5G, the UE typically:",
+    "options": ["Connects only to gNodeB", "Uses dual connectivity to LTE and NR", "Connects only to Wi-Fi", "Connects only to satellite"],
+    "correctAnswer": [1],
+    "explanation": "NSA architecture binds control plane to LTE while using NR for high-speed data."
+  },
+  {
+    "question": "One advantage of SA 5G over NSA is:",
+    "options": ["Dependence on LTE", "Enabling full 5G features like native slicing and URLLC", "Lower flexibility", "Inability to support mMTC"],
+    "correctAnswer": [1],
+    "explanation": "SA supports true 5G architecture, enabling slicing, URLLC, and full 5GC capabilities."
+  },
+  {
+    "question": "A typical battery life target for many mMTC devices is:",
+    "options": ["A few hours", "A few days", "5–10 years", "50 years"],
+    "correctAnswer": [2],
+    "explanation": "mMTC devices often operate on small batteries for 5–10 years to support long-term IoT deployment."
+  }
+,
+//chatgpt
+
   {
     "question": "Which 5G architecture component manages NAS signaling with the UE?",
     "options": ["UPF", "AMF", "SMF", "PCF"],
