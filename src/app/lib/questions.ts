@@ -9067,6 +9067,66 @@ module7:[
     ],
     "explanation": "Release 18 focuses on Enhanced Uplink and Broadband Evolution to optimize 5G performance and efficiency, improving uplink speeds, coverage, and overall network capacity for better user experiences.",
     "correctAnswer": [1]
+  },
+    {
+    "question": "Which technology enables fast reconfiguration of 5G networks using software?",
+    "options": ["SDN", "Massive MIMO", "AMF updates", "mmWave steering"],
+    "explanation": "SDN allows centralized, programmable control for flexible networking.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "NFV virtualizes which of the following?",
+    "options": ["Physical antennas", "RAN spectrum", "Network functions", "UE mobility"],
+    "explanation": "NFV virtualizes network functions using software running on cloud servers.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Which protocol interface does SBA primarily use?",
+    "options": ["HTTP/2 APIs", "GTP-U", "SCTP signaling", "UDP-only communication"],
+    "explanation": "SBA uses service-based interfaces running over HTTP/2.",
+    "correctAnswer": [0]
+  },
+  {
+    "question": "Which 5G RAN interface connects UE to gNodeB?",
+    "options": ["NG-C", "NR-Uu", "Xn", "N32"],
+    "explanation": "NR-Uu is the 5G air interface between UE and gNB.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which technology makes mmWave practical despite high path loss?",
+    "options": ["Low-order modulation", "Massive MIMO + Beamforming", "High tower placement", "LTE fallback"],
+    "explanation": "Massive MIMO and beamforming focus signals to compensate path loss.",
+    "correctAnswer": [1]
+  },
+    {
+    "question": "Which 5G feature is crucial for autonomous vehicles?",
+    "options": ["High throughput", "Low latency", "High bandwidth", "Long range"],
+    "explanation": "Autonomous vehicles require ultra-low latency from URLLC.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which 5G security mechanism hides SUPI before transmission?",
+    "options": ["SEPP", "SUCI", "SBA", "PCF"],
+    "explanation": "SUCI is the encrypted form of SUPI sent over the air interface.",
+    "correctAnswer": [1]
+  },
+  {
+    "question": "Which component ensures secure inter-operator signaling?",
+    "options": ["AMF", "UPF", "SEPP", "AUSF"],
+    "explanation": "SEPP secures network-to-network roaming traffic.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "AI-native networks are expected in which generation?",
+    "options": ["4G", "5G", "6G", "3G"],
+    "explanation": "6G will integrate AI deeply into network operations.",
+    "correctAnswer": [2]
+  },
+  {
+    "question": "Terahertz communication lies in which approximate frequency range?",
+    "options": ["1–10 GHz", "10–30 GHz", "0.1–10 THz", "100–300 MHz"],
+    "explanation": "THz communication spans 0.1 to 10 THz.",
+    "correctAnswer": [2]
   }
 
     ],
@@ -9191,36 +9251,7 @@ module7:[
     "explanation": "Edge computing processes data near base stations to cut latency.",
     "correctAnswer": [1]
   },
-  {
-    "question": "Which 5G feature is crucial for autonomous vehicles?",
-    "options": ["High throughput", "Low latency", "High bandwidth", "Long range"],
-    "explanation": "Autonomous vehicles require ultra-low latency from URLLC.",
-    "correctAnswer": [1]
-  },
-  {
-    "question": "Which 5G security mechanism hides SUPI before transmission?",
-    "options": ["SEPP", "SUCI", "SBA", "PCF"],
-    "explanation": "SUCI is the encrypted form of SUPI sent over the air interface.",
-    "correctAnswer": [1]
-  },
-  {
-    "question": "Which component ensures secure inter-operator signaling?",
-    "options": ["AMF", "UPF", "SEPP", "AUSF"],
-    "explanation": "SEPP secures network-to-network roaming traffic.",
-    "correctAnswer": [2]
-  },
-  {
-    "question": "AI-native networks are expected in which generation?",
-    "options": ["4G", "5G", "6G", "3G"],
-    "explanation": "6G will integrate AI deeply into network operations.",
-    "correctAnswer": [2]
-  },
-  {
-    "question": "Terahertz communication lies in which approximate frequency range?",
-    "options": ["1–10 GHz", "10–30 GHz", "0.1–10 THz", "100–300 MHz"],
-    "explanation": "THz communication spans 0.1 to 10 THz.",
-    "correctAnswer": [2]
-  }
+
 ]
 ,
    
@@ -9345,36 +9376,7 @@ module7:[
     "explanation": "Future 6G systems will use THz band from 0.1 to 10 THz.",
     "correctAnswer": [2]
   },
-  {
-    "question": "Which technology enables fast reconfiguration of 5G networks using software?",
-    "options": ["SDN", "Massive MIMO", "AMF updates", "mmWave steering"],
-    "explanation": "SDN allows centralized, programmable control for flexible networking.",
-    "correctAnswer": [0]
-  },
-  {
-    "question": "NFV virtualizes which of the following?",
-    "options": ["Physical antennas", "RAN spectrum", "Network functions", "UE mobility"],
-    "explanation": "NFV virtualizes network functions using software running on cloud servers.",
-    "correctAnswer": [2]
-  },
-  {
-    "question": "Which protocol interface does SBA primarily use?",
-    "options": ["HTTP/2 APIs", "GTP-U", "SCTP signaling", "UDP-only communication"],
-    "explanation": "SBA uses service-based interfaces running over HTTP/2.",
-    "correctAnswer": [0]
-  },
-  {
-    "question": "Which 5G RAN interface connects UE to gNodeB?",
-    "options": ["NG-C", "NR-Uu", "Xn", "N32"],
-    "explanation": "NR-Uu is the 5G air interface between UE and gNB.",
-    "correctAnswer": [1]
-  },
-  {
-    "question": "Which technology makes mmWave practical despite high path loss?",
-    "options": ["Low-order modulation", "Massive MIMO + Beamforming", "High tower placement", "LTE fallback"],
-    "explanation": "Massive MIMO and beamforming focus signals to compensate path loss.",
-    "correctAnswer": [1]
-  }
+
 ]
 ,
     assignment: [
