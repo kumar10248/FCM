@@ -1646,14 +1646,14 @@ const handleSingleOptionSelect = (optionIndex: number) => {
                   <div className="mt-8 flex justify-center">
                     <button
                       className={`px-10 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center min-w-[240px] shadow-xl transform hover:scale-105 ${
-                      !answeredQuestions[currentQuestionIndex] && selectedOptions[currentQuestionIndex]?.length > 0
+                      !answeredQuestions[globalQuestionIndex] && selectedOptions[globalQuestionIndex]?.length > 0
                         ? "bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-black shadow-amber-500/50"
                         : "bg-gray-700/50 text-gray-500 cursor-not-allowed"
                     }`}
                     onClick={submitAnswer}
-                    disabled={answeredQuestions[currentQuestionIndex] || !selectedOptions[currentQuestionIndex]?.length}
+                    disabled={answeredQuestions[globalQuestionIndex] || !selectedOptions[globalQuestionIndex]?.length}
                   >
-                    {answeredQuestions[currentQuestionIndex] ? (
+                    {answeredQuestions[globalQuestionIndex] ? (
                       <>
                         <FaCheck className="mr-3 text-xl" /> Submitted
                       </>
