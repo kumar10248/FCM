@@ -9380,307 +9380,248 @@ module7:[
 ]
 ,
     assignment: [
+ 
   {
-    "question": "Which latency requirement is typical for URLLC services in 5G?",
-    "options": ["50 ms", "20 ms", "1 ms", "100 ms"],
-    "explanation": "URLLC targets extremely low end-to-end latency around 1 ms.",
-    "correctAnswer": [2]
+    "question": "Peak throughput is a feature of which 5G use case?",
+    "options": ["URLLC", "mMTC", "eMBB", "NFV"],
+    "correctAnswer": [2],
+    "explanation": "eMBB targets very high peak throughput for bandwidth-hungry applications."
   },
   {
-    "question": "Which 5G architecture component manages NAS signaling with the UE?",
-    "options": ["UPF", "AMF", "SMF", "PCF"],
-    "explanation": "AMF is responsible for NAS signaling and mobility management.",
-    "correctAnswer": [1]
+    "question": "A 'logical data connection' between UE and data network in 5G is called:",
+    "options": ["Access link", "Control tunnel", "PDU Session", "IP Pairing"],
+    "correctAnswer": [2],
+    "explanation": "PDU Session is the logical connection analogous to a bearer in LTE."
   },
   {
-    "question": "Which feature allows 5G to support diverse services like IoT, URLLC, and eMBB simultaneously?",
-    "options": ["Beam steering", "Network slicing", "Carrier aggregation", "Spectrum refarming"],
-    "explanation": "Network slicing creates isolated logical networks for different services.",
-    "correctAnswer": [1]
+    "question": "What does SUPI represent in 5G?",
+    "options": ["Temporary ID", "Permanent subscriber identifier", "Encrypted ID", "Security proxy"],
+    "correctAnswer": [1],
+    "explanation": "SUPI is the permanent subscriber identifier (protected for privacy)."
   },
   {
-    "question": "Which technology provides ultra-high data rates but suffers from short range?",
-    "options": ["mmWave", "Sub-6 GHz", "Wi-Fi 6", "NB-IoT"],
-    "explanation": "mmWave delivers multi-Gbps speeds but has limited coverage.",
-    "correctAnswer": [0]
+    "question": "SUCI is:",
+    "options": ["Temporary identifier", "Plain SUPI", "Encrypted SUPI for over-the-air use", "Radio tag"],
+    "correctAnswer": [2],
+    "explanation": "SUCI conceals SUPI by encryption before transmission over the air."
   },
   {
-    "question": "What is the main challenge of Terahertz (THz) communication?",
-    "options": ["Low bandwidth", "Severe atmospheric attenuation", "Poor mobility", "Spectrum unavailability"],
-    "explanation": "THz signals face extremely high attenuation due to molecular absorption.",
-    "correctAnswer": [1]
+    "question": "Which element protects signaling between operators (roaming)?",
+    "options": ["AMF", "SMF", "SEPP", "UPF"],
+    "correctAnswer": [2],
+    "explanation": "SEPP secures inter-operator N32 signaling for integrity and confidentiality."
   },
   {
-    "question": "Which function in 5G handles subscriber authentication keys?",
-    "options": ["AUSF", "AMF", "UPF", "NSSF"],
-    "explanation": "AUSF authenticates the user and derives security keys.",
-    "correctAnswer": [0]
+    "question": "Which core technology supports network slicing?",
+    "options": ["NFV", "CUPS", "SBA", "All of the above"],
+    "correctAnswer": [3],
+    "explanation": "Slicing relies on NFV, CUPS (flexible CP/UP), and SBA (cloud-native functions)."
   },
   {
-    "question": "Which gNB interface supports handover signaling between base stations?",
-    "options": ["NG-U", "NG-C", "Xn", "NR-Uu"],
-    "explanation": "Xn interface connects gNBs for handovers and load sharing.",
-    "correctAnswer": [2]
+    "question": "Which feature is commonly used in smart-city IoT deployments?",
+    "options": ["URLLC", "mMTC", "Massive MIMO", "mmWave only"],
+    "correctAnswer": [1],
+    "explanation": "mMTC targets massive, low-power IoT devices used in smart cities."
   },
   {
-    "question": "Which 5G Core function ensures the correct slice is chosen for a user?",
-    "options": ["SMF", "UDM", "NSSF", "PCF"],
-    "explanation": "NSSF selects and assigns appropriate network slices.",
-    "correctAnswer": [2]
+    "question": "Massive MIMO primarily improves which metric?",
+    "options": ["Latency", "Energy consumption", "Capacity and spectral efficiency", "Coding gain"],
+    "correctAnswer": [2],
+    "explanation": "Massive MIMO increases capacity and spectral efficiency via many antennas."
   },
   {
-    "question": "Which feature of mMTC helps ensure long battery life?",
-    "options": ["High bandwidth", "Low power consumption", "Fast modulation", "High mobility"],
-    "explanation": "mMTC devices use low power and infrequent data transmission.",
-    "correctAnswer": [1]
+    "question": "Beam steering adapts primarily to:",
+    "options": ["Distance only", "Time slot", "User movement and channel conditions", "Random direction"],
+    "correctAnswer": [2],
+    "explanation": "Beam steering adjusts beams based on user location and channel changes."
   },
   {
-    "question": "Which component in the 5G Core routes user data packets?",
-    "options": ["SMF", "PCF", "UPF", "AUSF"],
-    "explanation": "UPF is the user-plane anchor for data forwarding.",
-    "correctAnswer": [2]
+    "question": "Which architecture enables cloud-native deployment and microservices in 5G Core?",
+    "options": ["Circuit-switched", "Service-Based Architecture (SBA)", "Star topology", "GSM"],
+    "correctAnswer": [1],
+    "explanation": "SBA organizes core network functions as microservices using APIs."
   },
   {
-    "question": "Which statement correctly describes SDN in 5G?",
-    "options": ["Control plane is hardware-based", "Data plane is software virtualized", "Control logic is centralized", "No separation of planes"],
-    "explanation": "SDN centralizes control logic for programmability.",
-    "correctAnswer": [2]
+    "question": "Which scheduling class optimizes for very low latency?",
+    "options": ["URLLC scheduling", "mMTC scheduling", "eMBB scheduling", "Best-effort scheduling"],
+    "correctAnswer": [0],
+    "explanation": "URLLC scheduling (mini-slots, preemption) optimizes for sub-ms latency."
   },
   {
-    "question": "Which of the following enables virtualization of networking functions?",
-    "options": ["Massive MIMO", "NFV", "Beamforming", "HARQ"],
-    "explanation": "NFV virtualizes network services like firewalls and gateways.",
-    "correctAnswer": [1]
+    "question": "Which technique allows multiple users to share the same time-frequency resources?",
+    "options": ["Beamforming only", "Spatial multiplexing", "Edge computing", "HARQ"],
+    "correctAnswer": [1],
+    "explanation": "Spatial multiplexing (via MIMO) enables multiple users on same resources."
   },
   {
-    "question": "Which identity protection mechanism prevents SUPI exposure over air?",
-    "options": ["SEPP", "SUCI", "GUTI", "NAS-Enc"],
-    "explanation": "SUCI hides SUPI using public key encryption.",
-    "correctAnswer": [1]
+    "question": "Which method authenticates users in 5G?",
+    "options": ["5G-AKA", "Base64", "QR code", "AES-56"],
+    "correctAnswer": [0],
+    "explanation": "5G-AKA (and EAP-AKA') are standardized authentication methods in 5G."
   },
   {
-    "question": "Which deployment architecture depends heavily on LTE EPC?",
-    "options": ["SA", "NSA", "6G", "IMS-only"],
-    "explanation": "NSA uses LTE EPC and eNodeB for control plane activities.",
-    "correctAnswer": [1]
+    "question": "Mobility during handover is primarily coordinated by which NF?",
+    "options": ["UPF", "AMF", "gNodeB only", "SDN controller only"],
+    "correctAnswer": [1],
+    "explanation": "AMF handles registration and mobility procedures in the control plane."
   },
   {
-    "question": "In 5G NR, beamforming improves system performance primarily by:",
-    "options": ["Increasing noise", "Directing energy toward users", "Reducing antennas", "Lowering bandwidth"],
-    "explanation": "Beamforming focuses signal beams toward specific UEs.",
-    "correctAnswer": [1]
+    "question": "Which is NOT a role of UPF?",
+    "options": ["Data forwarding", "Edge deployment", "Authentication", "QoS enforcement"],
+    "correctAnswer": [2],
+    "explanation": "UPF handles user-plane functions; authentication is handled by AUSF/AMF."
   },
   {
-    "question": "Which element is part of the Control Plane in 5G?",
-    "options": ["UPF", "SMF", "DN", "UE"],
-    "explanation": "SMF belongs to the control plane responsible for session management.",
-    "correctAnswer": [1]
+    "question": "Which concept enables native AI integration envisioned for 6G?",
+    "options": ["Beamforming", "AI-Native Networks", "LTE-M", "OFDM"],
+    "correctAnswer": [1],
+    "explanation": "AI-native networks integrate AI/ML into network control and orchestration."
   },
   {
-    "question": "PDU Session in 5G corresponds to which concept from 4G LTE?",
-    "options": ["Physical channel", "Bearer", "Resource block", "APN"],
-    "explanation": "A PDU session is equivalent to a bearer in LTE.",
-    "correctAnswer": [1]
+    "question": "Which spectrum enables ultra-high data speeds in 5G?",
+    "options": ["mMTC band", "mmWave", "NFV band", "DRX band"],
+    "correctAnswer": [1],
+    "explanation": "mmWave (>24 GHz) provides wide bandwidth for multi-Gbps speeds."
   },
   {
-    "question": "Which 5G concept allows separate logical networks for emergency, IoT, or public broadband?",
-    "options": ["Beam steering", "Network slicing", "HARQ", "Carrier aggregation"],
-    "explanation": "Slicing enables multi-service coexistence on same infrastructure.",
-    "correctAnswer": [1]
+    "question": "Which technology reduces reliance on specialized hardware by virtualizing functions?",
+    "options": ["NFV", "mmWave", "MIMO", "AMF"],
+    "correctAnswer": [0],
+    "explanation": "NFV implements network functions as software on standard servers."
   },
   {
-    "question": "Which type of beamforming uses phase shifters and is hardware-efficient?",
-    "options": ["Digital", "Analog", "Hybrid", "Massive"],
-    "explanation": "Analog beamforming uses phase shifters in RF domain.",
-    "correctAnswer": [1]
+    "question": "What is the primary function of network slicing?",
+    "options": ["Splitting UE devices", "Creating virtual networks optimized for specific services", "Splitting antennas", "Compressing packets"],
+    "correctAnswer": [1],
+    "explanation": "Slicing creates logical networks on shared infrastructure tailored to service requirements."
   },
   {
-    "question": "Which factor limits mmWave coverage?",
-    "options": ["High diffraction", "High path loss", "Low bandwidth", "Low frequency"],
-    "explanation": "mmWave frequencies experience excessive path loss and weak penetration.",
-    "correctAnswer": [1]
+    "question": "Which provides fast local computing to reduce latency?",
+    "options": ["CSP", "MEC (Multi-access Edge Computing)", "SDN only", "FMN"],
+    "correctAnswer": [1],
+    "explanation": "MEC nodes process data near the edge to reduce end-to-end latency."
   },
   {
-    "question": "Which feature makes 5G suitable for high-speed trains (up to 500 km/h)?",
-    "options": ["High reliability", "High mobility support", "Wide coverage", "Massive bandwidth"],
-    "explanation": "5G supports high mobility as a KPI.",
-    "correctAnswer": [1]
+    "question": "Which architectural approach supports dynamic scaling of services in 5G Core?",
+    "options": ["AMF only", "SBA (Service-Based Architecture)", "UE hardware", "NR only"],
+    "correctAnswer": [1],
+    "explanation": "SBA and microservices enable dynamic scaling and flexible deployment."
   },
   {
-    "question": "Which component protects signaling traffic between two operators?",
-    "options": ["SEPP", "AUSF", "UDM", "NGAP"],
-    "explanation": "SEPP secures N32 interface between operators.",
-    "correctAnswer": [0]
+    "question": "Which 5G core function assigns IP addresses for sessions?",
+    "options": ["AMF", "SMF", "UPF", "AUSF"],
+    "correctAnswer": [1],
+    "explanation": "SMF manages PDU sessions and IP address allocation for UEs."
   },
   {
-    "question": "Which is a benefit of CUPS in 5G?",
-    "options": ["Higher power consumption", "Poor scaling", "Independent scaling of CP and UP", "Reduced security"],
-    "explanation": "CUPS allows UPF and SMF to scale independently.",
-    "correctAnswer": [2]
+    "question": "Which frequency range is expected to enable holographic communications in the future?",
+    "options": ["Sub-6 GHz", "mmWave", "Terahertz (THz)", "LTE-M band"],
+    "correctAnswer": [2],
+    "explanation": "THz bands (0.1–10 THz) offer extremely wide bandwidth for Tbps rates and advanced use cases."
   },
   {
-    "question": "Edge computing supports low-latency applications by:",
-    "options": ["Moving servers far away", "Processing data at the core network", "Processing data near the user", "Reducing modulation order"],
-    "explanation": "Edge computing reduces latency by minimizing data travel distance.",
-    "correctAnswer": [2]
+    "question": "Which principle reduces transmission overhead for massive IoT?",
+    "options": ["Spatial multiplexing", "Optimized signaling (lightweight protocols)", "Beam steering", "Power boosting"],
+    "correctAnswer": [1],
+    "explanation": "Optimized signaling and lightweight access reduce overhead for mMTC devices."
   },
   {
-    "question": "Which future technology promises ultra-secure communication using QKD?",
-    "options": ["mmWave", "AI-native networks", "Quantum communication", "HARQ"],
-    "explanation": "Quantum communication uses QKD for secure key exchange.",
-    "correctAnswer": [2]
-  },
-  
-  {
-    "question": "Which 5G frequency range offers better coverage but lower peak speed?",
-    "options": ["mmWave", "THz", "Sub-6 GHz", "Visible light spectrum"],
-    "explanation": "Sub-6 GHz bands provide large coverage areas with moderate speeds.",
-    "correctAnswer": [2]
+    "question": "Which plane handles the actual user data transport?",
+    "options": ["Control plane", "User plane", "Management plane", "Encryption plane"],
+    "correctAnswer": [1],
+    "explanation": "The user plane (UPF) carries actual data packets; the control plane handles signaling."
   },
   {
-    "question": "Which 5G Core function provides unified data storage for subscriber profiles?",
-    "options": ["NSSF", "UDM", "AMF", "UPF"],
-    "explanation": "UDM stores user subscription, authentication info, and policy data.",
-    "correctAnswer": [1]
+    "question": "5G aims to act as a unified platform for:",
+    "options": ["Only high-speed mobile broadband", "Connecting people, devices, machines, and infrastructure", "Only IoT sensors", "Only fixed broadband"],
+    "correctAnswer": [1],
+    "explanation": "5G unifies services for humans and machines across many verticals."
   },
   {
-    "question": "Which is a benefit of SBA in 5G Core?",
-    "options": ["Hardware-defined network", "Rigid network functions", "Flexible microservices", "No API support"],
-    "explanation": "SBA uses microservices communicating via APIs, offering flexibility.",
-    "correctAnswer": [2]
+    "question": "Which is NOT a main IMT-2020 service category?",
+    "options": ["eMBB", "URLLC", "mMTC", "Circuit-Switched Voice Service"],
+    "correctAnswer": [3],
+    "explanation": "Circuit-switched voice is legacy and not an IMT-2020 service category."
   },
   {
-    "question": "Which of the following is NOT an IMT-2020 5G requirement?",
-    "options": ["1 ms latency", "20 Gbps peak data rate", "1 million devices/km²", "Unlimited range communication"],
-    "explanation": "Unlimited range is not part of 5G KPIs.",
-    "correctAnswer": [3]
+    "question": "Which is a typical modulation used in 5G for high throughput?",
+    "options": ["BPSK only", "QPSK/16QAM/64QAM/256QAM", "FM", "ASK"],
+    "correctAnswer": [1],
+    "explanation": "5G uses QPSK up to 256-QAM for higher-order modulation in eMBB."
   },
   {
-    "question": "Which 5G feature enables dedicated virtual networks for critical services?",
-    "options": ["Massive MIMO", "mmWave", "Network slicing", "Carrier aggregation"],
-    "explanation": "Network slicing isolates resources for different applications.",
-    "correctAnswer": [2]
+    "question": "Which coding scheme is typically used for 5G data channels?",
+    "options": ["Convolutional codes", "LDPC (Low Density Parity Check)", "Reed-Solomon only", "Turbo codes only"],
+    "correctAnswer": [1],
+    "explanation": "LDPC is chosen for high-throughput data channels; Polar codes are used for control."
   },
   {
-    "question": "In 5G, who assigns QoS and charging rules?",
-    "options": ["AMF", "UPF", "PCF", "UDM"],
-    "explanation": "PCF determines QoS and charging policies.",
-    "correctAnswer": [2]
+    "question": "In 5G NR, the frame duration is:",
+    "options": ["1 ms", "5 ms", "10 ms", "100 ms"],
+    "correctAnswer": [2],
+    "explanation": "A 5G frame is 10 ms long, divided into subframes and slots depending on numerology."
   },
   {
-    "question": "mmWave communication mainly suffers from:",
-    "options": ["High interference immunity", "Long range", "High penetration capability", "High free-space path loss"],
-    "explanation": "mmWave struggles with high path loss, requiring dense deployment.",
-    "correctAnswer": [3]
+    "question": "Which interface carries user-plane traffic from gNodeB to UPF?",
+    "options": ["NG-C", "NG-U", "Xn", "Uu"],
+    "correctAnswer": [1],
+    "explanation": "NG-U is used for user-plane (data) between gNB and UPF."
   },
   {
-    "question": "Which 5G capability enables immersive VR experiences?",
-    "options": ["URLLC", "eMBB", "mMTC", "NB-IoT"],
-    "explanation": "eMBB provides high throughput needed for VR/AR.",
-    "correctAnswer": [1]
+    "question": "Which 5G RRC state reduces signaling while allowing fast resume?",
+    "options": ["RRC Idle", "RRC Inactive", "RRC Connected", "RRC Dormant"],
+    "correctAnswer": [1],
+    "explanation": "RRC Inactive keeps context for quick resume with less signaling overhead."
   },
   {
-    "question": "Which is the main transport protocol used in SBA architecture?",
-    "options": ["GTP", "HTTP/2", "FTP", "SSH"],
-    "explanation": "SBA uses REST APIs over HTTP/2.",
-    "correctAnswer": [1]
+    "question": "Random Access (RACH) is primarily used for:",
+    "options": ["Initial access and handover procedures", "Data forwarding", "Policy control", "Subscriber authentication only"],
+    "correctAnswer": [0],
+    "explanation": "RACH procedures allow UEs to obtain uplink timing and establish connections."
   },
   {
-    "question": "Which new identifier protects UE privacy in 5G?",
-    "options": ["GUTI", "SUPI", "SUCI", "IMSI"],
-    "explanation": "SUCI is encrypted and protects SUPI from exposure.",
-    "correctAnswer": [2]
+    "question": "Which QoS class provides guaranteed bit rate for critical flows?",
+    "options": ["Non-GBR", "GBR", "Best-effort", "Background"],
+    "correctAnswer": [1],
+    "explanation": "GBR (Guaranteed Bit Rate) ensures reserved resources for latency/reliability-critical services."
   },
   {
-    "question": "Which function instructs UPF regarding routing and forwarding rules?",
-    "options": ["PCF", "AMF", "SMF", "AUSF"],
-    "explanation": "SMF configures UPF for traffic routing and QoS.",
-    "correctAnswer": [2]
+    "question": "Fronthaul, midhaul, and backhaul are terms related to:",
+    "options": ["Core routing only", "Transport network connecting RAN and Core", "Security protocols", "Physical antenna types"],
+    "correctAnswer": [1],
+    "explanation": "They describe portions of the transport network between RU/DU/CU and the core."
   },
   {
-    "question": "Which of the following best describes Massive MIMO?",
-    "options": ["Few antennas with high power", "Many antennas for spatial multiplexing", "Single antenna beam steering", "Digital modulation improvement"],
-    "explanation": "Massive MIMO uses many antennas to create multiple simultaneous streams.",
-    "correctAnswer": [1]
+    "question": "Which antenna technology enables 3D beam steering (vertical + horizontal)?",
+    "options": ["Single omnidirectional antenna", "3D MIMO (massive antenna arrays)", "Single dipole", "Patch only"],
+    "correctAnswer": [1],
+    "explanation": "3D MIMO uses large arrays to steer beams in both elevation and azimuth."
   },
   {
-    "question": "Which interface replaces LTE’s S1 interface in 5G?",
-    "options": ["NR-Uu", "NG interface", "N32", "Xn"],
-    "explanation": "NG-C and NG-U together replace LTE S1 interface.",
-    "correctAnswer": [1]
+    "question": "CoMP (Coordinated Multi-Point) is used for:",
+    "options": ["Increasing device battery life only", "Coordinated transmission/reception among cells to reduce interference", "Replacing MIMO", "Only for backhaul"],
+    "correctAnswer": [1],
+    "explanation": "CoMP coordinates multiple points to improve cell-edge performance and reduce interference."
   },
   {
-    "question": "Which 5G feature is essential for industrial robots and AGVs?",
-    "options": ["eMBB", "mMTC", "URLLC", "Carrier Aggregation"],
-    "explanation": "URLLC ensures real-time, reliable communication.",
-    "correctAnswer": [2]
+    "question": "Which scheduling approach is often used for grant-free uplink in mMTC?",
+    "options": ["Mini-slot URLLC scheduling", "Grant-free random access", "Full-slot eMBB scheduling", "QoS-based MAC only"],
+    "correctAnswer": [1],
+    "explanation": "Grant-free uplink reduces signaling for massive low-data IoT devices."
   },
   {
-    "question": "Which layer of 5G enables smart cities and massive IoT deployment?",
-    "options": ["URLLC", "eMBB", "mMTC", "IMS"],
-    "explanation": "mMTC supports millions of IoT sensors and devices.",
-    "correctAnswer": [2]
+    "question": "Time-Sensitive Networking (TSN) over 5G is primarily targeted at:",
+    "options": ["Consumer video streaming", "Industrial automation with deterministic latency", "Email services", "Background updates"],
+    "correctAnswer": [1],
+    "explanation": "TSN provides deterministic timing and low jitter for industrial control applications."
   },
   {
-    "question": "Which RAN interface carries user-plane traffic?",
-    "options": ["Xn", "NR-Uu", "NG-U", "NG-C"],
-    "explanation": "NG-U transports user data between gNB and UPF.",
-    "correctAnswer": [2]
-  },
-  {
-    "question": "Which future 6G concept uses AI to optimize network functions automatically?",
-    "options": ["Massive MIMO", "AI-native networks", "mmWave", "SEPP"],
-    "explanation": "6G envisions AI-integrated autonomous network management.",
-    "correctAnswer": [1]
-  },
-  {
-    "question": "Which mechanism secures inter-operator 5G roaming communication?",
-    "options": ["NSSF", "SMF", "SEPP", "UPF"],
-    "explanation": "SEPP secures signaling between operators on N32.",
-    "correctAnswer": [2]
-  },
-  {
-    "question": "Which 5G component performs packet inspection and QoS enforcement?",
-    "options": ["AMF", "UPF", "PCF", "UDM"],
-    "explanation": "UPF enforces QoS rules and forwards packets.",
-    "correctAnswer": [1]
-  },
-  {
-    "question": "Which is a limitation of hybrid beamforming?",
-    "options": ["High power consumption", "Lower flexibility than full digital beamforming", "Requires no phase shifters", "Does not support MIMO"],
-    "explanation": "Hybrid beamforming trades flexibility for efficiency.",
-    "correctAnswer": [1]
-  },
-  {
-    "question": "Which 5G deployment is more expensive but enables full 5G functionality?",
-    "options": ["NSA", "SA", "LTE-A", "Dual Connectivity"],
-    "explanation": "SA needs new 5G Core deployment, allowing advanced features.",
-    "correctAnswer": [1]
-  },
-  {
-    "question": "Which KPI measures the ability of 5G to support high-speed mobility like trains?",
-    "options": ["Mobility", "Latency", "Spectrum efficiency", "Energy efficiency"],
-    "explanation": "Mobility KPI ensures connectivity at speeds up to 500 km/h.",
-    "correctAnswer": [0]
-  },
-  {
-    "question": "Which of the following is a key advantage of NFV in 5G?",
-    "options": ["Mandatory new hardware", "High deployment cost", "Rapid service deployment using software", "Increased latency"],
-    "explanation": "NFV enables software-based VNFs for faster deployment.",
-    "correctAnswer": [2]
-  },
-  {
-    "question": "Which concept allows THz communication to support Tbps data rates?",
-    "options": ["Large wavelengths", "Wide available bandwidth", "Low path loss", "Carrier aggregation"],
-    "explanation": "THz bands offer extremely wide bandwidth enabling ultra-high speeds.",
-    "correctAnswer": [1]
-  },
-  {
-    "question": "Which 5G technology helps overcome mmWave range limitations?",
-    "options": ["Small cells", "Low-order modulation", "Long antennas", "High transmit power only"],
-    "explanation": "Dense deployment of small cells compensates for mmWave short range.",
-    "correctAnswer": [0]
+    "question": "C-RAN centralizes baseband processing to achieve:",
+    "options": ["Higher per-site CAPEX", "Resource pooling, better coordination, and simplified upgrades", "Removal of all fronthaul", "Only single vendor lock-in"],
+    "correctAnswer": [1],
+    "explanation": "C-RAN enables pooling of resources and improved coordination like CoMP."
   }
+
 
 ]
 ,
