@@ -2,6 +2,7 @@
 
 ```markdown
 # FCWMC Quiz Practice Application
+- [click here to check](https://fcwmc.devashish.top)
 
 An interactive quiz application built with Next.js that allows users to practice questions in different modes and track their progress.
 
